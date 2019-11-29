@@ -8,4 +8,7 @@
          <servlet-class>com.venus.finance.servlet.LoadConfigServlet</servlet-class>
          <load-on-startup>2</load-on-startup>
 	</servlet>
+	<welcome-file-list>
+    	<welcome-file>index.jsp</welcome-file>
+  	</welcome-file-list>
 </web-app>

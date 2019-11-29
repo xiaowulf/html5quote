@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+body{color: blue;background-color:#000000;height:100%;color:#ffffff;}
+.mainleft{float:left;height:100%;width:5%;position: relative;}
+.mainleft1{float:left;height:100%;width:99%;position: relative;border-right:1px solid  #ffffff;}
+.mainright{float:right;height:100%;width:95%;position: relative;}
+.mainrightTop{height:50px;width:100%;margin: 0;color:#ffffff;border-bottom:1px solid #ffffff;}
+.mainrightTop1{cursor:pointer;float:left;text-align:center;height:30px;width:70px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}
+.mainrightTop2{cursor:pointer;float:left;text-align:center;height:30px;width:70px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}
+.mainrightTop3{cursor:pointer;float:left;text-align:center;height:30px;width:70px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}
+.mainrightZhiBiao{float:left;height:25px;width:100%;margin-top: 0px;border-bottom:1px solid #ffffff;}
+.mainrightZhiBiao1{float:left;height:25px;width:80px;text-align:center;margin-top: 0px;color:#bfad21;}
+.mainrightBottomNav{float:left;height:50px;width:100%;margin-top: 600px;border-bottom:1px solid #ffffff;}
+.mainrightBottomNav1{cursor:pointer;float:left;text-align:center;height:30px;width:150px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}
+.mainrightBottomNav2{cursor:pointer;float:left;text-align:center;height:30px;width:150px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}
+.mainrightBottomNav3{cursor:pointer;float:left;text-align:center;height:30px;width:150px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}
+.mainrightBottomNews{float:left;height:auto;width:100%;margin-top: 10px;}
+.mainrightBottom{float:left;height:auto;width:100%;margin-top: 600px;border-top:1px solid #ffffff;}
