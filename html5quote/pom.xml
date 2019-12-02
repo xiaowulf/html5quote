@@ -136,7 +136,13 @@
 	    <artifactId>commons-collections4</artifactId>
 	    <version>4.1</version>
 	</dependency>
-							
+	<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
+	</dependency>
+								
   </dependencies>
   <build>
     <finalName>html5quote</finalName>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -33,7 +35,15 @@
     			外汇
     		</div>
     	</div>
-    	
+    	${requestScope.Error_Message}
+    	<c:forEach  items="${jysCodeList}" var="dataList"  varStatus="userStatus">
+   	 			<tr style="background-color:#ffffff;"> 
+	   	 			<td >
+	   	 				<c:out value="${dataList}"></c:out>
+		   	 		</td>
+   	 			</tr>
+   	 		</c:forEach>
+   	 		
     	
     	<div class="mainrightMain">
     		<div class="mainrightMainLeft">
