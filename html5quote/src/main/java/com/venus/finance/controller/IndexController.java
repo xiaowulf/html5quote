@@ -26,7 +26,7 @@ public class IndexController {
 	public String home(HttpServletRequest request,ModelMap model) {
 		CodeUtil codeUtil = new CodeUtil();
 		List<String> jysCodeList = codeUtil.getCodeByJys("czce");
-		request.setAttribute("jysCodeList", jysCodeList);
+		model.addAttribute("jysCodeList", jysCodeList);
 		return "index";
 	}
 	
