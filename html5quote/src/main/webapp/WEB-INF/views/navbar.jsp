@@ -5,11 +5,13 @@
 <ul>
 	<li><a href="./"> <i class="fa fa-line-chart"></i>行情
 	</a></li>
+	<!--  
 	<li class=""><a href="order.jsp"> <i class="fa fa-bullhorn"></i>首页
 	</a></li>
 	<li><a href="#"> <i class="fa fa-align-center"></i>首页
 	</a></li>
 	<li><a href="#"> <i class="fa fa-bell-o"></i>首页
 	</a></li>
+	-->
 </ul>
 </nav>

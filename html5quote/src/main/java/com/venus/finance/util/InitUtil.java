@@ -43,10 +43,10 @@ public class InitUtil {
 	
 	public static void main(String[] args) throws IOException {
 		CodeUtil codeUtil = new CodeUtil();
-		List<String> list = codeUtil.getCodeByJys("cffex");
-		for(String str:list){
-			System.out.println(str);
-		}
+//		List<String> list = codeUtil.getCodeByJys("cffex");
+//		for(String str:list){
+//			System.out.println(str);
+//		}
 		
 	}
 }

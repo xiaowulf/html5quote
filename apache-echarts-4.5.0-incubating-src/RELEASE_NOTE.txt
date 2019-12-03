@@ -1,0 +1,43 @@
+4.5.0-rc.2
+
+[Feature] Add roundCap option for round corners on bar series width polar coordinate system. #11393 (Wenli Zhang)
+
+[Feature] Add event brushEnd for brush component #11285(Jian Cui)
+
+[Feature] Add friction option in force layout of graph. #11276 (Yi Shen)
+
+[Feature] Add ignoreFoceLayout option in the graph links. #11445 (TYzzt)
+
+[Feature] Add axisType in the indicator of radar series. #11324(zifix)
+
+[Feature] Add clip option in candllestick series. #11529 (Yi Shen)
+
+[Fix] Fix lots of label positioning issues in SVG renderer. ecomfe/zrender#519 (Shuang Su)
+
+[Fix] Fix interval issues related to category axis tick. Like areaStyle.color is incorrect in #10948, xAxis.axisTick.interval is calculated incorrectly in #11176 . #11186 (foolzhang)
+
+[Fix] Fix bar series can't display on the log axis. #11472(SnailSword)
+
+[Fix] Fix tooltip may be covered by the canvas when -webkit-overflow-scrolling: touch on iOS 13. ecomfe/zrender#522 (Shuang Su)
+
+[Fix] Fix some of labels on category axis may disappear forever after chart resized. #11536 (Shuang Su)
+
+[Fix] Fix brush drag gets stuck when the mouse leaves the chart area. #11516 (Shuang Su)
+
+[Fix] Fix image symbol may disappear forever after legend toggled. #11515 (Feng Yu)
+
+[Fix] Fix changing from 'scroll' type to 'plain' type not work bug in legend. #11504 (Feng Yu)
+
+[Fix] Optimize layout and bar width of bar series on time axis and value axis. Make the barMaxWidth has higher priority than barWidth. Add barMinWidth for bar series on time axis and value axis. #11479 (Wenli Zhang, Shuang Su)
+
+[Fix] Fix title of toolbox icon may be cut by the container. #11456 (Wenli Zhang)
+
+[Fix] Fix precision issue in the ticks calculating. #11488 (Wenli Zhang)
+
+[Fix] Fix rotate property of label not work in tree series. #11457 (Deqing Li)
+
+[Fix] Fix edge won't disappear after collapsed if the id is duplicated in tree series. #11447 (Deqing Li)
+
+[Fix] Fix data disappear when updating with dataset in gauge series. #11373 (Wenli Zhang)
+
+[Fix] Fix gradient on bar leaked to label in SVG Renderer. (Wenli Zhang)

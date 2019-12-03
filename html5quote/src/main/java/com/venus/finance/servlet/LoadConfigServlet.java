@@ -36,7 +36,6 @@ public class LoadConfigServlet extends HttpServlet {
 	}
 
 	public void init() throws ServletException {
-		// fix ≥ı ºªØ
 		String path = this.getClass().getClassLoader().getResource("/").getPath();
 		String fixFileName = path + "quotefix.cfg";
 		application = new FixApplication();
@@ -50,6 +49,14 @@ public class LoadConfigServlet extends HttpServlet {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (ConfigError e) {
+			e.printStackTrace();
+		}
+	}
+	public void destroy() {
+		try {
+			System.out.println("---destroy-----");
+			initiator.stop();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

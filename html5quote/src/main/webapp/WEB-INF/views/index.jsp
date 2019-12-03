@@ -8,9 +8,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
     <title>HTML5行情</title>
-
+	<script src="js/echarts.min.js" type="text/javascript"></script>
     <!--awesome font include-->
     <link type="text/css" rel="stylesheet" href="./css/main.css" />
     <link type="text/css" rel="stylesheet" href="./css/font-awesome.min.css" />
@@ -29,22 +29,18 @@
     
     <div class="mainright">
     	<div class="mainrightTop">
+    		<!--  
     		<div class="mainrightTop1">
-    			期货
+    			期货王者
     		</div>
+    		
     		<div class="mainrightTop2">
     			股票
     		</div>
-    		<div class="mainrightTop3">
-    			外汇
-    		</div>
-    	</div>
-    	<div class="mainrightMain">
-    		<!--  
-    		<div class="mainrightMainLeft">
     		-->
-    			<div class="mainrightZhiBiao">
-			    	<div class="mainrightZhiBiao1">
+    	</div>
+    	<div class="mainrightZhiBiaoHead">
+			    	<div class="mainrightZhiBiaoNameY">
 			    		品种
 			    	</div>
 			    	<div class="mainrightZhiBiao1">
@@ -66,53 +62,71 @@
 			    		结算价
 			    	</div>
 			    	<div class="mainrightZhiBiao1">
-			    		成交量
+			    		买入价
+			    	</div>
+			    	<div class="mainrightZhiBiao1">
+			    		买量
+			    	</div>
+			    	<div class="mainrightZhiBiao1">
+			    		卖出价
+			    	</div>
+			    	<div class="mainrightZhiBiao1">
+			    		卖出价
+			    	</div>
+			    	<div class="mainrightZhiBiao1">
+			    		成量
 			    	</div>
 			    	<div class="mainrightZhiBiao1">
 			    		成交手数
 			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		买入
-			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		卖出
-			    	</div>
-		    	</div>
+			    	
+		</div>
+    	<div class="mainrightMain" id="style-3">
+    		<!--  
+    		<div class="mainrightMainLeft">
+    		-->
 		    	<c:forEach  items="${jysCodeList}" var="list"  varStatus="userStatus">
 		    	<div class="mainrightZhiBiao">
-			    	<div class="mainrightZhiBiao1">
-			    		品种
+			    	<div class="mainrightZhiBiaoNameY">
+			    		<c:out value="${list.name}"/>
 			    	</div>
 			    	<div class="mainrightZhiBiao1">
-			    		<c:out value="${list}"></c:out>
+			    		<c:out value="${list.instrumentID}"/>
 			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		开盘价
+			    	<div class="mainrightZhiBiao2">
+			    		<c:out value="${list.openPrice}"/>
 			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		最高价
+			    	<div class="mainrightZhiBiao2">
+			    		<c:out value="${list.highestPrice}"/>
 			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		最低价
+			    	<div class="mainrightZhiBiao2">
+			    		<c:out value="${list.lowestPrice}"/>
 			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		收盘价
+			    	<div class="mainrightZhiBiao2">
+			    		<c:out value="${list.closePrice}"/>
 			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		结算价
+			    	<div class="mainrightZhiBiao2">
+			    		<c:out value="${list.settlementPrice}"/>
 			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		成交量
+			    	<div class="mainrightZhiBiao2">
+			    		<c:out value="${list.bidPrice1}"/>
 			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		成交手数
+			    	<div class="mainrightZhiBiao2">
+			    		<c:out value="${list.askPrice1}"/>
 			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		买入
+			    	<div class="mainrightZhiBiao2">
+			    		<c:out value="${list.bidVolume1}"/>
 			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		卖出
+			    	<div class="mainrightZhiBiao2">
+			    		<c:out value="${list.askVolume1}"/>
 			    	</div>
+			    	<div class="mainrightZhiBiao2">
+			    		<c:out value="${list.volume}"/>
+			    	</div>
+			    	<div class="mainrightZhiBiao2">
+			    		<c:out value="${list.cjvolume}"/>
+			    	</div>
+			    	
 		    	</div>
 		    	</c:forEach>
 		    	<!-- end  mainrightZhiBiao-->
@@ -129,21 +143,48 @@
     	</div>
     	<!-- end  mainrightMain-->
     	<div class="mainrightBottomNav">
-	    	<div class="mainrightBottomNav1">
+	    	<div class="mainrightBottomNav1" onclick="getJys('shfe')">
 	    		上海期货交易所
 	    	</div>
-	    	<div class="mainrightBottomNav1">
+	    	<div class="mainrightBottomNav1" onclick="getJys('czce')">
 	    		郑州商品交易所
 	    	</div>
-	    	<div class="mainrightBottomNav1">
+	    	<div class="mainrightBottomNav1" onclick="getJys('dce')">
 	    		大连商品交易所
 	    	</div>
-	    	<div class="mainrightBottomNav1">
+	    	<div class="mainrightBottomNav1" onclick="getJys('cffex')">
 	    		中国金融交易所
 	    	</div>
     	</div>
     	<div class="mainrightBottomNews">
-    	ddd
+    		<div id="main" style="width: 600px;height:400px;"></div>
+    		<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
     	</div>
     </div>
     
@@ -152,6 +193,9 @@
     
     
     <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    
+    
+    <script src="js/index.js" type="text/javascript"></script>
     <!--include plugin js-->
     <script type="text/javascript" src="./js/jquery-rvnm.js"></script>
     <!--js run code-->
@@ -168,5 +212,9 @@
             rvnMenu.setTheme('dark-ruby');
         });
     </script>
+    <script> 
+		self.moveTo(0,0) 
+		self.resizeTo(screen.availWidth,screen.availHeight) 
+	</script>
 </body>
 </html>
