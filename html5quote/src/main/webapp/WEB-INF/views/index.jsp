@@ -24,6 +24,8 @@
 		<jsp:include page="navbar.jsp"></jsp:include>
 		</div>
 	</div>
+	
+	
     
     <div class="mainright">
     	<div class="mainrightTop">
