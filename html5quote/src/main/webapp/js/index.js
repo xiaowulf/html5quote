@@ -128,7 +128,6 @@ function getChart(code) {
 		dataType : 'json',
 		success : function(data) {
 			chart1.setOption(option_close_settle);
-			console.log("------------------");
 		}
 	});
 }

@@ -40,7 +40,6 @@ public class CodeUtil {
 	public List<String> getTradeDate(){
 		FileUtil fileUtil = new FileUtil();
 		String filePath = getTradeDatePath();
-		System.out.println(filePath);
 		List<String> list = fileUtil.readFileToList(new File(filePath));
 		return list;
 	}
@@ -54,6 +53,32 @@ public class CodeUtil {
 			e.printStackTrace();
 		}
 		return code;
+	}
+	public List<FuturesQuoteVO> getDayQuoteByCodeAndDate(List<String> date30List,String code){
+		InitUtil initUtil = new InitUtil();
+		FileUtil fileUtil = new FileUtil();
+		List<FuturesQuoteVO> list = new ArrayList<FuturesQuoteVO>();
+		String dataFolder = null;
+		try {
+			dataFolder = initUtil.getDayDataFolder();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if(null!=dataFolder) {
+			for(String date:date30List) {
+				File dayDataFile = new File(dataFolder+"/hlj"+date+".txt");
+				List<FuturesQuoteVO> futuresDayQuoteList = 
+						fileUtil.readFileToFuturesQuoteList(dayDataFile);
+				for(FuturesQuoteVO futuresQuoteVO:futuresDayQuoteList) {
+					if(futuresQuoteVO.getInstrumentID().toUpperCase()
+							.equals(code.toUpperCase())) {
+						futuresQuoteVO.setDate(Long.parseLong(date));
+						list.add(futuresQuoteVO);
+					}
+				}
+			}
+		}
+		return list;
 	}
 	public List<FuturesQuoteVO> getCodeByJys(String jys) throws UnsupportedEncodingException{
 		FileUtil fileUtil = new FileUtil();

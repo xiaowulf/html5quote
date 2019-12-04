@@ -16,6 +16,7 @@ public class FuturesQuoteVO {
 	private Double closePrice=0D;
 	private Double LastPrice=0D;
 	private String name;
+	private Long date;
 	private Double ccvolume=0D;
 	@Override
 	public int hashCode() {
@@ -136,6 +137,12 @@ public class FuturesQuoteVO {
 	}
 	public void setCcvolume(Double ccvolume) {
 		this.ccvolume = ccvolume;
+	}
+	public Long getDate() {
+		return date;
+	}
+	public void setDate(Long date) {
+		this.date = date;
 	}
 	
 	

@@ -47,6 +47,13 @@ public class InitUtil {
         File codeFile = new File(code_file_dir+"code"+getRecordDate()+".txt");
         return codeFile;
     }
+	public String getDayDataFolder() throws IOException
+    {
+		InputStream in = this.getClass().getResourceAsStream(codeconfig_file);
+        Wini ini = new Wini(in);
+        String fileFolder = ini.get("code", "futures_day_data_folder");
+        return fileFolder;
+    }
 	public String getIndexCode() throws IOException
     {
 		InputStream in = this.getClass().getResourceAsStream(codeconfig_file);

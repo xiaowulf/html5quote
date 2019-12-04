@@ -68,7 +68,7 @@ public class FixApplication implements Application{
 	}
 	@Override
 	public void onCreate(SessionID arg0) {
-		System.out.println("--0--"+arg0);
+		System.out.println("-=======-0--"+arg0);
 	}
 	@Override
 	public void onLogon(SessionID arg0) {

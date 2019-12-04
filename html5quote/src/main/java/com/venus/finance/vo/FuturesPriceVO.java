@@ -3,19 +3,20 @@ package com.venus.finance.vo;
 import java.util.List;
 
 public class FuturesPriceVO {
-	private List futuresSettlePriceList;
-	private List futuresClosePriceList;
-	public List getFuturesSettlePriceList() {
-		return futuresSettlePriceList;
+	private List<Long>dateRtnList;
+	private List<FuturesQuoteVO> futuresPriceList;
+	public List<Long> getDateRtnList() {
+		return dateRtnList;
 	}
-	public void setFuturesSettlePriceList(List futuresSettlePriceList) {
-		this.futuresSettlePriceList = futuresSettlePriceList;
+	public void setDateRtnList(List<Long> dateRtnList) {
+		this.dateRtnList = dateRtnList;
 	}
-	public List getFuturesClosePriceList() {
-		return futuresClosePriceList;
+	public List<FuturesQuoteVO> getFuturesPriceList() {
+		return futuresPriceList;
 	}
-	public void setFuturesClosePriceList(List futuresClosePriceList) {
-		this.futuresClosePriceList = futuresClosePriceList;
+	public void setFuturesPriceList(List<FuturesQuoteVO> futuresPriceList) {
+		this.futuresPriceList = futuresPriceList;
 	}
+	
 	
 }
