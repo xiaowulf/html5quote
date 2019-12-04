@@ -2,10 +2,13 @@ package com.venus.finance.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.venus.finance.vo.FuturesQuoteVO;
 
@@ -23,17 +26,41 @@ public class CodeUtil {
 		List<String> list = fileUtil.readFileToList(codeFile);
 		return list;
 	}
+	
+	public String getIndexCode(){
+		InitUtil initUtil = new InitUtil();
+		String code = null;
+		try {
+			code = initUtil.getIndexCode();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return code;
+	}
 	public List<FuturesQuoteVO> getCodeByJys(String jys) throws UnsupportedEncodingException{
 		FileUtil fileUtil = new FileUtil();
 		InitUtil initUtil = new InitUtil();
 		List<FuturesQuoteVO>codeList = new ArrayList<FuturesQuoteVO>();
 		File codeFile = null;
+		File futuresLatestFile = null;
 		try {
 			codeFile = initUtil.getCodeFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		try {
+			futuresLatestFile = initUtil.getFutures_latest_file();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		List<String> list = fileUtil.readFileToList(codeFile);
+		List<String> futuresLatest = null;
+		if(futuresLatestFile.exists()){
+			futuresLatest = fileUtil.readFileToList(futuresLatestFile);
+		}
+		//根据code生成一个map，后面好处理
+		Map<String,FuturesQuoteVO> futuresQuoteMap = new HashMap<String,FuturesQuoteVO>();
 		for(String codeStr:list){
 			String [] codeArray = codeStr.split(",");
 			if(codeArray.length==2){
@@ -41,6 +68,22 @@ public class CodeUtil {
 					FuturesQuoteVO futuresQuoteVO = new FuturesQuoteVO();
 					futuresQuoteVO.setInstrumentID(codeArray[0]);
 					futuresQuoteVO.setName(getChineseName(codeArray[0])+converCodeMonth(codeArray[0]));
+					futuresQuoteMap.put(codeArray[0], futuresQuoteVO);
+				}
+			}
+		}
+		for(String codeStr:futuresLatest){
+			String [] codeArray = codeStr.split(",");
+			if(codeArray.length==8){
+				FuturesQuoteVO futuresQuoteVO = futuresQuoteMap.get(codeArray[0]);
+				if(null!=futuresQuoteVO){
+					futuresQuoteVO.setOpenPrice(Double.parseDouble(codeArray[1]));
+					futuresQuoteVO.setHighestPrice(Double.parseDouble(codeArray[2]));
+					futuresQuoteVO.setLowestPrice(Double.parseDouble(codeArray[3]));
+					futuresQuoteVO.setClosePrice(Double.parseDouble(codeArray[4]));
+					futuresQuoteVO.setSettlementPrice(Double.parseDouble(codeArray[5]));
+					futuresQuoteVO.setVolume(Double.parseDouble(codeArray[6]));
+					futuresQuoteVO.setCcvolume(Double.parseDouble(codeArray[7]));
 					codeList.add(futuresQuoteVO);
 				}
 			}

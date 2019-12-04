@@ -27,6 +27,7 @@ public class IndexController {
 	 */
 	@RequestMapping(value = "/index.html", method = RequestMethod.GET)
 	public String home(HttpServletRequest request,ModelMap model) {
+		/*
 		CodeUtil codeUtil = new CodeUtil();
 		List<FuturesQuoteVO> jysCodeList;
 		try {
@@ -35,6 +36,7 @@ public class IndexController {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+		*/
 		return "index";
 	}
 	
@@ -50,9 +52,20 @@ public class IndexController {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
 		Gson gson = new Gson();
         String json = gson.toJson(jysCodeList);
+		return json;
+	}
+	@RequestMapping(value = "/findFuturesCodeIndex.html",produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String findFuturesCodeIndex(HttpServletRequest request,ModelMap model) {
+		String code = request.getParameter("code");
+		CodeUtil codeUtil = new CodeUtil();
+		if(code.equals("index")){
+			code = codeUtil.getIndexCode();
+		}
+		Gson gson = new Gson();
+        String json = gson.toJson(code);
 		return json;
 	}
 	

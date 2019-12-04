@@ -16,7 +16,7 @@ public class FuturesQuoteVO {
 	private Double closePrice=0D;
 	private Double LastPrice=0D;
 	private String name;
-	private Double cjvolume=0D;
+	private Double ccvolume=0D;
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -131,11 +131,12 @@ public class FuturesQuoteVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Double getCjvolume() {
-		return cjvolume;
+	public Double getCcvolume() {
+		return ccvolume;
 	}
-	public void setCjvolume(Double cjvolume) {
-		this.cjvolume = cjvolume;
+	public void setCcvolume(Double ccvolume) {
+		this.ccvolume = ccvolume;
 	}
+	
 	
 }

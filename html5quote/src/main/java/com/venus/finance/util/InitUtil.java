@@ -40,13 +40,24 @@ public class InitUtil {
         File codeFile = new File(code_file_dir+"code"+getRecordDate()+".txt");
         return codeFile;
     }
+	public String getIndexCode() throws IOException
+    {
+		InputStream in = this.getClass().getResourceAsStream(codeconfig_file);
+        Wini ini = new Wini(in);
+        String indexcode = ini.get("code", "indexcode");
+        return indexcode;
+    }
+	public File getFutures_latest_file() throws IOException
+    {
+		InputStream in = this.getClass().getResourceAsStream(codeconfig_file);
+        Wini ini = new Wini(in);
+        String futures_latest_file = ini.get("code", "futures_latest_file");
+        File codeFile = new File(futures_latest_file);
+        return codeFile;
+    }
 	
 	public static void main(String[] args) throws IOException {
-		CodeUtil codeUtil = new CodeUtil();
-//		List<String> list = codeUtil.getCodeByJys("cffex");
-//		for(String str:list){
-//			System.out.println(str);
-//		}
+		System.out.println(InitUtil.class.getClass().getResource("/"));
 		
 	}
 }

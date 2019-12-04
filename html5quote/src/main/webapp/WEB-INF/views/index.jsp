@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
-    <title>HTML5行情</title>
+    <title>期货王者分析系统</title>
 	<script src="js/echarts.min.js" type="text/javascript"></script>
     <!--awesome font include-->
     <link type="text/css" rel="stylesheet" href="./css/main.css" />
@@ -82,9 +82,8 @@
 			    	
 		</div>
     	<div class="mainrightMain" id="style-3">
-    		<!--  
     		<div class="mainrightMainLeft">
-    		-->
+    		
 		    	<c:forEach  items="${jysCodeList}" var="list"  varStatus="userStatus">
 		    	<div class="mainrightZhiBiao">
 			    	<div class="mainrightZhiBiaoNameY">
@@ -124,15 +123,13 @@
 			    		<c:out value="${list.volume}"/>
 			    	</div>
 			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.cjvolume}"/>
+			    		<c:out value="${list.ccvolume}"/>
 			    	</div>
 			    	
 		    	</div>
 		    	</c:forEach>
 		    	<!-- end  mainrightZhiBiao-->
-    		<!--
     		</div>
-    		-->
     		<!--  
     		<div class="mainrightMainRight">
     			<div class="mainrightMainChart">
@@ -143,55 +140,29 @@
     	</div>
     	<!-- end  mainrightMain-->
     	<div class="mainrightBottomNav">
-	    	<div class="mainrightBottomNav1" onclick="getJys('shfe')">
+	    	<div class="mainrightBottomNav1" onclick="getJys('shfe')" id="mainrightBottomNav1">
 	    		上海期货交易所
 	    	</div>
-	    	<div class="mainrightBottomNav1" onclick="getJys('czce')">
+	    	<div class="mainrightBottomNav2" onclick="getJys('czce')" id="mainrightBottomNav2">
 	    		郑州商品交易所
 	    	</div>
-	    	<div class="mainrightBottomNav1" onclick="getJys('dce')">
+	    	<div class="mainrightBottomNav3" onclick="getJys('dce')" id="mainrightBottomNav3">
 	    		大连商品交易所
 	    	</div>
-	    	<div class="mainrightBottomNav1" onclick="getJys('cffex')">
+	    	<div class="mainrightBottomNav4" onclick="getJys('cffex')" id="mainrightBottomNav4">
 	    		中国金融交易所
 	    	</div>
     	</div>
     	<div class="mainrightBottomNews">
-    		<div id="main" style="width: 400px;height:300px;float:left"></div>
-    		<div id="main2" style="width: 400px;height:300px;float:left"></div>
-    		<div id="main3" style="width: 400px;height:300px;float:left"></div>
-    		<div id="main4" style="width: 400px;height:300px;float:left"></div>
+    		<div id="main" style="width: 500px;height:300px;float:left"></div>
+    		<div id="main2" style="width:500px;height:300px;float:left"></div>
     		<script type="text/javascript">
-	        // 基于准备好的dom，初始化echarts实例
-	        var myChart = echarts.init(document.getElementById('main'));
-	        var myChart2 = echarts.init(document.getElementById('main2'));
-	        var myChart3 = echarts.init(document.getElementById('main3'));
-	        var myChart4 = echarts.init(document.getElementById('main4'));
-	        // 指定图表的配置项和数据
-	        var option = {
-	            title: {
-	                text: 'ECharts 入门示例'
-	            },
-	            tooltip: {},
-	            legend: {
-	                data:['销量']
-	            },
-	            xAxis: {
-	                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-	            },
-	            yAxis: {},
-	            series: [{
-	                name: '销量',
-	                type: 'bar',
-	                data: [5, 20, 36, 10, 10, 20]
-	            }]
-	        };
-	
-	        // 使用刚指定的配置项和数据显示图表。
-	        myChart.setOption(option);
-	        myChart2.setOption(option);
-	        myChart3.setOption(option);
-	        myChart4.setOption(option);
+    		
+	        
+	        
+	        
+	        
+	        
 	    </script>
     	</div>
     </div>
