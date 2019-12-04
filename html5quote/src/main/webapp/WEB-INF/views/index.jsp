@@ -24,9 +24,6 @@
 		<jsp:include page="navbar.jsp"></jsp:include>
 		</div>
 	</div>
-	
-	
-    
     <div class="mainright">
     	<div class="mainrightTop">
     		<!--  
@@ -82,61 +79,7 @@
 			    	
 		</div>
     	<div class="mainrightMain" id="style-3">
-    		<div class="mainrightMainLeft">
     		
-		    	<c:forEach  items="${jysCodeList}" var="list"  varStatus="userStatus">
-		    	<div class="mainrightZhiBiao">
-			    	<div class="mainrightZhiBiaoNameY">
-			    		<c:out value="${list.name}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao1">
-			    		<c:out value="${list.instrumentID}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.openPrice}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.highestPrice}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.lowestPrice}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.closePrice}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.settlementPrice}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.bidPrice1}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.askPrice1}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.bidVolume1}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.askVolume1}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.volume}"/>
-			    	</div>
-			    	<div class="mainrightZhiBiao2">
-			    		<c:out value="${list.ccvolume}"/>
-			    	</div>
-			    	
-		    	</div>
-		    	</c:forEach>
-		    	<!-- end  mainrightZhiBiao-->
-    		</div>
-    		<!--  
-    		<div class="mainrightMainRight">
-    			<div class="mainrightMainChart">
-    				数据图表
-    			</div>
-    		</div>
-    		-->
     	</div>
     	<!-- end  mainrightMain-->
     	<div class="mainrightBottomNav">
@@ -159,14 +102,6 @@
     	<div class="mainrightBottomNews">
     		<div id="chart1" style="width: 500px;height:300px;float:left"></div>
     		<div id="main2" style="width:500px;height:300px;float:left"></div>
-    		<script type="text/javascript">
-    		
-	        
-	        
-	        
-	        
-	        
-	    </script>
     	</div>
     </div>
     

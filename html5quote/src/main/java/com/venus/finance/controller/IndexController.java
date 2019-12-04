@@ -2,6 +2,7 @@ package com.venus.finance.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -28,6 +29,7 @@ public class IndexController {
 	 */
 	@RequestMapping(value = "/index.html", method = RequestMethod.GET)
 	public String home(HttpServletRequest request,ModelMap model) {
+		System.out.println("--1-");
 		/*
 		CodeUtil codeUtil = new CodeUtil();
 		List<FuturesQuoteVO> jysCodeList;
@@ -61,9 +63,18 @@ public class IndexController {
 	@ResponseBody
 	public String findFuturesCodeIndex(HttpServletRequest request,ModelMap model) {
 		String code = request.getParameter("code");
+		System.out.println("--0--");
+		System.out.println("11111111111111111111111");
 		CodeUtil codeUtil = new CodeUtil();
 		if(code.equals("index")){
 			code = codeUtil.getIndexCode();
+		}
+		//得到所有的成交日期
+		List<String> dateList = codeUtil.getTradeDate();
+		Collections.reverse(dateList);
+		List<String> date30List = dateList.subList(0, 30);
+		for(String date:date30List) {
+			System.out.println(date);
 		}
 		FuturesPriceVO futuresPriceVO = new FuturesPriceVO();
 		Gson gson = new Gson();

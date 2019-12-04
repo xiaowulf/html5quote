@@ -37,6 +37,14 @@ public class CodeUtil {
 		return filePath;
 	}
 	
+	public List<String> getTradeDate(){
+		FileUtil fileUtil = new FileUtil();
+		String filePath = getTradeDatePath();
+		System.out.println(filePath);
+		List<String> list = fileUtil.readFileToList(new File(filePath));
+		return list;
+	}
+	
 	public String getIndexCode(){
 		InitUtil initUtil = new InitUtil();
 		String code = null;
@@ -249,7 +257,7 @@ public class CodeUtil {
 			
 		//上期所
 		case "cu":
-			return new String("铜".getBytes(),"GBK");
+			return "铜";
 		case "al":
 			return "铝";
 		case "zn":
