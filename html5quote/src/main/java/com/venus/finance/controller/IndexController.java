@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.venus.finance.util.CodeUtil;
+import com.venus.finance.vo.FuturesPriceVO;
 import com.venus.finance.vo.FuturesQuoteVO;
 
 @Controller
@@ -64,8 +65,9 @@ public class IndexController {
 		if(code.equals("index")){
 			code = codeUtil.getIndexCode();
 		}
+		FuturesPriceVO futuresPriceVO = new FuturesPriceVO();
 		Gson gson = new Gson();
-        String json = gson.toJson(code);
+        String json = gson.toJson(futuresPriceVO);
 		return json;
 	}
 	

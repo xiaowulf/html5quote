@@ -1,6 +1,8 @@
 var option_close_settle = {
 	    title : {
-	        text: '期货价格'
+	        text: '期货价格',
+	        textStyle:{fontSize:13},
+	        padding:[5,50]
 	    },
 	    tooltip : {
 	        trigger: 'axis'
@@ -74,7 +76,7 @@ var option_close_settle = {
 
 
 // 基于准备好的dom，初始化echarts实例
-var myChart = echarts.init(document.getElementById('main'));
+
 var myChart2 = echarts.init(document.getElementById('main2'));
 
 // 指定图表的配置项和数据
@@ -406,14 +408,15 @@ option1 = {
 
 //myChart4.setOption(option);
 
-myChart.setOption(option1);
-myChart2.setOption(option);
+
+//myChart2.setOption(option);
 
 $(function() {
 	getJys("shfe");
 	getChart("index");
 });
 function getChart(code) {
+	var chart1 = echarts.init(document.getElementById('chart1'));
 	var data_closeprice_series=[];
 	var data_closeprice_xAxis=[];
 	$.ajax({
@@ -424,13 +427,8 @@ function getChart(code) {
 		},
 		dataType : 'json',
 		success : function(data) {
-			$("#style-3").empty();
-			var strDiv = "";
-			for ( var o in data) {
-				strDiv += "<div class=\"mainrightZhiBiao\">";
-				strDiv += "</div>";
-			}
-			$("#style-3").html(strDiv);
+			chart1.setOption(option_close_settle);
+			console.log("------------------");
 		}
 	});
 }

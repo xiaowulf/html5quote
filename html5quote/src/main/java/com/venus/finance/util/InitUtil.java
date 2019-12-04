@@ -24,6 +24,14 @@ public class InitUtil {
 		File settingFile = new File(settingFilePath);
 		return settingFile;
     }
+	public String getFuturesDatePath() throws IOException
+    {
+		String settingFilePath = getCodeSettingFilePath();
+		File settingFile = new File(settingFilePath);
+		Wini ini = new Wini(settingFile);
+        String futuresDatePath = ini.get("Date", "record_date");
+        return futuresDatePath;
+    }
 	public String getRecordDate() throws IOException
     {
 		String settingFilePath = getCodeSettingFilePath();

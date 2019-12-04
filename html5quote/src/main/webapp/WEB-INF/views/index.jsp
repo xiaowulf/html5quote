@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
-    <title>期货王者分析系统</title>
+    <title>王者期货分析系统</title>
 	<script src="js/echarts.min.js" type="text/javascript"></script>
     <!--awesome font include-->
     <link type="text/css" rel="stylesheet" href="./css/main.css" />
@@ -152,9 +152,12 @@
 	    	<div class="mainrightBottomNav4" onclick="getJys('cffex')" id="mainrightBottomNav4">
 	    		中国金融交易所
 	    	</div>
+	    	<div class="mainrightBottomNavMore" id="mainrightBottomNavMore">
+	    		更多技术分析指标
+	    	</div>
     	</div>
     	<div class="mainrightBottomNews">
-    		<div id="main" style="width: 500px;height:300px;float:left"></div>
+    		<div id="chart1" style="width: 500px;height:300px;float:left"></div>
     		<div id="main2" style="width:500px;height:300px;float:left"></div>
     		<script type="text/javascript">
     		

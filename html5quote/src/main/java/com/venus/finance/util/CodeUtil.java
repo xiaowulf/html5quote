@@ -20,11 +20,21 @@ public class CodeUtil {
 		try {
 			codeFile = initUtil.getCodeFile();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		List<String> list = fileUtil.readFileToList(codeFile);
 		return list;
+	}
+	
+	public String getTradeDatePath(){
+		InitUtil initUtil = new InitUtil();
+		String filePath = null;
+		try {
+			filePath = initUtil.getFuturesDatePath();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return filePath;
 	}
 	
 	public String getIndexCode(){

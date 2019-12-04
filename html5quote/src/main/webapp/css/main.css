@@ -22,6 +22,7 @@ body{color: blue;background-color:#000000;height:100%;color:#ffffff;min-width:10
 .mainrightBottomNav2{background-color:#000000;cursor:pointer;float:left;text-align:center;height:30px;width:150px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}
 .mainrightBottomNav3{background-color:#000000;cursor:pointer;float:left;text-align:center;height:30px;width:150px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}
 .mainrightBottomNav4{background-color:#000000;cursor:pointer;float:left;text-align:center;height:30px;width:150px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}
+.mainrightBottomNavMore{background-color:#000000;cursor:pointer;float:right;text-align:center;height:30px;width:150px;border-left:1px solid #ffffff;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}
 .mainrightBottomNews{float:left;height:auto;width:100%;margin-top: 1px;background-color:#E8F0C3;padding-top:5px;}
 .mainrightBottom{float:left;height:auto;width:100%;margin-top: 600px;border-top:1px solid #ffffff;}
 /*鼠标移动上方时变色*/
@@ -33,7 +34,7 @@ body{color: blue;background-color:#000000;height:100%;color:#ffffff;min-width:10
   background-color: #4B306C;cursor:pointer;
 }
 
-.mainrightBottomNav1:hover,.mainrightBottomNav2:hover,.mainrightBottomNav3:hover,.mainrightBottomNav4:hover, .mainrightZhiBiao:hover{
+.mainrightBottomNav1:hover,.mainrightBottomNav2:hover,.mainrightBottomNav3:hover,.mainrightBottomNav4:hover, .mainrightZhiBiao:hover,.mainrightBottomNavMore:hover{
   background-color: #4B306C;cursor:pointer;
 }
 
