@@ -267,6 +267,10 @@ function getChart(code) {
 	});
 }
 
+function getMoreChart(){
+	self.location.href='analyse.html'
+}
+
 function getJys(jys) {
 	if (jys == "shfe") {
 		$("#mainrightBottomNav1").css("background-color", "#4B306C");

@@ -95,7 +95,7 @@
 	    	<div class="mainrightBottomNav4" onclick="getJys('cffex')" id="mainrightBottomNav4">
 	    		中国金融交易所
 	    	</div>
-	    	<div class="mainrightBottomNavMore" id="mainrightBottomNavMore">
+	    	<div class="mainrightBottomNavMore" id="mainrightBottomNavMore" onclick="getMoreChart()">
 	    		更多技术分析指标
 	    	</div>
     	</div>
