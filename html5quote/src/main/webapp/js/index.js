@@ -13,8 +13,7 @@ var option_close_settle = {
 		text : '期货价格',
 		textStyle : {
 			fontSize : 13
-		},
-		padding : [ 5, 50 ]
+		}
 	},
 	tooltip : {
 		trigger : 'axis'
@@ -29,18 +28,18 @@ var option_close_settle = {
 				show : true
 			},
 			dataView : {
-				show : true,
+				show : false,
 				readOnly : false
 			},
 			magicType : {
-				show : true,
+				show : false,
 				type : [ 'line', 'bar' ]
 			},
 			restore : {
-				show : true
+				show : false
 			},
 			saveAsImage : {
-				show : true
+				show : false
 			}
 		}
 	},
@@ -102,8 +101,7 @@ var option_settleCur = {
 			text : '期货价格',
 			textStyle : {
 				fontSize : 13
-			},
-			padding : [ 5, 50 ]
+			}
 		},
 		tooltip : {
 			trigger : 'axis'
@@ -118,18 +116,18 @@ var option_settleCur = {
 					show : true
 				},
 				dataView : {
-					show : true,
+					show : false,
 					readOnly : false
 				},
 				magicType : {
-					show : true,
+					show : false,
 					type : [ 'line', 'bar' ]
 				},
 				restore : {
-					show : true
+					show : false
 				},
 				saveAsImage : {
-					show : true
+					show : false
 				}
 			}
 		},
@@ -175,8 +173,7 @@ var option_candle = {
 			text : '期货价格K线',
 			textStyle : {
 				fontSize : 13
-			},
-			padding : [ 5, 50 ]
+			}
 		},
 		tooltip : {
 			trigger : 'axis'
@@ -242,7 +239,7 @@ function getChart(code) {
 			option_close_settle.xAxis[0].data = data.dateRtnList;
 			option_close_settle.series[0].data=data.closePriceList;
 			option_close_settle.series[1].data=data.settlePriceList;
-			option_settleCur.title.text = data.code+"结算价三次曲线拟合";
+			option_settleCur.title.text = data.code+"结算价曲线拟合";
 			option_settleCur.xAxis[0].data = data.dateRtnList;
 			option_settleCur.series[0].data=data.settlePriceCurList;
 			//k线

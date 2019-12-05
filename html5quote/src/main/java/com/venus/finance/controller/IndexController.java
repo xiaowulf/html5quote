@@ -1,5 +1,7 @@
 package com.venus.finance.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -20,10 +22,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.venus.finance.util.CodeUtil;
+import com.venus.finance.util.FileUtil;
+import com.venus.finance.util.InitUtil;
 import com.venus.finance.util.MathUtil;
 import com.venus.finance.vo.CandleVO;
 import com.venus.finance.vo.FuturesPriceVO;
 import com.venus.finance.vo.FuturesQuoteVO;
+import com.venus.finance.vo.SuggestVO;
 
 @Controller
 public class IndexController {
@@ -37,6 +42,24 @@ public class IndexController {
 	@RequestMapping(value = "/suggest.html", method = RequestMethod.GET)
 	public String suggest(HttpServletRequest request,ModelMap model) {
 		return "suggest";
+	}
+	@RequestMapping(value = "/contact.html", method = RequestMethod.GET)
+	public String contact(HttpServletRequest request,ModelMap model) {
+		return "contact";
+	}
+	@RequestMapping(value = "/suggestsave.html", method = RequestMethod.POST)
+	public String suggestsave(SuggestVO suggestVO) {
+		InitUtil initUtil = new InitUtil();
+		File file;
+		try {
+			file = new File(initUtil.getSuggestFilePath());
+			FileUtil fileUtil = new FileUtil();
+			fileUtil.saveSuggest(file,suggestVO);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "rsuccess";
 	}
 	@RequestMapping(value = "/changeFuturesJys.html",produces = "text/html;charset=UTF-8")
 	@ResponseBody

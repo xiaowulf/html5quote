@@ -26,36 +26,27 @@
 	</div>
     <div class="mainrightSuggest">
     	<div class="mainrightSuggestMain">
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
-    	lf;ldksafkldsakfkldksa
+    	<form id="myForm" action="suggestsave.html" method="post">
+    		 <table style="width:100%">
+    		 	<tr>
+    		 		<td>姓名: </td>
+    		 		<td><input type="text" name="username"/></td>
+    		 	</tr>
+    		 	<tr>
+    		 		<td>联系电话: </td>
+    		 		<td><input type="text" name="tel" /></td>
+    		 	</tr>
+    		 	<tr>
+    		 		<td>意见建议: </td>
+    		 		<td><textarea name="suggest" style="width:400px;height:80px;"></textarea></td>
+    		 	</tr>
+    		 	<tr>
+    		 		<td colspan="2"><input type="submit" value="提交" /> </td>
+    		 	</tr>
+    		 </table>
+		</form>
     	</div>
     </div>
-    
-    
-    
-    
     
     <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
     <script src="js/suggest.js" type="text/javascript"></script>

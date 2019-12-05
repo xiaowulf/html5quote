@@ -18,6 +18,15 @@ public class InitUtil {
         String code_file_dir = ini.get("code", "code_setting_file");
         return code_file_dir;
     }
+	
+	public String getSuggestFilePath() throws IOException
+    {
+		InputStream in = this.getClass().getResourceAsStream(codeconfig_file);
+        Wini ini = new Wini(in);
+        String code_file_dir = ini.get("code", "suggest_file");
+        return code_file_dir;
+    }
+	
 	public File getSettingFile() throws IOException
     {
 		String settingFilePath = getCodeSettingFilePath();

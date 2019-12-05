@@ -4,7 +4,7 @@ body{color: blue;background-color:#000000;height:100%;color:#ffffff;min-width:10
 .mainleft1{float:left;height:100%;width:99%;position: relative;border-right:1px solid  #ffffff;}
 .mainright{float:right;height:100%;width:92%;position: relative;background-color:#ffffff;}
 .mainrightSuggest{float:right;height:100%;width:92%;position: relative;background-color:#ffffff;}
-.mainrightSuggestMain{float:right;height:800px;width:100%;position: relative;background-color:#ffffff;color:#000000;}
+.mainrightSuggestMain{float:left;font-size:13px;margin-left:100px;margin-top:50px;height:800px;width:500px;position: relative;background-color:#ffffff;color:#000000;}
 .mainrightTop{height:50px;width:100%;margin: 0;color:#ffffff;border-bottom:1px solid #ffffff;background-color:#000000;}
 .mainrightTop1{cursor:pointer;float:left;text-align:center;height:30px;width:70px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}
 .mainrightTop2{cursor:pointer;float:left;text-align:center;height:30px;width:70px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;}

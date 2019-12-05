@@ -9,9 +9,7 @@
 	</a></li>
 	<li><a href="suggest.html"> <i class="fa fa-fax"></i>请提意见
 	</a></li>
-	<!--
-	<li><a href="#"> <i class="fa fa-bell-o"></i>首页
+	<li><a href="contact.html"> <i class="fa fa-address-card"></i>联系作者
 	</a></li>
-	-->
 </ul>
 </nav>
