@@ -117,7 +117,7 @@ public class CodeUtil {
 		}
 		for(String codeStr:futuresLatest){
 			String [] codeArray = codeStr.split(",");
-			if(codeArray.length==8){
+			if(codeArray.length>=8){
 				FuturesQuoteVO futuresQuoteVO = futuresQuoteMap.get(codeArray[0]);
 				if(null!=futuresQuoteVO){
 					futuresQuoteVO.setOpenPrice(Double.parseDouble(codeArray[1]));

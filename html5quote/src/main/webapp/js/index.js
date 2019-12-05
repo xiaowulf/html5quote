@@ -1,4 +1,10 @@
 $(function() {
+	var clientwidth = document.body.clientWidth;
+	var chartwidth = (clientwidth-180)/3;
+	var chartcsswidth = chartwidth +"px";
+	$("#chart1").css("width",chartcsswidth);
+	$("#chart2").css("width",chartcsswidth);
+	$("#chart3").css("width",chartcsswidth);
 	getJys("shfe");
 	getChart("index");
 });
@@ -91,6 +97,111 @@ var option_close_settle = {
 		}
 	} ]
 };
+var option_settleCur = {
+		title : {
+			text : '期货价格',
+			textStyle : {
+				fontSize : 13
+			},
+			padding : [ 5, 50 ]
+		},
+		tooltip : {
+			trigger : 'axis'
+		},
+		legend : {
+			data : [ '结算价格拟合' ]
+		},
+		toolbox : {
+			show : true,
+			feature : {
+				mark : {
+					show : true
+				},
+				dataView : {
+					show : true,
+					readOnly : false
+				},
+				magicType : {
+					show : true,
+					type : [ 'line', 'bar' ]
+				},
+				restore : {
+					show : true
+				},
+				saveAsImage : {
+					show : true
+				}
+			}
+		},
+		calculable : true,
+		xAxis : [ {
+			type : 'category',
+			boundaryGap : false,
+			data : []
+		} ],
+		yAxis : [ {
+			type : 'value',
+			axisLabel : {
+				formatter : '{value}'
+			},
+			scale : true
+		} ],
+		series : [{
+			name : '结算价格拟合',
+			type : 'line',
+			data : [],
+			symbol:'none',
+			smooth:0.8,
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		} ]
+	};
+
+var option_candle = {
+		title : {
+			text : '期货价格K线',
+			textStyle : {
+				fontSize : 13
+			},
+			padding : [ 5, 50 ]
+		},
+		tooltip : {
+			trigger : 'axis'
+		},
+		legend : {
+			data : [ '期货价格K线']
+		},
+		xAxis : [ {
+			type : 'category',
+			boundaryGap : false,
+			data : []
+		} ],
+		yAxis : [ {
+			type : 'value',
+			axisLabel : {
+				formatter : '{value}'
+			},
+			scale : true
+		} ],
+		series : [ {
+			name : 'k线',
+			type : 'k',
+			data : []
+		} ]
+	};
 
 // 基于准备好的dom，初始化echarts实例
 
@@ -117,8 +228,8 @@ var option = {
 
 function getChart(code) {
 	var chart1 = echarts.init(document.getElementById('chart1'));
-	var data_closeprice_series = [];
-	var data_closeprice_xAxis = [];
+	var chart2 = echarts.init(document.getElementById('chart2'));
+	var chart3 = echarts.init(document.getElementById('chart3'));
 	$.ajax({
 		type : 'POST',
 		url : 'findFuturesCodeIndex.html',
@@ -127,7 +238,31 @@ function getChart(code) {
 		},
 		dataType : 'json',
 		success : function(data) {
+			option_close_settle.title.text = data.code+"价格";
+			option_close_settle.xAxis[0].data = data.dateRtnList;
+			option_close_settle.series[0].data=data.closePriceList;
+			option_close_settle.series[1].data=data.settlePriceList;
+			option_settleCur.title.text = data.code+"结算价三次曲线拟合";
+			option_settleCur.xAxis[0].data = data.dateRtnList;
+			option_settleCur.series[0].data=data.settlePriceCurList;
+			//k线
+			option_candle.xAxis[0].data = data.dateRtnList;
+		    var values = [];
+		    for (var i = 0; i < data.candlePriceList.length; i++) {
+		    	var categoryData = [];
+		        categoryData.push(data.candlePriceList[i].openPrice);
+		        categoryData.push(data.candlePriceList[i].closePrice);
+		        categoryData.push(data.candlePriceList[i].lowPrice);
+		        categoryData.push(data.candlePriceList[i].highPrice);
+		        values.push(categoryData);
+		    }
+			option_candle.series[0].data=values;
+			console.log(values);
+			//收盘价和结算价曲线
 			chart1.setOption(option_close_settle);
+			//结算价格拟合
+			chart2.setOption(option_candle);
+			chart3.setOption(option_settleCur);
 		}
 	});
 }
@@ -169,7 +304,7 @@ function getJys(jys) {
 				//if(firstInstrumentID==""){
 				//	firstInstrumentID = data[o].instrumentID;
 				//}
-				strDiv += "<div class=\"mainrightZhiBiao\">";
+				strDiv += "<div class=\"mainrightZhiBiao\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
 				strDiv += "<div class=\"mainrightZhiBiaoNameY\">";
 				strDiv += data[o].name;
 				strDiv += "</div>";

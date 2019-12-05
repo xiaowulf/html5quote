@@ -29,7 +29,7 @@ public class FileUtil {
 			List<String>list = FileUtils.readLines(file,"UTF-8");
 			for(String quoteStr:list) {
 				String[]codeArray=quoteStr.split(",");
-				if(codeArray.length==8) {
+				if(codeArray.length>=8) {
 					FuturesQuoteVO futuresQuoteVO = new FuturesQuoteVO();
 					futuresQuoteVO.setInstrumentID(codeArray[0]);
 					futuresQuoteVO.setName(codeUtil.getChineseName(codeArray[0])+codeUtil.converCodeMonth(codeArray[0]));

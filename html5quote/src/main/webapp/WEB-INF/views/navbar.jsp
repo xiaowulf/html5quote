@@ -5,11 +5,11 @@
 <ul>
 	<li><a href="./"> <i class="fa fa-line-chart"></i>期货行情
 	</a></li>
-	<!--  
-	<li class=""><a href="order.jsp"> <i class="fa fa-bullhorn"></i>首页
+	<li class=""><a href="./analyse.html"> <i class="fa fa-bar-chart"></i>技术分析
 	</a></li>
-	<li><a href="#"> <i class="fa fa-align-center"></i>首页
+	<li><a href="suggest.html"> <i class="fa fa-fax"></i>请提意见
 	</a></li>
+	<!--
 	<li><a href="#"> <i class="fa fa-bell-o"></i>首页
 	</a></li>
 	-->
