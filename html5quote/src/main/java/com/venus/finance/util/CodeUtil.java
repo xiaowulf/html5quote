@@ -241,136 +241,139 @@ public class CodeUtil {
 		switch (converCode(code)) {
 		//大商所
 		case "c":
-			return new String("玉米".getBytes(),"GBK");
+			return  URLEncoder.encode("玉米", "utf-8");
 		case "cs":
-			return new String("淀粉".getBytes(),"GBK");
+			return URLEncoder.encode("淀粉", "utf-8");
 		case "a":
-			return new String("豆一".getBytes(),"GBK");
+			return URLEncoder.encode("豆一", "utf-8");
 		case "b":
-			return new String("豆二".getBytes(),"GBK");
+			return URLEncoder.encode("豆二", "utf-8");
 		case "m":
-			return new String("豆粕".getBytes(),"GBK");
+			return URLEncoder.encode("豆二", "utf-8");
 		case "y":
-			return "豆油";
+			return URLEncoder.encode("豆油", "utf-8");
 		case "p":
-			return "棕榈";
+			return URLEncoder.encode("棕榈", "utf-8");
 		case "fb":
-			return "纤板";
+			return URLEncoder.encode("纤板", "utf-8");
 		case "bb":
-			return "胶板";
+			return URLEncoder.encode("胶板", "utf-8");
 		case "jd":
-			return "鸡蛋";
+			return URLEncoder.encode("胶板", "utf-8");
 		case "rr":
-			return "粳米";
+			return URLEncoder.encode("粳米", "utf-8");
 		case "l":
-			return "塑料";
+			return URLEncoder.encode("塑料", "utf-8");
 		case "v":
-			return "乙烯";
+			return URLEncoder.encode("乙烯", "utf-8");
 		case "pp":
-			return "丙烯";
+			return URLEncoder.encode("丙烯", "utf-8");
 		case "j":
-			return "焦炭";
+			return URLEncoder.encode("焦炭", "utf-8");
 		case "jm":
-			return "焦煤";
+			return URLEncoder.encode("焦煤", "utf-8");
 		case "i":
-			return "铁矿";
+			return URLEncoder.encode("铁矿", "utf-8");
 		case "eg":
-			return "二醇";
+			return URLEncoder.encode("二醇", "utf-8");
 		case "eb":
-			return "苯乙";
+			return URLEncoder.encode("苯乙", "utf-8");
 			
 			
 		//上期所
 		case "cu":
-			return "铜";
+			return URLEncoder.encode("铜", "utf-8");
 		case "al":
-			return "铝";
+			return URLEncoder.encode("铝", "utf-8");
 		case "zn":
-			return "锌";
+			return URLEncoder.encode("锌", "utf-8");
 		case "pb":
-			return "铅";	
+			return URLEncoder.encode("铅", "utf-8");
 		case "ni":
-			return "镍";
+			return URLEncoder.encode("镍", "utf-8");
 		case "sn":
-			return "锡";
+			return URLEncoder.encode("锡", "utf-8");
 		case "au":
-			return "金";
+			return URLEncoder.encode("金", "utf-8");
 		case "ag":
-			return "白银";
+			return URLEncoder.encode("白银", "utf-8");
+			//System.out.println(name.getBytes("GBK"));
+			//System.out.println("--------------");
+			//System.out.println(URLEncoder.encode(name, "utf-8"));
 		case "rb":
-			return "螺纹";
+			return URLEncoder.encode("螺纹", "utf-8");
 		case "wr":
-			return "线材";
+			return URLEncoder.encode("线材", "utf-8");
 		case "hc":
-			return "轧卷";
+			return URLEncoder.encode("轧卷", "utf-8");
 		case "ss":
-			return "不锈钢";
+			return URLEncoder.encode("不锈钢", "utf-8");
 		case "sc":
-			return "原油";
+			return URLEncoder.encode("原油", "utf-8");
 		case "fu":
-			return "燃油";
+			return URLEncoder.encode("燃油", "utf-8");
 		case "bu":
-			return "沥青";
+			return URLEncoder.encode("沥青", "utf-8");
 		case "ru":
-			return "橡胶";
+			return URLEncoder.encode("橡胶", "utf-8");
 		case "nr":
-			return "20胶";
+			return URLEncoder.encode("20胶", "utf-8");
 		case "sp":
-			return "纸浆";
+			return URLEncoder.encode("纸浆", "utf-8");
 		//中金所	
 		case "IF":
-			return "股指";
+			return URLEncoder.encode("股指", "utf-8");
 		case "IC":
-			return "中证500";
+			return URLEncoder.encode("中证500", "utf-8");
 		case "IH":
-			return "上证50";
+			return URLEncoder.encode("上证50", "utf-8");
 		case "TS":
-			return "国债2";
+			return URLEncoder.encode("国债2", "utf-8");
 		case "TF":
-			return "国债5";
+			return URLEncoder.encode("国债5", "utf-8");
 		case "T":
-			return "国债10";
+			return URLEncoder.encode("国债10", "utf-8");
 		//郑商所
 		case "WH":
-			return "强麦";
+			return URLEncoder.encode("强麦", "utf-8");
 		case "PM":
-			return "普麦";
+			return URLEncoder.encode("普麦", "utf-8");
 		case "CF":
-			return "棉花";
+			return URLEncoder.encode("棉花", "utf-8");
 		case "TA":
-			return "苯二";
+			return URLEncoder.encode("苯二", "utf-8");
 		case "MA":
-			return "甲醇";
+			return URLEncoder.encode("甲醇", "utf-8");
 		case "SR":
-			return "白糖";
+			return URLEncoder.encode("白糖", "utf-8");
 		case "OI":
-			return "菜油";
+			return URLEncoder.encode("菜油", "utf-8");
 		case "RI":
-			return "早稻";
+			return URLEncoder.encode("早稻", "utf-8");
 		case "ZC":
-			return "动煤";
+			return URLEncoder.encode("动煤", "utf-8");
 		case "FG":
-			return "玻璃";
+			return URLEncoder.encode("玻璃", "utf-8");
 		case "RS":
-			return "菜籽";
+			return URLEncoder.encode("菜籽", "utf-8");
 		case "RM":
-			return "菜粕";
+			return URLEncoder.encode("菜粕", "utf-8");
 		case "JR":
-			return "粳稻";
+			return URLEncoder.encode("粳稻", "utf-8");
 		case "SF":
-			return "硅铁";
+			return URLEncoder.encode("硅铁", "utf-8");
 		case "SM":
-			return "锰硅";
+			return URLEncoder.encode("锰硅", "utf-8");
 		case "LR":
-			return "晚稻";
+			return URLEncoder.encode("晚稻", "utf-8");
 		case "CY":
-			return "棉纱";
+			return URLEncoder.encode("棉纱", "utf-8");
 		case "AP":
-			return "苹果";
+			return URLEncoder.encode("苹果", "utf-8");
 		case "UR":
-			return "尿素";
+			return URLEncoder.encode("尿素", "utf-8");
 		case "CJ":
-			return "红枣";
+			return URLEncoder.encode("红枣", "utf-8");
 			/*
 		case "CJ":
 			return "纯碱";

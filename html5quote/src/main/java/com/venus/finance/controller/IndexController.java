@@ -77,9 +77,10 @@ public class IndexController {
         String json = gson.toJson(jysCodeList);
 		return json;
 	}
-	@RequestMapping(value = "/findFuturesCodeIndex.html",produces = "text/html;charset=UTF-8")
+	@RequestMapping(value = "/findFuturesCodeIndex.html",produces={"text/html;charset=UTF-8;","application/json;"})
 	@ResponseBody
 	public String findFuturesCodeIndex(HttpServletRequest request,ModelMap model) {
+		System.out.println("-------中文----------");
 		String code = request.getParameter("code");
 		CodeUtil codeUtil = new CodeUtil();
 		MathUtil mathUtil = new MathUtil();

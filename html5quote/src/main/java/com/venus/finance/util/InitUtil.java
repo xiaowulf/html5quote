@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
 import org.ini4j.Wini;
 
@@ -80,6 +81,10 @@ public class InitUtil {
     }
 	
 	public static void main(String[] args) throws IOException {
+		Properties initProp = new Properties(System.getProperties());
+		 System.out.println("当前系统编码:" + initProp.getProperty("file.encoding"));
+		 System.out.println("当前系统语言:" + initProp.getProperty("user.language"));
+		
 		System.out.println(InitUtil.class.getClass().getResource("/"));
 		
 	}

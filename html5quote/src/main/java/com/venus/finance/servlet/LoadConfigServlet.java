@@ -39,7 +39,7 @@ public class LoadConfigServlet extends HttpServlet {
 		String path = this.getClass().getClassLoader().getResource("/").getPath();
 		String fixFileName = path + "quotefix.cfg";
 		application = new FixApplication();
-		System.out.println("-------init----------");
+		
 		try {
 			settings = new SessionSettings(new FileInputStream(fixFileName));
 			storeFactory = new FileStoreFactory(settings);

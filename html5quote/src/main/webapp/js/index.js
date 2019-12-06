@@ -235,6 +235,7 @@ function getChart(code) {
 		},
 		dataType : 'json',
 		success : function(data) {
+			//alert(data.code+decodeURI("价格"));
 			option_close_settle.title.text = data.code+"价格";
 			option_close_settle.xAxis[0].data = data.dateRtnList;
 			option_close_settle.series[0].data=data.closePriceList;
@@ -305,9 +306,13 @@ function getJys(jys) {
 				//if(firstInstrumentID==""){
 				//	firstInstrumentID = data[o].instrumentID;
 				//}
+				//console.log(data[o].name);
 				strDiv += "<div class=\"mainrightZhiBiao\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
 				strDiv += "<div class=\"mainrightZhiBiaoNameY\">";
-				strDiv += data[o].name;
+				//console.log(data[o].name);
+				//console.log("---------------");
+				//console.log(decodeURI(data[o].name));
+				strDiv += decodeURI(data[o].name);
 				strDiv += "</div>";
 				strDiv += "<div class=\"mainrightZhiBiao2\">";
 				strDiv += data[o].instrumentID;
