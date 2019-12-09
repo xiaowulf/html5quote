@@ -10,7 +10,7 @@ $(function() {
 });
 var option_close_settle = {
 	title : {
-		text : 'ÆÚ»õ¼Û¸ñ',
+		text : 'æœŸè´§ä»·æ ¼',
 		textStyle : {
 			fontSize : 13
 		}
@@ -19,7 +19,7 @@ var option_close_settle = {
 		trigger : 'axis'
 	},
 	legend : {
-		data : [ 'ÊÕÅÌ¼Û¸ñ', '½áËã¼Û¸ñ' ]
+		data : [ 'æ”¶ç›˜ä»·æ ¼', 'ç»“ç®—ä»·æ ¼' ]
 	},
 	toolbox : {
 		show : true,
@@ -57,48 +57,48 @@ var option_close_settle = {
 		scale : true
 	} ],
 	series : [ {
-		name : 'ÊÕÅÌ¼Û¸ñ',
+		name : 'æ”¶ç›˜ä»·æ ¼',
 		type : 'line',
 		data : [],
 		markPoint : {
 			data : [ {
 				type : 'max',
-				name : '×î´óÖµ'
+				name : 'æœ€å¤§å€¼'
 			}, {
 				type : 'min',
-				name : '×îĞ¡Öµ'
+				name : 'æœ€å°å€¼'
 			} ]
 		},
 		markLine : {
 			data : [ {
 				type : 'average',
-				name : 'Æ½¾ùÖµ'
+				name : 'å¹³å‡å€¼'
 			} ]
 		}
 	}, {
-		name : '½áËã¼Û¸ñ',
+		name : 'ç»“ç®—ä»·æ ¼',
 		type : 'line',
 		data : [],
 		markPoint : {
 			data : [ {
 				type : 'max',
-				name : '×î´óÖµ'
+				name : 'æœ€å¤§å€¼'
 			}, {
 				type : 'min',
-				name : '×îĞ¡Öµ'
+				name : 'æœ€å°å€¼'
 			} ]
 		},
 		markLine : {
 			data : [ {
 				type : 'average',
-				name : 'Æ½¾ùÖµ'
+				name : 'å¹³å‡å€¼'
 			} ]
 		}
 	} ]
 };
 var option_settleCur = {
 		title : {
-			text : 'ÆÚ»õ¼Û¸ñ',
+			text : 'æœŸè´§ä»·æ ¼',
 			textStyle : {
 				fontSize : 13
 			}
@@ -107,7 +107,7 @@ var option_settleCur = {
 			trigger : 'axis'
 		},
 		legend : {
-			data : [ '½áËã¼Û¸ñÄâºÏ' ]
+			data : [ 'ç»“ç®—ä»·æ ¼æ‹Ÿåˆ' ]
 		},
 		toolbox : {
 			show : true,
@@ -145,7 +145,7 @@ var option_settleCur = {
 			scale : true
 		} ],
 		series : [{
-			name : '½áËã¼Û¸ñÄâºÏ',
+			name : 'ç»“ç®—ä»·æ ¼æ‹Ÿåˆ',
 			type : 'line',
 			data : [],
 			symbol:'none',
@@ -153,16 +153,16 @@ var option_settleCur = {
 			markPoint : {
 				data : [ {
 					type : 'max',
-					name : '×î´óÖµ'
+					name : 'æœ€å¤§å€¼'
 				}, {
 					type : 'min',
-					name : '×îĞ¡Öµ'
+					name : 'æœ€å°å€¼'
 				} ]
 			},
 			markLine : {
 				data : [ {
 					type : 'average',
-					name : 'Æ½¾ùÖµ'
+					name : 'å¹³å‡å€¼'
 				} ]
 			}
 		} ]
@@ -170,7 +170,7 @@ var option_settleCur = {
 
 var option_candle = {
 		title : {
-			text : 'ÆÚ»õ¼Û¸ñKÏß',
+			text : 'æœŸè´§ä»·æ ¼Kçº¿',
 			textStyle : {
 				fontSize : 13
 			}
@@ -179,7 +179,7 @@ var option_candle = {
 			trigger : 'axis'
 		},
 		legend : {
-			data : [ 'ÆÚ»õ¼Û¸ñKÏß']
+			data : [ 'æœŸè´§ä»·æ ¼Kçº¿']
 		},
 		xAxis : [ {
 			type : 'category',
@@ -194,33 +194,12 @@ var option_candle = {
 			scale : true
 		} ],
 		series : [ {
-			name : 'kÏß',
+			name : 'kçº¿',
 			type : 'k',
 			data : []
 		} ]
 	};
 
-// »ùÓÚ×¼±¸ºÃµÄdom£¬³õÊ¼»¯echartsÊµÀı
-
-// Ö¸¶¨Í¼±íµÄÅäÖÃÏîºÍÊı¾İ
-var option = {
-	title : {
-		text : 'ECharts ÈëÃÅÊ¾Àı'
-	},
-	tooltip : {},
-	legend : {
-		data : [ 'ÏúÁ¿' ]
-	},
-	xAxis : {
-		data : [ "³ÄÉÀ", "ÑòÃ«ÉÀ", "Ñ©·ÄÉÀ", "¿ã×Ó", "¸ß¸úĞ¬", "Íà×Ó" ]
-	},
-	yAxis : {},
-	series : [ {
-		name : 'ÏúÁ¿',
-		type : 'bar',
-		data : [ 5, 20, 36, 10, 10, 20 ]
-	} ]
-};
 
 
 function getChart(code) {
@@ -235,15 +214,15 @@ function getChart(code) {
 		},
 		dataType : 'json',
 		success : function(data) {
-			//alert(data.code+decodeURI("¼Û¸ñ"));
-			option_close_settle.title.text = data.code+"¼Û¸ñ";
+			//alert(data.code+decodeURI("ä»·æ ¼"));
+			option_close_settle.title.text = data.code+"ä»·æ ¼";
 			option_close_settle.xAxis[0].data = data.dateRtnList;
 			option_close_settle.series[0].data=data.closePriceList;
 			option_close_settle.series[1].data=data.settlePriceList;
-			option_settleCur.title.text = data.code+"½áËã¼ÛÇúÏßÄâºÏ";
+			option_settleCur.title.text = data.code+"ç»“ç®—ä»·æ‹Ÿåˆ";
 			option_settleCur.xAxis[0].data = data.dateRtnList;
 			option_settleCur.series[0].data=data.settlePriceCurList;
-			//kÏß
+			//kçº¿
 			option_candle.xAxis[0].data = data.dateRtnList;
 		    var values = [];
 		    for (var i = 0; i < data.candlePriceList.length; i++) {
@@ -256,9 +235,9 @@ function getChart(code) {
 		    }
 			option_candle.series[0].data=values;
 			console.log(values);
-			//ÊÕÅÌ¼ÛºÍ½áËã¼ÛÇúÏß
+			//æ”¶ç›˜ä»·å’Œç»“ç®—ä»·æ›²çº¿
 			chart1.setOption(option_close_settle);
-			//½áËã¼Û¸ñÄâºÏ
+			//ç»“ç®—ä»·æ ¼æ‹Ÿåˆ
 			chart2.setOption(option_candle);
 			chart3.setOption(option_settleCur);
 		}
@@ -313,40 +292,40 @@ function getJys(jys) {
 					strDiv += "<div  class=\"container-fluid\">";
 					strDiv += "<div  class=\"row\">";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
-					strDiv += "Æ·ÖÖ";
+					strDiv += "å“ç§";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-					strDiv += "¿ªÅÌ";
+					strDiv += "å¼€ç›˜";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-					strDiv += "×î¸ß";
+					strDiv += "æœ€é«˜";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-					strDiv += "×îµÍ";
+					strDiv += "æœ€ä½";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-					strDiv += "ÊÕÅÌ";
+					strDiv += "æ”¶ç›˜";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-					strDiv += "½áËã";
+					strDiv += "ç»“ç®—";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-					strDiv += "Âò¼Û";
+					strDiv += "ä¹°ä»·";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-					strDiv += "ÂòÁ¿";
+					strDiv += "ä¹°é‡";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-					strDiv += "Âô¼Û";
+					strDiv += "å–ä»·";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-					strDiv += "ÂôÁ¿";
+					strDiv += "å–é‡";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-					strDiv += "³ÉÁ¿";
+					strDiv += "æˆé‡";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-					strDiv += "ÊÖÊı";
+					strDiv += "æ‰‹æ•°";
 					strDiv += "</div>";
 					strDiv += "</div>";
 					strDiv += "</div>";
@@ -449,40 +428,40 @@ function getJys(jys) {
 			strDiv += "<div  class=\"container-fluid\">";
 			strDiv += "<div  class=\"row\">";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
-			strDiv += "Æ·ÖÖ";
+			strDiv += "å“ç§";
 			strDiv += "</div>";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-			strDiv += "¿ªÅÌ";
+			strDiv += "å¼€ç›˜";
 			strDiv += "</div>";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-			strDiv += "×î¸ß";
+			strDiv += "æœ€é«˜";
 			strDiv += "</div>";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-			strDiv += "×îµÍ";
+			strDiv += "æœ€ä½";
 			strDiv += "</div>";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-			strDiv += "ÊÕÅÌ";
+			strDiv += "æ”¶ç›˜";
 			strDiv += "</div>";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-			strDiv += "½áËã";
+			strDiv += "ç»“ç®—";
 			strDiv += "</div>";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-			strDiv += "Âò¼Û";
+			strDiv += "ä¹°ä»·";
 			strDiv += "</div>";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-			strDiv += "ÂòÁ¿";
+			strDiv += "ä¹°é‡";
 			strDiv += "</div>";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-			strDiv += "Âô¼Û";
+			strDiv += "å–ä»·";
 			strDiv += "</div>";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-			strDiv += "ÂôÁ¿";
+			strDiv += "å–é‡";
 			strDiv += "</div>";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-			strDiv += "³ÉÁ¿";
+			strDiv += "æˆé‡";
 			strDiv += "</div>";
 			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
-			strDiv += "ÊÖÊı";
+			strDiv += "æ‰‹æ•°";
 			strDiv += "</div>";
 			strDiv += "</div>";
 			strDiv += "</div>";

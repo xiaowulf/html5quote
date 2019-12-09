@@ -20,12 +20,14 @@ body{color: blue;height:100%;color:#ffffff;overflow-x: hidden;}
 .mainrightMainLeft{float:left;height:500px;width:50%;background-color:#000000;}
 .mainrightMainRight{float:left;height:500px;width:50%;background-color:#000000;}
 .mainrightMainChart{float:left;height:25px;width:100%;margin-top: 0px;border-bottom:1px solid #ffffff;text-align:center;color:#bfad21;}
-.mainrightBottomNav{background-color:#EEEEEE;float:left;height:50px;width:100%;margin-top: 0px;;border-bottom:1px solid #ffffff;}
-.mainrightBottomNav1{background-color:#000000;cursor:pointer;float:left;text-align:center;height:35px;width:80px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
-.mainrightBottomNav2{background-color:#000000;cursor:pointer;float:left;text-align:center;height:35px;width:80px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
-.mainrightBottomNav3{background-color:#000000;cursor:pointer;float:left;text-align:center;height:35px;width:80px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
-.mainrightBottomNav4{background-color:#000000;cursor:pointer;float:left;text-align:center;height:35px;width:80px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
-.mainrightBottomNavMore{background-color:#4B306C;cursor:pointer;float:right;text-align:center;height:35px;width:80px;border-left:1px solid #ffffff;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
+.mainrightBottomNav{background-color:#EEEEEE;float:left;width:100%;margin-top: 0px;;border-bottom:1px solid #ffffff;}
+.mainrightBottomNav1{background-color:#000000;cursor:pointer;float:left;text-align:center;height:35px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
+.mainrightBottomNav2{background-color:#000000;cursor:pointer;float:left;text-align:center;height:35px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
+.mainrightBottomNav3{background-color:#000000;cursor:pointer;float:left;text-align:center;height:35px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
+.mainrightBottomNav4{background-color:#000000;cursor:pointer;float:left;text-align:center;height:35px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
+.mainrightBottomNav5{background-color:#000000;cursor:pointer;float:left;text-align:center;height:35px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
+.mainrightBottomNavMore{background-color:#4B306C;cursor:pointer;float:left;text-align:center;height:35px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
+.jysButton1{float:left;text-align:center;color:#ffffff;margin-top:14px;}
 .mainrightBottomNews{float:left;height:auto;width:100%;margin-top: 1px;background-color:#EEEEEE;padding-top:5px;}
 .mainrightBottom{float:left;height:auto;width:100%;margin-top: 600px;border-top:1px solid #ffffff;}
 /*鼠标移动上方时变色*/

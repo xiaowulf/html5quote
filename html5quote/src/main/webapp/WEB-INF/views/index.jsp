@@ -45,21 +45,23 @@
 					
 					<div class="row">
 						<div class="mainrightBottomNav">
-				    		<div class="mainrightBottomNav1" onclick="getJys('shfe')" id="mainrightBottomNav1">
+				    		<div class="mainrightBottomNav1 col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('shfe')" id="mainrightBottomNav1">
 					    		上期所
 					    	</div>
-					    	<div class="mainrightBottomNav2" onclick="getJys('czce')" id="mainrightBottomNav2">
+					    	<div class="mainrightBottomNav2  col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('czce')" id="mainrightBottomNav2">
 					    		郑商所
 					    	</div>
-					    	<div class="mainrightBottomNav3" onclick="getJys('dce')" id="mainrightBottomNav3">
+					    	<div class="mainrightBottomNav3  col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('dce')" id="mainrightBottomNav3">
 					    		大商所
 					    	</div>
-					    	<div class="mainrightBottomNav4" onclick="getJys('cffex')" id="mainrightBottomNav4">
+					    	<div class="mainrightBottomNav4  col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('cffex')" id="mainrightBottomNav4">
 					    		中金所
 					    	</div>
-					    	<div class="mainrightBottomNavMore" id="mainrightBottomNavMore" onclick="getMoreChart()">
+					    	<!--  
+					    	<div class="mainrightBottomNavMore  col-xs-2 col-sm-2 col-md-2 col-lg-2" id="mainrightBottomNavMore" onclick="getMoreChart()">
 					    		更多指标
 					    	</div>
+					    	-->
 			    		</div>
 					</div>
 					
@@ -70,10 +72,6 @@
 				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 			    		</div>
 					</div>
-					
-					
-					
-					
 				</div>
 			</div>
 		</div>
