@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<nav id="navbar" class="">
-<ul>
+<ul class="nav nav-pills nav-stacked">
 	<li><a href="./"> <i class="fa fa-line-chart"></i>期货行情
 	</a></li>
 	<li class=""><a href="./analyse.html"> <i class="fa fa-bar-chart"></i>技术分析
@@ -12,4 +11,3 @@
 	<li><a href="contact.html"> <i class="fa fa-address-card"></i>联系作者
 	</a></li>
 </ul>
-</nav>

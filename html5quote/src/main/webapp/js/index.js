@@ -2,15 +2,15 @@ $(function() {
 	var clientwidth = document.body.clientWidth;
 	var chartwidth = (clientwidth-180)/3;
 	var chartcsswidth = chartwidth +"px";
-	$("#chart1").css("width",chartcsswidth);
-	$("#chart2").css("width",chartcsswidth);
-	$("#chart3").css("width",chartcsswidth);
+	//$("#chart1").css("width",chartcsswidth);
+	//$("#chart2").css("width",chartcsswidth);
+	//$("#chart3").css("width",chartcsswidth);
 	getJys("shfe");
 	getChart("index");
 });
 var option_close_settle = {
 	title : {
-		text : 'æœŸè´§ä»·æ ¼',
+		text : 'ÆÚ»õ¼Û¸ñ',
 		textStyle : {
 			fontSize : 13
 		}
@@ -19,7 +19,7 @@ var option_close_settle = {
 		trigger : 'axis'
 	},
 	legend : {
-		data : [ 'æ”¶ç›˜ä»·æ ¼', 'ç»“ç®—ä»·æ ¼' ]
+		data : [ 'ÊÕÅÌ¼Û¸ñ', '½áËã¼Û¸ñ' ]
 	},
 	toolbox : {
 		show : true,
@@ -57,48 +57,48 @@ var option_close_settle = {
 		scale : true
 	} ],
 	series : [ {
-		name : 'æ”¶ç›˜ä»·æ ¼',
+		name : 'ÊÕÅÌ¼Û¸ñ',
 		type : 'line',
 		data : [],
 		markPoint : {
 			data : [ {
 				type : 'max',
-				name : 'æœ€å¤§å€¼'
+				name : '×î´óÖµ'
 			}, {
 				type : 'min',
-				name : 'æœ€å°å€¼'
+				name : '×îĞ¡Öµ'
 			} ]
 		},
 		markLine : {
 			data : [ {
 				type : 'average',
-				name : 'å¹³å‡å€¼'
+				name : 'Æ½¾ùÖµ'
 			} ]
 		}
 	}, {
-		name : 'ç»“ç®—ä»·æ ¼',
+		name : '½áËã¼Û¸ñ',
 		type : 'line',
 		data : [],
 		markPoint : {
 			data : [ {
 				type : 'max',
-				name : 'æœ€å¤§å€¼'
+				name : '×î´óÖµ'
 			}, {
 				type : 'min',
-				name : 'æœ€å°å€¼'
+				name : '×îĞ¡Öµ'
 			} ]
 		},
 		markLine : {
 			data : [ {
 				type : 'average',
-				name : 'å¹³å‡å€¼'
+				name : 'Æ½¾ùÖµ'
 			} ]
 		}
 	} ]
 };
 var option_settleCur = {
 		title : {
-			text : 'æœŸè´§ä»·æ ¼',
+			text : 'ÆÚ»õ¼Û¸ñ',
 			textStyle : {
 				fontSize : 13
 			}
@@ -107,7 +107,7 @@ var option_settleCur = {
 			trigger : 'axis'
 		},
 		legend : {
-			data : [ 'ç»“ç®—ä»·æ ¼æ‹Ÿåˆ' ]
+			data : [ '½áËã¼Û¸ñÄâºÏ' ]
 		},
 		toolbox : {
 			show : true,
@@ -145,7 +145,7 @@ var option_settleCur = {
 			scale : true
 		} ],
 		series : [{
-			name : 'ç»“ç®—ä»·æ ¼æ‹Ÿåˆ',
+			name : '½áËã¼Û¸ñÄâºÏ',
 			type : 'line',
 			data : [],
 			symbol:'none',
@@ -153,16 +153,16 @@ var option_settleCur = {
 			markPoint : {
 				data : [ {
 					type : 'max',
-					name : 'æœ€å¤§å€¼'
+					name : '×î´óÖµ'
 				}, {
 					type : 'min',
-					name : 'æœ€å°å€¼'
+					name : '×îĞ¡Öµ'
 				} ]
 			},
 			markLine : {
 				data : [ {
 					type : 'average',
-					name : 'å¹³å‡å€¼'
+					name : 'Æ½¾ùÖµ'
 				} ]
 			}
 		} ]
@@ -170,7 +170,7 @@ var option_settleCur = {
 
 var option_candle = {
 		title : {
-			text : 'æœŸè´§ä»·æ ¼Kçº¿',
+			text : 'ÆÚ»õ¼Û¸ñKÏß',
 			textStyle : {
 				fontSize : 13
 			}
@@ -179,7 +179,7 @@ var option_candle = {
 			trigger : 'axis'
 		},
 		legend : {
-			data : [ 'æœŸè´§ä»·æ ¼Kçº¿']
+			data : [ 'ÆÚ»õ¼Û¸ñKÏß']
 		},
 		xAxis : [ {
 			type : 'category',
@@ -194,29 +194,29 @@ var option_candle = {
 			scale : true
 		} ],
 		series : [ {
-			name : 'kçº¿',
+			name : 'kÏß',
 			type : 'k',
 			data : []
 		} ]
 	};
 
-// åŸºäºå‡†å¤‡å¥½çš„domï¼Œåˆå§‹åŒ–echartså®ä¾‹
+// »ùÓÚ×¼±¸ºÃµÄdom£¬³õÊ¼»¯echartsÊµÀı
 
-// æŒ‡å®šå›¾è¡¨çš„é…ç½®é¡¹å’Œæ•°æ®
+// Ö¸¶¨Í¼±íµÄÅäÖÃÏîºÍÊı¾İ
 var option = {
 	title : {
-		text : 'ECharts å…¥é—¨ç¤ºä¾‹'
+		text : 'ECharts ÈëÃÅÊ¾Àı'
 	},
 	tooltip : {},
 	legend : {
-		data : [ 'é”€é‡' ]
+		data : [ 'ÏúÁ¿' ]
 	},
 	xAxis : {
-		data : [ "è¡¬è¡«", "ç¾Šæ¯›è¡«", "é›ªçººè¡«", "è£¤å­", "é«˜è·Ÿé‹", "è¢œå­" ]
+		data : [ "³ÄÉÀ", "ÑòÃ«ÉÀ", "Ñ©·ÄÉÀ", "¿ã×Ó", "¸ß¸úĞ¬", "Íà×Ó" ]
 	},
 	yAxis : {},
 	series : [ {
-		name : 'é”€é‡',
+		name : 'ÏúÁ¿',
 		type : 'bar',
 		data : [ 5, 20, 36, 10, 10, 20 ]
 	} ]
@@ -235,15 +235,15 @@ function getChart(code) {
 		},
 		dataType : 'json',
 		success : function(data) {
-			//alert(data.code+decodeURI("ä»·æ ¼"));
-			option_close_settle.title.text = data.code+"ä»·æ ¼";
+			//alert(data.code+decodeURI("¼Û¸ñ"));
+			option_close_settle.title.text = data.code+"¼Û¸ñ";
 			option_close_settle.xAxis[0].data = data.dateRtnList;
 			option_close_settle.series[0].data=data.closePriceList;
 			option_close_settle.series[1].data=data.settlePriceList;
-			option_settleCur.title.text = data.code+"ç»“ç®—ä»·æ›²çº¿æ‹Ÿåˆ";
+			option_settleCur.title.text = data.code+"½áËã¼ÛÇúÏßÄâºÏ";
 			option_settleCur.xAxis[0].data = data.dateRtnList;
 			option_settleCur.series[0].data=data.settlePriceCurList;
-			//kçº¿
+			//kÏß
 			option_candle.xAxis[0].data = data.dateRtnList;
 		    var values = [];
 		    for (var i = 0; i < data.candlePriceList.length; i++) {
@@ -256,9 +256,9 @@ function getChart(code) {
 		    }
 			option_candle.series[0].data=values;
 			console.log(values);
-			//æ”¶ç›˜ä»·å’Œç»“ç®—ä»·æ›²çº¿
+			//ÊÕÅÌ¼ÛºÍ½áËã¼ÛÇúÏß
 			chart1.setOption(option_close_settle);
-			//ç»“ç®—ä»·æ ¼æ‹Ÿåˆ
+			//½áËã¼Û¸ñÄâºÏ
 			chart2.setOption(option_candle);
 			chart3.setOption(option_settleCur);
 		}
@@ -301,57 +301,191 @@ function getJys(jys) {
 		success : function(data) {
 			$("#style-3").empty();
 			var strDiv = "";
+			var row = 0;
 			//var firstInstrumentID = "";
 			for ( var o in data) {
 				//if(firstInstrumentID==""){
 				//	firstInstrumentID = data[o].instrumentID;
 				//}
 				//console.log(data[o].name);
-				strDiv += "<div class=\"mainrightZhiBiao\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
-				strDiv += "<div class=\"mainrightZhiBiaoNameY\">";
-				//console.log(data[o].name);
-				//console.log("---------------");
-				//console.log(decodeURI(data[o].name));
-				strDiv += decodeURI(data[o].name);
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].instrumentID;
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].openPrice;
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].highestPrice;
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].lowestPrice;
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].closePrice;
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].settlementPrice;
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].bidPrice1;
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].bidVolume1;
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].askPrice1;
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].askVolume1;
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].volume;
-				strDiv += "</div>";
-				strDiv += "<div class=\"mainrightZhiBiao2\">";
-				strDiv += data[o].ccvolume;
-				strDiv += "</div>";
-				strDiv += "</div>";
+				if(row==0){
+					row ++;
+					strDiv += "<div  class=\"container-fluid\">";
+					strDiv += "<div  class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += "Æ·ÖÖ";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+					strDiv += "¿ªÅÌ";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+					strDiv += "×î¸ß";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+					strDiv += "×îµÍ";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+					strDiv += "ÊÕÅÌ";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+					strDiv += "½áËã";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+					strDiv += "Âò¼Û";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+					strDiv += "ÂòÁ¿";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+					strDiv += "Âô¼Û";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+					strDiv += "ÂôÁ¿";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+					strDiv += "³ÉÁ¿";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+					strDiv += "ÊÖÊı";
+					strDiv += "</div>";
+					strDiv += "</div>";
+					strDiv += "</div>";
+				}
+				row ++;
+				if(row%2==0){
+					strDiv += "<div   class=\"container-fluid\">";
+					strDiv += "<div  id=\"zhibiaodiv\" class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					//console.log(data[o].name);
+					//console.log("---------------");
+					//console.log(decodeURI(data[o].name));
+					strDiv += decodeURI(data[o].instrumentID);
+					strDiv += "</div>";
+					
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].openPrice;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].highestPrice;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].lowestPrice;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].closePrice;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].settlementPrice;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].bidPrice1;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].bidVolume1;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].askPrice1;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].askVolume1;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].volume;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].ccvolume;
+					strDiv += "</div>";
+					strDiv += "</div>";
+					strDiv += "</div>";
+				}else{
+					strDiv += "<div   class=\"container-fluid\">";
+					strDiv += "<div  id=\"zhibiaodiv\" class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					//console.log(data[o].name);
+					//console.log("---------------");
+					//console.log(decodeURI(data[o].name));
+					strDiv += decodeURI(data[o].instrumentID);
+					strDiv += "</div>";
+					
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].openPrice;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].highestPrice;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].lowestPrice;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].closePrice;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].settlementPrice;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].bidPrice1;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].bidVolume1;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].askPrice1;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].askVolume1;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].volume;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+					strDiv += data[o].ccvolume;
+					strDiv += "</div>";
+					strDiv += "</div>";
+					strDiv += "</div>";
+				}
+					
+				
 			}
+			strDiv += "<div  class=\"container-fluid\">";
+			strDiv += "<div  class=\"row\">";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\" onclick=\"getChart('"+data[o].instrumentID+"')\">";
+			strDiv += "Æ·ÖÖ";
+			strDiv += "</div>";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+			strDiv += "¿ªÅÌ";
+			strDiv += "</div>";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+			strDiv += "×î¸ß";
+			strDiv += "</div>";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+			strDiv += "×îµÍ";
+			strDiv += "</div>";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+			strDiv += "ÊÕÅÌ";
+			strDiv += "</div>";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+			strDiv += "½áËã";
+			strDiv += "</div>";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+			strDiv += "Âò¼Û";
+			strDiv += "</div>";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+			strDiv += "ÂòÁ¿";
+			strDiv += "</div>";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+			strDiv += "Âô¼Û";
+			strDiv += "</div>";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+			strDiv += "ÂôÁ¿";
+			strDiv += "</div>";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+			strDiv += "³ÉÁ¿";
+			strDiv += "</div>";
+			strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-1\">";
+			strDiv += "ÊÖÊı";
+			strDiv += "</div>";
+			strDiv += "</div>";
+			strDiv += "</div>";
 			$("#style-3").html(strDiv);
 		}
 	});
