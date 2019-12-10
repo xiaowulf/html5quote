@@ -120,9 +120,7 @@
 					-->
 					<!-- end row -->
 					<div class="row">
-					<div class="panel panel-default">
-					  <div class="panel-heading">图表统计信息</div>
-						<div class="analyseCharts">
+					<div class="analyseCharts">
 				    		<div id="chart1" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart2" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
@@ -132,9 +130,7 @@
 				    		<div id="chart7" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart8" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart9" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
-			    		</div>
-					</div>
-					<!-- end pannel -->
+			    	</div>
 					</div>
 					<!-- end row -->
 					<div class="row">

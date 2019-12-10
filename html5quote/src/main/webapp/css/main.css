@@ -29,7 +29,7 @@ body{color: blue;height:100%;color:#ffffff;overflow-x: hidden;}
 .mainrightBottomNavMore{background-color:#4B306C;cursor:pointer;float:left;text-align:center;height:35px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;margin: 0;color:#ffffff;margin-top:14px;padding-top:5px;margin-bottom:5px;}
 .jysButton1{float:left;text-align:center;color:#ffffff;margin-top:14px;}
 .mainrightBottomNews{float:left;height:auto;width:100%;margin-top: 1px;background-color:#EEEEEE;padding-top:5px;}
-.analyseCharts{float:left;height:auto;width:100%;margin-top: 1px;background-color:#EEEEEE;padding-top:5px;border-left:1px solid #BBBBBB;border-right:1px solid #BBBBBB;border-bottom:1px solid #BBBBBB;}
+.analyseCharts{float:left;height:auto;width:100%;margin-top: 1px;margin-bottom: 15px;background-color:#EEEEEE;padding-top:5px;borde:1px solid #BBBBBB;}
 .mainrightBottom{float:left;height:auto;width:100%;margin-top: 600px;border-top:1px solid #ffffff;}
 .analyseBasic{float:left;height:auto;width:100%;margin-top: 1px;background-color:#EEEEEE;padding-top:5px;}
 
