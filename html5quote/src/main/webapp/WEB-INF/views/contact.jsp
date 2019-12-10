@@ -3,13 +3,14 @@
 <%@ page  isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ include file="constants.jsp"%>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
-    <title>王者期货分析系统</title>
+    <title><%=appName%></title>
 	<script src="js/echarts.min.js" type="text/javascript"></script>
     <!--awesome font include-->
     <link type="text/css" rel="stylesheet" href="./css/main.css" />

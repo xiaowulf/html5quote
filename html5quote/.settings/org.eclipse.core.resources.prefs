@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/analyse.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/index.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/navbar.jsp=UTF-8
-encoding//src/main/webapp/js/index.js=UTF-8
+encoding//src/main/webapp/js/analyse.js=UTF-8
+encoding//src/main/webapp/js/codeutil.js=UTF-8
 encoding/<project>=UTF-8

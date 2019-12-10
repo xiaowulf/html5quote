@@ -17,7 +17,7 @@
 	</filter>
 	<filter-mapping>
 	  <filter-name>characterEncodingFilter</filter-name>
-	  <url-pattern>/*</url-pattern>
+	  <url-pattern>*.html</url-pattern>
 	</filter-mapping>
 
   

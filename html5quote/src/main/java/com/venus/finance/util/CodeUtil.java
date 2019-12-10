@@ -249,7 +249,7 @@ public class CodeUtil {
 		case "b":
 			return URLEncoder.encode("豆二", "utf-8");
 		case "m":
-			return URLEncoder.encode("豆二", "utf-8");
+			return URLEncoder.encode("豆粕", "utf-8");
 		case "y":
 			return URLEncoder.encode("豆油", "utf-8");
 		case "p":
@@ -259,7 +259,7 @@ public class CodeUtil {
 		case "bb":
 			return URLEncoder.encode("胶板", "utf-8");
 		case "jd":
-			return URLEncoder.encode("胶板", "utf-8");
+			return URLEncoder.encode("鸡蛋", "utf-8");
 		case "rr":
 			return URLEncoder.encode("粳米", "utf-8");
 		case "l":

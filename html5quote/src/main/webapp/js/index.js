@@ -1,10 +1,6 @@
+
+
 $(function() {
-	var clientwidth = document.body.clientWidth;
-	var chartwidth = (clientwidth-180)/3;
-	var chartcsswidth = chartwidth +"px";
-	//$("#chart1").css("width",chartcsswidth);
-	//$("#chart2").css("width",chartcsswidth);
-	//$("#chart3").css("width",chartcsswidth);
 	getJys("shfe");
 	getChart("index");
 });
@@ -212,6 +208,7 @@ function getChart(code) {
 		data : {
 			code : code
 		},
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 		dataType : 'json',
 		success : function(data) {
 			//alert(data.code+decodeURI("价格"));
@@ -219,7 +216,7 @@ function getChart(code) {
 			option_close_settle.xAxis[0].data = data.dateRtnList;
 			option_close_settle.series[0].data=data.closePriceList;
 			option_close_settle.series[1].data=data.settlePriceList;
-			option_settleCur.title.text = data.code+"结算价拟合";
+			option_settleCur.title.text = data.code+"均价拟合";
 			option_settleCur.xAxis[0].data = data.dateRtnList;
 			option_settleCur.series[0].data=data.settlePriceCurList;
 			//k线
@@ -234,7 +231,7 @@ function getChart(code) {
 		        values.push(categoryData);
 		    }
 			option_candle.series[0].data=values;
-			console.log(values);
+			option_candle.title.text = data.code+"K线";
 			//收盘价和结算价曲线
 			chart1.setOption(option_close_settle);
 			//结算价格拟合
@@ -276,6 +273,7 @@ function getJys(jys) {
 		data : {
 			jys : jys
 		},
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 		dataType : 'json',
 		success : function(data) {
 			$("#style-3").empty();

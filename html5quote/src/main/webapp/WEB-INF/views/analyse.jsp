@@ -9,9 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
-	name="viewport" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 <title><%=appName%></title>
 <script src="js/echarts.min.js" type="text/javascript"></script>
 <!--awesome font include-->
@@ -51,20 +49,111 @@
 					    		中金所
 					    	</div>
 					    	<div class="jysButton1  col-xs-6 col-sm-6 col-md-2 col-lg-2" id="mainrightBottomNavMore">
-					    		<select class="form-control">...</select>
+					    		<select class="form-control" id="jyscodeid">...</select>
 					    	</div>
 					    	<div class="jysButton1  col-xs-6 col-sm-6 col-md-2 col-lg-2" id="mainrightBottomNavMore">
-					    		<input class="btn btn-info" type="button" value="Input">
+					    		<input class="btn btn-info" type="button" value="Input" onclick="getCodeDetail()">
 					    	</div>
 			    		</div>
+			    		<!-- end mainrightBottomNav -->
 					</div>
+					<!-- end row -->
 					<div class="row">
-						<div class="mainrightBottomNews">
+					<div class="panel panel-default">
+					  <div class="panel-heading">基本统计信息</div>
+						    <table  class="table table-bordered table-hover table-striped table-responsive">
+						    	<tr>
+						    		 <td>日期: </td>
+						    		 <td>a2005</td>
+						    		 <td>收盘: </td>
+						    		 <td>a2005</td>
+						    	</tr>
+						    	<tr>
+						    		 		<td>开盘价: </td>
+						    		 		<td>a2005</td>
+						    		 		<td>最高价: </td>
+						    		 		<td>a2005</td>
+						    		 	</tr>
+						    		 	<tr>
+						    		 		<td>最低价: </td>
+						    		 		<td>a2005</td>
+						    		 		<td>收盘价价: </td>
+						    		 		<td>a2005</td>
+						    		 	</tr>
+						    		 	<tr>
+						    		 		<td>结算价: </td>
+						    		 		<td>a2005</td>
+						    		 		<td>昨结价: </td>
+						    		 		<td>a2005</td>
+						    		 	</tr>
+						    		 	<tr>
+						    		 		<td>5日均值: </td>
+						    		 		<td>a2005</td>
+						    		 		<td>20日均值: </td>
+						    		 		<td>a2005</td>
+						    		 	</tr>
+						    		 	<tr>
+						    		 		<td>40日均值: </td>
+						    		 		<td>a2005</td>
+						    		 		<td>60日均值: </td>
+						    		 		<td>a2005</td>
+						    		 	</tr>
+						    		 	<tr>
+						    		 		<td>20日最高: </td>
+						    		 		<td>a2005</td>
+						    		 		<td>20日最低: </td>
+						    		 		<td>a2005</td>
+						    		 	</tr>
+						    		 	<tr>
+						    		 		<td>20日ATR: </td>
+						    		 		<td>a2005</td>
+						    		 		<td>20日RSI: </td>
+						    		 		<td>a2005</td>
+						    		 	</tr>
+						    		 </table>
+					</div>
+					</div>					
+					<!-- end row 
+					<div class="row">
+						<button style= "text-align:left;" class="btn btn-primary col-xs-12 col-sm-12 col-md-12 col-lg-12" type="button">图表分析 <span class="badge">2</span></button>
+					</div>
+					-->
+					<!-- end row -->
+					<div class="row">
+					<div class="panel panel-default">
+					  <div class="panel-heading">图表统计信息</div>
+						<div class="analyseCharts">
 				    		<div id="chart1" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart2" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart4" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart5" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart6" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart7" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart8" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart9" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 			    		</div>
 					</div>
+					<!-- end pannel -->
+					</div>
+					<!-- end row -->
+					<div class="row">
+					<div class="panel panel-default">
+					  <div class="panel-heading">结论</div>
+					  <table  class="table table-bordered table-hover table-striped table-responsive">
+						    	<tr>
+						    		 <td>日期: </td>
+						    		 <td>a2005</td>
+						    		 <td>收盘: </td>
+						    		 <td>a2005</td>
+						    	</tr>
+					</table>
+					</div>
+					</div>
+					
+					
+					
+					
 				</div>
 			</div>
 		</div>
@@ -77,7 +166,8 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
-	<script src="js/analyse.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="js/codeutil.js" type="text/javascript" charset="gb2312"></script>
+	<script src="js/analyse.js" type="text/javascript" charset="gb2312"></script>
 	<!--include plugin js-->
 	<script type="text/javascript" src="./js/jquery-rvnm.js"></script>
 </body>
