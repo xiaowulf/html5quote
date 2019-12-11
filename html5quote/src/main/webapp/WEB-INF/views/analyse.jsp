@@ -3,6 +3,7 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ include file="constants.jsp"%>
 <!DOCTYPE html>
 <html lang="zh">
@@ -37,22 +38,22 @@
 					<div class="row">
 						<div class="mainrightBottomNav">
 				    		<div class="mainrightBottomNav1 col-xs-6 col-sm-6 col-md-2 col-lg-2" onclick="getJys('shfe')" id="mainrightBottomNav1">
-					    		上期所
+					    		<spring:message code="jys_shfe"/>
 					    	</div>
 					    	<div class="mainrightBottomNav2  col-xs-6 col-sm-6 col-md-2 col-lg-2" onclick="getJys('czce')" id="mainrightBottomNav2">
-					    		郑商所
+					    		<spring:message code="jys_czce"/>
 					    	</div>
 					    	<div class="mainrightBottomNav3  col-xs-6 col-sm-6 col-md-2 col-lg-2" onclick="getJys('dce')" id="mainrightBottomNav3">
-					    		大商所
+					    		<spring:message code="jys_dce"/>
 					    	</div>
 					    	<div class="mainrightBottomNav4  col-xs-6 col-sm-6 col-md-2 col-lg-2" onclick="getJys('cffex')" id="mainrightBottomNav4">
-					    		中金所
+					    		<spring:message code="jys_cffex"/>
 					    	</div>
 					    	<div class="jysButton1  col-xs-6 col-sm-6 col-md-2 col-lg-2" id="mainrightBottomNavMore">
 					    		<select class="form-control" id="jyscodeid">...</select>
 					    	</div>
 					    	<div class="jysButton1  col-xs-6 col-sm-6 col-md-2 col-lg-2" id="mainrightBottomNavMore">
-					    		<input class="btn btn-info" type="button" value="Input" onclick="getCodeDetail()">
+					    		<input class="btn btn-info" type="button" value="<spring:message code="system_query_title"/>" onclick="getCodeDetail()">
 					    	</div>
 			    		</div>
 			    		<!-- end mainrightBottomNav -->
@@ -63,52 +64,52 @@
 					  <div class="panel-heading">基本统计信息</div>
 						    <table  class="table table-bordered table-hover table-striped table-responsive">
 						    	<tr>
-						    		 <td>日期: </td>
-						    		 <td>a2005</td>
+						    		 <td>品种: </td>
+						    		 <td></td>
 						    		 <td>收盘: </td>
-						    		 <td>a2005</td>
+						    		 <td></td>
 						    	</tr>
 						    	<tr>
 						    		 		<td>开盘价: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 		<td>最高价: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 	</tr>
 						    		 	<tr>
 						    		 		<td>最低价: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 		<td>收盘价价: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 	</tr>
 						    		 	<tr>
 						    		 		<td>结算价: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 		<td>昨结价: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 	</tr>
 						    		 	<tr>
 						    		 		<td>5日均值: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 		<td>20日均值: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 	</tr>
 						    		 	<tr>
 						    		 		<td>40日均值: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 		<td>60日均值: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 	</tr>
 						    		 	<tr>
 						    		 		<td>20日最高: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 		<td>20日最低: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 	</tr>
 						    		 	<tr>
 						    		 		<td>20日ATR: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 		<td>20日RSI: </td>
-						    		 		<td>a2005</td>
+						    		 		<td></td>
 						    		 	</tr>
 						    		 </table>
 					</div>
@@ -124,12 +125,14 @@
 				    		<div id="chart1" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart2" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		<!-- 
 				    		<div id="chart4" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart5" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart6" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart7" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart8" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart9" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		-->
 			    	</div>
 					</div>
 					<!-- end row -->
@@ -137,12 +140,12 @@
 					<div class="panel panel-default">
 					  <div class="panel-heading">结论</div>
 					  <table  class="table table-bordered table-hover table-striped table-responsive">
-						    	<tr>
+						    <tr>
 						    		 <td>日期: </td>
 						    		 <td>a2005</td>
 						    		 <td>收盘: </td>
 						    		 <td>a2005</td>
-						    	</tr>
+						    </tr>
 					</table>
 					</div>
 					</div>
@@ -162,8 +165,8 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
-	<script src="js/codeutil.js" type="text/javascript" charset="gb2312"></script>
-	<script src="js/analyse.js" type="text/javascript" charset="gb2312"></script>
+	<script src="js/codeutil.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="js/analyse.js" type="text/javascript" charset="UTF-8"></script>
 	<!--include plugin js-->
 	<script type="text/javascript" src="./js/jquery-rvnm.js"></script>
 </body>

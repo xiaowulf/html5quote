@@ -47,6 +47,18 @@ public class IndexController {
 	public String contact(HttpServletRequest request,ModelMap model) {
 		return "contact";
 	}
+	@RequestMapping(value = "/strategy.html", method = RequestMethod.GET)
+	public String strategy(HttpServletRequest request,ModelMap model) {
+		return "strategy";
+	}
+	@RequestMapping(value = "/backtest.html", method = RequestMethod.GET)
+	public String backtest(HttpServletRequest request,ModelMap model) {
+		return "backtest";
+	}
+	@RequestMapping(value = "/position.html", method = RequestMethod.GET)
+	public String position(HttpServletRequest request,ModelMap model) {
+		return "position";
+	}
 	@RequestMapping(value = "/suggestsave.html", method = RequestMethod.POST)
 	public String suggestsave(SuggestVO suggestVO) {
 		InitUtil initUtil = new InitUtil();

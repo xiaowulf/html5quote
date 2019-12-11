@@ -200,12 +200,14 @@ function getChart(code) {
 	var chart1 = echarts.init(document.getElementById('chart1'));
 	var chart2 = echarts.init(document.getElementById('chart2'));
 	var chart3 = echarts.init(document.getElementById('chart3'));
+	/*
 	var chart4 = echarts.init(document.getElementById('chart4'));
 	var chart5 = echarts.init(document.getElementById('chart5'));
 	var chart6 = echarts.init(document.getElementById('chart6'));
 	var chart7 = echarts.init(document.getElementById('chart7'));
 	var chart8 = echarts.init(document.getElementById('chart8'));
 	var chart9 = echarts.init(document.getElementById('chart9'));
+	*/
 	$.ajax({
 		type : 'GET',
 		url : 'findFuturesCodeIndex.html',
@@ -241,12 +243,12 @@ function getChart(code) {
 			//结算价格拟合
 			chart2.setOption(option_candle);
 			chart3.setOption(option_settleCur);
-			chart4.setOption(option_close_settle);
-			chart5.setOption(option_candle);
-			chart6.setOption(option_settleCur);
-			chart7.setOption(option_close_settle);
-			chart8.setOption(option_candle);
-			chart9.setOption(option_settleCur);
+			//chart4.setOption(option_close_settle);
+			//chart5.setOption(option_candle);
+			//chart6.setOption(option_settleCur);
+			//chart7.setOption(option_close_settle);
+			//chart8.setOption(option_candle);
+			//chart9.setOption(option_settleCur);
 		}
 	});
 }

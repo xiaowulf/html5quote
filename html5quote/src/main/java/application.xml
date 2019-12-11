@@ -36,7 +36,7 @@
 				<prop key="hibernate.cache.provider_class">
 					com.opensymphony.oscache.hibernate.OSCacheProvider
                 </prop>
-                <prop key="generate_statistics">true</prop>
+                <prop key="generate_statistics">false</prop>
 			</props>
 		</property>
 		

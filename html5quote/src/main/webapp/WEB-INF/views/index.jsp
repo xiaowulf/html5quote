@@ -3,6 +3,7 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ include file="constants.jsp"%>
 <!DOCTYPE html>
 <html lang="zh">
@@ -46,16 +47,16 @@
 					<div class="row">
 						<div class="mainrightBottomNav">
 				    		<div class="mainrightBottomNav1 col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('shfe')" id="mainrightBottomNav1">
-					    		上期所
+					    		<spring:message code="jys_shfe"/>
 					    	</div>
 					    	<div class="mainrightBottomNav2  col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('czce')" id="mainrightBottomNav2">
-					    		郑商所
+					    		<spring:message code="jys_czce"/>
 					    	</div>
 					    	<div class="mainrightBottomNav3  col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('dce')" id="mainrightBottomNav3">
-					    		大商所
+					    		<spring:message code="jys_dce"/>
 					    	</div>
 					    	<div class="mainrightBottomNav4  col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('cffex')" id="mainrightBottomNav4">
-					    		中金所
+					    		<spring:message code="jys_cffex"/>
 					    	</div>
 					    	<!--  
 					    	<div class="mainrightBottomNavMore  col-xs-2 col-sm-2 col-md-2 col-lg-2" id="mainrightBottomNavMore" onclick="getMoreChart()">
@@ -84,7 +85,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
-	<script src="js/index.js" type="text/javascript" charset="gb2312"></script>
+	<script src="js/index.js" type="text/javascript" charset="UTF-8"></script>
 	<!--include plugin js-->
 	<script type="text/javascript" src="./js/jquery-rvnm.js"></script>
 

@@ -13,7 +13,9 @@
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
-
+	
+	<resources mapping="/js/**" location="/js"></resources>
+	<resources mapping="/css/**" location="/css"></resources>
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 	<beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >  
@@ -31,6 +33,27 @@
 	   		</beans:property>    
 	</beans:bean>  
     
+    <beans:bean id="localeResolver"
+        class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <beans:property name="defaultLocale" value="zh_CN" />
+    </beans:bean>
+    <beans:bean id="messageSource"
+        class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <beans:property name="defaultEncoding" value="UTF-8" />
+        <beans:property name="useCodeAsDefaultMessage" value="true" />
+        <beans:property name="basenames">
+            <beans:list>
+                <beans:value>classpath:message</beans:value>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+    
+    <interceptors>
+        <beans:bean id="localeChangeInterceptor"
+            class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <beans:property name="paramName" value="lang" />
+        </beans:bean>
+    </interceptors>
     
     <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
     <beans:bean id="multipartResolver"
