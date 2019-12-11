@@ -48,7 +48,7 @@
 				    		 	</tr>
 				    		 	<tr>
 				    		 		<td>意见建议: </td>
-				    		 		<td><textarea name="suggest" style="width:400px;height:80px;"></textarea></td>
+				    		 		<td><textarea name="message" style="width:400px;height:80px;"></textarea></td>
 				    		 	</tr>
 				    		 	<tr>
 				    		 		<td colspan="2"><input type="submit" value="提交" /> </td>

@@ -195,7 +195,6 @@ var option_candle = {
 	};
 
 
-
 function getChart(code) {
 	var chart1 = echarts.init(document.getElementById('chart1'));
 	var chart2 = echarts.init(document.getElementById('chart2'));
@@ -290,15 +289,40 @@ function getJys(jys) {
 		success : function(data) {
 			$("#jyscodeid").empty();
 			var strDiv = "";
+			var code ="";
 			for ( var o in data) {
 				$('#jyscodeid').append("<option value=\""+data[o].instrumentID +"\">"+getNameByCode(data[o].instrumentID)+data[o].instrumentID+"</option>"); 
+				if(code==""){
+					code=data[o].instrumentID;
+					getCodeDetail(code);
+				}
 			}
-			
 		}
 	});
 }
 
-function getCodeDetail(){
+function getCodeDetail(code){
+	if(code==""||code==undefined){
+		code = $("#jyscodeid").val();
+	}
+	$.ajax({
+		type : 'GET',
+		url : 'findCodeStatistics.html',
+		data : {
+			code : code
+		},
+		dataType : 'json',
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		success : function(data) {
+			$('#instrumentID').text(data.instrumentID);
+			$('#todayStrID').text(data.todayStr);
+			$('#openpriceID').text(data.futuresQuoteVO.openPrice);
+			$('#highestpriceID').text(data.futuresQuoteVO.highestPrice);
+			$('#lowestpriceID').text(data.futuresQuoteVO.lowestPrice);
+			$('#closepriceID').text(data.futuresQuoteVO.closePrice);
+			
+		}
+	});
 	
 }
 

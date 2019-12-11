@@ -9,6 +9,8 @@
 	</a></li>
 	<li class=""><a href="./backtest.html"> <i class="fa fa-area-chart"></i>回测
 	</a></li>
+	<li class=""><a href="./strategy.html"> <i class="fa fa-bomb"></i>信号
+	</a></li>
 	<li class=""><a href="./position.html"> <i class="fa fa-list-alt"></i>持仓
 	</a></li>
 	<li><a href="suggest.html"> <i class="fa fa-fax"></i>意见

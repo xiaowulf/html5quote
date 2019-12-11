@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.venus.finance.fix.FixApplication;
+import com.venus.finance.model.FuturesMessage;
 import com.venus.finance.service.IFuturesMessageService;
 import com.venus.finance.util.CodeUtil;
 import com.venus.finance.util.FileUtil;
@@ -67,7 +68,9 @@ public class IndexController {
 		return "position";
 	}
 	@RequestMapping(value = "/suggestsave.html", method = RequestMethod.POST)
-	public String suggestsave(SuggestVO suggestVO) {
+	public String suggestsave(FuturesMessage futuresMessage) {
+		futuresMessageService.create(futuresMessage);
+		/*
 		InitUtil initUtil = new InitUtil();
 		File file;
 		try {
@@ -77,7 +80,7 @@ public class IndexController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		return "rsuccess";
 	}
 	@RequestMapping(value = "/changeFuturesJys.html",produces = "text/html;charset=UTF-8")

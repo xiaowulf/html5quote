@@ -13,7 +13,7 @@ import java.util.Map;
 import com.venus.finance.vo.FuturesQuoteVO;
 
 public class CodeUtil {
-	public List<String> getCodeList(){
+	public List<String> getCodeList() {
 		InitUtil initUtil = new InitUtil();
 		FileUtil fileUtil = new FileUtil();
 		File codeFile = null;
@@ -25,8 +25,8 @@ public class CodeUtil {
 		List<String> list = fileUtil.readFileToList(codeFile);
 		return list;
 	}
-	
-	public String getTradeDatePath(){
+
+	public String getTradeDatePath() {
 		InitUtil initUtil = new InitUtil();
 		String filePath = null;
 		try {
@@ -36,15 +36,15 @@ public class CodeUtil {
 		}
 		return filePath;
 	}
-	
-	public List<String> getTradeDate(){
+
+	public List<String> getTradeDate() {
 		FileUtil fileUtil = new FileUtil();
 		String filePath = getTradeDatePath();
 		List<String> list = fileUtil.readFileToList(new File(filePath));
 		return list;
 	}
-	
-	public String getIndexCode(){
+
+	public String getIndexCode() {
 		InitUtil initUtil = new InitUtil();
 		String code = null;
 		try {
@@ -54,7 +54,8 @@ public class CodeUtil {
 		}
 		return code;
 	}
-	public List<FuturesQuoteVO> getDayQuoteByCodeAndDate(List<String> date30List,String code){
+
+	public FuturesQuoteVO getDayQuoteByCodeAndDate(String code, String date) {
 		InitUtil initUtil = new InitUtil();
 		FileUtil fileUtil = new FileUtil();
 		List<FuturesQuoteVO> list = new ArrayList<FuturesQuoteVO>();
@@ -64,14 +65,36 @@ public class CodeUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if(null!=dataFolder) {
-			for(String date:date30List) {
-				File dayDataFile = new File(dataFolder+"/hlj"+date+".txt");
-				List<FuturesQuoteVO> futuresDayQuoteList = 
-						fileUtil.readFileToFuturesQuoteList(dayDataFile);
-				for(FuturesQuoteVO futuresQuoteVO:futuresDayQuoteList) {
-					if(futuresQuoteVO.getInstrumentID().toUpperCase()
-							.equals(code.toUpperCase())) {
+		if (null != dataFolder) {
+			File dayDataFile = new File(dataFolder + "/hlj" + date + ".txt");
+			List<FuturesQuoteVO> futuresDayQuoteList = fileUtil.readFileToFuturesQuoteList(dayDataFile);
+			for (FuturesQuoteVO futuresQuoteVO : futuresDayQuoteList) {
+				if (futuresQuoteVO.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+					//futuresQuoteVO.setDate(Long.parseLong(date));
+					//list.add(futuresQuoteVO);
+					return futuresQuoteVO;
+				}
+			}
+		}
+		return null;
+	}
+
+	public List<FuturesQuoteVO> getDayQuoteByCodeAndDate(List<String> date30List, String code) {
+		InitUtil initUtil = new InitUtil();
+		FileUtil fileUtil = new FileUtil();
+		List<FuturesQuoteVO> list = new ArrayList<FuturesQuoteVO>();
+		String dataFolder = null;
+		try {
+			dataFolder = initUtil.getDayDataFolder();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (null != dataFolder) {
+			for (String date : date30List) {
+				File dayDataFile = new File(dataFolder + "/hlj" + date + ".txt");
+				List<FuturesQuoteVO> futuresDayQuoteList = fileUtil.readFileToFuturesQuoteList(dayDataFile);
+				for (FuturesQuoteVO futuresQuoteVO : futuresDayQuoteList) {
+					if (futuresQuoteVO.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
 						futuresQuoteVO.setDate(Long.parseLong(date));
 						list.add(futuresQuoteVO);
 					}
@@ -80,10 +103,11 @@ public class CodeUtil {
 		}
 		return list;
 	}
-	public List<FuturesQuoteVO> getCodeByJys(String jys) throws UnsupportedEncodingException{
+
+	public List<FuturesQuoteVO> getCodeByJys(String jys) throws UnsupportedEncodingException {
 		FileUtil fileUtil = new FileUtil();
 		InitUtil initUtil = new InitUtil();
-		List<FuturesQuoteVO>codeList = new ArrayList<FuturesQuoteVO>();
+		List<FuturesQuoteVO> codeList = new ArrayList<FuturesQuoteVO>();
 		File codeFile = null;
 		File futuresLatestFile = null;
 		try {
@@ -96,30 +120,30 @@ public class CodeUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		List<String> list = fileUtil.readFileToList(codeFile);
 		List<String> futuresLatest = null;
-		if(futuresLatestFile.exists()){
+		if (futuresLatestFile.exists()) {
 			futuresLatest = fileUtil.readFileToList(futuresLatestFile);
 		}
-		//根据code生成一个map，后面好处理
-		Map<String,FuturesQuoteVO> futuresQuoteMap = new HashMap<String,FuturesQuoteVO>();
-		for(String codeStr:list){
-			String [] codeArray = codeStr.split(",");
-			if(codeArray.length==2){
-				if(codeArray[1].toUpperCase().equals(jys.toUpperCase())){
+		// 根据code生成一个map，后面好处理
+		Map<String, FuturesQuoteVO> futuresQuoteMap = new HashMap<String, FuturesQuoteVO>();
+		for (String codeStr : list) {
+			String[] codeArray = codeStr.split(",");
+			if (codeArray.length == 2) {
+				if (codeArray[1].toUpperCase().equals(jys.toUpperCase())) {
 					FuturesQuoteVO futuresQuoteVO = new FuturesQuoteVO();
 					futuresQuoteVO.setInstrumentID(codeArray[0]);
-					futuresQuoteVO.setName(getChineseName(codeArray[0])+converCodeMonth(codeArray[0]));
+					futuresQuoteVO.setName(getChineseName(codeArray[0]) + converCodeMonth(codeArray[0]));
 					futuresQuoteMap.put(codeArray[0], futuresQuoteVO);
 				}
 			}
 		}
-		for(String codeStr:futuresLatest){
-			String [] codeArray = codeStr.split(",");
-			if(codeArray.length>=8){
+		for (String codeStr : futuresLatest) {
+			String[] codeArray = codeStr.split(",");
+			if (codeArray.length >= 8) {
 				FuturesQuoteVO futuresQuoteVO = futuresQuoteMap.get(codeArray[0]);
-				if(null!=futuresQuoteVO){
+				if (null != futuresQuoteVO) {
 					futuresQuoteVO.setOpenPrice(Double.parseDouble(codeArray[1]));
 					futuresQuoteVO.setHighestPrice(Double.parseDouble(codeArray[2]));
 					futuresQuoteVO.setLowestPrice(Double.parseDouble(codeArray[3]));
@@ -133,11 +157,11 @@ public class CodeUtil {
 		}
 		return codeList;
 	}
-	
-	public List<String> getCodeListByJys(String jys) throws UnsupportedEncodingException{
+
+	public List<String> getCodeListByJys(String jys) throws UnsupportedEncodingException {
 		FileUtil fileUtil = new FileUtil();
 		InitUtil initUtil = new InitUtil();
-		List<String>codeList = new ArrayList<String>();
+		List<String> codeList = new ArrayList<String>();
 		File codeFile = null;
 		File futuresLatestFile = null;
 		try {
@@ -151,21 +175,20 @@ public class CodeUtil {
 			e.printStackTrace();
 		}
 		List<String> list = fileUtil.readFileToList(codeFile);
-		for(String codeStr:list){
-			String [] codeArray = codeStr.split(",");
-			if(codeArray.length==2){
-				if(codeArray[1].toUpperCase().equals(jys.toUpperCase())){
+		for (String codeStr : list) {
+			String[] codeArray = codeStr.split(",");
+			if (codeArray.length == 2) {
+				if (codeArray[1].toUpperCase().equals(jys.toUpperCase())) {
 					codeList.add(codeArray[0]);
 				}
 			}
 		}
 		return codeList;
 	}
-	
-	
-	
+
 	public static double maxValue = 10000000000D;
 	public static double minValue = 0.0000000001D;
+
 	public static int getCodeXiShu(String code) {
 		switch (converCode(code)) {
 		case "cu":
@@ -266,13 +289,13 @@ public class CodeUtil {
 			return 1;
 		}
 	}
-	
+
 	public static String getChineseName(String code) throws UnsupportedEncodingException {
-		
+
 		switch (converCode(code)) {
-		//大商所
+		// 大商所
 		case "c":
-			return  URLEncoder.encode("玉米", "utf-8");
+			return URLEncoder.encode("玉米", "utf-8");
 		case "cs":
 			return URLEncoder.encode("淀粉", "utf-8");
 		case "a":
@@ -309,9 +332,8 @@ public class CodeUtil {
 			return URLEncoder.encode("二醇", "utf-8");
 		case "eb":
 			return URLEncoder.encode("苯乙", "utf-8");
-			
-			
-		//上期所
+
+		// 上期所
 		case "cu":
 			return URLEncoder.encode("铜", "utf-8");
 		case "al":
@@ -328,9 +350,9 @@ public class CodeUtil {
 			return URLEncoder.encode("金", "utf-8");
 		case "ag":
 			return URLEncoder.encode("白银", "utf-8");
-			//System.out.println(name.getBytes("GBK"));
-			//System.out.println("--------------");
-			//System.out.println(URLEncoder.encode(name, "utf-8"));
+		// System.out.println(name.getBytes("GBK"));
+		// System.out.println("--------------");
+		// System.out.println(URLEncoder.encode(name, "utf-8"));
 		case "rb":
 			return URLEncoder.encode("螺纹", "utf-8");
 		case "wr":
@@ -351,7 +373,7 @@ public class CodeUtil {
 			return URLEncoder.encode("20胶", "utf-8");
 		case "sp":
 			return URLEncoder.encode("纸浆", "utf-8");
-		//中金所	
+		// 中金所
 		case "IF":
 			return URLEncoder.encode("股指", "utf-8");
 		case "IC":
@@ -364,7 +386,7 @@ public class CodeUtil {
 			return URLEncoder.encode("国债5", "utf-8");
 		case "T":
 			return URLEncoder.encode("国债10", "utf-8");
-		//郑商所
+		// 郑商所
 		case "WH":
 			return URLEncoder.encode("强麦", "utf-8");
 		case "PM":
@@ -405,10 +427,9 @@ public class CodeUtil {
 			return URLEncoder.encode("尿素", "utf-8");
 		case "CJ":
 			return URLEncoder.encode("红枣", "utf-8");
-			/*
-		case "CJ":
-			return "纯碱";
-			*/
+		/*
+		 * case "CJ": return "纯碱";
+		 */
 		default:
 			return code;
 		}
@@ -575,9 +596,7 @@ public class CodeUtil {
 		}
 		return sb.toString();
 	}
-	
-	
-	
+
 	public static String parseCodeDce2(String line) {
 		line = line.replace(",", "");
 		String[] s2 = line.split("\\s+");

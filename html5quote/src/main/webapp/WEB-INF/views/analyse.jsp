@@ -50,7 +50,7 @@
 					    		<spring:message code="jys_cffex"/>
 					    	</div>
 					    	<div class="jysButton1  col-xs-6 col-sm-6 col-md-2 col-lg-2" id="mainrightBottomNavMore">
-					    		<select class="form-control" id="jyscodeid">...</select>
+					    		<select class="form-control" id="jyscodeid"></select>
 					    	</div>
 					    	<div class="jysButton1  col-xs-6 col-sm-6 col-md-2 col-lg-2" id="mainrightBottomNavMore">
 					    		<input class="btn btn-info" type="button" value="<spring:message code="system_query_title"/>" onclick="getCodeDetail()">
@@ -64,23 +64,24 @@
 					  <div class="panel-heading">基本统计信息</div>
 						    <table  class="table table-bordered table-hover table-striped table-responsive">
 						    	<tr>
+						    		 <td>时间: </td>
+						    		 <td><label id="todayStrID"></label></td>
 						    		 <td>品种: </td>
-						    		 <td></td>
-						    		 <td>收盘: </td>
-						    		 <td></td>
+						    		 <td><label id="instrumentID"></label></td>
+						    		 
 						    	</tr>
 						    	<tr>
-						    		 		<td>开盘价: </td>
-						    		 		<td></td>
-						    		 		<td>最高价: </td>
-						    		 		<td></td>
-						    		 	</tr>
-						    		 	<tr>
-						    		 		<td>最低价: </td>
-						    		 		<td></td>
-						    		 		<td>收盘价价: </td>
-						    		 		<td></td>
-						    		 	</tr>
+						    		 <td>开盘价: </td>
+						    		 <td><label id="openpriceID"></label></td>
+						    		 <td>最高价: </td>
+						    		 <td><label id="highestpriceID"></label></td>
+						    	</tr>
+						    	<tr>
+						    		 <td>最低价: </td>
+						    		 <td><label id="lowestpriceID"></label></td>
+						    		 <td>收盘价: </td>
+						    		 <td><label id="closepriceID"></label></td>
+						    	</tr>
 						    		 	<tr>
 						    		 		<td>结算价: </td>
 						    		 		<td></td>

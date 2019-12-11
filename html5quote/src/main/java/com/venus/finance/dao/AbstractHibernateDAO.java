@@ -11,7 +11,7 @@ import org.hibernate.SessionFactory;
 import com.google.common.base.Preconditions;
 
 @SuppressWarnings("unchecked")
-public abstract class AbstractHibernateDao<T extends Serializable> implements IOperations<T> {
+public abstract class AbstractHibernateDAO<T extends Serializable> implements IOperations<T> {
     
     private Class<T> clazz;
     
