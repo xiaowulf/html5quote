@@ -133,6 +133,37 @@ public class CodeUtil {
 		}
 		return codeList;
 	}
+	
+	public List<String> getCodeListByJys(String jys) throws UnsupportedEncodingException{
+		FileUtil fileUtil = new FileUtil();
+		InitUtil initUtil = new InitUtil();
+		List<String>codeList = new ArrayList<String>();
+		File codeFile = null;
+		File futuresLatestFile = null;
+		try {
+			codeFile = initUtil.getCodeFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			futuresLatestFile = initUtil.getFutures_latest_file();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		List<String> list = fileUtil.readFileToList(codeFile);
+		for(String codeStr:list){
+			String [] codeArray = codeStr.split(",");
+			if(codeArray.length==2){
+				if(codeArray[1].toUpperCase().equals(jys.toUpperCase())){
+					codeList.add(codeArray[0]);
+				}
+			}
+		}
+		return codeList;
+	}
+	
+	
+	
 	public static double maxValue = 10000000000D;
 	public static double minValue = 0.0000000001D;
 	public static int getCodeXiShu(String code) {

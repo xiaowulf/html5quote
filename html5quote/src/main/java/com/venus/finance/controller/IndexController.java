@@ -9,7 +9,11 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
+import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -21,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.venus.finance.fix.FixApplication;
+import com.venus.finance.service.IFuturesMessageService;
 import com.venus.finance.util.CodeUtil;
 import com.venus.finance.util.FileUtil;
 import com.venus.finance.util.InitUtil;
@@ -41,6 +47,7 @@ public class IndexController {
 	}
 	@RequestMapping(value = "/suggest.html", method = RequestMethod.GET)
 	public String suggest(HttpServletRequest request,ModelMap model) {
+		futuresMessageService.findAll();
 		return "suggest";
 	}
 	@RequestMapping(value = "/contact.html", method = RequestMethod.GET)
@@ -78,9 +85,21 @@ public class IndexController {
 	public String changeFuturesJys(HttpServletRequest request,ModelMap model) {
 		String jys = request.getParameter("jys");
 		CodeUtil codeUtil = new CodeUtil();
-		List<FuturesQuoteVO> jysCodeList = null;
+		List<FuturesQuoteVO>  jysCodeList = null;
+		ServletContext application = request.getServletContext();
+		FixApplication fixApplicaton = (FixApplication)application.getAttribute("fixApplication");
+		ConcurrentHashMap<String, FuturesQuoteVO> map = fixApplicaton.getFuturesQuoteMap();
 		try {
 			jysCodeList = codeUtil.getCodeByJys(jys);
+			for(FuturesQuoteVO quoteVO:jysCodeList){
+				if(null!=map.get(quoteVO.getInstrumentID())){
+					quoteVO.setAskPrice1(map.get(quoteVO.getInstrumentID()).getAskPrice1());
+					quoteVO.setAskVolume1(map.get(quoteVO.getInstrumentID()).getAskVolume1());
+					quoteVO.setBidPrice1(map.get(quoteVO.getInstrumentID()).getBidPrice1());
+					quoteVO.setBidVolume1(map.get(quoteVO.getInstrumentID()).getBidVolume1());
+				}
+				
+			}
 			model.addAttribute("jysCodeList", jysCodeList);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -92,7 +111,6 @@ public class IndexController {
 	@RequestMapping(value = "/findFuturesCodeIndex.html",produces={"text/html;charset=UTF-8;","application/json;"})
 	@ResponseBody
 	public String findFuturesCodeIndex(HttpServletRequest request,ModelMap model) {
-		System.out.println("-------中文----------");
 		String code = request.getParameter("code");
 		CodeUtil codeUtil = new CodeUtil();
 		MathUtil mathUtil = new MathUtil();
@@ -154,5 +172,8 @@ public class IndexController {
         String json = gson.toJson(futuresPriceVO);
 		return json;
 	}
+	
+	@Resource(name="futuresMessageService")
+    private IFuturesMessageService futuresMessageService;
 	
 }

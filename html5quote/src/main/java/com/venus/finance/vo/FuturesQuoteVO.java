@@ -1,6 +1,6 @@
 package com.venus.finance.vo;
 
-public class FuturesQuoteVO {
+public class FuturesQuoteVO{
 	private String instrumentID;
 	private Double askPrice1=0D;
 	private Double bidPrice1=0D;
@@ -18,6 +18,9 @@ public class FuturesQuoteVO {
 	private String name;
 	private Long date;
 	private Double ccvolume=0D;
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

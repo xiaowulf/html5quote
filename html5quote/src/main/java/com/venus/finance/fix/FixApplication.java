@@ -47,20 +47,43 @@ import quickfix.field.TimeInForce;
 import quickfix.field.TransactTime;
 
 import javax.swing.*;
+
+import com.venus.finance.vo.FuturesQuoteVO;
+
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class FixApplication implements Application{
 
 	private ExecutorService exec;
+	private ConcurrentLinkedQueue<FuturesQuoteVO> futuresQuoteQueue;
+	private ConcurrentHashMap<String, FuturesQuoteVO> futuresQuoteMap;
+	
+	public ConcurrentLinkedQueue<FuturesQuoteVO> getFuturesQuoteQueue() {
+		return futuresQuoteQueue;
+	}
+	public void setFuturesQuoteQueue(ConcurrentLinkedQueue<FuturesQuoteVO> futuresQuoteQueue) {
+		this.futuresQuoteQueue = futuresQuoteQueue;
+	}
+	
+	public ConcurrentHashMap<String, FuturesQuoteVO> getFuturesQuoteMap() {
+		return futuresQuoteMap;
+	}
+	public void setFuturesQuoteMap(ConcurrentHashMap<String, FuturesQuoteVO> futuresQuoteMap) {
+		this.futuresQuoteMap = futuresQuoteMap;
+	}
 	public FixApplication()
 	{
 		exec = Executors.newCachedThreadPool();
+		futuresQuoteQueue = new ConcurrentLinkedQueue<FuturesQuoteVO>();
+		futuresQuoteMap= new ConcurrentHashMap<String, FuturesQuoteVO>();
 	}
 	@Override
 	public void fromAdmin(Message arg0, SessionID arg1)
@@ -91,7 +114,7 @@ public class FixApplication implements Application{
 	@Override
 	public void fromApp(Message message, SessionID sessionID)
 			throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, UnsupportedMessageType {
-		System.out.println("--3--"+message);
+		//System.out.println("--3--"+message);
 		exec.execute(new MessageProcessor(message,sessionID));
 	}
 	public class MessageProcessor implements Runnable {
@@ -104,19 +127,21 @@ public class FixApplication implements Application{
         }
         public void run() {
             try {
-            	FuturesQuote quote = new FuturesQuote();
+            	FuturesQuoteVO quote = new FuturesQuoteVO();
             	quote.setCcvolume(Double.parseDouble(message.getField(new StringField(9001)).getValue()));
             	quote.setVolume(Double.parseDouble(message.getField(new StringField(9000)).getValue()));
-            	quote.setHighprice(Double.parseDouble(message.getField(new StringField(8054)).getValue()));
-            	quote.setLowprice(Double.parseDouble(message.getField(new StringField(8055)).getValue()));
-            	quote.setCloseprice(Double.parseDouble(message.getField(new StringField(8012)).getValue()));
-            	quote.setOpenprice(Double.parseDouble(message.getField(new StringField(8053)).getValue()));
-            	quote.setCode(message.getField(new StringField(55)).getValue());
-            	quote.setJsjprice(Double.parseDouble(message.getField(new StringField(8058)).getValue()));
-            	quote.setBuy1(Double.parseDouble(message.getField(new StringField(9002)).getValue()));
-            	quote.setSell1(Double.parseDouble(message.getField(new StringField(9003)).getValue()));
-            	quote.setBuy1qty(Double.parseDouble(message.getField(new StringField(9004)).getValue()));  
-            	quote.setSell1qty(Double.parseDouble(message.getField(new StringField(9005)).getValue()));  
+            	quote.setHighestPrice(Double.parseDouble(message.getField(new StringField(8054)).getValue()));
+            	quote.setLowestPrice(Double.parseDouble(message.getField(new StringField(8055)).getValue()));
+            	quote.setClosePrice(Double.parseDouble(message.getField(new StringField(8012)).getValue()));
+            	quote.setOpenInterest(Double.parseDouble(message.getField(new StringField(8053)).getValue()));
+            	quote.setInstrumentID(message.getField(new StringField(55)).getValue());
+            	quote.setSettlementPrice(Double.parseDouble(message.getField(new StringField(8058)).getValue()));
+            	quote.setBidPrice1(Double.parseDouble(message.getField(new StringField(9002)).getValue()));
+            	quote.setAskPrice1(Double.parseDouble(message.getField(new StringField(9003)).getValue()));
+            	quote.setBidVolume1(Double.parseDouble(message.getField(new StringField(9004)).getValue()));  
+            	quote.setAskVolume1(Double.parseDouble(message.getField(new StringField(9005)).getValue()));
+            	futuresQuoteMap.put(quote.getInstrumentID(), quote);
+            	futuresQuoteQueue.add(quote);
             } catch (Exception e) {
                 e.printStackTrace();
             }
