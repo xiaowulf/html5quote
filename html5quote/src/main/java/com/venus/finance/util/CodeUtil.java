@@ -10,7 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.venus.finance.vo.AtrVO;
 import com.venus.finance.vo.FuturesQuoteVO;
+import com.venus.finance.vo.Macd;
+import com.venus.finance.vo.MacdVO;
 import com.venus.finance.vo.MaxMinPriceVO;
 
 public class CodeUtil {
@@ -103,6 +106,93 @@ public class CodeUtil {
 		}
 		return null;
 	}
+	
+	public MacdVO getMacdVOByCodeAndDate(String code, String date) {
+		InitUtil initUtil = new InitUtil();
+		FileUtil fileUtil = new FileUtil();
+		List<FuturesQuoteVO> list = new ArrayList<FuturesQuoteVO>();
+		MacdVO macdVO = new MacdVO();
+		String dataFolder = null;
+		try {
+			dataFolder = initUtil.getDayDataFolder();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (null != dataFolder) {
+			File day5DataFile = new File(dataFolder + "/macd5-" + date + ".txt");
+			List<Macd> futures5DaysQuoteList = fileUtil.readFileMacdVOList(day5DataFile);
+			
+			File day10DataFile = new File(dataFolder + "/macd10-" + date + ".txt");
+			List<Macd> futures10DaysQuoteList = fileUtil.readFileMacdVOList(day10DataFile);
+			
+			File day20DataFile = new File(dataFolder + "/macd20-" + date + ".txt");
+			List<Macd> futures20DaysQuoteList = fileUtil.readFileMacdVOList(day20DataFile);
+			
+			File day40DataFile = new File(dataFolder + "/macd40-" + date + ".txt");
+			List<Macd> futures40DaysQuoteList = fileUtil.readFileMacdVOList(day40DataFile);
+			
+			File day60DataFile = new File(dataFolder + "/macd60-" + date + ".txt");
+			List<Macd> futures60DaysQuoteList = fileUtil.readFileMacdVOList(day60DataFile);
+			
+			for (Macd macd : futures5DaysQuoteList) {
+				if (macd.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+					macdVO.setMacd5(macd.getValue());
+					break;
+				}
+			}
+			for (Macd macd : futures10DaysQuoteList) {
+				if (macd.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+					macdVO.setMacd10(macd.getValue());
+					break;
+				}
+			}
+			for (Macd macd : futures20DaysQuoteList) {
+				if (macd.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+					macdVO.setMacd20(macd.getValue());
+					break;
+				}
+			}
+			for (Macd macd : futures40DaysQuoteList) {
+				if (macd.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+					macdVO.setMacd40(macd.getValue());
+					break;
+				}
+			}
+			for (Macd macd : futures60DaysQuoteList) {
+				if (macd.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+					macdVO.setMacd60(macd.getValue());
+					break;
+				}
+			}
+		}
+		return macdVO;
+	}
+	
+	
+	public AtrVO getAtrByCodeAndDate(String code, String date) {
+		InitUtil initUtil = new InitUtil();
+		FileUtil fileUtil = new FileUtil();
+		List<FuturesQuoteVO> list = new ArrayList<FuturesQuoteVO>();
+		String dataFolder = null;
+		try {
+			dataFolder = initUtil.getDayDataFolder();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (null != dataFolder) {
+			File dayDataFile = new File(dataFolder + "/atr" + date + ".txt");
+			List<AtrVO> futuresDayQuoteList = fileUtil.readFileToAtrVOList(dayDataFile);
+			for (AtrVO atrVO : futuresDayQuoteList) {
+				if (atrVO.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+					//futuresQuoteVO.setDate(Long.parseLong(date));
+					//list.add(futuresQuoteVO);
+					return atrVO;
+				}
+			}
+		}
+		return null;
+	}
+	
 
 	public List<FuturesQuoteVO> getDayQuoteByCodeAndDate(List<String> date30List, String code) {
 		InitUtil initUtil = new InitUtil();
@@ -121,7 +211,55 @@ public class CodeUtil {
 				for (FuturesQuoteVO futuresQuoteVO : futuresDayQuoteList) {
 					if (futuresQuoteVO.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
 						futuresQuoteVO.setDate(Long.parseLong(date));
+						
+						
+						File day5DataFile = new File(dataFolder + "/macd5-" + date + ".txt");
+						List<Macd> futures5DaysQuoteList = fileUtil.readFileMacdVOList(day5DataFile);
+						
+						File day10DataFile = new File(dataFolder + "/macd10-" + date + ".txt");
+						List<Macd> futures10DaysQuoteList = fileUtil.readFileMacdVOList(day10DataFile);
+						
+						File day20DataFile = new File(dataFolder + "/macd20-" + date + ".txt");
+						List<Macd> futures20DaysQuoteList = fileUtil.readFileMacdVOList(day20DataFile);
+						
+						File day40DataFile = new File(dataFolder + "/macd40-" + date + ".txt");
+						List<Macd> futures40DaysQuoteList = fileUtil.readFileMacdVOList(day40DataFile);
+						
+						File day60DataFile = new File(dataFolder + "/macd60-" + date + ".txt");
+						List<Macd> futures60DaysQuoteList = fileUtil.readFileMacdVOList(day60DataFile);
+						
+						for (Macd macd : futures5DaysQuoteList) {
+							if (macd.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+								futuresQuoteVO.getMacdVO().setMacd5(macd.getValue());
+								break;
+							}
+						}
+						for (Macd macd : futures10DaysQuoteList) {
+							if (macd.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+								futuresQuoteVO.getMacdVO().setMacd10(macd.getValue());
+								break;
+							}
+						}
+						for (Macd macd : futures20DaysQuoteList) {
+							if (macd.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+								futuresQuoteVO.getMacdVO().setMacd20(macd.getValue());
+								break;
+							}
+						}
+						for (Macd macd : futures40DaysQuoteList) {
+							if (macd.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+								futuresQuoteVO.getMacdVO().setMacd40(macd.getValue());
+								break;
+							}
+						}
+						for (Macd macd : futures60DaysQuoteList) {
+							if (macd.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+								futuresQuoteVO.getMacdVO().setMacd60(macd.getValue());
+								break;
+							}
+						}
 						list.add(futuresQuoteVO);
+						break;
 					}
 				}
 			}

@@ -1,5 +1,6 @@
 package com.venus.finance.vo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FuturesPriceVO {
@@ -9,6 +10,9 @@ public class FuturesPriceVO {
 	private List<Double> settlePriceList;
 	private List<Double> settlePriceCurList;
 	private List<CandleVO> candlePriceList;
+	private List<MacdVO> macdList;
+	private List<Double> ccVolumeList;
+	private List<Double> volumeList;
 	public List<Long> getDateRtnList() {
 		return dateRtnList;
 	}
@@ -44,6 +48,24 @@ public class FuturesPriceVO {
 	}
 	public void setCandlePriceList(List<CandleVO> candlePriceList) {
 		this.candlePriceList = candlePriceList;
+	}
+	public List<MacdVO> getMacdList() {
+		return macdList;
+	}
+	public void setMacdList(List<MacdVO> macdList) {
+		this.macdList = macdList;
+	}
+	public List<Double> getCcVolumeList() {
+		return ccVolumeList;
+	}
+	public void setCcVolumeList(List<Double> ccVolumeList) {
+		this.ccVolumeList = ccVolumeList;
+	}
+	public List<Double> getVolumeList() {
+		return volumeList;
+	}
+	public void setVolumeList(List<Double> volumeList) {
+		this.volumeList = volumeList;
 	}
 
 	

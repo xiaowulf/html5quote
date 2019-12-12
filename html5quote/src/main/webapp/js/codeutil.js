@@ -99,7 +99,7 @@ function getNameByCode(code) {
 	}else if(code=="WH"){
 		return "强麦";
 	}else if(code=="PM"){
-		return "国债10";
+		return "普麦";
 	}else if(code=="T"){
 		return "普麦";
 	}else if(code=="CF"){

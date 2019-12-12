@@ -19,7 +19,7 @@ public class FuturesQuoteVO{
 	private Long date;
 	private Double ccvolume=0D;
 	private Double preSettlementPrice=0D;
-	
+	private MacdVO macdVO;
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -152,4 +152,11 @@ public class FuturesQuoteVO{
 	public void setPreSettlementPrice(Double preSettlementPrice) {
 		this.preSettlementPrice = preSettlementPrice;
 	}
+	public MacdVO getMacdVO() {
+		return macdVO;
+	}
+	public void setMacdVO(MacdVO macdVO) {
+		this.macdVO = macdVO;
+	}
+	
 }

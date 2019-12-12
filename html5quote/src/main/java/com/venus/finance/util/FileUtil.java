@@ -11,7 +11,10 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 
 import com.venus.finance.fix.FuturesQuote;
+import com.venus.finance.vo.AtrVO;
 import com.venus.finance.vo.FuturesQuoteVO;
+import com.venus.finance.vo.Macd;
+import com.venus.finance.vo.MacdVO;
 import com.venus.finance.vo.MaxMinPriceVO;
 import com.venus.finance.vo.SuggestVO;
 
@@ -65,12 +68,13 @@ public class FileUtil {
 					futuresQuoteVO.setSettlementPrice(Double.parseDouble(codeArray[5]));
 					futuresQuoteVO.setVolume(Double.parseDouble(codeArray[6]));
 					futuresQuoteVO.setCcvolume(Double.parseDouble(codeArray[7]));
+					MacdVO macdVO = new MacdVO();
 					if(codeArray.length>=9&&null!=codeArray[9]){
 						futuresQuoteVO.setPreSettlementPrice(Double.parseDouble(codeArray[5])-Double.parseDouble(codeArray[9]));
 					}else{
 						futuresQuoteVO.setPreSettlementPrice(0D);
 					}
-					
+					futuresQuoteVO.setMacdVO(macdVO);
 					rList.add(futuresQuoteVO);
 				}
 			}
@@ -94,6 +98,46 @@ public class FileUtil {
 					maxMinPriceVO.setMaxValue(Double.parseDouble(codeArray[1]));
 					maxMinPriceVO.setMinValue(Double.parseDouble(codeArray[2]));
 					rList.add(maxMinPriceVO);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return rList;
+	}
+	
+	public List<Macd> readFileMacdVOList(File file) {
+		List<Macd> rList = new ArrayList<Macd>();
+		try {
+			List<String> list = FileUtils.readLines(file, "UTF-8");
+			for (String quoteStr : list) {
+				String[] codeArray = quoteStr.split(",");
+				if (codeArray.length >= 2) {
+					Macd macd = new Macd();
+					macd.setInstrumentID(codeArray[0]);
+					macd.setValue(Double.parseDouble(codeArray[1]));
+					rList.add(macd);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return rList;
+	}
+	
+	
+	public List<AtrVO> readFileToAtrVOList(File file) {
+		List<AtrVO> rList = new ArrayList<AtrVO>();
+		CodeUtil codeUtil = new CodeUtil();
+		try {
+			List<String> list = FileUtils.readLines(file, "UTF-8");
+			for (String quoteStr : list) {
+				String[] codeArray = quoteStr.split(",");
+				if (codeArray.length >= 2) {
+					AtrVO atrVO = new AtrVO();
+					atrVO.setInstrumentID(codeArray[0]);
+					atrVO.setAtr(Double.parseDouble(codeArray[1]));
+					rList.add(atrVO);
 				}
 			}
 		} catch (IOException e) {

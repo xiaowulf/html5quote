@@ -50,7 +50,7 @@
 					    		<spring:message code="jys_cffex"/>
 					    	</div>
 					    	<div class="jysButton1  col-xs-6 col-sm-6 col-md-2 col-lg-2" id="mainrightBottomNavMore">
-					    		<select class="form-control" id="jyscodeid"></select>
+					    		<select class="form-control" id="jyscodeid" onchange="getCodeDetail()"></select>
 					    	</div>
 					    	<div class="jysButton1  col-xs-6 col-sm-6 col-md-2 col-lg-2" id="mainrightBottomNavMore">
 					    		<input class="btn btn-info" type="button" value="<spring:message code="system_query_title"/>" onclick="getCodeDetail()">
@@ -96,21 +96,21 @@
 						    	</tr>
 						    		 	<tr>
 						    		 		<td>5日均值: </td>
-						    		 		<td></td>
+						    		 		<td><label id="macd5ID"></label></td>
+						    		 		<td>10日均值: </td>
+						    		 		<td><label id="macd10ID"></label></td>
+						    		 	</tr>
+						    		 	<tr>
 						    		 		<td>20日均值: </td>
-						    		 		<td></td>
-						    		 	</tr>
-						    		 	<tr>
+						    		 		<td><label id="macd20ID"></label></td>
 						    		 		<td>40日均值: </td>
-						    		 		<td></td>
-						    		 		<td>60日均值: </td>
-						    		 		<td></td>
+						    		 		<td><label id="macd40ID"></label></td>
 						    		 	</tr>
 						    		 	<tr>
+						    		 		<td>60日均值: </td>
+						    		 		<td><label id="macd60ID"></label></td>
 						    		 		<td>20日ATR: </td>
-						    		 		<td></td>
-						    		 		<td>20日RSI: </td>
-						    		 		<td></td>
+						    		 		<td><label id="atrID"></label></td>
 						    		 	</tr>
 						    		 </table>
 					</div>
@@ -126,10 +126,13 @@
 				    		<div id="chart1" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart2" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
-				    		<!-- 
+				    		
 				    		<div id="chart4" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		
 				    		<div id="chart5" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		
 				    		<div id="chart6" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		<!-- 
 				    		<div id="chart7" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart8" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart9" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
