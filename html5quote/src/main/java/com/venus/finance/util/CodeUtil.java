@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.venus.finance.vo.FuturesQuoteVO;
+import com.venus.finance.vo.MaxMinPriceVO;
 
 public class CodeUtil {
 	public List<String> getCodeList() {
@@ -73,6 +74,30 @@ public class CodeUtil {
 					//futuresQuoteVO.setDate(Long.parseLong(date));
 					//list.add(futuresQuoteVO);
 					return futuresQuoteVO;
+				}
+			}
+		}
+		return null;
+	}
+	
+	public MaxMinPriceVO getMaxMinPriceVOByCodeAndDate(String code, String date) {
+		InitUtil initUtil = new InitUtil();
+		FileUtil fileUtil = new FileUtil();
+		List<FuturesQuoteVO> list = new ArrayList<FuturesQuoteVO>();
+		String dataFolder = null;
+		try {
+			dataFolder = initUtil.getDayDataFolder();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (null != dataFolder) {
+			File dayDataFile = new File(dataFolder + "/" + date + "day20maxmin.txt");
+			List<MaxMinPriceVO> futuresDayQuoteList = fileUtil.readFileToMaxMinPriceVOList(dayDataFile);
+			for (MaxMinPriceVO maxMinPriceVO : futuresDayQuoteList) {
+				if (maxMinPriceVO.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
+					//futuresQuoteVO.setDate(Long.parseLong(date));
+					//list.add(futuresQuoteVO);
+					return maxMinPriceVO;
 				}
 			}
 		}

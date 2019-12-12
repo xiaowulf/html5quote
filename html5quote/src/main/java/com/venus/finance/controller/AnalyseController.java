@@ -28,6 +28,7 @@ import com.venus.finance.vo.CandleVO;
 import com.venus.finance.vo.FuturesPriceVO;
 import com.venus.finance.vo.FuturesQuoteVO;
 import com.venus.finance.vo.FuturesStatistics;
+import com.venus.finance.vo.MaxMinPriceVO;
 
 @Controller
 public class AnalyseController {
@@ -54,7 +55,13 @@ public class AnalyseController {
 		if(null!=futuresQuoteVO) {
 			futuresStatistics.setFuturesQuoteVO(futuresQuoteVO);
 		}else {
-			
+			futuresStatistics.setFuturesQuoteVO(new FuturesQuoteVO());
+		}
+		MaxMinPriceVO maxMinPriceVO = codeUtil.getMaxMinPriceVOByCodeAndDate(code, todayStr);
+		if(null!=maxMinPriceVO) {
+			futuresStatistics.setMaxMinPriceVO(maxMinPriceVO);
+		}else {
+			futuresStatistics.setMaxMinPriceVO(new MaxMinPriceVO());
 		}
 		futuresStatistics.setInstrumentID(code);
 		futuresStatistics.setTodayStr(todayStr);

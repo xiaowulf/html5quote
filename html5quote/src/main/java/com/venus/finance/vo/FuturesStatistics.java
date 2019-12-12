@@ -6,6 +6,7 @@ public class FuturesStatistics {
 	private String instrumentID;
 	private String todayStr;
 	private FuturesQuoteVO futuresQuoteVO;
+	private MaxMinPriceVO maxMinPriceVO;
 	public String getInstrumentID() {
 		return instrumentID;
 	}
@@ -23,6 +24,12 @@ public class FuturesStatistics {
 	}
 	public void setFuturesQuoteVO(FuturesQuoteVO futuresQuoteVO) {
 		this.futuresQuoteVO = futuresQuoteVO;
+	}
+	public MaxMinPriceVO getMaxMinPriceVO() {
+		return maxMinPriceVO;
+	}
+	public void setMaxMinPriceVO(MaxMinPriceVO maxMinPriceVO) {
+		this.maxMinPriceVO = maxMinPriceVO;
 	}
 	
 }

@@ -28,12 +28,12 @@
 <body style="background-color: #ffffff;">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+			<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
 				<div class="mainleft1">
 					<jsp:include page="navbar.jsp"></jsp:include>
 				</div>
 			</div>
-			<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+			<div class="col-xs-10 col-sm-10 col-md-11 col-lg-11">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="mainrightBottomNav">
@@ -73,21 +73,27 @@
 						    	<tr>
 						    		 <td>开盘价: </td>
 						    		 <td><label id="openpriceID"></label></td>
-						    		 <td>最高价: </td>
-						    		 <td><label id="highestpriceID"></label></td>
-						    	</tr>
-						    	<tr>
-						    		 <td>最低价: </td>
-						    		 <td><label id="lowestpriceID"></label></td>
 						    		 <td>收盘价: </td>
 						    		 <td><label id="closepriceID"></label></td>
 						    	</tr>
-						    		 	<tr>
-						    		 		<td>结算价: </td>
-						    		 		<td></td>
-						    		 		<td>昨结价: </td>
-						    		 		<td></td>
-						    		 	</tr>
+						    	<tr>
+						    		 <td>最高价: </td>
+						    		 <td><label id="highestpriceID"></label></td>
+						    		 <td>最低价: </td>
+						    		 <td><label id="lowestpriceID"></label></td>
+						    	</tr>
+						    	<tr>
+						    		 <td>20日最高价: </td>
+						    		 <td><label id="highest20priceID"></label></td>
+						    		 <td>20日最低价: </td>
+						    		 <td><label id="lowest20priceID"></label></td>
+						    	</tr>
+						    	<tr>
+						    		 <td>结算价: </td>
+						    		 <td><label id="settlepriceID"></label></td>
+						    		 <td>昨结价: </td>
+						    		 <td><label id="presettlepriceID"></label></td>
+						    	</tr>
 						    		 	<tr>
 						    		 		<td>5日均值: </td>
 						    		 		<td></td>
@@ -98,12 +104,6 @@
 						    		 		<td>40日均值: </td>
 						    		 		<td></td>
 						    		 		<td>60日均值: </td>
-						    		 		<td></td>
-						    		 	</tr>
-						    		 	<tr>
-						    		 		<td>20日最高: </td>
-						    		 		<td></td>
-						    		 		<td>20日最低: </td>
 						    		 		<td></td>
 						    		 	</tr>
 						    		 	<tr>

@@ -319,7 +319,11 @@ function getCodeDetail(code){
 			$('#openpriceID').text(data.futuresQuoteVO.openPrice);
 			$('#highestpriceID').text(data.futuresQuoteVO.highestPrice);
 			$('#lowestpriceID').text(data.futuresQuoteVO.lowestPrice);
+			$('#highest20priceID').text(data.maxMinPriceVO.maxValue);
+			$('#lowest20priceID').text(data.maxMinPriceVO.minValue);
 			$('#closepriceID').text(data.futuresQuoteVO.closePrice);
+			$('#settlepriceID').text(data.futuresQuoteVO.settlementPrice);
+			$('#presettlepriceID').text(data.futuresQuoteVO.preSettlementPrice);
 			
 		}
 	});

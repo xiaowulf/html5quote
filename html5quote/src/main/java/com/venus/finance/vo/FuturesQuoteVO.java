@@ -18,8 +18,7 @@ public class FuturesQuoteVO{
 	private String name;
 	private Long date;
 	private Double ccvolume=0D;
-	
-	
+	private Double preSettlementPrice=0D;
 	
 	@Override
 	public int hashCode() {
@@ -147,6 +146,10 @@ public class FuturesQuoteVO{
 	public void setDate(Long date) {
 		this.date = date;
 	}
-	
-	
+	public Double getPreSettlementPrice() {
+		return preSettlementPrice;
+	}
+	public void setPreSettlementPrice(Double preSettlementPrice) {
+		this.preSettlementPrice = preSettlementPrice;
+	}
 }

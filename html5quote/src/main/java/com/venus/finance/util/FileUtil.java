@@ -12,6 +12,7 @@ import org.apache.commons.io.FileUtils;
 
 import com.venus.finance.fix.FuturesQuote;
 import com.venus.finance.vo.FuturesQuoteVO;
+import com.venus.finance.vo.MaxMinPriceVO;
 import com.venus.finance.vo.SuggestVO;
 
 public class FileUtil {
@@ -64,6 +65,12 @@ public class FileUtil {
 					futuresQuoteVO.setSettlementPrice(Double.parseDouble(codeArray[5]));
 					futuresQuoteVO.setVolume(Double.parseDouble(codeArray[6]));
 					futuresQuoteVO.setCcvolume(Double.parseDouble(codeArray[7]));
+					if(codeArray.length>=9&&null!=codeArray[9]){
+						futuresQuoteVO.setPreSettlementPrice(Double.parseDouble(codeArray[5])-Double.parseDouble(codeArray[9]));
+					}else{
+						futuresQuoteVO.setPreSettlementPrice(0D);
+					}
+					
 					rList.add(futuresQuoteVO);
 				}
 			}
@@ -72,4 +79,27 @@ public class FileUtil {
 		}
 		return rList;
 	}
+	
+	
+	public List<MaxMinPriceVO> readFileToMaxMinPriceVOList(File file) {
+		List<MaxMinPriceVO> rList = new ArrayList<MaxMinPriceVO>();
+		CodeUtil codeUtil = new CodeUtil();
+		try {
+			List<String> list = FileUtils.readLines(file, "UTF-8");
+			for (String quoteStr : list) {
+				String[] codeArray = quoteStr.split(",");
+				if (codeArray.length >= 3) {
+					MaxMinPriceVO maxMinPriceVO = new MaxMinPriceVO();
+					maxMinPriceVO.setInstrumentID(codeArray[0]);
+					maxMinPriceVO.setMaxValue(Double.parseDouble(codeArray[1]));
+					maxMinPriceVO.setMinValue(Double.parseDouble(codeArray[2]));
+					rList.add(maxMinPriceVO);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return rList;
+	}
+	
 }
