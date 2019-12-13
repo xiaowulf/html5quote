@@ -19,6 +19,7 @@
 <link type="text/css" rel="stylesheet" href="./css/main.css" />
 <link type="text/css" rel="stylesheet" href="./css/bootstrap.css" />
 
+
 <link type="text/css" rel="stylesheet" href="./css/font-awesome.min.css" />
 <!--include plugin css-->
 <link type="text/css" rel="stylesheet" href="./js/jquery-rvnm.css" />
@@ -45,7 +46,8 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<div class="row" style="margin-top:50px;">
+				<div class="container-fluid">
+					<div class="row">
 						<div class="mainrightMain" id="style-3">
 						
 						</div>
@@ -82,48 +84,17 @@
 			    		</div>
 					</div>
 				</div>
+			</div>
 		</div>
 	</div>
-	<nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="navbar-header" style="float:left;margin-left:1px;">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#TaoistsNavBar" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="TaoistsNavBar">
-                <jsp:include page="mnavbar.jsp"></jsp:include>
-            </div>
-        </div>
-    </nav>
+
+
+
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/index.js" type="text/javascript" charset="UTF-8"></script>
+	<!--include plugin js-->
 	<script type="text/javascript" src="./js/jquery-rvnm.js"></script>
-	<!--  
-	<script> 
-    function browserRedirect() {
-    	
-	    var sUserAgent = navigator.userAgent.toLowerCase();
-	    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-	    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-	    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-	    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-	    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-	    var bIsAndroid = sUserAgent.match(/android/i) == "android";
-	    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-	    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-	    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM){
-	        window.location.href="mindex.html";
-	    } 
-	    
-	}
-	browserRedirect(); 
-	</script>
-	-->
+	
 </body>
 </html>

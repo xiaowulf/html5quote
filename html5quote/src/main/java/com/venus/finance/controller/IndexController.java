@@ -46,6 +46,10 @@ public class IndexController {
 	public String home(HttpServletRequest request,ModelMap model) {
 		return "index";
 	}
+	@RequestMapping(value = "/mindex.html", method = RequestMethod.GET)
+	public String mhome(HttpServletRequest request,ModelMap model) {
+		return "mindex";
+	}
 	@RequestMapping(value = "/suggest.html", method = RequestMethod.GET)
 	public String suggest(HttpServletRequest request,ModelMap model) {
 		futuresMessageService.findAll();

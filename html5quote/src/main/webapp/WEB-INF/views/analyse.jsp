@@ -26,16 +26,27 @@
 </head>
 
 <body style="background-color: #ffffff;">
+	<nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header" style="float:left;margin-left:1px;">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#TaoistsNavBar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="TaoistsNavBar">
+                <jsp:include page="mnavbar.jsp"></jsp:include>
+            </div>
+        </div>
+    </nav>
+
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
-				<div class="mainleft1">
-					<jsp:include page="navbar.jsp"></jsp:include>
-				</div>
-			</div>
-			<div class="col-xs-10 col-sm-10 col-md-11 col-lg-11">
-				<div class="container-fluid">
-					<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="row" style="margin-top:50px;">
 						<div class="mainrightBottomNav">
 				    		<div class="mainrightBottomNav1 col-xs-6 col-sm-6 col-md-2 col-lg-2" onclick="getJys('shfe')" id="mainrightBottomNav1">
 					    		<spring:message code="jys_shfe"/>
@@ -159,9 +170,7 @@
 					
 				</div>
 			</div>
-		</div>
 	</div>
-
 
 
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
