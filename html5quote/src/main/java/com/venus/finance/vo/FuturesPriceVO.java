@@ -9,6 +9,13 @@ public class FuturesPriceVO {
 	private List<Double> closePriceList;
 	private List<Double> settlePriceList;
 	private List<Double> settlePriceCurList;
+	private List<Double> closePriceCurList;
+	private List<Double> macd5CurList;
+	private List<Double> macd10CurList;
+	private List<Double> macd20CurList;
+	private List<Double> macd40CurList;
+	private List<Double> macd60CurList;
+	private List<Double> vdivccList;
 	private List<CandleVO> candlePriceList;
 	private List<MacdVO> macdList;
 	private List<Double> ccVolumeList;
@@ -67,7 +74,46 @@ public class FuturesPriceVO {
 	public void setVolumeList(List<Double> volumeList) {
 		this.volumeList = volumeList;
 	}
-
-	
-	
+	public List<Double> getClosePriceCurList() {
+		return closePriceCurList;
+	}
+	public void setClosePriceCurList(List<Double> closePriceCurList) {
+		this.closePriceCurList = closePriceCurList;
+	}
+	public List<Double> getMacd5CurList() {
+		return macd5CurList;
+	}
+	public void setMacd5CurList(List<Double> macd5CurList) {
+		this.macd5CurList = macd5CurList;
+	}
+	public List<Double> getMacd20CurList() {
+		return macd20CurList;
+	}
+	public void setMacd20CurList(List<Double> macd20CurList) {
+		this.macd20CurList = macd20CurList;
+	}
+	public List<Double> getMacd10CurList() {
+		return macd10CurList;
+	}
+	public void setMacd10CurList(List<Double> macd10CurList) {
+		this.macd10CurList = macd10CurList;
+	}
+	public List<Double> getMacd40CurList() {
+		return macd40CurList;
+	}
+	public void setMacd40CurList(List<Double> macd40CurList) {
+		this.macd40CurList = macd40CurList;
+	}
+	public List<Double> getMacd60CurList() {
+		return macd60CurList;
+	}
+	public void setMacd60CurList(List<Double> macd60CurList) {
+		this.macd60CurList = macd60CurList;
+	}
+	public List<Double> getVdivccList() {
+		return vdivccList;
+	}
+	public void setVdivccList(List<Double> vdivccList) {
+		this.vdivccList = vdivccList;
+	}
 }

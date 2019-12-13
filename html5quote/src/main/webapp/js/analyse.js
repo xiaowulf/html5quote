@@ -389,7 +389,7 @@ var option_settleCur = {
 			trigger : 'axis'
 		},
 		legend : {
-			data : [ '结算价格拟合' ]
+			data : [ '收盘拟合', '结算拟合' ]
 		},
 		toolbox : {
 			show : true,
@@ -427,7 +427,29 @@ var option_settleCur = {
 			scale : true
 		} ],
 		series : [{
-			name : '结算价格拟合',
+			name : '收盘拟合',
+			type : 'line',
+			data : [],
+			symbol:'none',
+			smooth:0.8,
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		},
+		{
+			name : '结算拟合',
 			type : 'line',
 			data : [],
 			symbol:'none',
@@ -448,6 +470,310 @@ var option_settleCur = {
 				} ]
 			}
 		} ]
+	};
+
+var option_vdivcc = {
+		title : {
+			text : '期货价格',
+			textStyle : {
+				fontSize : 13
+			}
+		},
+		tooltip : {
+			trigger : 'axis'
+		},
+		legend : {
+			data : [ '成交持仓比' ]
+		},
+		toolbox : {
+			show : true,
+			feature : {
+				mark : {
+					show : true
+				},
+				dataView : {
+					show : false,
+					readOnly : false
+				},
+				magicType : {
+					show : false,
+					type : [ 'line', 'bar' ]
+				},
+				restore : {
+					show : false
+				},
+				saveAsImage : {
+					show : false
+				}
+			}
+		},
+		calculable : true,
+		xAxis : [ {
+			type : 'category',
+			boundaryGap : false,
+			data : []
+		} ],
+		yAxis : [ {
+			type : 'value',
+			axisLabel : {
+				formatter : '{value}'
+			},
+			scale : true
+		} ],
+		series : [{
+			name : '成交持仓比',
+			type : 'line',
+			data : [],
+			symbol:'none',
+			smooth:0.8,
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		}]
+	};
+var option_codepercent = {
+		title : {
+			text : '成交占比',
+			textStyle : {
+				fontSize : 13
+			}
+		},
+		tooltip : {
+			trigger : 'axis'
+		},
+		legend : {
+			data : [ '成交占比' ]
+		},
+		toolbox : {
+			show : true,
+			feature : {
+				mark : {
+					show : true
+				},
+				dataView : {
+					show : false,
+					readOnly : false
+				},
+				magicType : {
+					show : false,
+					type : [ 'line', 'bar' ]
+				},
+				restore : {
+					show : false
+				},
+				saveAsImage : {
+					show : false
+				}
+			}
+		},
+		calculable : true,
+		xAxis : [ {
+			type : 'category',
+			boundaryGap : false,
+			data : []
+		} ],
+		yAxis : [ {
+			type : 'value',
+			axisLabel : {
+				formatter : '{value}'
+			},
+			scale : true
+		} ],
+		series : [{
+			name : '成交占比',
+			type : 'line',
+			data : [],
+			symbol:'none',
+			smooth:0.8,
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		}]
+	};
+
+
+var option_macdCur = {
+		title : {
+			text : '期货价格',
+			textStyle : {
+				fontSize : 13
+			}
+		},
+		tooltip : {
+			trigger : 'axis'
+		},
+		legend : {
+			data : [ '5日', '10日', '20日', '40日', '60日' ]
+		},
+		toolbox : {
+			show : true,
+			feature : {
+				mark : {
+					show : true
+				},
+				dataView : {
+					show : false,
+					readOnly : false
+				},
+				magicType : {
+					show : false,
+					type : [ 'line', 'bar' ]
+				},
+				restore : {
+					show : false
+				},
+				saveAsImage : {
+					show : false
+				}
+			}
+		},
+		calculable : true,
+		xAxis : [ {
+			type : 'category',
+			boundaryGap : false,
+			data : []
+		} ],
+		yAxis : [ {
+			type : 'value',
+			axisLabel : {
+				formatter : '{value}'
+			},
+			scale : true
+		} ],
+		series : [{
+			name : '5日',
+			type : 'line',
+			data : [],
+			symbol:'none',
+			smooth:0.8,
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		},
+		{
+			name : '10日',
+			type : 'line',
+			data : [],
+			symbol:'none',
+			smooth:0.8,
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		},
+		{
+			name : '20日',
+			type : 'line',
+			data : [],
+			symbol:'none',
+			smooth:0.8,
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		},
+		{
+			name : '40日',
+			type : 'line',
+			data : [],
+			symbol:'none',
+			smooth:0.8,
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		},
+		{
+			name : '60日',
+			type : 'line',
+			data : [],
+			symbol:'none',
+			smooth:0.8,
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		}   ]
 	};
 
 var option_candle = {
@@ -494,11 +820,11 @@ function getChart(code) {
 	
 	
 	var chart6 = echarts.init(document.getElementById('chart6'));
-	/*
+	
 	var chart7 = echarts.init(document.getElementById('chart7'));
+	
 	var chart8 = echarts.init(document.getElementById('chart8'));
 	var chart9 = echarts.init(document.getElementById('chart9'));
-	*/
 	$.ajax({
 		type : 'GET',
 		url : 'findFuturesCharts.html',
@@ -513,9 +839,26 @@ function getChart(code) {
 			option_close_settle.xAxis[0].data = data.dateRtnList;
 			option_close_settle.series[0].data=data.closePriceList;
 			option_close_settle.series[1].data=data.settlePriceList;
-			option_settleCur.title.text = data.code+"结算价拟合";
+			
+			
+			option_vdivcc.title.text = data.code+"成交持仓比";
+			option_vdivcc.xAxis[0].data = data.dateRtnList;
+			option_vdivcc.series[0].data=data.vdivccList;
+			
+			option_settleCur.title.text = data.code+"收盘结算拟合";
 			option_settleCur.xAxis[0].data = data.dateRtnList;
 			option_settleCur.series[0].data=data.settlePriceCurList;
+			option_settleCur.series[1].data=data.closePriceCurList;
+			
+			
+			option_macdCur.title.text = data.code+"MACD拟合";
+			option_macdCur.xAxis[0].data = data.dateRtnList;
+			option_macdCur.series[0].data=data.macd5CurList;
+			option_macdCur.series[1].data=data.macd10CurList;
+			option_macdCur.series[2].data=data.macd20CurList;
+			option_macdCur.series[3].data=data.macd40CurList;
+			option_macdCur.series[4].data=data.macd60CurList;
+			
 			//k线
 			option_candle.xAxis[0].data = data.dateRtnList;
 			//macd
@@ -566,9 +909,9 @@ function getChart(code) {
 			chart4.setOption(option_macd);
 			chart5.setOption(option_ccvolume);
 			chart6.setOption(option_volume);
-			//chart7.setOption(option_close_settle);
-			//chart8.setOption(option_candle);
-			//chart9.setOption(option_settleCur);
+			chart7.setOption(option_macdCur);
+			chart8.setOption(option_vdivcc);
+			chart9.setOption(option_codepercent);
 		}
 	});
 }
