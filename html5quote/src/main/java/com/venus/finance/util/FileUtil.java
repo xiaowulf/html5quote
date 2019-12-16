@@ -10,6 +10,11 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
+import com.google.common.base.Charsets;
+import com.google.common.collect.Lists;
+import com.google.common.io.CharSink;
+import com.google.common.io.FileWriteMode;
+import com.google.common.io.Files;
 import com.venus.finance.fix.FuturesQuote;
 import com.venus.finance.vo.AtrVO;
 import com.venus.finance.vo.FuturesQuoteVO;
@@ -48,6 +53,16 @@ public class FileUtil {
 			}
 		}
 	}
+	
+	public static void saveQuoteFile(File file,List<String>list){
+	    CharSink sink = Files.asCharSink(file, Charsets.UTF_8);
+	    try {
+			sink.writeLines(list);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	public List<FuturesQuoteVO> readFileToFuturesQuoteList(File file) {
 		List<FuturesQuoteVO> rList = new ArrayList<FuturesQuoteVO>();

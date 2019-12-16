@@ -34,9 +34,9 @@ public class InitUtil {
 		File settingFile = new File(settingFilePath);
 		return settingFile;
     }
-	public String getFuturesDatePath() throws IOException
+	public static String getFuturesDatePath() throws IOException
     {
-		InputStream in = this.getClass().getResourceAsStream(codeconfig_file);
+		InputStream in = InitUtil.class.getResourceAsStream(codeconfig_file);
         Wini ini = new Wini(in);
         String futuresDatePath = ini.get("code", "futures_date_file");
         return futuresDatePath;
@@ -71,9 +71,9 @@ public class InitUtil {
         String indexcode = ini.get("code", "indexcode");
         return indexcode;
     }
-	public File getFutures_latest_file() throws IOException
+	public static File getFutures_latest_file() throws IOException
     {
-		InputStream in = this.getClass().getResourceAsStream(codeconfig_file);
+		InputStream in = InitUtil.class.getResourceAsStream(codeconfig_file);
         Wini ini = new Wini(in);
         String futures_latest_file = ini.get("code", "futures_latest_file");
         File codeFile = new File(futures_latest_file);

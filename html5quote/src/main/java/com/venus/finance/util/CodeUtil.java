@@ -17,7 +17,7 @@ import com.venus.finance.vo.MacdVO;
 import com.venus.finance.vo.MaxMinPriceVO;
 
 public class CodeUtil {
-	public List<String> getCodeList() {
+	public static List<String> getCodeList() {
 		InitUtil initUtil = new InitUtil();
 		FileUtil fileUtil = new FileUtil();
 		File codeFile = null;
@@ -590,9 +590,152 @@ public class CodeUtil {
 			return URLEncoder.encode("尿素", "utf-8");
 		case "CJ":
 			return URLEncoder.encode("红枣", "utf-8");
-		/*
-		 * case "CJ": return "纯碱";
-		 */
+		case "SA":
+			return "纯碱";
+		
+		default:
+			return code;
+		}
+	}
+	
+	
+	
+	public static String getJys(String code) throws UnsupportedEncodingException {
+
+		switch (converCode(code)) {
+		// 大商所
+		case "c":
+			return "dce";
+		case "cs":
+			return "dce";
+		case "a":
+			return "dce";
+		case "b":
+			return "dce";
+		case "m":
+			return "dce";
+		case "y":
+			return "dce";
+		case "p":
+			return "dce";
+		case "fb":
+			return "dce";
+		case "bb":
+			return "dce";
+		case "jd":
+			return "dce";
+		case "rr":
+			return "dce";
+		case "l":
+			return "dce";
+		case "v":
+			return "dce";
+		case "pp":
+			return "dce";
+		case "j":
+			return "dce";
+		case "jm":
+			return "dce";
+		case "i":
+			return "dce";
+		case "eg":
+			return "dce";
+		case "eb":
+			return "dce";
+
+		// 上期所
+		case "cu":
+			return "shfe";
+		case "al":
+			return "shfe";
+		case "zn":
+			return "shfe";
+		case "pb":
+			return "shfe";
+		case "ni":
+			return "shfe";
+		case "sn":
+			return "shfe";
+		case "au":
+			return "shfe";
+		case "ag":
+			return "shfe";
+		case "rb":
+			return "shfe";
+		case "wr":
+			return "shfe";
+		case "hc":
+			return "shfe";
+		case "ss":
+			return "shfe";
+		case "sc":
+			return "shfe";
+		case "fu":
+			return "shfe";
+		case "bu":
+			return "shfe";
+		case "ru":
+			return "shfe";
+		case "nr":
+			return "shfe";
+		case "sp":
+			return "shfe";
+		// 中金所
+		case "IF":
+			return "cffex";
+		case "IC":
+			return "cffex";
+		case "IH":
+			return "cffex";
+		case "TS":
+			return "cffex";
+		case "TF":
+			return "cffex";
+		case "T":
+			return "cffex";
+		// 郑商所
+		case "WH":
+			return "czce";
+		case "PM":
+			return "czce";
+		case "CF":
+			return "czce";
+		case "TA":
+			return "czce";
+		case "MA":
+			return "czce";
+		case "SR":
+			return "czce";
+		case "OI":
+			return "czce";
+		case "RI":
+			return "czce";
+		case "ZC":
+			return "czce";
+		case "FG":
+			return "czce";
+		case "RS":
+			return "czce";
+		case "RM":
+			return "czce";
+		case "JR":
+			return "czce";
+		case "SF":
+			return "czce";
+		case "SM":
+			return "czce";
+		case "LR":
+			return "czce";
+		case "CY":
+			return "czce";
+		case "AP":
+			return "czce";
+		case "UR":
+			return "czce";
+		case "CJ":
+			return "czce";
+		case "SA":
+			return "czce";
 		default:
 			return code;
 		}

@@ -48,8 +48,11 @@ import quickfix.field.TransactTime;
 
 import javax.swing.*;
 
+import com.venus.finance.socket.IndexQuoteServer;
+import com.venus.finance.util.Variable;
 import com.venus.finance.vo.FuturesQuoteVO;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -63,6 +66,7 @@ import java.util.concurrent.Executors;
 public class FixApplication implements Application{
 
 	private ExecutorService exec;
+	/*
 	private ConcurrentLinkedQueue<FuturesQuoteVO> futuresQuoteQueue;
 	private ConcurrentHashMap<String, FuturesQuoteVO> futuresQuoteMap;
 	
@@ -79,11 +83,12 @@ public class FixApplication implements Application{
 	public void setFuturesQuoteMap(ConcurrentHashMap<String, FuturesQuoteVO> futuresQuoteMap) {
 		this.futuresQuoteMap = futuresQuoteMap;
 	}
+	*/
 	public FixApplication()
 	{
 		exec = Executors.newCachedThreadPool();
-		futuresQuoteQueue = new ConcurrentLinkedQueue<FuturesQuoteVO>();
-		futuresQuoteMap= new ConcurrentHashMap<String, FuturesQuoteVO>();
+		//futuresQuoteQueue = new ConcurrentLinkedQueue<FuturesQuoteVO>();
+		//futuresQuoteMap= new ConcurrentHashMap<String, FuturesQuoteVO>();
 	}
 	@Override
 	public void fromAdmin(Message arg0, SessionID arg1)
@@ -130,18 +135,27 @@ public class FixApplication implements Application{
             	FuturesQuoteVO quote = new FuturesQuoteVO();
             	quote.setCcvolume(Double.parseDouble(message.getField(new StringField(9001)).getValue()));
             	quote.setVolume(Double.parseDouble(message.getField(new StringField(9000)).getValue()));
+            	quote.setOpenPrice(Double.parseDouble(message.getField(new StringField(8053)).getValue()));
             	quote.setHighestPrice(Double.parseDouble(message.getField(new StringField(8054)).getValue()));
             	quote.setLowestPrice(Double.parseDouble(message.getField(new StringField(8055)).getValue()));
             	quote.setClosePrice(Double.parseDouble(message.getField(new StringField(8012)).getValue()));
-            	quote.setOpenInterest(Double.parseDouble(message.getField(new StringField(8053)).getValue()));
+            	//quote.setOpenInterest(Double.parseDouble(message.getField(new StringField(8053)).getValue()));
             	quote.setInstrumentID(message.getField(new StringField(55)).getValue());
             	quote.setSettlementPrice(Double.parseDouble(message.getField(new StringField(8058)).getValue()));
             	quote.setBidPrice1(Double.parseDouble(message.getField(new StringField(9002)).getValue()));
             	quote.setAskPrice1(Double.parseDouble(message.getField(new StringField(9003)).getValue()));
             	quote.setBidVolume1(Double.parseDouble(message.getField(new StringField(9004)).getValue()));  
             	quote.setAskVolume1(Double.parseDouble(message.getField(new StringField(9005)).getValue()));
-            	futuresQuoteMap.put(quote.getInstrumentID(), quote);
-            	futuresQuoteQueue.add(quote);
+            	Variable.getFuturesQuoteMap().put(quote.getInstrumentID(),quote);
+            	Variable.getFuturesQuoteQueue().add(quote);
+            	for (IndexQuoteServer item : Variable.getWebSocketSet()) {
+    				try {
+    					item.sendMessage(quote.getInstrumentID());
+    				} catch (IOException e) {
+    					e.printStackTrace();
+    					continue;
+    				}
+    			}
             } catch (Exception e) {
                 e.printStackTrace();
             }

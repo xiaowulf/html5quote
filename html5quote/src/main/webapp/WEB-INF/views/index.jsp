@@ -75,39 +75,24 @@
 					</div>
 					
 					<div class="row">
-						<div class="mainrightBottomNews">
-				    		<div id="chart1" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
-				    		<div id="chart2" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
-				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
-			    		</div>
+				    		<div id="chart1" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart2" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
 					</div>
 				</div>
 		</div>
 	</div>
-	<nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="navbar-header" style="float:left;margin-left:1px;">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#TaoistsNavBar" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="TaoistsNavBar">
-                <jsp:include page="mnavbar.jsp"></jsp:include>
-            </div>
-        </div>
-    </nav>
+	
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/index.js" type="text/javascript" charset="UTF-8"></script>
 	<script type="text/javascript" src="./js/jquery-rvnm.js"></script>
-	<!--  
+	<script type="text/javascript" src="./js/index_websocket.js"></script>
+	
 	<script> 
-    function browserRedirect() {
-    	
+    function browserIphone() {
+    	$("#style-3").css("height", "300px");
+    	/*
 	    var sUserAgent = navigator.userAgent.toLowerCase();
 	    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
 	    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
@@ -120,10 +105,10 @@
 	    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM){
 	        window.location.href="mindex.html";
 	    } 
+	    */
 	    
 	}
-	browserRedirect(); 
+	browserIphone(); 
 	</script>
-	-->
 </body>
 </html>

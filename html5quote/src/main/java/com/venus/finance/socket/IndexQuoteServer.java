@@ -10,6 +10,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import com.venus.finance.util.Variable;
 import com.venus.finance.vo.FuturesQuoteVO;
 
 import quickfix.SessionID;
@@ -18,8 +19,6 @@ import quickfix.StringField;
 @ServerEndpoint("/indexquoteserver")
 public class IndexQuoteServer {
 
-	// concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。若要实现服务端与单一客户端通信的话，可以使用Map来存放，其中Key可以为用户标识
-	private static CopyOnWriteArraySet<IndexQuoteServer> webSocketSet = new CopyOnWriteArraySet<IndexQuoteServer>();
 
 	// 与某个客户端的连接会话，需要通过它来给客户端发送数据
 	private Session session;
@@ -33,21 +32,7 @@ public class IndexQuoteServer {
 	@OnOpen
 	public void onOpen(Session session) {
 		this.session = session;
-		webSocketSet.add(this);
-		int i=0;
-		while(i<10000)
-		{
-			for (IndexQuoteServer item : webSocketSet) {
-				try {
-					item.sendMessage("hello");
-				} catch (IOException e) {
-					e.printStackTrace();
-					continue;
-				}
-			}
-			i++;
-		}
-		
+		Variable.getWebSocketSet().add(this);
 	}
 
 	/**
@@ -55,7 +40,7 @@ public class IndexQuoteServer {
 	 */
 	@OnClose
 	public void onClose() {
-		webSocketSet.remove(this); // 从set中删除
+		Variable.getWebSocketSet().remove(this); // 从set中删除
 	}
 
 	/**

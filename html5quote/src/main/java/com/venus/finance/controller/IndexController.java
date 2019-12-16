@@ -94,10 +94,11 @@ public class IndexController {
 		CodeUtil codeUtil = new CodeUtil();
 		List<FuturesQuoteVO>  jysCodeList = null;
 		ServletContext application = request.getServletContext();
-		FixApplication fixApplicaton = (FixApplication)application.getAttribute("fixApplication");
-		ConcurrentHashMap<String, FuturesQuoteVO> map = fixApplicaton.getFuturesQuoteMap();
+		//FixApplication fixApplicaton = (FixApplication)application.getAttribute("fixApplication");
+		//ConcurrentHashMap<String, FuturesQuoteVO> map = fixApplicaton.getFuturesQuoteMap();
 		try {
 			jysCodeList = codeUtil.getCodeByJys(jys);
+			/*
 			for(FuturesQuoteVO quoteVO:jysCodeList){
 				if(null!=map.get(quoteVO.getInstrumentID())){
 					quoteVO.setAskPrice1(map.get(quoteVO.getInstrumentID()).getAskPrice1());
@@ -107,6 +108,7 @@ public class IndexController {
 				}
 				
 			}
+			*/
 			model.addAttribute("jysCodeList", jysCodeList);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

@@ -45,10 +45,10 @@ public class LoadConfigServlet extends HttpServlet {
 	private LogFactory logFactory;
 	private MessageFactory messageFactory;
 	private FixApplication fixApplication;
-	private ComputeLatestQuote computeLatestQuote;
-	// private SaveLatestQuote saveLatestQuote;
-	private Thread latestQuoteThread;
-	// private Thread saveLatestQuoteThread;
+	//private ComputeLatestQuote computeLatestQuote;
+	private SaveLatestQuote saveLatestQuote;
+	//private Thread latestQuoteThread;
+	private Thread saveLatestQuoteThread;
 
 	public LoadConfigServlet() {
 		super();
@@ -57,36 +57,42 @@ public class LoadConfigServlet extends HttpServlet {
 	public void init() throws ServletException {
 		String path = this.getClass().getClassLoader().getResource("/").getPath();
 		String fixFileName = path + "quotefix.cfg";
-		ServletContext application = this.getServletContext();
-		if (null == application.getAttribute("fixApplication")) {
-			fixApplication = new FixApplication();
-			try {
-				settings = new SessionSettings(new FileInputStream(fixFileName));
-				storeFactory = new FileStoreFactory(settings);
-				logFactory = new FileLogFactory(settings);
-				messageFactory = new DefaultMessageFactory();
-				initiator = new SocketInitiator(fixApplication, storeFactory, settings, logFactory, messageFactory);
-				initiator.start();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (ConfigError e) {
-				e.printStackTrace();
-			}
-			application.setAttribute("fixApplication", fixApplication);
+		// ServletContext application = this.getServletContext();
+		// if (null == application.getAttribute("fixApplication")) {
+		fixApplication = new FixApplication();
+		try {
+			settings = new SessionSettings(new FileInputStream(fixFileName));
+			storeFactory = new FileStoreFactory(settings);
+			logFactory = new FileLogFactory(settings);
+			messageFactory = new DefaultMessageFactory();
+			initiator = new SocketInitiator(fixApplication, storeFactory, settings, logFactory, messageFactory);
+			initiator.start();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (ConfigError e) {
+			e.printStackTrace();
 		}
+		// application.setAttribute("fixApplication", fixApplication);
+		// }
 		// 启动最新行情线程
-		computeLatestQuote = new ComputeLatestQuote(fixApplication);
-		computeLatestQuote.setReady(true);
-		latestQuoteThread = new Thread(computeLatestQuote);
-		latestQuoteThread.start();
-
+		//computeLatestQuote = new ComputeLatestQuote();
+		//computeLatestQuote.setReady(true);
+		//latestQuoteThread = new Thread(computeLatestQuote);
+		//latestQuoteThread.start();
+		//保存数据线程
+		saveLatestQuote = new SaveLatestQuote();
+		saveLatestQuote.setReady(true);
+		saveLatestQuoteThread = new Thread(saveLatestQuote);
+		saveLatestQuoteThread.start();
 	}
 
 	public void destroy() {
 		try {
 			System.out.println("---destroy-----");
-			computeLatestQuote.setReady(false);
-			latestQuoteThread.interrupt();
+			//computeLatestQuote.setReady(false);
+			//latestQuoteThread.interrupt();
+			saveLatestQuote.setReady(false);
+			saveLatestQuoteThread.interrupt();
 			initiator.stop();
 		} catch (Exception e) {
 			e.printStackTrace();
