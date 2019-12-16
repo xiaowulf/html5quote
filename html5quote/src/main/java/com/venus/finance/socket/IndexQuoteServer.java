@@ -10,13 +10,15 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import com.venus.finance.util.FuturesQuoteDecoder;
+import com.venus.finance.util.FuturesQuoteEncoder;
 import com.venus.finance.util.Variable;
 import com.venus.finance.vo.FuturesQuoteVO;
 
 import quickfix.SessionID;
 import quickfix.StringField;
 
-@ServerEndpoint("/indexquoteserver")
+@ServerEndpoint(value = "/indexquoteserver", decoders = { FuturesQuoteDecoder.class }, encoders = { FuturesQuoteEncoder.class })
 public class IndexQuoteServer {
 
 
@@ -78,7 +80,14 @@ public class IndexQuoteServer {
 		this.session.getBasicRemote().sendText(message);
 	}
 	
-	
+	public void sendMessage(FuturesQuoteVO futuresQuoteVO) throws IOException {
+		try {
+            session.getBasicRemote().sendObject(futuresQuoteVO);
+            System.out.println("sent ");
+        } catch (Exception ex) {
+        	ex.printStackTrace();
+        }
+	}
 	
 	public class MessageProcessor implements Runnable {
 

@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import com.venus.finance.socket.IndexQuoteServer;
 import com.venus.finance.util.CodeUtil;
 import com.venus.finance.util.FileUtil;
 import com.venus.finance.util.InitUtil;
@@ -47,7 +48,6 @@ public class SaveLatestQuote implements Runnable {
 					}
 					codeStrBuf.setLength(0);
 					list.clear();
-					System.out.println("--Variable.getFuturesQuoteMap()--"+Variable.getFuturesQuoteMap().size());
 					//System.out.println("--codeList.size()--"+codeList.size());
 					for (int i = 0; i < codeList.size(); i++) {
 						String[] codeArray = codeList.get(i).split(",");
@@ -88,8 +88,18 @@ public class SaveLatestQuote implements Runnable {
 							list.add(codeStrBuf.toString());
 						}
 					}
+					FuturesQuoteVO futuresQuoteVO = new FuturesQuoteVO();
+					futuresQuoteVO.setInstrumentID("a1905");
+					for (IndexQuoteServer item : Variable.getWebSocketSet()) {
+	    				try {
+	    					item.sendMessage(futuresQuoteVO);
+	    				} catch (IOException e) {
+	    					e.printStackTrace();
+	    					continue;
+	    				}
+	    			}
 					System.out.println("--list--"+list.size());
-					FileUtil.saveQuoteFile(file, list);
+					//FileUtil.saveQuoteFile(file, list);
 					//System.out.println(list.toString());
 					Thread.sleep(5000);
 				} else {
