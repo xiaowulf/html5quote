@@ -146,11 +146,12 @@ public class FixApplication implements Application{
             	quote.setAskPrice1(Double.parseDouble(message.getField(new StringField(9003)).getValue()));
             	quote.setBidVolume1(Double.parseDouble(message.getField(new StringField(9004)).getValue()));  
             	quote.setAskVolume1(Double.parseDouble(message.getField(new StringField(9005)).getValue()));
-            	Variable.getFuturesQuoteMap().put(quote.getInstrumentID(),quote);
+            	Variable.getFuturesQuoteMap().put(quote.getInstrumentID().trim(),quote);
+            	//System.out.println("quote-----"+quote.getInstrumentID());
             	Variable.getFuturesQuoteQueue().add(quote);
             	for (IndexQuoteServer item : Variable.getWebSocketSet()) {
     				try {
-    					item.sendMessage(quote.getInstrumentID());
+    					item.sendMessage(quote);
     				} catch (IOException e) {
     					e.printStackTrace();
     					continue;

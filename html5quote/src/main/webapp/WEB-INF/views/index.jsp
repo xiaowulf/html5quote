@@ -79,6 +79,9 @@
 				    		<div id="chart2" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
 					</div>
+					<div class="row">
+						<div id="show1" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
+					</div>
 				</div>
 		</div>
 	</div>
@@ -91,8 +94,7 @@
 	
 	<script> 
     function browserIphone() {
-    	$("#style-3").css("height", "300px");
-    	/*
+    	
 	    var sUserAgent = navigator.userAgent.toLowerCase();
 	    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
 	    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
@@ -103,9 +105,9 @@
 	    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
 	    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
 	    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM){
-	        window.location.href="mindex.html";
+	    	$("#style-3").css("height", "300px");
+	    	//window.location.href="mindex.html";
 	    } 
-	    */
 	    
 	}
 	browserIphone(); 

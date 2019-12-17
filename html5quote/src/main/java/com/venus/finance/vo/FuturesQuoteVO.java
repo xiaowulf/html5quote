@@ -20,6 +20,8 @@ public class FuturesQuoteVO{
 	private Double ccvolume=0D;
 	private Double preSettlementPrice=0D;
 	private MacdVO macdVO;
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -43,7 +45,6 @@ public class FuturesQuoteVO{
 			return false;
 		return true;
 	}
-	
 	public String getInstrumentID() {
 		return instrumentID;
 	}

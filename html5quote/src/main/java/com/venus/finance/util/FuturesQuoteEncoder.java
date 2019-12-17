@@ -23,7 +23,8 @@ public class FuturesQuoteEncoder implements javax.websocket.Encoder.Text<Futures
 
 	@Override
 	public String encode(FuturesQuoteVO object) throws EncodeException {
-		return JSON.toJSONString(object);
+		Gson gson = new Gson();
+		return gson.toJson(object);
 	}
 
 	

@@ -272,17 +272,32 @@ public class CodeUtil {
 		InitUtil initUtil = new InitUtil();
 		List<FuturesQuoteVO> codeList = new ArrayList<FuturesQuoteVO>();
 		File codeFile = null;
-		File futuresLatestFile = null;
+		
 		try {
 			codeFile = initUtil.getCodeFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		String dayDataFolder = "";
 		try {
-			futuresLatestFile = initUtil.getFutures_latest_file();
-		} catch (IOException e) {
-			e.printStackTrace();
+			dayDataFolder = initUtil.getDayDataFolder();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+		String latestFilePath = "";
+		try {
+			latestFilePath = dayDataFolder+"/hlj"+initUtil.getRecordDate()+".txt";
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		File futuresLatestFile = new File(latestFilePath);
+//		try {
+//			futuresLatestFile = initUtil.getFutures_latest_file();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 
 		List<String> list = fileUtil.readFileToList(codeFile);
 		List<String> futuresLatest = null;

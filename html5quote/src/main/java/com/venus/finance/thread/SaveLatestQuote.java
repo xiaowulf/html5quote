@@ -36,19 +36,16 @@ public class SaveLatestQuote implements Runnable {
 		List<String> codeList = CodeUtil.getCodeList();
 		List<String> list = new ArrayList<String>();
 		StringBuffer codeStrBuf = new StringBuffer();
-
+		File file = null;
+		try {
+			file = InitUtil.getFutures_latest_file();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		while (true) {
 			try {
 				if (isReady) {
-					File file = null;
-					try {
-						file = InitUtil.getFutures_latest_file();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-					codeStrBuf.setLength(0);
 					list.clear();
-					//System.out.println("--codeList.size()--"+codeList.size());
 					for (int i = 0; i < codeList.size(); i++) {
 						String[] codeArray = codeList.get(i).split(",");
 						// Set<String> keySet = Variable.getFuturesQuoteMap().keySet();
@@ -58,6 +55,7 @@ public class SaveLatestQuote implements Runnable {
 						// }
 						// System.out.println(codeArray.length);
 						if (codeArray.length > 0 && Variable.getFuturesQuoteMap().containsKey(codeArray[0])) {
+							codeStrBuf.setLength(0);
 							FuturesQuoteVO futuresQuoteVO = Variable.getFuturesQuoteMap().get(codeArray[0]);
 							codeStrBuf.append(futuresQuoteVO.getInstrumentID());
 							codeStrBuf.append(",");
@@ -88,18 +86,10 @@ public class SaveLatestQuote implements Runnable {
 							list.add(codeStrBuf.toString());
 						}
 					}
-					FuturesQuoteVO futuresQuoteVO = new FuturesQuoteVO();
-					futuresQuoteVO.setInstrumentID("a1905");
-					for (IndexQuoteServer item : Variable.getWebSocketSet()) {
-	    				try {
-	    					item.sendMessage(futuresQuoteVO);
-	    				} catch (IOException e) {
-	    					e.printStackTrace();
-	    					continue;
-	    				}
-	    			}
-					System.out.println("--list--"+list.size());
-					//FileUtil.saveQuoteFile(file, list);
+					//System.out.println("--list--"+list.size());
+					FileUtil.saveQuoteFile(file, list);
+					codeStrBuf.setLength(0);
+					list.clear();
 					//System.out.println(list.toString());
 					Thread.sleep(5000);
 				} else {

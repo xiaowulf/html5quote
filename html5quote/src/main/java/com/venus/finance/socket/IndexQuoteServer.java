@@ -70,20 +70,24 @@ public class IndexQuoteServer {
 		error.printStackTrace();
 	}
 
-	/**
-	 * 这个方法与上面几个方法不一样。没有用注解，是根据自己需要添加的方法。
-	 * 
-	 * @param message
-	 * @throws IOException
-	 */
-	public void sendMessage(String message) throws IOException {
-		this.session.getBasicRemote().sendText(message);
-	}
+//	/**
+//	 * 这个方法与上面几个方法不一样。没有用注解，是根据自己需要添加的方法。
+//	 * 
+//	 * @param message
+//	 * @throws IOException
+//	 */
+//	public void sendMessage(String message) throws IOException {
+//		this.session.getBasicRemote().sendText(message);
+//	}
 	
 	public void sendMessage(FuturesQuoteVO futuresQuoteVO) throws IOException {
 		try {
-            session.getBasicRemote().sendObject(futuresQuoteVO);
-            System.out.println("sent ");
+			 synchronized (session){
+				 if(session.isOpen()){
+					 session.getBasicRemote().sendObject(futuresQuoteVO);
+				 }
+				 
+			 }
         } catch (Exception ex) {
         	ex.printStackTrace();
         }

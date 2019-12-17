@@ -23,7 +23,8 @@ public class FuturesQuoteDecoder implements javax.websocket.Decoder.Text<Futures
 	@Override
 	public FuturesQuoteVO decode(String futuresQuoteVO) throws DecodeException {
 		Gson gson = new Gson();
-		return JSON.parseObject(futuresQuoteVO, FuturesQuoteDecoder.class);
+		return gson.fromJson(futuresQuoteVO, FuturesQuoteVO.class);
+		//return JSON.parseObject(futuresQuoteVO, FuturesQuoteDecoder.class);
 	}
 
 	@Override
