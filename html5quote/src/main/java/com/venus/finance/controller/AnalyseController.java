@@ -103,6 +103,7 @@ public class AnalyseController {
 		List<CandleVO> candlePriceList = new ArrayList<CandleVO>();
 		List<MacdVO> macdList = new ArrayList<MacdVO>();
 		List<Double> closePriceCurList = new ArrayList<Double>();
+		List<Double> closePriceDeriCurList = new ArrayList<Double>();
 		List<Double> macd5CurList = new ArrayList<Double>();
 		List<Double> macd10CurList = new ArrayList<Double>();
 		List<Double> macd20CurList = new ArrayList<Double>();
@@ -172,9 +173,12 @@ public class AnalyseController {
 			arrayRS[i] = resultS[3] * Math.pow(arrayXS[i], 3) + resultS[2] * Math.pow(arrayXS[i], 2)
 					+ resultS[1] * Math.pow(arrayXS[i], 1) + result[0];
 		}
+		
 		for (int i = 0; i < arrayRS.length; i++) {
 			closePriceCurList.add(arrayRS[i]);
 		}
+		//收盘价的导数曲线拟合
+		
 
 		// MACD三次曲线拟合
 		Double[] arrayXMacd5 = new Double[dateRtnList.size()];
@@ -286,6 +290,7 @@ public class AnalyseController {
 		futuresPriceVO.setVolumeList(volumeList);
 		futuresPriceVO.setCcVolumeList(ccVolumeList);
 		futuresPriceVO.setClosePriceCurList(closePriceCurList);
+		futuresPriceVO.setClosePriceDeriCurList(closePriceDeriCurList);
 		futuresPriceVO.setMacd5CurList(macd5CurList);
 		futuresPriceVO.setMacd10CurList(macd10CurList);
 		futuresPriceVO.setMacd20CurList(macd20CurList);

@@ -10,6 +10,7 @@ public class FuturesPriceVO {
 	private List<Double> settlePriceList;
 	private List<Double> settlePriceCurList;
 	private List<Double> closePriceCurList;
+	private List<Double> closePriceDeriCurList;
 	private List<Double> macd5CurList;
 	private List<Double> macd10CurList;
 	private List<Double> macd20CurList;
@@ -116,4 +117,11 @@ public class FuturesPriceVO {
 	public void setVdivccList(List<Double> vdivccList) {
 		this.vdivccList = vdivccList;
 	}
+	public List<Double> getClosePriceDeriCurList() {
+		return closePriceDeriCurList;
+	}
+	public void setClosePriceDeriCurList(List<Double> closePriceDeriCurList) {
+		this.closePriceDeriCurList = closePriceDeriCurList;
+	}
+	
 }
