@@ -79,13 +79,41 @@
 				    		<div id="chart2" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
 					</div>
-					<div class="row">
-						<div id="show1" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
-					</div>
+					
 				</div>
 		</div>
 	</div>
 	
+	
+	<!--  
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+        	<div class="row">
+             	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+             		<label>品种</label>
+             		<input type="text" name="fname" size="1">
+             		<label>手数</label>
+             		<input type="text" name="fname" size="1">
+             		<label>策略</label>
+             		<input type="text" name="fname" size="1">
+             		<input type="radio" id="louie" name="drone" value="自动">自动
+             		<input type="radio" id="louie" name="drone" value="自动">手工
+             	</div>
+             	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+             		<label>买价</label>
+             		<input type="text" name="fname" size="1">
+             		<label>卖价</label>
+             		<input type="text" name="fname" size="1">
+             		<label>买量</label>
+             		<input type="text" name="fname" size="1">
+             		<input type="button" style="color:red;" value="多"/><input type="button" style="color:green;" value="空"/><button type="button">平</button>
+             		
+             	</div>
+			</div>
+             
+        </div>
+    </nav>
+    -->
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/index.js" type="text/javascript" charset="UTF-8"></script>

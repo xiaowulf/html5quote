@@ -104,13 +104,14 @@ public class AnalyseController {
 		List<MacdVO> macdList = new ArrayList<MacdVO>();
 		List<Double> closePriceCurList = new ArrayList<Double>();
 		List<Double> closePriceDeriCurList = new ArrayList<Double>();
+		List<Double> settlePriceDeriCurList = new ArrayList<Double>();
 		List<Double> macd5CurList = new ArrayList<Double>();
 		List<Double> macd10CurList = new ArrayList<Double>();
 		List<Double> macd20CurList = new ArrayList<Double>();
 		List<Double> macd40CurList = new ArrayList<Double>();
 		List<Double> macd60CurList = new ArrayList<Double>();
 		List<Double> vdivccList = new ArrayList<Double>();
-		
+
 		Collections.reverse(dateList);
 		List<String> date60List = dateList.subList(0, 60);
 		Collections.reverse(date60List);
@@ -122,9 +123,9 @@ public class AnalyseController {
 			settlePriceList.add(futuresQuoteVO.getSettlementPrice());
 			ccVolumeList.add(futuresQuoteVO.getCcvolume());
 			volumeList.add(futuresQuoteVO.getVolume());
-			if(futuresQuoteVO.getCcvolume()!=0.0){
-				vdivccList.add(futuresQuoteVO.getVolume()/futuresQuoteVO.getCcvolume());
-			}else{
+			if (futuresQuoteVO.getCcvolume() != 0.0) {
+				vdivccList.add(futuresQuoteVO.getVolume() / futuresQuoteVO.getCcvolume());
+			} else {
 				vdivccList.add(0.0D);
 			}
 			macdList.add(futuresQuoteVO.getMacdVO());
@@ -141,6 +142,7 @@ public class AnalyseController {
 		Double[] arrayX = new Double[dateRtnList.size()];
 		Double[] arrayY = new Double[dateRtnList.size()];
 		Double[] arrayR = new Double[dateRtnList.size()];
+		Double[] arrayRDeri = new Double[dateRtnList.size()];
 		for (int i = 0; i < dateRtnList.size(); i++) {
 			arrayX[i] = new Double(i + 1);
 		}
@@ -156,11 +158,21 @@ public class AnalyseController {
 		for (int i = 0; i < arrayR.length; i++) {
 			settlePriceCurList.add(arrayR[i]);
 		}
-
+		// 结算价的导数曲线拟合
+		for (int i = 0; i < arrayX.length; i++) {
+			arrayRDeri[i] = 3 * result[3] * Math.pow(arrayX[i], 2) + 2 * result[2] * Math.pow(arrayX[i], 1)
+					+ result[1];
+		}
+		for (int i = 0; i < arrayRDeri.length; i++) {
+			settlePriceDeriCurList.add(arrayRDeri[i]);
+		}
+		
 		// 收盘价三次曲线拟合
 		Double[] arrayXS = new Double[dateRtnList.size()];
 		Double[] arrayYS = new Double[dateRtnList.size()];
 		Double[] arrayRS = new Double[dateRtnList.size()];
+		// 收盘价导数
+		Double[] arrayDeri = new Double[dateRtnList.size()];
 		for (int i = 0; i < dateRtnList.size(); i++) {
 			arrayXS[i] = new Double(i + 1);
 		}
@@ -173,13 +185,18 @@ public class AnalyseController {
 			arrayRS[i] = resultS[3] * Math.pow(arrayXS[i], 3) + resultS[2] * Math.pow(arrayXS[i], 2)
 					+ resultS[1] * Math.pow(arrayXS[i], 1) + result[0];
 		}
-		
+
 		for (int i = 0; i < arrayRS.length; i++) {
 			closePriceCurList.add(arrayRS[i]);
 		}
-		//收盘价的导数曲线拟合
-		
-
+		// 收盘价的导数曲线拟合
+		for (int i = 0; i < arrayXS.length; i++) {
+			arrayDeri[i] = 3 * resultS[3] * Math.pow(arrayXS[i], 2) + 2 * resultS[2] * Math.pow(arrayXS[i], 1)
+					+ resultS[1];
+		}
+		for (int i = 0; i < arrayDeri.length; i++) {
+			closePriceDeriCurList.add(arrayDeri[i]);
+		}
 		// MACD三次曲线拟合
 		Double[] arrayXMacd5 = new Double[dateRtnList.size()];
 		Double[] arrayYMacd5 = new Double[dateRtnList.size()];
@@ -297,6 +314,8 @@ public class AnalyseController {
 		futuresPriceVO.setMacd40CurList(macd40CurList);
 		futuresPriceVO.setMacd60CurList(macd60CurList);
 		futuresPriceVO.setVdivccList(vdivccList);
+		futuresPriceVO.setClosePriceDeriCurList(closePriceDeriCurList);
+		futuresPriceVO.setSettlePriceDeriCurList(settlePriceDeriCurList);
 		Gson gson = new Gson();
 		String json = gson.toJson(futuresPriceVO);
 		return json;

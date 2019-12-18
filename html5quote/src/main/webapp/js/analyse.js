@@ -543,9 +543,9 @@ var option_vdivcc = {
 			}
 		}]
 	};
-var option_codepercent = {
+var option_closeprice_deri = {
 		title : {
-			text : '成交占比',
+			text : '收盘价导数',
 			textStyle : {
 				fontSize : 13
 			}
@@ -554,7 +554,7 @@ var option_codepercent = {
 			trigger : 'axis'
 		},
 		legend : {
-			data : [ '成交占比' ]
+			data : [ '收盘价导数','结算价导数' ]
 		},
 		toolbox : {
 			show : true,
@@ -592,7 +592,28 @@ var option_codepercent = {
 			scale : true
 		} ],
 		series : [{
-			name : '成交占比',
+			name : '收盘价导数',
+			type : 'line',
+			data : [],
+			symbol:'none',
+			smooth:0.8,
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		},{
+			name : '结算价导数',
 			type : 'line',
 			data : [],
 			symbol:'none',
@@ -824,6 +845,7 @@ function getChart(code) {
 	var chart7 = echarts.init(document.getElementById('chart7'));
 	
 	var chart8 = echarts.init(document.getElementById('chart8'));
+	
 	var chart9 = echarts.init(document.getElementById('chart9'));
 	$.ajax({
 		type : 'GET',
@@ -841,6 +863,8 @@ function getChart(code) {
 			option_close_settle.series[1].data=data.settlePriceList;
 			
 			
+			
+			
 			option_vdivcc.title.text = data.code+"成交持仓比";
 			option_vdivcc.xAxis[0].data = data.dateRtnList;
 			option_vdivcc.series[0].data=data.vdivccList;
@@ -850,6 +874,11 @@ function getChart(code) {
 			option_settleCur.series[0].data=data.settlePriceCurList;
 			option_settleCur.series[1].data=data.closePriceCurList;
 			
+			//收盘价的导数
+			option_closeprice_deri.xAxis[0].data = data.dateRtnList;
+			option_closeprice_deri.series[0].data=data.closePriceDeriCurList;
+			//结算价的导数
+			option_closeprice_deri.series[1].data=data.settlePriceDeriCurList;
 			
 			option_macdCur.title.text = data.code+"MACD拟合";
 			option_macdCur.xAxis[0].data = data.dateRtnList;
@@ -911,7 +940,7 @@ function getChart(code) {
 			chart6.setOption(option_volume);
 			chart7.setOption(option_macdCur);
 			chart8.setOption(option_vdivcc);
-			chart9.setOption(option_codepercent);
+			chart9.setOption(option_closeprice_deri);
 		}
 	});
 }
