@@ -22,6 +22,12 @@ public class FuturesPriceVO {
 	private List<MacdVO> macdList;
 	private List<Double> ccVolumeList;
 	private List<Double> volumeList;
+	//策略一到策略五
+	private String strategy1;
+	private String strategy2;
+	private String strategy3;
+	private String strategy4;
+	private String strategy5;
 	public List<Long> getDateRtnList() {
 		return dateRtnList;
 	}
@@ -130,5 +136,34 @@ public class FuturesPriceVO {
 	public void setSettlePriceDeriCurList(List<Double> settlePriceDeriCurList) {
 		this.settlePriceDeriCurList = settlePriceDeriCurList;
 	}
-	
+	public String getStrategy1() {
+		return strategy1;
+	}
+	public void setStrategy1(String strategy1) {
+		this.strategy1 = strategy1;
+	}
+	public String getStrategy2() {
+		return strategy2;
+	}
+	public void setStrategy2(String strategy2) {
+		this.strategy2 = strategy2;
+	}
+	public String getStrategy3() {
+		return strategy3;
+	}
+	public void setStrategy3(String strategy3) {
+		this.strategy3 = strategy3;
+	}
+	public String getStrategy4() {
+		return strategy4;
+	}
+	public void setStrategy4(String strategy4) {
+		this.strategy4 = strategy4;
+	}
+	public String getStrategy5() {
+		return strategy5;
+	}
+	public void setStrategy5(String strategy5) {
+		this.strategy5 = strategy5;
+	}
 }

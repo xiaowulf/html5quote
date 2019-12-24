@@ -147,12 +147,6 @@
 				    		<div id="chart5" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		<div id="chart8" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
 				    		
-				    		
-				    		
-				    		
-				    		
-				    		
-				    		
 			    	</div>
 					</div>
 					<!-- end row -->
@@ -161,10 +155,40 @@
 					  <div class="panel-heading">结论</div>
 					  <table  class="table table-bordered table-hover table-striped table-responsive">
 						    <tr>
-						    		 <td>日期: </td>
-						    		 <td>a2005</td>
-						    		 <td>收盘: </td>
-						    		 <td>a2005</td>
+						    		 <td><span class="badge">1</span><spring:message code="strategy_one_title"/></td>
+						    		 <td>
+						    		 <label id="strategyID1"></label>
+						    		 </td>
+						    </tr>
+						    <tr>
+						    		 <td><span class="badge">2</span><spring:message code="strategy_two_title"/></td>
+						    		 <td>
+						    		 <label id="strategyID2"></label>
+						    		 </td>
+						    </tr>
+						    <tr>
+						    		 <td><span class="badge">3</span><spring:message code="strategy_three_title"/></td>
+						    		 <td>
+						    		 <label id="strategyID3"></label>
+						    		 </td>
+						    </tr>
+						    <tr>
+						    		 <td><span class="badge">4</span><spring:message code="strategy_four_title"/></td>
+						    		 <td>
+						    		 <label id="strategyID4"></label>
+						    		 </td>
+						    </tr>
+						    <tr>
+						    		 <td><span class="badge">5</span><spring:message code="strategy_five_title"/></td>
+						    		 <td>
+						    		 <label id="strategyID5"></label>
+						    		 </td>
+						    </tr>
+						    <tr>
+						    		 <td><span class="badge">6</span><spring:message code="strategy_six_title"/></td>
+						    		 <td>
+						    		 <label id="strategyID6"></label>
+						    		 </td>
 						    </tr>
 					</table>
 					</div>
