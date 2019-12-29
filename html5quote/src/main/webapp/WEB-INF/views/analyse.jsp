@@ -149,7 +149,7 @@
 				    		
 			    	</div>
 					</div>
-					<!-- end row -->
+					<!-- end row 
 					<div class="row">
 					<div class="panel panel-default">
 					  <div class="panel-heading">结论</div>
@@ -193,7 +193,7 @@
 					</table>
 					</div>
 					</div>
-					
+					-->
 					
 					
 					

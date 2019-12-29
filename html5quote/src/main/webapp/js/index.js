@@ -20,23 +20,11 @@ var option_close_settle = {
 	toolbox : {
 		show : true,
 		feature : {
-			mark : {
-				show : true
-			},
-			dataView : {
-				show : false,
-				readOnly : false
-			},
-			magicType : {
-				show : false,
-				type : [ 'line', 'bar' ]
-			},
-			restore : {
-				show : false
-			},
-			saveAsImage : {
-				show : false
-			}
+			mark : {show : true},
+			dataView : {show : false,readOnly : false},
+			magicType : {show : false,type : [ 'line', 'bar' ]},
+			restore : {show : false},
+			saveAsImage : {show : false}
 		}
 	},
 	calculable : true,

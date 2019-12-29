@@ -880,7 +880,7 @@ function getChart(code) {
 			//结算价的导数
 			option_closeprice_deri.series[1].data=data.settlePriceDeriCurList;
 			
-			option_macdCur.title.text = data.code+"MACD拟合";
+			option_macdCur.title.text = "MACD拟合";
 			option_macdCur.xAxis[0].data = data.dateRtnList;
 			option_macdCur.series[0].data=data.macd5CurList;
 			option_macdCur.series[1].data=data.macd10CurList;
