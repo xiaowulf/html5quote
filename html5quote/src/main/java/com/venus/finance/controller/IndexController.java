@@ -67,6 +67,10 @@ public class IndexController {
 	public String backtest(HttpServletRequest request,ModelMap model) {
 		return "backtest";
 	}
+	@RequestMapping(value = "/orders.html", method = RequestMethod.GET)
+	public String orders(HttpServletRequest request,ModelMap model) {
+		return "orders";
+	}
 	@RequestMapping(value = "/position.html", method = RequestMethod.GET)
 	public String position(HttpServletRequest request,ModelMap model) {
 		return "position";
