@@ -18,6 +18,7 @@
     <link type="text/css" rel="stylesheet" href="./css/font-awesome.min.css" />
     <!--include plugin css-->
     <link type="text/css" rel="stylesheet" href="./js/jquery-rvnm.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -53,81 +54,81 @@
 				  <div class="form-group">
 				    <div class="input-group">
 				      <div class="input-group-addon">品种</div>
-				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="品种">
 				    </div>
 				    <div class="input-group">
 				      <div class="input-group-addon">手数</div>
-				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="手数">
 				    </div>
 				    <div class="input-group">
 				      <div class="input-group-addon">价格</div>
-				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
 				    </div>
+				    <div class="input-group">
+					  <div class="input-group-addon">策略</div>
+					  <select class="form-control" id="sel1">
+					    <option>1</option>
+					    <option>2</option>
+					    <option>3</option>
+					    <option>4</option>
+					  </select>
+					</div>
 				  </div>
-				  <button type="submit" class="btn btn-primary">Transfer cash</button>
+				  <button type="submit" class="btn btn-primary">买入F1(22222/35)</button>
+				  <button type="submit" class="btn btn-primary">卖出F2(33333/34)</button>
+				  <button type="submit" class="btn btn-primary">平仓F3</button>
 				</form>
 			</div>
 		</div>
 		<div class="row" style="margin-top:50px;">
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				  <div class="panel panel-default">
-					  <div class="panel-heading">Panel heading without title</div>
-					  <div class="panel-body">
-					    <table class="table table-bordered ">
+				
+					    
+					    
+				<table class="table table-bordered ">
 				  <thead>
 				    <tr>
-				      <th>名称</th>
-				      <th>城市</th>
+				      <th>品种</th>
+				      <th>方向</th>
+				      <th>盈亏</th>
+				      <th>总仓</th>
+				      <th>可用</th>
+				      <th>均价</th>
 				    </tr>
 				  </thead>
 				  <tbody>
 				    <tr>
-				      <td>Tanmay</td>
-				      <td>Bangalore</td>
-				    </tr>
-				    <tr>
-				      <td>Sachin</td>
-				      <td>Mumbai</td>
-				    </tr>
-				  </tbody>
-				</table>
-					  </div>
-				  </div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				  <div class="panel panel-default">
-					  <div class="panel-heading">Panel heading without title</div>
-					  <div class="panel-body">
-					    <table class="table table-bordered ">
-				  <thead>
-				    <tr>
-				      <th>名称</th>
-				      <th>城市</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <td>Tanmay</td>
-				      <td>Bangalore</td>
-				    </tr>
-				    <tr>
-				      <td>Sachin</td>
-				      <td>Mumbai</td>
+				      <td>a2005</td>
+				      <td>多</td>
+				      <td>2000</td>
+				      <td>5</td>
+				      <td>2</td>
+				      <td>1900</td>
 				    </tr>
 				  </tbody>
 				</table>
-					  </div>
-				  </div>
 			</div>
+			<div id="chart2" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:500px;float:left"></div>
 		</div>
+		
 	</div>
-    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
-    <script src="js/suggest.js" type="text/javascript"></script>
+	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/order.js" type="text/javascript" charset="UTF-8"></script>
     <!--include plugin js-->
     <script type="text/javascript" src="./js/jquery-rvnm.js"></script>
+    <script
+  src="https://code.jquery.com/ui/1.11.0/jquery-ui.min.js"
+  integrity="sha256-lCF+55kMUF+3fO/3BiXui4eiUKcQmtr7ecKSeLVDxIQ="
+  crossorigin="anonymous"></script>
     <script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
+	<script>
+	  $( function() {
+	    $( "#tabs" ).tabs();
+	  } );
+	  </script>
 </body>
 </html>
