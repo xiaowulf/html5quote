@@ -66,11 +66,8 @@
 				    </div>
 				    <div class="input-group">
 					  <div class="input-group-addon">策略</div>
-					  <select class="form-control" id="sel1">
-					    <option>1</option>
-					    <option>2</option>
-					    <option>3</option>
-					    <option>4</option>
+					  <select class="form-control" id="strategyID">
+					    
 					  </select>
 					</div>
 				  </div>
@@ -80,11 +77,20 @@
 				</form>
 			</div>
 		</div>
-		<div class="row" style="margin-top:50px;">
+		<div class="row" style="margin-top:20px;">
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				
-					    
-					    
+				<div class="mainrightOrdersNav1 col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getJys('shfe')" id="mainrightBottomNav1">
+					持仓
+				</div>
+				<div class="mainrightOrdersNav2  col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getJys('czce')" id="mainrightBottomNav2">
+					挂单
+				</div>
+				<div class="mainrightOrdersNav3  col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getJys('czce')" id="mainrightBottomNav2">
+					委托
+				</div>
+				<div class="mainrightOrdersNav4  col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getJys('czce')" id="mainrightBottomNav2">
+					成交
+				</div>
 				<table class="table table-bordered ">
 				  <thead>
 				    <tr>
@@ -114,7 +120,7 @@
 	</div>
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/order.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="js/orders.js" type="text/javascript" charset="UTF-8"></script>
     <!--include plugin js-->
     <script type="text/javascript" src="./js/jquery-rvnm.js"></script>
     <script
