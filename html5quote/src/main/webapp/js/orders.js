@@ -1,6 +1,7 @@
 $(function() {
 	getChart("index");
 	getStrategy();
+	getPosition();
 });
 var option_candle = {
 		title : {
@@ -82,4 +83,23 @@ function getStrategy(){
 		}
 	});
 }
+
+function getPosition(){
+	
+	$.ajax({
+		type : 'POST',
+		url : 'findPosition.html',
+		data : {
+			
+		},
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		dataType : 'json',
+		success : function(data) {
+			for (var i = 0; i < data.strategyList.length; i++) {
+				$("#strategyID").append("<option value="+data.strategyList[i].id+">"+data.strategyList[i].name+"</option>");
+		    }
+		}
+	});
+}
+
 

@@ -78,7 +78,7 @@
 			</div>
 		</div>
 		<div class="row" style="margin-top:20px;">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:500px;float:left">
 				<div class="mainrightOrdersNav1 col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getJys('shfe')" id="mainrightBottomNav1">
 					持仓
 				</div>

@@ -50,6 +50,19 @@ public class OrdersController {
 		String json = gson.toJson(futuresStrategyVO);
 		return json;
 	}
+	
+	@RequestMapping(value = "/findPosition.html", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String findPosition(HttpServletRequest request, ModelMap model) {
+		List<FuturesStrategy> strategyList = futuresStrategyService.findAll();
+		FuturesStrategyVO futuresStrategyVO = new FuturesStrategyVO();
+		futuresStrategyVO.setStrategyList(strategyList);
+		Gson gson = new Gson();
+		String json = gson.toJson(futuresStrategyVO);
+		return json;
+	}
+	
+	
 	@Resource(name="futuresStrategyService")
     private IFuturesStrategyService futuresStrategyService;
 	
