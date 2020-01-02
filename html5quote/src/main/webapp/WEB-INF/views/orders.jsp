@@ -78,8 +78,8 @@
 			</div>
 		</div>
 		<div class="row" style="margin-top:20px;">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:500px;float:left">
-				<div class="mainrightOrdersNav1 col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getJys('shfe')" id="mainrightBottomNav1">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:500px;float:left;border-left:1px solid #EEEEEE;border-top:1px solid #EEEEEE;border-bottom:1px solid #EEEEEE;">
+				<div class="mainrightOrdersNav1 col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getPosdddition('shfe')" id="mainrightBottomNav1">
 					持仓
 				</div>
 				<div class="mainrightOrdersNav2  col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getJys('czce')" id="mainrightBottomNav2">
@@ -91,30 +91,28 @@
 				<div class="mainrightOrdersNav4  col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getJys('czce')" id="mainrightBottomNav2">
 					成交
 				</div>
-				<table class="table table-bordered ">
-				  <thead>
-				    <tr>
-				      <th>品种</th>
-				      <th>方向</th>
-				      <th>盈亏</th>
-				      <th>总仓</th>
-				      <th>可用</th>
-				      <th>均价</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <td>a2005</td>
-				      <td>多</td>
-				      <td>2000</td>
-				      <td>5</td>
-				      <td>2</td>
-				      <td>1900</td>
-				    </tr>
-				  </tbody>
-				</table>
+				<div class="orderrightMain" id="style-4">
+						
+				</div>
 			</div>
-			<div id="chart2" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:500px;float:left"></div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:500px;float:left;border-left:1px solid #EEEEEE;border-top:1px solid #EEEEEE;border-bottom:1px solid #EEEEEE;">
+				<div class="mainrightOrdersNav1 col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getPosdddition('shfe')" id="mainrightBottomNav1">
+					分时
+				</div>
+				<div class="mainrightOrdersNav2  col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getJys('czce')" id="mainrightBottomNav2">
+					K线
+				</div>
+				<div class="mainrightOrdersNav3  col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getJys('czce')" id="mainrightBottomNav2">
+					盘口
+				</div>
+				<div class="mainrightOrdersNav4  col-xs-12 col-sm-12 col-md-3 col-lg-3" onclick="getJys('czce')" id="mainrightBottomNav2">
+					资讯
+				</div>
+				<div class="orderrightMain" id="style-4">
+						<div id="chart2" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:400px;float:left;"></div>
+				</div>
+			</div>
+			
 		</div>
 		
 	</div>

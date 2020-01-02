@@ -68,6 +68,7 @@ function getChart(code) {
 }
 
 function getStrategy(){
+	$("#strategyID").empty();
 	$.ajax({
 		type : 'POST',
 		url : 'findStrategy.html',
@@ -85,7 +86,6 @@ function getStrategy(){
 }
 
 function getPosition(){
-	
 	$.ajax({
 		type : 'POST',
 		url : 'findPosition.html',
@@ -95,9 +95,85 @@ function getPosition(){
 		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 		dataType : 'json',
 		success : function(data) {
-			for (var i = 0; i < data.strategyList.length; i++) {
-				$("#strategyID").append("<option value="+data.strategyList[i].id+">"+data.strategyList[i].name+"</option>");
+			$("#style-4").empty();
+			var strDiv = "";
+			var row = 0;
+			for (var i = 0; i < data.ordersList.length; i++) {
+				
+				if(row==0){
+					row ++;
+					strDiv += "<div  class=\"container-fluid\">";
+					strDiv += "<div  class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "合约";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "多空";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "总仓";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "可用";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "均价";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "浮盈";
+					strDiv += "</div>";
+					strDiv += "</div>";
+					strDiv += "</div>";
+				}
+				row ++;
+				if(row%2==0){
+					strDiv += "<div  class=\"container-fluid\">";
+					strDiv += "<div  class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].code;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].fangxiang;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].hand;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].remain_hand;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].open_price;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].remain_profit;
+					strDiv += "</div>";
+				}else{
+					strDiv += "<div  class=\"container-fluid\">";
+					strDiv += "<div  class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].code;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].fangxiang;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].hand;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].remain_hand;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].open_price;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += data.ordersList[i].remain_profit;
+					strDiv += "</div>";
+				}
+				
 		    }
+			strDiv += "</div>";
+			strDiv += "</div>";
+			$("#style-4").html(strDiv);
 		}
 	});
 }
