@@ -26,10 +26,12 @@ import com.venus.finance.fix.FixApplication;
 import com.venus.finance.model.FuturesClose;
 import com.venus.finance.model.FuturesOrders;
 import com.venus.finance.model.FuturesStrategy;
+import com.venus.finance.model.FuturesSusOrders;
 import com.venus.finance.service.IFuturesCloseService;
 import com.venus.finance.service.IFuturesMessageService;
 import com.venus.finance.service.IFuturesOrdersService;
 import com.venus.finance.service.IFuturesStrategyService;
+import com.venus.finance.service.IFuturesSusOrdersService;
 import com.venus.finance.util.CodeUtil;
 import com.venus.finance.util.MathUtil;
 import com.venus.finance.vo.AtrVO;
@@ -39,6 +41,7 @@ import com.venus.finance.vo.FuturesPriceVO;
 import com.venus.finance.vo.FuturesQuoteVO;
 import com.venus.finance.vo.FuturesStatistics;
 import com.venus.finance.vo.FuturesStrategyVO;
+import com.venus.finance.vo.FuturesSusOrdersVO;
 import com.venus.finance.vo.MacdVO;
 import com.venus.finance.vo.MaxMinPriceVO;
 
@@ -76,7 +79,16 @@ public class OrdersController {
 		String json = gson.toJson(futuresOrdersVO);
 		return json;
 	}
-	
+	@RequestMapping(value = "/findSusPosition.html", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String findSusPosition(HttpServletRequest request, ModelMap model) {
+		List<FuturesSusOrders> susOrdersList = futuresSusOrdersService.findAll();
+		FuturesSusOrdersVO futuresSusOrdersVO = new FuturesSusOrdersVO();
+		futuresSusOrdersVO.setSusOrdersList(susOrdersList);
+		Gson gson = new Gson();
+		String json = gson.toJson(futuresSusOrdersVO);
+		return json;
+	}
 	
 	
 	@Resource(name="futuresStrategyService")
@@ -85,5 +97,7 @@ public class OrdersController {
     private IFuturesOrdersService futuresOrdersService;
 	@Resource(name="futuresCloseService")
     private IFuturesCloseService futuresCloseService;
-
+	@Resource(name="futuresSusOrdersService")
+    private IFuturesSusOrdersService futuresSusOrdersService;
+	
 }

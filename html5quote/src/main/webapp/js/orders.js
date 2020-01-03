@@ -182,7 +182,100 @@ function getPosition(){
 	});
 }
 
-
+function getSusPosition(){
+	$("#mainrightOrdersNav1").css("background-color", "#000000");
+	$("#mainrightOrdersNav2").css("background-color", "#4B306C");
+	$("#mainrightOrdersNav3").css("background-color", "#000000");
+	$("#mainrightOrdersNav4").css("background-color", "#000000");
+	$.ajax({
+		type : 'POST',
+		url : 'findSusPosition.html',
+		data : {
+			
+		},
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		dataType : 'json',
+		success : function(data) {
+			$("#style-4").empty();
+			var strDiv = "";
+			var row = 0;
+			for (var i = 0; i < data.susOrdersList.length; i++) {
+				if(row==0){
+					row ++;
+					strDiv += "<div  class=\"container-fluid\">";
+					strDiv += "<div  class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "合约";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "多空";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "总仓";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "可用";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "均价";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "浮盈";
+					strDiv += "</div>";
+					strDiv += "</div>";
+					strDiv += "</div>";
+				}
+				row ++;
+				if(row%2==0){
+					strDiv += "<div  class=\"container-fluid\">";
+					strDiv += "<div  class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].code;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].fangxiang;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].hand;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].record_date;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].close_price;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].close_profit;
+					strDiv += "</div>";
+				}else{
+					strDiv += "<div  class=\"container-fluid\">";
+					strDiv += "<div  class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].code;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].fangxiang;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].hand;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].record_date;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].close_price;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
+					strDiv += data.susOrdersList[i].close_profit;
+					strDiv += "</div>";
+				}
+		    }
+			strDiv += "</div>";
+			strDiv += "</div>";
+			$("#style-4").html(strDiv);
+		}
+	});
+}
 function getClosePosition(){
 	$("#mainrightOrdersNav1").css("background-color", "#000000");
 	$("#mainrightOrdersNav2").css("background-color", "#000000");
