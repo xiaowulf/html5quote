@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.venus.finance.fix.FixApplication;
+import com.venus.finance.model.FuturesClose;
 import com.venus.finance.model.FuturesOrders;
 import com.venus.finance.model.FuturesStrategy;
+import com.venus.finance.service.IFuturesCloseService;
 import com.venus.finance.service.IFuturesMessageService;
 import com.venus.finance.service.IFuturesOrdersService;
 import com.venus.finance.service.IFuturesStrategyService;
@@ -64,11 +66,24 @@ public class OrdersController {
 		String json = gson.toJson(futuresOrdersVO);
 		return json;
 	}
+	@RequestMapping(value = "/findClosePosition.html", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String findClosePosition(HttpServletRequest request, ModelMap model) {
+		List<FuturesClose> closeList = futuresCloseService.findAll();
+		FuturesOrdersVO futuresOrdersVO = new FuturesOrdersVO();
+		futuresOrdersVO.setCloseList(closeList);
+		Gson gson = new Gson();
+		String json = gson.toJson(futuresOrdersVO);
+		return json;
+	}
+	
 	
 	
 	@Resource(name="futuresStrategyService")
     private IFuturesStrategyService futuresStrategyService;
 	@Resource(name="futuresOrdersService")
     private IFuturesOrdersService futuresOrdersService;
+	@Resource(name="futuresCloseService")
+    private IFuturesCloseService futuresCloseService;
 
 }

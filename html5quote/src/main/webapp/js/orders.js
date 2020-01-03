@@ -86,6 +86,10 @@ function getStrategy(){
 }
 
 function getPosition(){
+	$("#mainrightOrdersNav1").css("background-color", "#4B306C");
+	$("#mainrightOrdersNav2").css("background-color", "#000000");
+	$("#mainrightOrdersNav3").css("background-color", "#000000");
+	$("#mainrightOrdersNav4").css("background-color", "#000000");
 	$.ajax({
 		type : 'POST',
 		url : 'findPosition.html',
@@ -177,5 +181,102 @@ function getPosition(){
 		}
 	});
 }
+
+
+function getClosePosition(){
+	$("#mainrightOrdersNav1").css("background-color", "#000000");
+	$("#mainrightOrdersNav2").css("background-color", "#000000");
+	$("#mainrightOrdersNav3").css("background-color", "#4B306C");
+	$("#mainrightOrdersNav4").css("background-color", "#000000");
+	$.ajax({
+		type : 'POST',
+		url : 'findClosePosition.html',
+		data : {
+			
+		},
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		dataType : 'json',
+		success : function(data) {
+			$("#style-4").empty();
+			var strDiv = "";
+			var row = 0;
+			for (var i = 0; i < data.closeList.length; i++) {
+				if(row==0){
+					row ++;
+					strDiv += "<div  class=\"container-fluid\">";
+					strDiv += "<div  class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "合约";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "多空";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "总仓";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "可用";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "均价";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "浮盈";
+					strDiv += "</div>";
+					strDiv += "</div>";
+					strDiv += "</div>";
+				}
+				row ++;
+				if(row%2==0){
+					strDiv += "<div  class=\"container-fluid\">";
+					strDiv += "<div  class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].code;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].fangxiang;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].hand;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].record_date;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].close_price;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].close_profit;
+					strDiv += "</div>";
+				}else{
+					strDiv += "<div  class=\"container-fluid\">";
+					strDiv += "<div  class=\"row\">";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].code;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].fangxiang;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].hand;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].record_date;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].close_price;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += data.closeList[i].close_profit;
+					strDiv += "</div>";
+				}
+		    }
+			strDiv += "</div>";
+			strDiv += "</div>";
+			$("#style-4").html(strDiv);
+		}
+	});
+}
+
 
 
