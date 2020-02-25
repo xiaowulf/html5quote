@@ -55,6 +55,7 @@ public class LoadConfigServlet extends HttpServlet {
 	}
 
 	public void init() throws ServletException {
+		/*
 		String path = this.getClass().getClassLoader().getResource("/").getPath();
 		String fixFileName = path + "quotefix.cfg";
 		// ServletContext application = this.getServletContext();
@@ -74,16 +75,17 @@ public class LoadConfigServlet extends HttpServlet {
 		}
 		// application.setAttribute("fixApplication", fixApplication);
 		// }
-		// 启动最新行情线程
+		// 鍚姩鏈�鏂拌鎯呯嚎绋�
 		//computeLatestQuote = new ComputeLatestQuote();
 		//computeLatestQuote.setReady(true);
 		//latestQuoteThread = new Thread(computeLatestQuote);
 		//latestQuoteThread.start();
-		//保存数据线程
+		//淇濆瓨鏁版嵁绾跨▼
 		saveLatestQuote = new SaveLatestQuote();
 		saveLatestQuote.setReady(true);
 		saveLatestQuoteThread = new Thread(saveLatestQuote);
 		saveLatestQuoteThread.start();
+		*/
 	}
 
 	public void destroy() {
