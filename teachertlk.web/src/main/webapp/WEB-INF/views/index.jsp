@@ -46,99 +46,144 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="row" style="margin-top:50px;">
-						<div class="mainrightMain" id="style-3">
+						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						  <!-- Indicators -->
+						  <ol class="carousel-indicators">
+						    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						    <li data-target="#myCarousel" data-slide-to="1"></li>
+						    <li data-target="#myCarousel" data-slide-to="2"></li>
+						  </ol>
+						  <!-- Wrapper for slides -->
+						  <div class="carousel-inner">
+						    <div class="item active" id="slide11">
+						      	<img src="images/1.png" alt="Los Angeles" style="margin:auto;">
+						    </div>
 						
+						    <div class="item" id="slide12">
+						      	<img src="images/2.jpg" alt="Los Angeles" style="margin:auto;">
+						    </div>
+						
+						    <div class="item" id="slide13">
+						      	<img src="images/3.jpg" alt="Los Angeles" style="margin:auto;">
+						    </div>
+						  </div>
 						</div>
 					</div>
-					
-					
-					<div class="row">
-						<div class="mainrightBottomNav">
-				    		<div class="mainrightBottomNav1 col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('shfe')" id="mainrightBottomNav1">
-					    		<spring:message code="jys_shfe"/>
-					    	</div>
-					    	<div class="mainrightBottomNav2  col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('czce')" id="mainrightBottomNav2">
-					    		<spring:message code="jys_czce"/>
-					    	</div>
-					    	<div class="mainrightBottomNav3  col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('dce')" id="mainrightBottomNav3">
-					    		<spring:message code="jys_dce"/>
-					    	</div>
-					    	<div class="mainrightBottomNav4  col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="getJys('cffex')" id="mainrightBottomNav4">
-					    		<spring:message code="jys_cffex"/>
-					    	</div>
-					    	<!--  
-					    	<div class="mainrightBottomNavMore  col-xs-2 col-sm-2 col-md-2 col-lg-2" id="mainrightBottomNavMore" onclick="getMoreChart()">
-					    		更多指标
-					    	</div>
-					    	-->
-			    		</div>
-					</div>
-					
-					<div class="row">
-				    		<div id="chart1" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
-				    		<div id="chart2" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
-				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="height:300px;float:left"></div>
-					</div>
-					
-				</div>
+			</div>
 		</div>
 	</div>
-	
-	
-	<!--  
-	<nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-        	<div class="row">
-             	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-             		<label>品种</label>
-             		<input type="text" name="fname" size="1">
-             		<label>手数</label>
-             		<input type="text" name="fname" size="1">
-             		<label>策略</label>
-             		<input type="text" name="fname" size="1">
-             		<input type="radio" id="louie" name="drone" value="自动">自动
-             		<input type="radio" id="louie" name="drone" value="自动">手工
-             	</div>
-             	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-             		<label>买价</label>
-             		<input type="text" name="fname" size="1">
-             		<label>卖价</label>
-             		<input type="text" name="fname" size="1">
-             		<label>买量</label>
-             		<input type="text" name="fname" size="1">
-             		<input type="button" style="color:red;" value="多"/><input type="button" style="color:green;" value="空"/><button type="button">平</button>
-             		
-             	</div>
+	<div class="container-fluid">
+		<div class="row" style="height:30px;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			</div>
-             
-        </div>
-    </nav>
-    -->
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/index.js" type="text/javascript" charset="UTF-8"></script>
-	<script type="text/javascript" src="./js/jquery-rvnm.js"></script>
-	<script type="text/javascript" src="./js/index_websocket.js"></script>
-	
-	<script> 
-    function browserIphone() {
-    	
-	    var sUserAgent = navigator.userAgent.toLowerCase();
-	    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-	    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-	    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-	    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-	    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-	    var bIsAndroid = sUserAgent.match(/android/i) == "android";
-	    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-	    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-	    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM){
-	    	$("#style-3").css("height", "300px");
-	    	//window.location.href="mindex.html";
-	    } 
-	    
-	}
-	browserIphone(); 
-	</script>
 </body>
 </html>

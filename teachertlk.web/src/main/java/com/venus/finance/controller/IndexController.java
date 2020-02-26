@@ -42,10 +42,12 @@ public class IndexController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	//index
 	@RequestMapping(value = "/index.html", method = RequestMethod.GET)
 	public String home(HttpServletRequest request,ModelMap model) {
 		return "index";
 	}
+	//mobile index
 	@RequestMapping(value = "/mindex.html", method = RequestMethod.GET)
 	public String mhome(HttpServletRequest request,ModelMap model) {
 		return "mindex";
