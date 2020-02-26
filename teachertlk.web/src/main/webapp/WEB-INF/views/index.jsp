@@ -71,116 +71,63 @@
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid">
-		<div class="row" style="height:30px;">
+	<div class="container-fluid" style="background-color:#F8F8F8;">
+		<div class="row" style="height:30px;" >
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			</div>
 		</div>
 	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<div class="panel panel-success">
-					<div class="panel-heading">
-						<h3 class="panel-title">面板标题</h3>
-					</div>
-					<div class="panel-body">
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title">面板标题</h3>
-					</div>
-					<div class="panel-body">
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<div class="panel panel-danger">
-					<div class="panel-heading">
-						<h3 class="panel-title">面板标题</h3>
-					</div>
-					<div class="panel-body">
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
+	<div class="container-fluid" style="background-color:#F8F8F8;">
+		<div class="row" style="height:500px;">
+			<div class="container" style="background-color:#F8F8F8;">
+				<div class="row">
+					<div class="jumbotron" style="height:460px;">
+					  <h1 style="text-align:center;">kid-english专注于青少年英语教育</h1>
+					  <div class="container" style="margin-top:50px;">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"">
+								<div style="text-align:center;">
+									<embed src="images/street-talk-lingoda.svg" type="image/svg+xml" />
+								</div>
+								<div style="text-align:center;color:#1669BC;">
+									<h3>小班教学，最多5名同学</h3>
+								</div>
+								<div style="text-align:center;">
+									<h4>有充足的交流和互动课程</h4>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<div style="text-align:center;">
+									<embed src="images/street-talk-lingoda.svg" type="image/svg+xml" />
+								</div>
+								<div style="text-align:center;color:#1669BC;">
+									<h3>小班教学，最多5名同学</h3>
+								</div>
+								<div style="text-align:center;">
+									<h4>有充足的交流和互动课程</h4>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<div style="text-align:center;">
+									<embed src="images/street-talk-lingoda.svg" type="image/svg+xml" />
+								</div>
+								<div style="text-align:center;color:#1669BC;">
+									<h3>小班教学，最多5名同学</h3>
+								</div>
+								<div style="text-align:center;">
+									<h4>有充足的交流和互动课程</h4>
+								</div>
+							</div>
+						</div>
+					</div>	
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>	
-	<div class="container-fluid">
+	</div>
+	
+	
+	<div class="container-fluid" >
 		<div class="row" style="height:30px;">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			</div>
@@ -189,227 +136,52 @@
 	
 	<div class="container">
 		<div class="row" style="height:30px;">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				How Lingoda works
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:center;">
+				<h1>如何在Kid-English上学习英语</h1>
 			</div>
 		</div>
 	</div>
 	
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<div class="panel panel-success">
-					<div class="panel-heading">
-						<h3 class="panel-title">面板标题</h3>
-					</div>
-					<div class="panel-body">
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title">面板标题</h3>
-					</div>
-					<div class="panel-body">
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<div class="panel panel-danger">
-					<div class="panel-heading">
-						<h3 class="panel-title">面板标题</h3>
-					</div>
-					<div class="panel-body">
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row" style="height:30px;">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				How Lingoda works
-			</div>
-		</div>
-	</div>
 	
 	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<div class="panel panel-success">
-					<div class="panel-heading">
-						<h3 class="panel-title">面板标题</h3>
-					</div>
-					<div class="panel-body">
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-					</div>
-				</div>
+		<div class="row" style="height:500px;">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align:right;color:#03B3FE;">
+				<h1>1. Choose a time</h1>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title">面板标题</h3>
-					</div>
-					<div class="panel-body">
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<div class="panel panel-danger">
-					<div class="panel-heading">
-						<h3 class="panel-title">面板标题</h3>
-					</div>
-					<div class="panel-body">
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-						这是一个基本的面板
-					</div>
-				</div>
+			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+				<video width="650" height="400" controls  style="float:right;">
+				  <source src="images/1.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+				</video>
 			</div>
 		</div>
 	</div>
-	
+	<div class="container">
+		<div class="row" style="height:500px;">
+			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+				<video width="650" height="400" controls style="float:left;">
+				  <source src="images/2.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+				</video>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align:leftt;color:#03B3FE;">
+				<h1>2. Choose a class</h1>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row" style="height:500px;">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align:right;color:#03B3FE;">
+				<h1>3. Choose a time</h1>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+				<video width="650" height="400" controls style="float:right;">
+				  <source src="images/3.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+				</video>
+			</div>
+		</div>
+	</div>
 	<%@ include file="footer.jsp"%>
 	
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>

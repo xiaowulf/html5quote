@@ -14,7 +14,7 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<div class="contact_us_item1"> 
-									会馆介绍
+									客服热线
 								</div>
 							</div>
 						</div>
@@ -26,7 +26,7 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<div class="contact_us_item2"> 
-									<a href="intro.jsp#section-1">会馆简介</a>
+									<a href="intro.jsp#section-1">公司简介</a>
 								</div>
 							</div>
 						</div>

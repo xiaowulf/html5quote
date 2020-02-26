@@ -4,5 +4,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
-String appName = "kids-learn.vip";
+String appName = "kid-english";
 %>
