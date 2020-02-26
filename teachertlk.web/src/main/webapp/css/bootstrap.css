@@ -4331,7 +4331,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
     position: static;
-    float: none;
+    float: left;
     width: auto;
     margin-top: 0;
     background-color: transparent;
@@ -4353,7 +4353,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-nav {
-    float: none;
+    float: left;
     text-align: center;
     margin: 0;
   }

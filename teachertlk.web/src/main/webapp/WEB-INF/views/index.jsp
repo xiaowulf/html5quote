@@ -18,7 +18,6 @@
 <!--awesome font include-->
 <link type="text/css" rel="stylesheet" href="./css/main.css" />
 <link type="text/css" rel="stylesheet" href="./css/bootstrap.css" />
-
 <link type="text/css" rel="stylesheet" href="./css/font-awesome.min.css" />
 <!--include plugin css-->
 <link type="text/css" rel="stylesheet" href="./js/jquery-rvnm.css" />
@@ -26,7 +25,7 @@
 
 <body style="background-color: #ffffff;">
 	<nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+        <div class="container">
             <div class="navbar-header" style="float:left;margin-left:1px;">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#TaoistsNavBar" aria-expanded="false">
@@ -45,7 +44,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<div class="row" style="margin-top:50px;">
+					<div class="row" style="margin-top:80px;">
 						<div id="myCarousel" class="carousel slide" data-ride="carousel">
 						  <!-- Indicators -->
 						  <ol class="carousel-indicators">
@@ -181,7 +180,238 @@
 			</div>
 		</div>
 	</div>	
-
+	<div class="container-fluid">
+		<div class="row" style="height:30px;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row" style="height:30px;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				How Lingoda works
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row" style="height:30px;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				How Lingoda works
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<%@ include file="footer.jsp"%>
+	
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/index.js" type="text/javascript" charset="UTF-8"></script>

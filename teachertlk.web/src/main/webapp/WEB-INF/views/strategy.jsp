@@ -1,33 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page  isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ include file="constants.jsp"%>
 <!DOCTYPE html>
 <html lang="zh">
-<%@ include file="constants.jsp"%>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
-    <title><%=appName%></title>
-	<script src="js/echarts.min.js" type="text/javascript"></script>
-    <!--awesome font include-->
-    <link type="text/css" rel="stylesheet" href="./css/main.css" />
-    <link type="text/css" rel="stylesheet" href="./css/font-awesome.min.css" />
-    <!--include plugin css-->
-    <link type="text/css" rel="stylesheet" href="./js/jquery-rvnm.css" />
-    <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<title><%=appName%></title>
+<script src="js/echarts.min.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="./css/main.css" />
+<link type="text/css" rel="stylesheet" href="./css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="./css/font-awesome.min.css" />
+<!--include plugin css-->
+<link type="text/css" rel="stylesheet" href="./js/jquery-rvnm.css" />
 </head>
 
 <body style="background-color: #ffffff;">
-
-<nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+	<nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
             <div class="navbar-header" style="float:left;margin-left:1px;">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#TaoistsNavBar" aria-expanded="false">
@@ -42,70 +37,155 @@
             </div>
         </div>
     </nav>
-
 	<div class="container-fluid">
-		<div class="row" style="margin-top:50px;">
+		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">1</span><spring:message code="strategy_one_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_one_content"/>
-						  </div>
-						</div>
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">2</span><spring:message code="strategy_two_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_two_content"/>
-						  </div>
-						</div>
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">3</span><spring:message code="strategy_three_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_three_content"/>
-						  </div>
-						</div>
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">4</span><spring:message code="strategy_four_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_four_content"/>
-						  </div>
-						</div>
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">5</span><spring:message code="strategy_five_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_five_content"/>
-						  </div>
-						</div>
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">6</span><spring:message code="strategy_six_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_six_content"/>
+					<div class="row" style="margin-top:80px;">
+						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						  <!-- Indicators -->
+						  <ol class="carousel-indicators">
+						    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						    <li data-target="#myCarousel" data-slide-to="1"></li>
+						    <li data-target="#myCarousel" data-slide-to="2"></li>
+						  </ol>
+						  <!-- Wrapper for slides -->
+						  <div class="carousel-inner">
+						    <div class="item active" id="slide11">
+						      	<img src="images/1.png" alt="Los Angeles" style="margin:auto;">
+						    </div>
+						
+						    <div class="item" id="slide12">
+						      	<img src="images/2.jpg" alt="Los Angeles" style="margin:auto;">
+						    </div>
+						
+						    <div class="item" id="slide13">
+						      	<img src="images/3.jpg" alt="Los Angeles" style="margin:auto;">
+						    </div>
 						  </div>
 						</div>
 					</div>
 			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row" style="height:30px;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h3 class="panel-title">面板标题</h3>
+					</div>
+					<div class="panel-body">
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+						这是一个基本的面板
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div class="container-fluid">
+		<div class="row" style="height:30px;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			</div>
+		</div>
 	</div>
 
-    
-    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
-    <script src="js/suggest.js" type="text/javascript"></script>
-    <!--include plugin js-->
-    <script type="text/javascript" src="./js/jquery-rvnm.js"></script>
-    <script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous"></script>
+	<%@ include file="footer.jsp"%>
+	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/analyse.js" type="text/javascript" charset="UTF-8"></script>
 </body>
 </html>
