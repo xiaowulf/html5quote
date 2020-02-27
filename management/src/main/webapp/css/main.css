@@ -40,6 +40,16 @@ body{color: blue;height:100%;color:#ffffff;overflow-x: hidden;}
 .mainrightOrdersNav4{background-color:#4B306C;cursor:pointer;float:left;text-align:center;height:35px;border-top:1px solid #ffffff;border-right:1px solid #ffffff;color:#ffffff;padding-top:5px;margin-bottom:5px;}
 
 
+
+/*首页导航字体设置*/
+.navbar-fontsize{font-size:20px;}
+.navbar-fontsize:hover{
+  color: #4B306C;
+}
+/*图片居中*/
+
+
+
 /*鼠标移动上方时变色*/
 .mainrightBottomNav1:link,.mainrightBottomNav2:link,.mainrightBottomNav3:link,.mainrightBottomNav4:link {
   background-color: #4B306C;cursor:pointer;
@@ -97,6 +107,26 @@ body{color: blue;height:100%;color:#ffffff;overflow-x: hidden;}
 {
 	background-color: #000000;
 }
+
+
+
+#slide11 {
+    background-color: #E14A4B;
+}
+#slide12 {
+    background-color: #E3E7E8;
+}
+#slide13 {
+    background-color: #8CAD42;
+}
+#contact_us{background:#444444;color:#fff;}
+#contact_us .contact_us_line{border-right:1px solid #666666;height:150px;margin-top:25px;}
+#contact_us .contact_us_tel1{margin:auto;font-size:20px;color:#4dc060;text-align:center;}
+#contact_us .contact_us_tel2{height:150px;margin-top:72px;font-size:20px;color:#4dc060;text-align:center;}
+#contact_us .contact_us_item1{font-size:18px;color:#fff;text-align:left;}
+#contact_us .contact_us_item2{font-size:14px;color:#fff;text-align:left;}
+#copyright{background:#333333;color:#fff;text-align:center;}
+#contact_us a{color:#fff;text-decoration:none;cursor:pointer;}
 
 
 

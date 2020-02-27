@@ -1,6 +1,6 @@
 $(function() {
-	getJys("shfe");
-	getChart("index");
+	//getJys("shfe");
+	//getChart("index");
 });
 var option_close_settle = {
 	title : {
