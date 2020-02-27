@@ -24,7 +24,7 @@
 </head>
 
 <body style="background-color: #ffffff;">
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-fixed-left">
         <div class="container">
             <div class="navbar-header" style="float:left;margin-left:1px;">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -41,90 +41,7 @@
         </div>
     </nav>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<div class="row" style="margin-top:80px;">
-						<div id="myCarousel" class="carousel slide" data-ride="carousel">
-						  <!-- Indicators -->
-						  <ol class="carousel-indicators">
-						    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						    <li data-target="#myCarousel" data-slide-to="1"></li>
-						    <li data-target="#myCarousel" data-slide-to="2"></li>
-						  </ol>
-						  <!-- Wrapper for slides -->
-						  <div class="carousel-inner">
-						    <div class="item active" id="slide11">
-						      	<img src="images/1.png" alt="Los Angeles" style="margin:auto;">
-						    </div>
-						
-						    <div class="item" id="slide12">
-						      	<img src="images/2.jpg" alt="Los Angeles" style="margin:auto;">
-						    </div>
-						
-						    <div class="item" id="slide13">
-						      	<img src="images/3.jpg" alt="Los Angeles" style="margin:auto;">
-						    </div>
-						  </div>
-						</div>
-					</div>
-			</div>
-		</div>
-	</div>
-	<div class="container-fluid" style="background-color:#F8F8F8;">
-		<div class="row" style="height:30px;" >
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			</div>
-		</div>
-	</div>
-	<div class="container-fluid" style="background-color:#F8F8F8;">
-		<div class="row" style="height:500px;">
-			<div class="container" style="background-color:#F8F8F8;">
-				<div class="row">
-					<div class="jumbotron" style="height:460px;">
-					  <h1 style="text-align:center;">kid-english专注于青少年英语教育</h1>
-					  <div class="container" style="margin-top:50px;">
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"">
-								<div style="text-align:center;">
-									<embed src="images/street-talk-lingoda.svg" type="image/svg+xml" />
-								</div>
-								<div style="text-align:center;color:#1669BC;">
-									<h3>小班教学，最多5名同学</h3>
-								</div>
-								<div style="text-align:center;">
-									<h4>有充足的交流和互动课程</h4>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-								<div style="text-align:center;">
-									<embed src="images/street-talk-lingoda.svg" type="image/svg+xml" />
-								</div>
-								<div style="text-align:center;color:#1669BC;">
-									<h3>小班教学，最多5名同学</h3>
-								</div>
-								<div style="text-align:center;">
-									<h4>有充足的交流和互动课程</h4>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-								<div style="text-align:center;">
-									<embed src="images/street-talk-lingoda.svg" type="image/svg+xml" />
-								</div>
-								<div style="text-align:center;color:#1669BC;">
-									<h3>小班教学，最多5名同学</h3>
-								</div>
-								<div style="text-align:center;">
-									<h4>有充足的交流和互动课程</h4>
-								</div>
-							</div>
-						</div>
-					</div>	
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	
 	
 	<div class="container-fluid" >

@@ -27,9 +27,11 @@ function submitForm(){
 		dataType: 'json',
 		success: function(data){
 			if(data.resultStatus=="1"){
-				location.href="mainAction.html";
+				location.href="index.html";
 			}else if(data.resultStatus=="-3"){
 				alert("验证码错误！");
+			}else if(data.resultStatus=="-4"){
+				alert("用户名或者密码不可以我空！");
 			}else{
 				$('input[name=password]').val("");
 				alert("用户名或者密码错误！");

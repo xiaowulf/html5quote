@@ -26,11 +26,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
-import com.kiiik.dao.TbEmployee;
-import com.kiiik.dao.TbRole;
-import com.kiiik.util.MD5;
 import com.venus.finance.fix.FixApplication;
-import com.venus.finance.model.Employee;
+import com.venus.finance.model.TbEmployee;
 import com.venus.finance.model.FuturesMessage;
 import com.venus.finance.model.LoginCommand;
 import com.venus.finance.model.RtnResultVO;
@@ -39,6 +36,7 @@ import com.venus.finance.service.IFuturesMessageService;
 import com.venus.finance.util.CodeUtil;
 import com.venus.finance.util.FileUtil;
 import com.venus.finance.util.InitUtil;
+import com.venus.finance.util.MD5;
 import com.venus.finance.util.MathUtil;
 import com.venus.finance.vo.CandleVO;
 import com.venus.finance.vo.FuturesPriceVO;
@@ -58,37 +56,25 @@ public class LoginController {
 	@RequestMapping(value = "/loginCheck.html",produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String changeFuturesJys(HttpServletRequest request,ModelMap model,LoginCommand loginCommand) {
-		CodeUtil codeUtil = new CodeUtil();
-		List<FuturesQuoteVO>  jysCodeList = null;
 		String verycode = (String)request.getSession().getAttribute("verycode");
 		RtnResultVO rtnResultVO = new RtnResultVO();
 		if(null==verycode||null==loginCommand.getVerycode()||
 				!verycode.equals(loginCommand.getVerycode().toUpperCase())){
 			rtnResultVO.setResultStatus("-3");
 			rtnResultVO.setResultMessage("verycode is error");
+		}else if(null==loginCommand.getUserName()||null==loginCommand.getPassword()||
+				"".equals(loginCommand.getUserName())||"".equals(loginCommand.getPassword())){
+			rtnResultVO.setResultStatus("-4");
+			rtnResultVO.setResultMessage("用户名和密码不可以为空");
 		}else{
-			Employee tbEmployee = employeeService.findOne(id)
-					loginService.findTbEmployee(loginCommand.getUserName(), MD5.getMD5Str(loginCommand.getPassword()));
+			TbEmployee tbEmployee = employeeService.findEmployeeByNameAndPwd(loginCommand.getUserName(),MD5.getMD5Str(loginCommand.getPassword()));
 			if (null!=tbEmployee) {
-				Set tbDepartments = tbEmployee.getTbDepartments();
-				Set tbRoles = tbEmployee.getTbRoles();
+				rtnResultVO.setResultStatus("1");
+				rtnResultVO.setResultMessage("success");
 				request.getSession().setAttribute("tbEmployee", tbEmployee);
-				request.getSession().setAttribute("tbDepartments", tbDepartments);
-				request.getSession().setAttribute("tbRoles", tbRoles);
-				List funcList = new ArrayList();
-				if(tbRoles!=null){
-					Iterator it = tbRoles.iterator();
-					while(it!=null&&it.hasNext()){
-						TbRole tbRole = (TbRole)it.next();
-						if(tbRole!=null){
-							funcList.addAll(tbRole.getTbFunctions());
-						}
-					}
-				}
-				request.getSession().setAttribute("funcList", funcList);
-				result = "{\"resultStatus\":\"1\",\"resultMessage\":\"success\"}";
 			} else {
-				result = "{\"resultStatus\":\"-1\",\"resultMessage\":\"loginfail\"}";
+				rtnResultVO.setResultStatus("-1");
+				rtnResultVO.setResultMessage("username or password is not correct");
 			}
 		}
 		Gson gson = new Gson();

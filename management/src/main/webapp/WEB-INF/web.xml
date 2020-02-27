@@ -26,7 +26,16 @@
 	  <filter-name>characterEncodingFilter</filter-name>
 	  <url-pattern>*.html</url-pattern>
 	</filter-mapping>
-
+	<!-- 登录验证 -->
+	<filter>
+    	<display-name>loginFilter</display-name>
+    	<filter-name>loginFilter</filter-name>
+    	<filter-class>com.venus.finance.filter.LoginFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+    	<filter-name>loginFilter</filter-name>
+    	<url-pattern>*.html</url-pattern>
+  	</filter-mapping>
 
 	<!--生成验证码的Servlet-->
   	<servlet> 
