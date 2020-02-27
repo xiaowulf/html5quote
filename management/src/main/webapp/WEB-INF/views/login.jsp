@@ -21,35 +21,52 @@
 </head>
 
 <body style="background-color: #ffffff;">
-	<nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header" style="float:left;margin-left:1px;">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#TaoistsNavBar" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="TaoistsNavBar">
-                <jsp:include page="mnavbar.jsp"></jsp:include>
-            </div>
-        </div>
-    </nav>
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<div class="row" style="margin-top:50px;">
-						<div class="item active" style="height:600px;"  style="margin:auto;">
-						   <div class="panel panel-warning" style="height:500px;">
+					<div class="row" style="margin-top:200px;">
+						<div class="item active" style="height:400px;"  style="margin:auto;">
+						   <div class="panel panel-primary" style="height:300px;">
 							    <div class="panel-heading">
-							        <h3 class="panel-title">用户登录</h3>
+							        <h3 class="panel-title"><%=appName%> Login</h3>
 							    </div>
 							    <div class="panel-body">
-							        这是一个fff基本的面板
+								<form id="loginForm" method="post">
+						            <table cellpadding="0" style="font-size:14px;">
+						                <tr>
+						                    <td>用户名：</td>
+						                    <td colspan="2"><input type="text" name="userName" style="width:200px;"></td>
+						                </tr>
+						                <tr>
+						                    <td>&nbsp;</td>
+						                    <td colspan="2">&nbsp;</td>
+						                </tr>
+						                <tr>
+						                    <td>密&nbsp;&nbsp;码：</td>
+						                    <td colspan="2"><input type="password" name="password" style="width:200px;"></td>
+						                </tr>
+						                <tr>
+						                    <td>&nbsp;</td>
+						                    <td colspan="2">&nbsp;</td>
+						                </tr>
+						                <tr>
+						                    <td>验证码：</td>
+						                    <td><input type="text" name="verycode" style="width:120px;">
+						                    </td>
+						                    <td>
+						                    	<img src="imageServlet" id="imageServlet" onclick="reloadImage()"/>
+						                    </td>
+						                </tr>
+						            </table>
+						        </form>
+						        
+						        <div style="text-align:center;padding:5px">
+						        	<button class="btn btn-success" type="button" onclick="submitForm()">登录</button>
+						        	<button class="btn btn-warning" type="button" onclick="clearForm()">重置</button>
+						        </div>
 							    </div>
 							</div>
 						</div>
@@ -60,9 +77,8 @@
 		</div>
 	</div>
 	
-	<%@ include file="footer.jsp"%>
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/analyse.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="js/login.js" type="text/javascript" charset="UTF-8"></script>
 </body>
 </html>

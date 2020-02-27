@@ -46,7 +46,7 @@
 						<div class="item active" style="height:600px;"  style="margin:auto;">
 						   <div class="panel panel-warning" style="height:500px;">
 							    <div class="panel-heading">
-							        <h3 class="panel-title">用户登录</h3>
+							        <h3 class="panel-title">面板标题</h3>
 							    </div>
 							    <div class="panel-body">
 							        这是一个fff基本的面板

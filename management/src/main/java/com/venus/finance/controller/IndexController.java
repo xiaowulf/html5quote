@@ -73,10 +73,7 @@ public class IndexController {
 	public String orders(HttpServletRequest request,ModelMap model) {
 		return "orders";
 	}
-	@RequestMapping(value = "/login.html", method = RequestMethod.GET)
-	public String login(HttpServletRequest request,ModelMap model) {
-		return "login";
-	}
+	
 	@RequestMapping(value = "/position.html", method = RequestMethod.GET)
 	public String position(HttpServletRequest request,ModelMap model) {
 		return "position";

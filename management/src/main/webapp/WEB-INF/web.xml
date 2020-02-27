@@ -27,6 +27,17 @@
 	  <url-pattern>*.html</url-pattern>
 	</filter-mapping>
 
+
+	<!--生成验证码的Servlet-->
+  	<servlet> 
+		<servlet-name>imageServlet</servlet-name> 
+		<servlet-class>com.venus.finance.servlet.ImageServlet</servlet-class> 
+  	</servlet> 
+
+  	<servlet-mapping> 
+		<servlet-name>imageServlet</servlet-name> 
+		<url-pattern>/imageServlet</url-pattern> 
+  	</servlet-mapping> 
   
 	<servlet>
          <servlet-name>LoadConfigServlet</servlet-name>
@@ -50,6 +61,6 @@
         <url-pattern>*.html</url-pattern> 
     </servlet-mapping>
 	<welcome-file-list>
-	    <welcome-file>index.html</welcome-file>
+	    <welcome-file>login.html</welcome-file>
 	</welcome-file-list>
 </web-app>
