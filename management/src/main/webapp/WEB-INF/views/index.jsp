@@ -44,63 +44,6 @@
 	
 	
 	
-	<div class="container-fluid" >
-		<div class="row" style="height:30px;">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			</div>
-		</div>
-	</div>
-	
-	<div class="container">
-		<div class="row" style="height:30px;">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:center;">
-				<h1>如何在Kid-English上学习英语</h1>
-			</div>
-		</div>
-	</div>
-	
-	
-	<div class="container">
-		<div class="row" style="height:500px;">
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align:right;color:#03B3FE;">
-				<h1>1. Choose a time</h1>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-				<video width="650" height="400" controls  style="float:right;">
-				  <source src="images/1.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-				</video>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row" style="height:500px;">
-			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-				<video width="650" height="400" controls style="float:left;">
-				  <source src="images/2.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-				</video>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align:leftt;color:#03B3FE;">
-				<h1>2. Choose a class</h1>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row" style="height:500px;">
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align:right;color:#03B3FE;">
-				<h1>3. Choose a time</h1>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-				<video width="650" height="400" controls style="float:right;">
-				  <source src="images/3.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-				</video>
-			</div>
-		</div>
-	</div>
-	<%@ include file="footer.jsp"%>
-	
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/index.js" type="text/javascript" charset="UTF-8"></script>

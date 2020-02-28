@@ -52,7 +52,10 @@ public class LoginController {
 	public String login(HttpServletRequest request,ModelMap model) {
 		return "login";
 	}
-	
+	@RequestMapping(value = "/main.html", method = RequestMethod.GET)
+	public String main(HttpServletRequest request,ModelMap model) {
+		return "main";
+	}
 	@RequestMapping(value = "/loginCheck.html",produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String changeFuturesJys(HttpServletRequest request,ModelMap model,LoginCommand loginCommand) {

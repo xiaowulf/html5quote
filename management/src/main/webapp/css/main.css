@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-body{color: blue;height:100%;color:#ffffff;overflow-x: hidden;}
+html,body{margin:0;font-size:13px;color: blue;height:100%;color:#ffffff;overflow-x: hidden;}
 .mainleft{float:left;height:100%;width:8%;position: relative;}
 .mainleft1{float:left;height:100%;width:100%;position: relative;color:#ffffff;}
 .mainright{float:right;height:100%;width:92%;position: relative;background-color:#ffffff;}

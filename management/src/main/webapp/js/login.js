@@ -27,7 +27,7 @@ function submitForm(){
 		dataType: 'json',
 		success: function(data){
 			if(data.resultStatus=="1"){
-				location.href="index.html";
+				location.href="main.html";
 			}else if(data.resultStatus=="-3"){
 				alert("验证码错误！");
 			}else if(data.resultStatus=="-4"){
