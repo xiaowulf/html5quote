@@ -40,6 +40,7 @@ function addTab(title, href) {
 		} else {
 			content = '未实现';
 		}
+		
 		tt.tabs('add', {
 			title : title,
 			closable : true,
@@ -48,11 +49,12 @@ function addTab(title, href) {
 	}
 }
 
-function refreshTab(cfg){  
-    var refresh_tab = cfg.tabTitle?$('#mainTabs').tabs('getTab',cfg.tabTitle):$('#mainTabs').tabs('getSelected');  
-    if(refresh_tab && refresh_tab.find('iframe').length > 0){  
-	    var _refresh_ifram = refresh_tab.find('iframe')[0];  
-	    var refresh_url = cfg.url?cfg.url:_refresh_ifram.src;  
-	    _refresh_ifram.contentWindow.location.href=refresh_url;  
-    }  
-}  
+function refreshTab(cfg) {
+	var refresh_tab = cfg.tabTitle ? $('#mainTabs')
+			.tabs('getTab', cfg.tabTitle) : $('#mainTabs').tabs('getSelected');
+	if (refresh_tab && refresh_tab.find('iframe').length > 0) {
+		var _refresh_ifram = refresh_tab.find('iframe')[0];
+		var refresh_url = cfg.url ? cfg.url : _refresh_ifram.src;
+		_refresh_ifram.contentWindow.location.href = refresh_url;
+	}
+}
