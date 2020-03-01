@@ -14,10 +14,10 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.imageio.ImageIO;
 
-
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
+//import com.sun.image.codec.jpeg.JPEGCodec;
+//import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 /**
  * Servlet implementation class LoginServlet
@@ -67,8 +67,9 @@ public class ImageServlet extends HttpServlet {
 			g.drawRect(random.nextInt(100), random.nextInt(30), 1, 1);
 		}
 		ServletOutputStream out = response.getOutputStream();
-		JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-		encoder.encode(bi);
+        ImageIO.write(bi, "JPEG", out);  
+		//JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+		//encoder.encode(bi);
 		out.flush();
 	}
 }

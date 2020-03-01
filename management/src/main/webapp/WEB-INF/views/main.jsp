@@ -25,7 +25,7 @@
     <div class="easyui-layout" style="width:100%;height:100%;">
         <div data-options="region:'north'" style="height:50px;background-color:#e0ecff;">
         	<div style="float:left;text-align:center;margin-top:10px;margin-left:50px;font-size:20px;font-weight:bold;">
-		       	jjjkjkjjkj
+		       	远程教育管理平台V1.0
 		     </div>
 		     <div style="float:right;text-align:right;margin-right:50px;margin-top:10px;">
 		       	<input type="button" id="changePwd" value="修改密码" class="cupid-blue">
@@ -34,17 +34,18 @@
         
         </div>
         <div data-options="region:'south',split:true" style="height:50px;"></div>
-        <div data-options="region:'west',split:true" title="West" style="width:300px;">
+        <div data-options="region:'west',split:true" title="管理员" style="width:300px;">
         
         <ul class="easyui-tree" id="funcTree">
             <li>
                 <span>管理系统</span>
                 <ul>
-                    <li  data-options='state:closed,id:1,attributes:{urlaction:"index.html"}'>index.html</li>
-                    <li>about.html</li>
-                    <li>welcome.html</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-teacher.html"}'>教师管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-student.html"}'>学生管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>课程管理</li>
                 </ul>
             </li>
+            
         </ul>
         </div>
         

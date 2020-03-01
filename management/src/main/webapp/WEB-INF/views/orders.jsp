@@ -26,24 +26,6 @@
 </head>
 
 <body style="background-color: #ffffff;">
-
-<nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header" style="float:left;margin-left:1px;">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#TaoistsNavBar" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="TaoistsNavBar">
-                <jsp:include page="mnavbar.jsp"></jsp:include>
-            </div>
-        </div>
-    </nav>
-
 	<div class="container-fluid">
 		<div class="row" style="margin-top:50px;">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 alert alert-danger" role="alert">
@@ -115,119 +97,14 @@
 		</div>
 		<!-- end row -->
 	</div>
-	<div class="container-fluid">
-	<div class="row" style="margin-top:20px;height:300px;">
-			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="height:300px;">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div style="background-color:#EEEEEE;padding-top:5px;height:30px;"><div class="fa fa-bar-chart"></div>相关资讯</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="height:300px;">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div style="background-color:#EEEEEE;padding-top:5px;height:30px;"><div class="fa fa-bar-chart"></div>相关资讯</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="height:300px;">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div style="background-color:#EEEEEE;padding-top:5px;height:30px;"><div class="fa fa-bar-chart"></div>相关资讯</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="height:300px;">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div style="background-color:#EEEEEE;padding-top:5px;height:30px;"><div class="fa fa-bar-chart"></div>相关资讯</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/orders.js" type="text/javascript" charset="UTF-8"></script>
     <!--include plugin js-->
-    <script type="text/javascript" src="./js/jquery-rvnm.js"></script>
     <script
   src="https://code.jquery.com/ui/1.11.0/jquery-ui.min.js"
   integrity="sha256-lCF+55kMUF+3fO/3BiXui4eiUKcQmtr7ecKSeLVDxIQ="
   crossorigin="anonymous"></script>
-    <script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous"></script>
-	<script>
-	  $( function() {
-	    $( "#tabs" ).tabs();
-	  } );
-	  </script>
+
 </body>
 </html>
