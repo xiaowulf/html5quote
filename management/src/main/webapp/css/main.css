@@ -170,5 +170,38 @@ html,body{margin:0;font-size:13px;color: blue;height:100%;color:#ffffff;overflow
 #copyright{background:#333333;color:#fff;text-align:center;}
 #contact_us a{color:#fff;text-decoration:none;cursor:pointer;}
 
+#mainTable{
+	margin:auto;
+	width:99%;
+	margin-top:10px;
+}
+.tableClass{
+	width:100%;
+	align:center;
+	border-collapse: collapse;
+	border:1px solid #95b8e7;
+	text-align:center;
+	font-size:13px;
+}
+.tableClass th{
+	background-color:#e0ecff;
+	font-weight:normal;
+	font-size:13px;
+	height:25px;
+	border:1px solid #95b8e7;
+}
 
+.tableClass1 th{
+	background-color:#ffffff;
+	font-weight:normal;
+	font-size:13px;
+	height:25px;
+}
+
+.tableClass tr{
+	height:25px;
+}
+.tableClass td{
+	border:1px solid #95b8e7;
+}
 
