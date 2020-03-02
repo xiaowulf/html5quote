@@ -22,7 +22,7 @@
 
 <body style="background-color: #ffffff;">
 	<div class="container-fluid">
-		<div class="row" style="margin-top:20px;">
+		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div id="mainTable">
 				   	 <table class="tableClass">
@@ -32,6 +32,7 @@
 				   	 				ID
 				   	 			</th>
 				   	 			<th width="15%">
+				   	 			fdsaf
 				   	 			</th>
 				   	 			<th width="15%">
 				   	 			</th>
@@ -83,6 +84,7 @@
 				   	 		</tr>
 				   	 		</c:forEach>
 				   	 	</tbody>
+				   	 	
 				   	 	<tfoot>
 				   	 		<tr>
 				   	 			<td colspan="7">
