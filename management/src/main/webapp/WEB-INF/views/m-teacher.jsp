@@ -23,16 +23,20 @@
 <body style="background-color: #ffffff;">
 	<div class="container-fluid">
 		<div class="row" style="margin-top:20px;">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:500px;float:left;border-left:1px solid #EEEEEE;border-top:1px solid #EEEEEE;border-bottom:1px solid #EEEEEE;">
-				<div class="mainrightOrdersNav1 col-xs-12 col-sm-12 col-md-4 col-lg-4" onclick="getPosition()" id="mainrightOrdersNav1">
-					持仓
-				</div>
-				<div class="mainrightOrdersNav2  col-xs-12 col-sm-12 col-md-4 col-lg-4" onclick="getSusPosition()" id="mainrightOrdersNav2">
-					挂单
-				</div>
-				<div class="mainrightOrdersNav3  col-xs-12 col-sm-12 col-md-4 col-lg-4" onclick="getClosePosition()" id="mainrightOrdersNav3">
-					平仓
-				</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<table class="easyui-datagrid" title="教师管理" style="width:100%;height:600px;"
+            data-options="rownumbers:true,singleSelect:true,url:'datagrid_data1.json',method:'get'">
+        <thead>
+            <tr>
+                <th data-options="field:'itemid',width:80">Item ID</th>
+                <th data-options="field:'productid',width:100">Product</th>
+                <th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+                <th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+                <th data-options="field:'attr1',width:240">Attribute</th>
+                <th data-options="field:'status',width:60,align:'center'">Status</th>
+            </tr>
+        </thead>
+    </table>
 			</div>
 		</div>
 		<!-- end row -->
