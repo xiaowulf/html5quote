@@ -21,18 +21,81 @@
 </head>
 
 <body style="background-color: #ffffff;">
+
+	<div class="container-fluid" style="margin-top:20px;">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<table class="tableClass">
+				   	 	<thead>
+				   	 		<tr>
+				   	 			<th width="15%">
+				   	 				<spring:message code="teacher.management"/>
+				   	 			</th>
+				   	 		</tr>
+				   	 	</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+
 	<div class="container-fluid">
-		<div class="row" style="margin-top:20px;">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:500px;float:left;border-left:1px solid #EEEEEE;border-top:1px solid #EEEEEE;border-bottom:1px solid #EEEEEE;">
-				<div class="mainrightOrdersNav1 col-xs-12 col-sm-12 col-md-4 col-lg-4" onclick="getPosition()" id="mainrightOrdersNav1">
-					持仓
-				</div>
-				<div class="mainrightOrdersNav2  col-xs-12 col-sm-12 col-md-4 col-lg-4" onclick="getSusPosition()" id="mainrightOrdersNav2">
-					挂单
-				</div>
-				<div class="mainrightOrdersNav3  col-xs-12 col-sm-12 col-md-4 col-lg-4" onclick="getClosePosition()" id="mainrightOrdersNav3">
-					平仓
-				</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div id="mainTable">
+				   	 <table class="tableClass">
+				   	 	<thead>
+				   	 		<tr>
+				   	 			<th width="15%">
+				   	 				ID
+				   	 			</th>
+				   	 			<th width="15%">
+				   	 			fdsaf
+				   	 			</th>
+				   	 			<th width="15%">
+				   	 			</th>
+				   	 			<th width="15%">
+				   	 			</th>
+				   	 			<th width="10%">
+				   	 			</th>
+				   	 		</tr>
+				   	 	</thead>
+				   	 	<tbody id="tableContent">
+				   	 		<c:forEach  items="${dataList}" var="dataList"  varStatus="userStatus">
+				   	 		<c:if test="${userStatus.index%2==0}">
+				   	 			<tr style="background-color:#ffffff;" onmouseover="style.backgroundColor='#f2f288'" onmouseout="style.backgroundColor='#FFFFFF'" id='tableContent${dataList.id}'> 
+				   	 		</c:if>
+				   	 			
+				   	 		<c:if test="${userStatus.index%2==1}">
+				   	 			<tr style="background-color:#e0ecff;" onmouseover="style.backgroundColor='#f2f288'" onmouseout="style.backgroundColor='#e0ecff'" id='tableContent${dataList.id}'>
+				   	 		</c:if>
+				   	 			<td>
+				   	 				<c:out value="${dataList.id}"></c:out>
+					   	 		</td>
+				   	 			<td>
+				   	 				<c:out value="${dataList.username}"></c:out>
+					   	 		</td>
+					   	 		<td>
+						   	 		<img alt="" src="./images/13.png" style="margin-top:5px;cursor:pointer;" onclick="addCapital('<c:out value="${dataList.id}"></c:out>')">
+					   	 		</td>
+					   	 		<td>
+						   	 		<img alt="" src="./images/11.png" style="margin-top:5px;cursor:pointer;" onclick="editStrategy('<c:out value="${dataList.id}"></c:out>')">
+					   	 		</td>
+					   	 		<td>
+						   	 		<img alt="" src="./images/12.png" style="margin-top:5px;cursor:pointer;" onclick="delStrategy('<c:out value="${dataList.id}"></c:out>')">
+					   	 		</td>
+				   	 		</tr>
+				   	 		</c:forEach>
+				   	 	</tbody>
+				   	 	
+				   	 	<tfoot>
+				   	 		<tr>
+				   	 			<td colspan="7">
+				   	 				<%@ include file="page.jsp"%>
+				   	 			</td>
+				   	 		</tr>
+				   	 	</tfoot>
+				   	 </table>
+				  </div>
 			</div>
 		</div>
 		<!-- end row -->

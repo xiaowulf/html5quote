@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2020-02-28 18:54:53
+Date: 2020-03-03 18:55:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -192,4 +192,63 @@ CREATE TABLE `tb_employee` (
 -- Records of tb_employee
 -- ----------------------------
 INSERT INTO `tb_employee` VALUES ('1', '1', '96E79218965EB72C92A549DD5A330112', '1', '2020-02-27 18:03:21', '1', '1', '1', '1', '1', '1', '1');
+
+-- ----------------------------
+-- Table structure for tb_student
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_student`;
+CREATE TABLE `tb_student` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `truename` varchar(255) DEFAULT NULL,
+  `sex` varchar(255) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `pic1` varchar(255) DEFAULT NULL,
+  `pic2` varchar(255) DEFAULT NULL,
+  `pic3` varchar(255) DEFAULT NULL,
+  `tel` varchar(255) DEFAULT NULL,
+  `mobile` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `idcard` varchar(255) DEFAULT NULL,
+  `education` varchar(255) DEFAULT NULL,
+  `resume` varchar(2000) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_student
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for tb_teacher
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_teacher`;
+CREATE TABLE `tb_teacher` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `truename` varchar(255) DEFAULT NULL,
+  `sex` varchar(255) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `pic1` varchar(255) DEFAULT NULL,
+  `pic2` varchar(255) DEFAULT NULL,
+  `pic3` varchar(255) DEFAULT NULL,
+  `tel` varchar(255) DEFAULT NULL,
+  `mobile` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `idcard` varchar(255) DEFAULT NULL,
+  `education` varchar(255) DEFAULT NULL,
+  `certificate` varchar(255) DEFAULT NULL,
+  `resume` varchar(2000) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `video1` varchar(255) DEFAULT NULL,
+  `video2` varchar(255) DEFAULT NULL,
+  `video3` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_teacher
+-- ----------------------------
+INSERT INTO `tb_teacher` VALUES ('1', '1', '1', '1', '1', '1', '1', null, '1', '1', '1', null, '1', null, null, null, null, null, null);
 SET FOREIGN_KEY_CHECKS=1;

@@ -21,6 +21,23 @@
 </head>
 
 <body style="background-color: #ffffff;">
+
+	<div class="container-fluid" style="margin-top:20px;">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<table class="tableClass">
+				   	 	<thead>
+				   	 		<tr>
+				   	 			<th width="15%">
+				   	 				<spring:message code="teacher.management"/>
+				   	 			</th>
+				   	 		</tr>
+				   	 	</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -40,10 +57,6 @@
 				   	 			</th>
 				   	 			<th width="10%">
 				   	 			</th>
-				   	 			<th width="10%">
-				   	 			</th>
-				   	 			<th width="10%">
-				   	 			</th>
 				   	 		</tr>
 				   	 	</thead>
 				   	 	<tbody id="tableContent">
@@ -59,27 +72,16 @@
 				   	 				<c:out value="${dataList.id}"></c:out>
 					   	 		</td>
 				   	 			<td>
-				   	 				<c:out value="${dataList.name}"></c:out>
+				   	 				<c:out value="${dataList.username}"></c:out>
 					   	 		</td>
 					   	 		<td>
-					   	 			<c:if test="${dataList.is_use eq '1' }">
-					   	 				<fmt:message key="system.yes" />
-					   	 			</c:if>
-					   	 			<c:if test="${dataList.is_use ne '1' }">
-					   	 				<fmt:message key="system.no" />
-					   	 			</c:if>
+						   	 		<img alt="" src="./images/13.png" style="margin-top:5px;cursor:pointer;" onclick="addCapital('<c:out value="${dataList.id}"></c:out>')">
 					   	 		</td>
 					   	 		<td>
-					   	 			<c:out value="${dataList.qcqy}"></c:out>
+						   	 		<img alt="" src="./images/11.png" style="margin-top:5px;cursor:pointer;" onclick="editStrategy('<c:out value="${dataList.id}"></c:out>')">
 					   	 		</td>
 					   	 		<td>
-						   	 		<img alt="" src="../images/13.png" style="margin-top:5px;cursor:pointer;" onclick="addCapital('<c:out value="${dataList.id}"></c:out>')">
-					   	 		</td>
-					   	 		<td>
-						   	 		<img alt="" src="../images/11.png" style="margin-top:5px;cursor:pointer;" onclick="editStrategy('<c:out value="${dataList.id}"></c:out>')">
-					   	 		</td>
-					   	 		<td>
-						   	 		<img alt="" src="../images/12.png" style="margin-top:5px;cursor:pointer;" onclick="delStrategy('<c:out value="${dataList.id}"></c:out>')">
+						   	 		<img alt="" src="./images/12.png" style="margin-top:5px;cursor:pointer;" onclick="delStrategy('<c:out value="${dataList.id}"></c:out>')">
 					   	 		</td>
 				   	 		</tr>
 				   	 		</c:forEach>

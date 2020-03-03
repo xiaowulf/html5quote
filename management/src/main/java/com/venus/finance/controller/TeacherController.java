@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,8 +23,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.venus.finance.fix.FixApplication;
+import com.venus.finance.service.IEmployeeService;
+import com.venus.finance.service.ITeacherService;
 import com.venus.finance.util.CodeUtil;
+import com.venus.finance.util.Constants;
 import com.venus.finance.util.MathUtil;
+import com.venus.finance.util.Page;
+import com.venus.finance.util.PagerHelp;
 import com.venus.finance.vo.AtrVO;
 import com.venus.finance.vo.CandleVO;
 import com.venus.finance.vo.FuturesPriceVO;
@@ -39,48 +45,42 @@ public class TeacherController {
 	 */
 	@RequestMapping(value = "/m-teacher.html", method = RequestMethod.GET)
 	public String analyse(HttpServletRequest request, ModelMap model) {
+		try {
+			String name = "";
+			if (null != request.getParameter("name")) {
+				name = (String) request.getParameter("name");
+			}
+			int total = teacherService.findAllTbTeacherCount(name).intValue();
+			Page page = null;
+			int currentPage = 1;
+			if (null != request.getParameter("currentPage")) {
+				currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			}
+			int pageSize = Constants.pageSize;
+			page = PagerHelp.getPager(request, total, pageSize);
+			if (currentPage <= 1) {
+				page.setLastPage(1);
+			} else {
+				page.setLastPage(currentPage - 1);
+			}
+			if (currentPage < page.getTotalPages()) {
+				page.setNextPage(currentPage + 1);
+			} else {
+				page.setNextPage(page.getTotalPages());
+			}
+			page.setPageAction("m-teacher.html?name=" + name + "&");
+			model.addAttribute("page", page);
+			model.addAttribute("name", name);
+			List dataList = teacherService.findAllTbTeacher(page.getStartRow(), pageSize, name);
+			model.addAttribute("dataList", dataList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
 		return "m-teacher";
 	}
 
-	@RequestMapping(value = "/findCodeStatistics1.html", produces = "text/html;charset=UTF-8")
-	@ResponseBody
-	public String findCodeStatistics1(HttpServletRequest request, ModelMap model) {
-		String code = request.getParameter("code");
-		// 得到了code查询今日的文件信息返回到前台
-		CodeUtil codeUtil = new CodeUtil();
-		List<String> dateList = codeUtil.getTradeDate();
-		String todayStr = "";
-		FuturesStatistics futuresStatistics = new FuturesStatistics();
-		if (dateList != null && dateList.size() > 0) {
-			todayStr = dateList.get(dateList.size() - 1);
-		}
-		FuturesQuoteVO futuresQuoteVO = codeUtil.getDayQuoteByCodeAndDate(code, todayStr);
-		if (null != futuresQuoteVO) {
-			futuresStatistics.setFuturesQuoteVO(futuresQuoteVO);
-		} else {
-			futuresStatistics.setFuturesQuoteVO(new FuturesQuoteVO());
-		}
-		MaxMinPriceVO maxMinPriceVO = codeUtil.getMaxMinPriceVOByCodeAndDate(code, todayStr);
-		if (null != maxMinPriceVO) {
-			futuresStatistics.setMaxMinPriceVO(maxMinPriceVO);
-		} else {
-			futuresStatistics.setMaxMinPriceVO(new MaxMinPriceVO());
-		}
-		AtrVO atrVO = codeUtil.getAtrByCodeAndDate(code, todayStr);
-		if (null != atrVO) {
-			futuresStatistics.setAtrvo(atrVO);
-		} else {
-			futuresStatistics.setAtrvo(new AtrVO());
-		}
-		// 找出120日以内的均值
-		MacdVO macdVO = codeUtil.getMacdVOByCodeAndDate(code, todayStr);
-		futuresStatistics.setInstrumentID(code);
-		futuresStatistics.setTodayStr(todayStr);
-		futuresStatistics.setMacdVO(macdVO);
-		Gson gson = new Gson();
-		String json = gson.toJson(futuresStatistics);
-		return json;
-	}
+	@Resource(name = "teacherService")
+	private ITeacherService teacherService;
 
-	
 }

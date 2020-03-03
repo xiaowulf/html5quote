@@ -36,7 +36,7 @@ function addTab(title, href) {
 		var content = "";
 		if (href) {
 			content = '<iframe scrolling="yes" frameborder="0"  src="' + href
-					+ '" style="width:100%;height:100%;"></iframe>';
+					+ '" style="width:100%;height:99%;"></iframe>';
 		} else {
 			content = '未实现';
 		}
