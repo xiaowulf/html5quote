@@ -38,14 +38,41 @@
         
         <ul class="easyui-tree" id="funcTree">
             <li>
-                <span>管理系统</span>
+            	<span>系统管理</span>
+                <ul>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-teacher.html"}'>员工管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-student.html"}'>角色管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>权限管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>日志管理</li>
+                </ul>
+            </li>
+            <li>
+                <span>教学管理</span>
                 <ul>
                     <li  data-options='state:closed,id:1,attributes:{urlaction:"m-teacher.html"}'>教师管理</li>
                     <li  data-options='state:closed,id:1,attributes:{urlaction:"m-student.html"}'>学生管理</li>
                     <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>课程管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>成绩管理</li>
                 </ul>
             </li>
-            
+            <li>
+                <span>财务管理</span>
+                <ul>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-teacher.html"}'>教师管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-student.html"}'>学生管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>课程管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>成绩管理</li>
+                </ul>
+            </li>
+            <li>
+                <span>发布管理</span>
+                <ul>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-teacher.html"}'>教师管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-student.html"}'>学生管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>课程管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>成绩管理</li>
+                </ul>
+            </li>
         </ul>
         </div>
         

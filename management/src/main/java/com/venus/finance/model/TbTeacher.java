@@ -34,7 +34,10 @@ public class TbTeacher implements java.io.Serializable{
 	private String video1;
 	private String video2;
 	private String video3;
-	
+	private Double score;
+	private Integer status;
+	private Long create_date;
+	private Long birthday;
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -198,6 +201,34 @@ public class TbTeacher implements java.io.Serializable{
 	}
 	public void setVideo3(String video3) {
 		this.video3 = video3;
+	}
+	@Column(name = "score")
+	public Double getScore() {
+		return score;
+	}
+	public void setScore(Double score) {
+		this.score = score;
+	}
+	@Column(name = "status")
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	@Column(name = "create_date")
+	public Long getCreate_date() {
+		return create_date;
+	}
+	public void setCreate_date(Long create_date) {
+		this.create_date = create_date;
+	}
+	@Column(name = "birthday")
+	public Long getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Long birthday) {
+		this.birthday = birthday;
 	}
 	
 }

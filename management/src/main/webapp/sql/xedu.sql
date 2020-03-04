@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2020-03-03 18:55:04
+Date: 2020-03-04 17:08:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -244,11 +244,17 @@ CREATE TABLE `tb_teacher` (
   `video1` varchar(255) DEFAULT NULL,
   `video2` varchar(255) DEFAULT NULL,
   `video3` varchar(255) DEFAULT NULL,
+  `score` double DEFAULT NULL,
+  `status` int(255) DEFAULT NULL,
+  `create_date` bigint(20) DEFAULT NULL,
+  `certificate2` varchar(255) DEFAULT NULL,
+  `certificate3` varchar(255) DEFAULT NULL,
+  `birthday` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_teacher
 -- ----------------------------
-INSERT INTO `tb_teacher` VALUES ('1', '1', '1', '1', '1', '1', '1', null, '1', '1', '1', null, '1', null, null, null, null, null, null);
+INSERT INTO `tb_teacher` VALUES ('1', '张三', '1', '1', '1', '1', '1', null, '1', '1', '1', '2', '1', '教师资格证书', null, 'wu@kiiik.com', null, null, null, '4.2', '1', null, null, null, null);
 SET FOREIGN_KEY_CHECKS=1;

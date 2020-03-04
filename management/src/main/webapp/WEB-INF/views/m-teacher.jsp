@@ -28,9 +28,12 @@
 				<table class="tableClass">
 				   	 	<thead>
 				   	 		<tr>
-				   	 			<th width="15%">
+				   	 			<th width="50%" style="text-align:left;">
 				   	 				<spring:message code="teacher.management"/>
+				   	 				<a href="m-teacher-a.html" target="_blank" style="padding-left:50px;"><spring:message code="system.add"/></a>
 				   	 			</th>
+				   	 			
+				   	 			
 				   	 		</tr>
 				   	 	</thead>
 				</table>
@@ -45,17 +48,32 @@
 				   	 <table class="tableClass">
 				   	 	<thead>
 				   	 		<tr>
-				   	 			<th width="15%">
-				   	 				ID
-				   	 			</th>
-				   	 			<th width="15%">
-				   	 			fdsaf
-				   	 			</th>
-				   	 			<th width="15%">
-				   	 			</th>
-				   	 			<th width="15%">
+				   	 			<th width="10%">
+				   	 				<spring:message code="teacher.username"/>
 				   	 			</th>
 				   	 			<th width="10%">
+				   	 				<spring:message code="teacher.truename"/>
+				   	 			</th>
+				   	 			<th width="15%">
+				   	 				<spring:message code="teacher.email"/>
+				   	 			</th>
+				   	 			<th width="15%">
+				   	 				<spring:message code="teacher.mobile"/>
+				   	 			</th>
+				   	 			<th width="10%">
+				   	 				<spring:message code="teacher.sex"/>
+				   	 			</th>
+				   	 			<th width="10%">
+				   	 				<spring:message code="teacher.age"/>
+				   	 			</th>
+				   	 			<th width="10%">
+				   	 				<spring:message code="teacher.score"/>
+				   	 			</th>
+				   	 			<th width="10%">
+				   	 				<spring:message code="teacher.status"/>
+				   	 			</th>
+				   	 			<th width="10%">
+				   	 				<spring:message code="teacher.edit"/>
 				   	 			</th>
 				   	 		</tr>
 				   	 	</thead>
@@ -69,19 +87,47 @@
 				   	 			<tr style="background-color:#e0ecff;" onmouseover="style.backgroundColor='#f2f288'" onmouseout="style.backgroundColor='#e0ecff'" id='tableContent${dataList.id}'>
 				   	 		</c:if>
 				   	 			<td>
-				   	 				<c:out value="${dataList.id}"></c:out>
-					   	 		</td>
-				   	 			<td>
 				   	 				<c:out value="${dataList.username}"></c:out>
 					   	 		</td>
-					   	 		<td>
-						   	 		<img alt="" src="./images/13.png" style="margin-top:5px;cursor:pointer;" onclick="addCapital('<c:out value="${dataList.id}"></c:out>')">
+				   	 			<td>
+				   	 				<c:out value="${dataList.truename}"></c:out>
 					   	 		</td>
 					   	 		<td>
-						   	 		<img alt="" src="./images/11.png" style="margin-top:5px;cursor:pointer;" onclick="editStrategy('<c:out value="${dataList.id}"></c:out>')">
+				   	 				<c:out value="${dataList.email}"></c:out>
 					   	 		</td>
 					   	 		<td>
+				   	 				<c:out value="${dataList.mobile}"></c:out>
+					   	 		</td>
+					   	 		<td>
+				   	 				<c:if test="${dataList.sex==0}">
+					   	 				<spring:message code="teacher.sex.male"/>
+					   	 			</c:if>
+						   	 		<c:if test="${dataList.sex==1}">
+					   	 				<spring:message code="teacher.sex.female"/>
+					   	 			</c:if>
+					   	 			<c:if test="${dataList.sex==2}">
+					   	 				<spring:message code="teacher.sex.other"/>
+					   	 			</c:if>
+					   	 		</td>
+					   	 		<td>
+				   	 				<c:out value="${dataList.age}"></c:out>
+					   	 		</td>
+					   	 		<td>
+				   	 				<c:out value="${dataList.score}"></c:out>
+					   	 		</td>
+					   	 		<td>
+				   	 				<c:if test="${dataList.status==0}">
+					   	 				<spring:message code="teacher.status.off"/>
+					   	 			</c:if>
+						   	 		<c:if test="${dataList.status==1}">
+					   	 				<spring:message code="teacher.status.on"/>
+					   	 			</c:if>
+					   	 		</td>
+					   	 		<td>
+						   	 		<a href='m-teacher-e.html?id=<c:out value="${dataList.id}"></c:out>' target="_blank"><img alt="" src="./images/11.png" style="margin-top:5px;cursor:pointer;"></a>
+						   	 		<!--  
 						   	 		<img alt="" src="./images/12.png" style="margin-top:5px;cursor:pointer;" onclick="delStrategy('<c:out value="${dataList.id}"></c:out>')">
+					   	 			-->
 					   	 		</td>
 				   	 		</tr>
 				   	 		</c:forEach>
@@ -89,7 +135,7 @@
 				   	 	
 				   	 	<tfoot>
 				   	 		<tr>
-				   	 			<td colspan="7">
+				   	 			<td colspan="9">
 				   	 				<%@ include file="page.jsp"%>
 				   	 			</td>
 				   	 		</tr>

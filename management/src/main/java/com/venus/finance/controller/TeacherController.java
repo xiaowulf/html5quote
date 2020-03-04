@@ -23,10 +23,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.venus.finance.fix.FixApplication;
+import com.venus.finance.model.TbEmployee;
+import com.venus.finance.model.TbTeacher;
 import com.venus.finance.service.IEmployeeService;
 import com.venus.finance.service.ITeacherService;
 import com.venus.finance.util.CodeUtil;
 import com.venus.finance.util.Constants;
+import com.venus.finance.util.MD5;
 import com.venus.finance.util.MathUtil;
 import com.venus.finance.util.Page;
 import com.venus.finance.util.PagerHelp;
@@ -78,6 +81,33 @@ public class TeacherController {
 			return "error";
 		}
 		return "m-teacher";
+	}
+
+	// 编辑老师的资料
+	@RequestMapping(value = "/m-teacher-e.html", method = RequestMethod.GET)
+	public String m_teacher_e(HttpServletRequest request, ModelMap model) {
+		try {
+			Long id = Long.parseLong(request.getParameter("id"));
+			TbTeacher tbTeacher = teacherService.findOne(id);
+			model.addAttribute("tbTeacher", tbTeacher);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return "m-teacher-e";
+	}
+
+	// 新增老师的资料
+	@RequestMapping(value = "/m-teacher-a.html", method = RequestMethod.GET)
+	public String m_teacher_a(HttpServletRequest request, ModelMap model) {
+		try {
+			TbTeacher tbTeacher = new TbTeacher();
+			model.addAttribute("tbTeacher", tbTeacher);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return "m-teacher-e";
 	}
 
 	@Resource(name = "teacherService")

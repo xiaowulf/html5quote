@@ -189,14 +189,9 @@ html,body{margin:0;font-size:13px;color: blue;height:100%;color:#ffffff;overflow
 	font-size:13px;
 	height:25px;
 	border:1px solid #95b8e7;
+	text-align:center;
 }
 
-.tableClass1 th{
-	background-color:#ffffff;
-	font-weight:normal;
-	font-size:13px;
-	height:25px;
-}
 
 .tableClass tr{
 	height:25px;
@@ -204,4 +199,5 @@ html,body{margin:0;font-size:13px;color: blue;height:100%;color:#ffffff;overflow
 .tableClass td{
 	border:1px solid #95b8e7;
 }
+.requireText{color:#ff0000;}
 
