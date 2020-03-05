@@ -50,6 +50,7 @@ public class TbEmployee implements java.io.Serializable {
 	private String sex;
 	private String email;
 	private int showorder;
+	private Long createdate;
 	public TbEmployee() {
 	}
 
@@ -79,7 +80,7 @@ public class TbEmployee implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "user_name")
+	@Column(name = "username")
 	public String getUserName() {
 		return this.userName;
 	}
@@ -88,7 +89,7 @@ public class TbEmployee implements java.io.Serializable {
 		this.userName = userName;
 	}
 
-	@Column(name = "true_name")
+	@Column(name = "truename")
 	public String getTrueName() {
 		return this.trueName;
 	}
@@ -177,5 +178,13 @@ public class TbEmployee implements java.io.Serializable {
 
 	public void setShoworder(int showorder) {
 		this.showorder = showorder;
+	}
+
+	public Long getCreatedate() {
+		return createdate;
+	}
+
+	public void setCreatedate(Long createdate) {
+		this.createdate = createdate;
 	}
 }

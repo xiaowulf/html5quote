@@ -40,10 +40,10 @@
             <li>
             	<span>系统管理</span>
                 <ul>
-                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-teacher.html"}'>员工管理</li>
-                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-student.html"}'>角色管理</li>
-                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>权限管理</li>
-                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>日志管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-employee.html"}'>员工管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-role.html"}'>角色管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-authority.html"}'>权限管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-log.html"}'>日志管理</li>
                 </ul>
             </li>
             <li>
