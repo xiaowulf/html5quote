@@ -37,6 +37,7 @@
         <div data-options="region:'west',split:true" title="管理员" style="width:300px;">
         
         <ul class="easyui-tree" id="funcTree">
+        	<!--  
             <li>
             	<span>系统管理</span>
                 <ul>
@@ -46,6 +47,7 @@
                     <li  data-options='state:closed,id:1,attributes:{urlaction:"m-log.html"}'>日志管理</li>
                 </ul>
             </li>
+            -->
             <li>
                 <span>教学管理</span>
                 <ul>

@@ -20,6 +20,7 @@
 	<resources mapping="/js/**" location="/js"></resources>
 	<resources mapping="/data/**" location="/js"></resources>
 	<resources mapping="/css/**" location="/css"></resources>
+	<resources mapping="/file/**" location="/css"></resources>
 	<resources mapping="/login.html" location="/"></resources>
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />

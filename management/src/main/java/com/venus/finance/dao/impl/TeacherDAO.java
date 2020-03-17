@@ -23,7 +23,7 @@ public class TeacherDAO extends AbstractHibernateDAO<TbTeacher> implements ITeac
 	@Override
 	public Long findAllTbTeacherCount(String name) {
 		try {
-			String hql = "select count(*) from TbTeacher u where u.username like :name";
+			String hql = "select count(*) from TbTeacher u where u.username is null or u.username like :name";
 			Long userCount = (Long) getCurrentSession()
 					.createQuery(hql)
 					.setParameter("name", "%"+name+"%")
@@ -38,7 +38,7 @@ public class TeacherDAO extends AbstractHibernateDAO<TbTeacher> implements ITeac
 	@Override
 	public List findAllTbTeacher(int start, int pageSize, String name) {
 		try {
-			final String hql = "from TbTeacher u where u.username like :name  order by id desc";
+			final String hql = "from TbTeacher u where u.username is null or u.username like :name  order by id desc";
 			
 			Query query = getCurrentSession().createQuery(hql).setParameter("name", "%"+name+"%");
 			//3.分页
@@ -51,5 +51,17 @@ public class TeacherDAO extends AbstractHibernateDAO<TbTeacher> implements ITeac
 			ex.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public boolean saveTbTeacher(TbTeacher tbTeacher) {
+		boolean result = false;
+		try {
+			getCurrentSession().saveOrUpdate(tbTeacher);
+			result = true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return result;
 	}
 }

@@ -21,6 +21,7 @@
 </head>
 
 <body style="background-color: #ffffff;">
+<form action="saveTeacher.html" method="post"  enctype="multipart/form-data">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mainrightOrdersNav1">
@@ -29,26 +30,29 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<span class="requireText">*</span><label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.truename"/></label>
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.truename"/></label>
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.truename}"/>'>
+				<input type="text" name="truename" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.truename}"/>'><span class="requireText">*</span>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<span class="requireText">*</span><label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.idcard"/></label>
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.idcard"/></label>
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.idcard}"/>'>
+				<input type="text" name="idcard" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.idcard}"/>'>
+				<span class="requireText">*</span>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:300px;">
-				<span class="requireText">*</span><label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.pic"/></label>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:100px;">
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.pic"/></label>
 			</div>
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:300px;padding-top:10px;">
-				<img src="./images/system/test.jpg">
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:100px;padding-top:10px;">
+				<input type="file" name="image">
+				<a href="./<c:out value="${tbTeacher.pic1}"/>" target="_blank"><spring:message code="system.view"/></a>
+				<span class="requireText">*</span>
 			</div>
 		</div>
 		
@@ -57,7 +61,8 @@
 				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.certificate"/></label>
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.certificate}"/>'>
+				<input type="text" name="certificate" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.certificate}"/>'>
+				<span class="requireText">*</span>
 			</div>
 		</div>
 		<div class="row">
@@ -65,7 +70,8 @@
 				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.username"/></label>
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.username}"/>'>
+				<input type="text" name="username" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.username}"/>'>
+				<span class="requireText">*</span>
 			</div>
 		</div>
 		<div class="row">
@@ -73,7 +79,8 @@
 				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.email"/></label>
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.email}"/>'>
+				<input type="text" name="email"  style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.email}"/>'>
+				<span class="requireText">*</span>
 			</div>
 		</div>
 		<div class="row">
@@ -81,15 +88,16 @@
 				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.mobile"/></label>
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.mobile}"/>'>
+				<input type="text" name="mobile" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.mobile}"/>'>
+				<span class="requireText">*</span>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.age"/></label>
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.birthday"/></label>
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.age}"/>'>
+				<input type="text" name="birthday" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.birthday}"/>'>
 			</div>
 		</div>
 		<div class="row">
@@ -98,11 +106,8 @@
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
 				<select name="status" id="status_id">
-		   	 		<option value="0"><spring:message code="teacher.sex.male"/></option>
-		   	 		<option value="1"><spring:message code="teacher.sex.female"/></option>
-		   	 		<!-- 
-		   	 		<option value="1"><spring:message code="teacher.sex.off"/></option>
-		   	 		 -->
+		   	 		<option value="1"><spring:message code="teacher.status.on"/></option>
+		   	 		<option value="0"><spring:message code="teacher.status.off"/></option>
 		   	 	</select>
 			</div>
 		</div>
@@ -122,18 +127,20 @@
 				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.resume"/></label>
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:260px;">
-				<textarea rows="10" cols="68">发动机萨菲科技的萨克复健科</textarea>
+				<textarea rows="10" name="resume" cols="68"><c:out value="${tbTeacher.resume}"/></textarea>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="border:1px solid #4B306C;height:50px;padding-top:5px;text-align:center;">
-				<button class="btn btn-success" type="button" onclick="submitForm()"><spring:message code="system.save"/></button>
+				<input type="hidden" name="id" value="${tbTeacher.id}">
+				<button class="btn btn-success" type="submit" ><spring:message code="system.save"/></button>
 				<button class="btn btn-success" type="button" onclick="submitForm()"><spring:message code="system.close"/></button>
 				<button class="btn btn-warning" type="button" onclick="submitForm()"><spring:message code="system.reset.password"/></button>
 			</div>
 		</div>
 		<!-- end row -->
 	</div>
+</form>
 <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>

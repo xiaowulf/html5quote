@@ -16,6 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,8 +59,8 @@ public class LoginController {
 	}
 	@RequestMapping(value = "/loginCheck.html",produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String changeFuturesJys(HttpServletRequest request,ModelMap model,LoginCommand loginCommand) {
-		String verycode = (String)request.getSession().getAttribute("verycode");
+	public String changeFuturesJys(HttpSession session,ModelMap model,LoginCommand loginCommand) {
+		String verycode = (String)session.getAttribute("verycode");
 		RtnResultVO rtnResultVO = new RtnResultVO();
 		if(null==verycode||null==loginCommand.getVerycode()||
 				!verycode.equals(loginCommand.getVerycode().toUpperCase())){
@@ -74,7 +75,7 @@ public class LoginController {
 			if (null!=tbEmployee) {
 				rtnResultVO.setResultStatus("1");
 				rtnResultVO.setResultMessage("success");
-				request.getSession().setAttribute("tbEmployee", tbEmployee);
+				session.setAttribute("tbEmployee", tbEmployee);
 			} else {
 				rtnResultVO.setResultStatus("-1");
 				rtnResultVO.setResultMessage("username or password is not correct");
