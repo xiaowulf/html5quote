@@ -25,16 +25,16 @@
     <div class="easyui-layout" style="width:100%;height:100%;">
         <div data-options="region:'north'" style="height:50px;background-color:#e0ecff;">
         	<div style="float:left;text-align:center;margin-top:10px;margin-left:50px;font-size:20px;font-weight:bold;">
-		       	远程教育管理平台V1.0
+		       	<spring:message code="system.name"/>
 		     </div>
 		     <div style="float:right;text-align:right;margin-right:50px;margin-top:10px;">
-		       	<input type="button" id="changePwd" value="修改密码" class="cupid-blue">
+		       	<input type="button" id="changePwd" value="修改密码" class="cupid-blue" onclick="addTab('<spring:message code="system.changepwd"/>','m-password.html')">
 		       	<input type="button" id="logoutImg" value="退出系统" class="cupid-blue">
 		     </div>
         
         </div>
         <div data-options="region:'south',split:true" style="height:50px;"></div>
-        <div data-options="region:'west',split:true" title="管理员" style="width:300px;">
+        <div data-options="region:'west',split:true" title='<spring:message code="system.welcome"/><c:out value="${tbEmployee.trueName}"></c:out>' style="width:300px;">
         
         <ul class="easyui-tree" id="funcTree">
         	<!--  

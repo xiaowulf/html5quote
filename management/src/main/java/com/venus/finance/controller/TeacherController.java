@@ -144,6 +144,14 @@ public class TeacherController {
 				}
 			}
 			tbTeacher.setUsername(tbTeacherTemp.getUsername());
+			tbTeacher.setTruename(tbTeacherTemp.getTruename());
+			tbTeacher.setCertificate(tbTeacherTemp.getCertificate());
+			tbTeacher.setEmail(tbTeacherTemp.getEmail());
+			tbTeacher.setIdcard(tbTeacherTemp.getIdcard());
+			tbTeacher.setEducation(tbTeacherTemp.getEducation());
+			tbTeacher.setMobile(tbTeacherTemp.getMobile());
+			tbTeacher.setResume(tbTeacherTemp.getResume());
+			tbTeacher.setPassword(MD5.getMD5Str(MD5.getRandomString(6)));
 			boolean result = teacherService.saveTbTeacher(tbTeacher);
 			if (result) {
 				request.setAttribute("result", 1);
@@ -153,7 +161,7 @@ public class TeacherController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "m-teacher-result";
+		return "result";
 	}
 
 	@Resource(name = "teacherService")

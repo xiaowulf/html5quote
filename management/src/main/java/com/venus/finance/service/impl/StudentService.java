@@ -39,12 +39,10 @@ public class StudentService extends AbstractService<TbStudent> implements IStude
     }
 	@Override
 	public Long findAllTbStudentCount(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findAllTbStudentCount(name);
 	}
 	@Override
 	public List findAllTbStudent(int start, int pageSize, String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findAllTbStudent(start, pageSize, name);
 	}
 }

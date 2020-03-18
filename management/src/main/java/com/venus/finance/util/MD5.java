@@ -1,8 +1,10 @@
 package com.venus.finance.util;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 
 public class MD5 {
 	public static String getMD5Str(String str) {
@@ -34,17 +36,37 @@ public class MD5 {
 		}
 		return md5StrBuff.toString().toUpperCase();
 	}
+	public static String getRandomString(int n) 
+    { 
+  
+        // chose a Character random from this String 
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                    + "0123456789"
+                                    + "abcdefghijklmnopqrstuvxyz"; 
+  
+        // create StringBuffer size of AlphaNumericString 
+        StringBuilder sb = new StringBuilder(n); 
+  
+        for (int i = 0; i < n; i++) { 
+  
+            // generate a random number between 
+            // 0 to AlphaNumericString variable length 
+            int index 
+                = (int)(AlphaNumericString.length() 
+                        * Math.random()); 
+  
+            // add Character one by one in end of sb 
+            sb.append(AlphaNumericString 
+                          .charAt(index)); 
+        } 
+  
+        return sb.toString(); 
+    } 
+	
+	
 	public static void main(String [] args){
-		String s = "豆一                      1603       3493       3497       3483       3492       3483       3489          9          6            78          1234            -6              272.15";
-		String [] s2 = s.split(" ");
-		s2.toString();
-		StringBuffer sb = new StringBuffer();
-		for(int i = 0; i < s2.length; i++){
-			if(null!=s2[i]&&!"".equals(s2[i])){
-				sb.append(s2[i]).append(",");
-			}
-		}
-		System.out.println(sb);
+		
+		System.out.println(MD5.getRandomString(6));
 	}
 
 }

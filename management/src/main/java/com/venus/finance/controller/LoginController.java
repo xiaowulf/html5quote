@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.venus.finance.fix.FixApplication;
 import com.venus.finance.model.TbEmployee;
+import com.venus.finance.model.ChangePwdForm;
 import com.venus.finance.model.FuturesMessage;
 import com.venus.finance.model.LoginCommand;
 import com.venus.finance.model.RtnResultVO;
@@ -57,6 +58,21 @@ public class LoginController {
 	public String main(HttpServletRequest request,ModelMap model) {
 		return "main";
 	}
+	@RequestMapping(value = "/m-password.html", method = RequestMethod.GET)
+	public String mpassword(FuturesMessage futuresMessage) {
+		return "m-password";
+	}
+	
+	@RequestMapping(value = "/changePwd.html",produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String changePwd(HttpSession session,ModelMap model,ChangePwdForm changePwdForm) {
+		RtnResultVO rtnResultVO = new RtnResultVO();
+		Gson gson = new Gson();
+        String json = gson.toJson(rtnResultVO);
+		return json;
+	}
+	
+	
 	@RequestMapping(value = "/loginCheck.html",produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String changeFuturesJys(HttpSession session,ModelMap model,LoginCommand loginCommand) {

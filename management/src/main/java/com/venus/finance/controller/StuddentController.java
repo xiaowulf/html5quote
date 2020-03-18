@@ -50,7 +50,7 @@ public class StuddentController {
 			if (null != request.getParameter("name")) {
 				name = (String) request.getParameter("name");
 			}
-			int total = teacherService.findAllTbTeacherCount(name).intValue();
+			int total = studentService.findAllTbStudentCount(name).intValue();
 			Page page = null;
 			int currentPage = 1;
 			if (null != request.getParameter("currentPage")) {
@@ -71,7 +71,7 @@ public class StuddentController {
 			page.setPageAction("m-teacher.html?name=" + name + "&");
 			model.addAttribute("page", page);
 			model.addAttribute("name", name);
-			List dataList = teacherService.findAllTbTeacher(page.getStartRow(), pageSize, name);
+			List dataList = studentService.findAllTbStudent(page.getStartRow(), pageSize, name);
 			model.addAttribute("dataList", dataList);
 		} catch (Exception e) {
 			e.printStackTrace();

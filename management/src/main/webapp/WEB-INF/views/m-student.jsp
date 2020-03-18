@@ -29,7 +29,7 @@
 				   	 	<thead>
 				   	 		<tr>
 				   	 			<th width="50%" style="text-align:left;">
-				   	 				<spring:message code="teacher.management"/>
+				   	 				<spring:message code="student.management"/>
 				   	 				<a href="m-teacher-a.html" target="_blank" style="padding-left:50px;"><spring:message code="system.add"/></a>
 				   	 			</th>
 				   	 			
@@ -113,15 +113,10 @@
 				   	 				<c:out value="${dataList.age}"></c:out>
 					   	 		</td>
 					   	 		<td>
-				   	 				<c:out value="${dataList.score}"></c:out>
+				   	 				
 					   	 		</td>
 					   	 		<td>
-				   	 				<c:if test="${dataList.status==0}">
-					   	 				<spring:message code="teacher.status.off"/>
-					   	 			</c:if>
-						   	 		<c:if test="${dataList.status==1}">
-					   	 				<spring:message code="teacher.status.on"/>
-					   	 			</c:if>
+				   	 				
 					   	 		</td>
 					   	 		<td>
 						   	 		<a href='m-teacher-e.html?id=<c:out value="${dataList.id}"></c:out>' target="_blank"><img alt="" src="./images/11.png" style="margin-top:5px;cursor:pointer;"></a>

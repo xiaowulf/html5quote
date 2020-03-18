@@ -73,22 +73,7 @@ public class IndexController {
 	public String position(HttpServletRequest request,ModelMap model) {
 		return "position";
 	}
-	@RequestMapping(value = "/suggestsave.html", method = RequestMethod.POST)
-	public String suggestsave(FuturesMessage futuresMessage) {
-		futuresMessageService.create(futuresMessage);
-		/*
-		InitUtil initUtil = new InitUtil();
-		File file;
-		try {
-			file = new File(initUtil.getSuggestFilePath());
-			FileUtil fileUtil = new FileUtil();
-			fileUtil.saveSuggest(file,suggestVO);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		*/
-		return "rsuccess";
-	}
+	
 	@RequestMapping(value = "/changeFuturesJys.html",produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String changeFuturesJys(HttpServletRequest request,ModelMap model) {
