@@ -30,11 +30,11 @@
 				   	 	<thead>
 				   	 		<tr>
 				   	 			<th width="50%" style="text-align:left;">
-				   	 				<spring:message code="teacher.management"/>
-				   	 				<spring:message code="teacher.truename"/>:
+				   	 				<spring:message code="course.catetory.management"/>
+				   	 				<spring:message code="course.categroy.name"/>:
 				   	 				<input type="text" name="name" value='<c:out value="${name}"></c:out>'>
 				   	 				<input type="submit" value="<spring:message code="system.query"/>">
-				   	 				<a href="m-teacher-a.html" target="_blank" style="margin-left:50px;"><spring:message code="system.add"/></a>
+				   	 				<a href="m-course-category.html" target="_blank" style="margin-left:50px;"><spring:message code="system.add"/></a>
 				   	 			</th>
 				   	 		</tr>
 				   	 	</thead>
@@ -52,7 +52,7 @@
 				   	 	<thead>
 				   	 		<tr>
 				   	 			<th width="10%">
-				   	 				<spring:message code="teacher.truename"/>
+				   	 				<spring:message code="course.categroy.name"/>
 				   	 			</th>
 				   	 			<th width="10%">
 				   	 				<spring:message code="teacher.username"/>

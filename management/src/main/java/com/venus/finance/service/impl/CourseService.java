@@ -13,41 +13,49 @@ import com.venus.finance.dao.ITeacherDAO;
 import com.venus.finance.model.TbEmployee;
 import com.venus.finance.model.TbTeacher;
 import com.venus.finance.model.FuturesMessage;
+import com.venus.finance.model.TbCourse;
 import com.venus.finance.service.IFuturesMessageService;
 import com.venus.finance.service.ITeacherService;
+import com.venus.finance.dao.ICourseDAO;
 import com.venus.finance.dao.IEmployeeDAO;
 import com.venus.finance.dao.IFuturesMessageDAO;
 import com.venus.finance.service.AbstractService;
+import com.venus.finance.service.ICourseService;
 import com.venus.finance.service.IEmployeeService;
 
 
-@Service("teacherService")
-public class TeacherService extends AbstractService<TbTeacher> implements ITeacherService {
+@Service("courseService")
+public class CourseService extends AbstractService<TbCourse> implements ICourseService {
 
-    @Resource(name="teacherDAO")
-    private ITeacherDAO dao;
+    @Resource(name="courseDAO")
+    private ICourseDAO dao;
     
-    public TeacherService() {
+    public CourseService() {
         super();
     }
-    @Override
-    protected IOperations<TbTeacher> getDao() {
-        return this.dao;
-    }
+
 	@Override
-	public Long findAllTbTeacherCount(String name) {
-		return this.dao.findAllTbTeacherCount(name);
+	protected IOperations<TbCourse> getDao() {
+		return this.dao;
 	}
+
 	@Override
-	public List findAllTbTeacher(int start, int pageSize, String name) {
-		return this.dao.findAllTbTeacher(start, pageSize, name);
+	public Long findAllTbCourseCount(String name) {
+		return null;
 	}
+
 	@Override
-	public boolean saveTbTeacher(TbTeacher tbTeacher) {
-		return this.dao.saveTbTeacher(tbTeacher);
+	public List findAllTbCourse(int start, int pageSize, String name) {
+		return null;
 	}
+
 	@Override
-	public TbTeacher findAllTbTeacherByUsername(String username) {
-		return this.dao.findAllTbTeacherByUsername(username);
+	public boolean saveTbCourse(TbCourse TbCourse) {
+		return false;
+	}
+
+	@Override
+	public TbCourse findAllTbCourseByUsername(String username) {
+		return null;
 	}
 }
