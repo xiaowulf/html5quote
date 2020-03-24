@@ -19,24 +19,24 @@
 	<link rel="stylesheet" type="text/css" href="./themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 </head>
-
 <body style="background-color: #ffffff;">
-
 	<div class="container-fluid" style="margin-top:20px;">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<form action="m-course.html" method="get">
 				<table class="tableClass">
 				   	 	<thead>
 				   	 		<tr>
 				   	 			<th width="50%" style="text-align:left;">
 				   	 				<spring:message code="course.management"/>
-				   	 				<a href="m-teacher-a.html" target="_blank" style="margin-left:50px;"><spring:message code="system.add"/></a>
+				   	 				<input type="text" name="name" value='<c:out value="${name}"></c:out>'>
+				   	 				<input type="submit" value="<spring:message code="system.query"/>">
+				   	 				<a href="m-course-a.html" target="_blank" style="margin-left:50px;"><spring:message code="system.add"/></a>
 				   	 			</th>
-				   	 			
-				   	 			
 				   	 		</tr>
 				   	 	</thead>
 				</table>
+				</form>
 			</div>
 		</div>
 	</div>

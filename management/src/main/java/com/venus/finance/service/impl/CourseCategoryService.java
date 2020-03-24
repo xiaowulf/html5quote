@@ -26,7 +26,7 @@ import com.venus.finance.service.IEmployeeService;
 @Service("courseCategoryService")
 public class CourseCategoryService extends AbstractService<TbCourseCategory> implements ICourseCategoryService {
 
-    @Resource(name="teacherDAO")
+    @Resource(name="courseCategoryDAO")
     private ICourseCategoryDAO dao;
     
     public CourseCategoryService() {

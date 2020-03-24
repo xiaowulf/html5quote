@@ -8,5 +8,5 @@ public interface ICourseService extends IOperations<TbCourse> {
 	public Long findAllTbCourseCount(String name);
 	public List findAllTbCourse(int start,int pageSize,String name);
 	public boolean saveTbCourse(TbCourse TbCourse);
-	public TbCourse findAllTbCourseByUsername(String username);
+	public TbCourse findAllTbCourseByCourseName(String coursename);
 }

@@ -25,7 +25,7 @@ public class CourseDAO extends AbstractHibernateDAO<TbCourse> implements ICourse
 	@Override
 	public Long findAllTbCourseCount(String code) {
 		try {
-			String hql = "select count(*) from TbCourseCategory u where u.truename is null or u.truename like :name";
+			String hql = "select count(*) from TbCourse u where u.truename is null or u.truename like :name";
 			Long userCount = (Long) getCurrentSession()
 					.createQuery(hql)
 					.setParameter("name", "%"+code+"%")

@@ -41,21 +41,21 @@ public class CourseService extends AbstractService<TbCourse> implements ICourseS
 
 	@Override
 	public Long findAllTbCourseCount(String name) {
-		return null;
+		return this.dao.findAllTbCourseCount(name);
 	}
 
 	@Override
 	public List findAllTbCourse(int start, int pageSize, String name) {
-		return null;
+		return this.dao.findAllTbCourse(start, pageSize, name);
 	}
 
 	@Override
-	public boolean saveTbCourse(TbCourse TbCourse) {
-		return false;
+	public boolean saveTbCourse(TbCourse tbCourse) {
+		return this.dao.saveTbCourse(tbCourse);
 	}
 
 	@Override
-	public TbCourse findAllTbCourseByUsername(String username) {
-		return null;
+	public TbCourse findAllTbCourseByCourseName(String coursename) {
+		return this.dao.findAllTbCourseByCode(coursename);
 	}
 }

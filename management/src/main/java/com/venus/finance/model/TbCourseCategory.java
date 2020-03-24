@@ -19,9 +19,10 @@ public class TbCourseCategory implements java.io.Serializable{
 	private Long id;
 	private String coursename;
 	private String description;
-	private Integer status;
+	private Integer status=0;
 	private Long create_date;
 	private String coursecode;
+	private Long update_date;
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -65,6 +66,13 @@ public class TbCourseCategory implements java.io.Serializable{
 	}
 	public void setCoursecode(String coursecode) {
 		this.coursecode = coursecode;
+	}
+	@Column(name = "update_date")
+	public Long getUpdate_date() {
+		return update_date;
+	}
+	public void setUpdate_date(Long update_date) {
+		this.update_date = update_date;
 	}
 	
 }
