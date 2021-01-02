@@ -97,7 +97,7 @@ public class IndexController {
 		String jys = request.getParameter("jys");
 		CodeUtil codeUtil = new CodeUtil();
 		List<FuturesQuoteVO>  jysCodeList = null;
-		ServletContext application = request.getServletContext();
+		//ServletContext application = request.getServletContext();
 		//FixApplication fixApplicaton = (FixApplication)application.getAttribute("fixApplication");
 		//ConcurrentHashMap<String, FuturesQuoteVO> map = fixApplicaton.getFuturesQuoteMap();
 		try {

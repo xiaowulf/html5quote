@@ -72,7 +72,7 @@ public class AnalyseController {
 		} else {
 			futuresStatistics.setAtrvo(new AtrVO());
 		}
-		// 找出120日以内的均值
+		//找出120日以内的均值
 		MacdVO macdVO = codeUtil.getMacdVOByCodeAndDate(code, todayStr);
 		futuresStatistics.setInstrumentID(code);
 		futuresStatistics.setTodayStr(todayStr);
