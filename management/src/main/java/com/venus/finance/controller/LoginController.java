@@ -51,44 +51,80 @@ public class LoginController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/login.html", method = RequestMethod.GET)
-	public String login(HttpServletRequest request,ModelMap model) {
+	public String login(HttpServletRequest request, ModelMap model) {
 		return "login";
 	}
+
 	@RequestMapping(value = "/main.html", method = RequestMethod.GET)
-	public String main(HttpServletRequest request,ModelMap model) {
+	public String main(HttpServletRequest request, ModelMap model) {
 		return "main";
 	}
+
 	@RequestMapping(value = "/m-password.html", method = RequestMethod.GET)
 	public String mpassword(FuturesMessage futuresMessage) {
 		return "m-password";
 	}
-	
-	@RequestMapping(value = "/changePwd.html",produces = "text/html;charset=UTF-8")
+
+	@RequestMapping(value = "/changePwd.html", produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String changePwd(HttpSession session,ModelMap model,ChangePwdForm changePwdForm) {
+	public String changePwd(HttpServletRequest request, ModelMap model, ChangePwdForm changePwdForm) {
 		RtnResultVO rtnResultVO = new RtnResultVO();
+		if (changePwdForm.getOldpassword() == null || changePwdForm.getOldpassword().equals("")) {
+			rtnResultVO.setResultStatus("-1");
+		} else if (changePwdForm.getNewpassword() == null || changePwdForm.getNewpassword().equals("")) {
+			rtnResultVO.setResultStatus("-2");
+		} else if (changePwdForm.getConfirmpassword() == null || changePwdForm.getConfirmpassword().equals("")) {
+			rtnResultVO.setResultStatus("-3");
+		} else if (!changePwdForm.getNewpassword().equals(changePwdForm.getConfirmpassword())) {
+			rtnResultVO.setResultStatus("-4");
+		} else {
+			TbEmployee tbEmployee = (TbEmployee) request.getSession().getAttribute("tbEmployee");
+			if (!tbEmployee.getPassword().equals(MD5.getMD5Str(changePwdForm.getOldpassword()))) {
+				rtnResultVO.setResultStatus("-5");
+			} else {
+				rtnResultVO.setResultStatus("0");
+				tbEmployee.setPassword(MD5.getMD5Str(changePwdForm.getNewpassword()));
+				employeeService.saveTbEmployee(tbEmployee);
+			}
+		}
 		Gson gson = new Gson();
-        String json = gson.toJson(rtnResultVO);
+		String json = gson.toJson(rtnResultVO);
 		return json;
 	}
-	
-	
-	@RequestMapping(value = "/loginCheck.html",produces = "text/html;charset=UTF-8")
+
+	@RequestMapping(value = "/logout.html", produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String changeFuturesJys(HttpSession session,ModelMap model,LoginCommand loginCommand) {
-		String verycode = (String)session.getAttribute("verycode");
+	public String logout(HttpServletRequest request, ModelMap model, ChangePwdForm changePwdForm) {
 		RtnResultVO rtnResultVO = new RtnResultVO();
-		if(null==verycode||null==loginCommand.getVerycode()||
-				!verycode.equals(loginCommand.getVerycode().toUpperCase())){
+		try {
+			request.getSession().removeAttribute("tbEmployee");
+			rtnResultVO.setResultStatus("0");
+		}catch(Exception e) {
+			e.printStackTrace();
+			rtnResultVO.setResultStatus("-1");
+		}
+		Gson gson = new Gson();
+		String json = gson.toJson(rtnResultVO);
+		return json;
+	}
+
+	@RequestMapping(value = "/loginCheck.html", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String changeFuturesJys(HttpSession session, ModelMap model, LoginCommand loginCommand) {
+		String verycode = (String) session.getAttribute("verycode");
+		RtnResultVO rtnResultVO = new RtnResultVO();
+		if (null == verycode || null == loginCommand.getVerycode()
+				|| !verycode.equals(loginCommand.getVerycode().toUpperCase())) {
 			rtnResultVO.setResultStatus("-3");
 			rtnResultVO.setResultMessage("verycode is error");
-		}else if(null==loginCommand.getUserName()||null==loginCommand.getPassword()||
-				"".equals(loginCommand.getUserName())||"".equals(loginCommand.getPassword())){
+		} else if (null == loginCommand.getUserName() || null == loginCommand.getPassword()
+				|| "".equals(loginCommand.getUserName()) || "".equals(loginCommand.getPassword())) {
 			rtnResultVO.setResultStatus("-4");
 			rtnResultVO.setResultMessage("用户名和密码不可以为空");
-		}else{
-			TbEmployee tbEmployee = employeeService.findEmployeeByNameAndPwd(loginCommand.getUserName(),MD5.getMD5Str(loginCommand.getPassword()));
-			if (null!=tbEmployee) {
+		} else {
+			TbEmployee tbEmployee = employeeService.findEmployeeByNameAndPwd(loginCommand.getUserName(),
+					MD5.getMD5Str(loginCommand.getPassword()));
+			if (null != tbEmployee) {
 				rtnResultVO.setResultStatus("1");
 				rtnResultVO.setResultMessage("success");
 				session.setAttribute("tbEmployee", tbEmployee);
@@ -98,12 +134,11 @@ public class LoginController {
 			}
 		}
 		Gson gson = new Gson();
-        String json = gson.toJson(rtnResultVO);
+		String json = gson.toJson(rtnResultVO);
 		return json;
 	}
-	
-	
-	@Resource(name="employeeService")
-    private IEmployeeService employeeService;
-	
+
+	@Resource(name = "employeeService")
+	private IEmployeeService employeeService;
+
 }
