@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.venus.finance.fix.FixApplication;
+import com.venus.finance.model.TbStudent;
+import com.venus.finance.model.TbTeacher;
 import com.venus.finance.service.IStudentService;
 import com.venus.finance.service.ITeacherService;
 import com.venus.finance.util.CodeUtil;
@@ -78,11 +80,39 @@ public class StuddentController {
 			return "error";
 		}
 		return "m-student";
-	
+
 	}
+
+	// 编辑老师的资料
+	@RequestMapping(value = "/m-student-e.html", method = RequestMethod.GET)
+	public String m_teacher_e(HttpServletRequest request, ModelMap model) {
+		try {
+			Long id = Long.parseLong(request.getParameter("id"));
+			TbStudent tbStudent = studentService.findOne(id);
+			model.addAttribute("tbStudent", tbStudent);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return "m-student-e";
+	}
+
+	// 新增老师的资料
+	@RequestMapping(value = "/m-student-a.html", method = RequestMethod.GET)
+	public String m_student_a(HttpServletRequest request, ModelMap model) {
+		try {
+			TbStudent tbStudent = new TbStudent();
+			model.addAttribute("tbStudent", tbStudent);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return "m-student-e";
+	}
+
 	@Resource(name = "teacherService")
 	private ITeacherService teacherService;
 	@Resource(name = "studentService")
 	private IStudentService studentService;
-	
+
 }

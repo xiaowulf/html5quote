@@ -49,6 +49,23 @@ function addTab(title, href) {
 	}
 }
 
+function logout(){
+	var r=confirm("确定退出系统?")
+	if (r==true){
+		$.ajax({
+			type: 'POST',
+			url: 'logout.html',
+			data: {},
+			dataType: 'json',
+			success: function(data){
+				if(data.resultStatus=="0"){
+					location.href="login.html";
+				}
+			}
+		});
+	}
+	
+}
 
 function changePwdForm(){
 	if($('input[name=oldpassword]').val()==""){
@@ -73,15 +90,10 @@ function changePwdForm(){
 		data: {oldpassword:$('input[name=oldpassword]').val(),newpassword:$('input[name=newpassword]').val(),confirmpassword:$('input[name=confirmpassword]').val()},
 		dataType: 'json',
 		success: function(data){
-			if(data.resultStatus=="1"){
-				location.href="main.html";
-			}else if(data.resultStatus=="-3"){
-				alert("验证码错误！");
-			}else if(data.resultStatus=="-4"){
-				alert("用户名或者密码不可以我空！");
+			if(data.resultStatus!="0"){
+				alert("失败！");
 			}else{
-				$('input[name=password]').val("");
-				alert("用户名或者密码错误！");
+				alert("修改成功！");
 			}
 		}
 	});

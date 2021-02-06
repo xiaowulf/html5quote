@@ -8,22 +8,23 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
-import com.venus.finance.model.TbTeacher;
+import com.venus.finance.model.TbCourseCategory;
 import com.venus.finance.dao.AbstractHibernateDAO;
+import com.venus.finance.dao.ICourseCategoryDAO;
 import com.venus.finance.dao.ITeacherDAO;
 
-@Repository("teacherDAO")
-public class TeacherDAO extends AbstractHibernateDAO<TbTeacher> implements ITeacherDAO {
+@Repository("courseCategoryDAO")
+public class CourseCategoryDAO extends AbstractHibernateDAO<TbCourseCategory> implements ICourseCategoryDAO {
 
-    public TeacherDAO() {
+    public CourseCategoryDAO() {
         super();
-        setClazz(TbTeacher.class);
+        setClazz(TbCourseCategory.class);
     }
 
 	@Override
-	public Long findAllTbTeacherCount(String name) {
+	public Long findAllTbCourseCategoryCount(String name) {
 		try {
-			String hql = "select count(*) from TbTeacher u where u.truename is null or u.truename like :name";
+			String hql = "select count(*) from TbCourseCategory u where u.coursename is null or u.coursename like :name";
 			Long userCount = (Long) getCurrentSession()
 					.createQuery(hql)
 					.setParameter("name", "%"+name+"%")
@@ -36,9 +37,9 @@ public class TeacherDAO extends AbstractHibernateDAO<TbTeacher> implements ITeac
 	}
 
 	@Override
-	public List findAllTbTeacher(int start, int pageSize, String name) {
+	public List findAllTbCourseCategory(int start, int pageSize, String name) {
 		try {
-			final String hql = "from TbTeacher u where u.truename is null or u.truename like :name  order by id desc";
+			final String hql = "from TbCourseCategory u where u.coursename is null or u.coursename like :name  order by id desc";
 			
 			Query query = getCurrentSession().createQuery(hql).setParameter("name", "%"+name+"%");
 			//3.分页
@@ -54,10 +55,10 @@ public class TeacherDAO extends AbstractHibernateDAO<TbTeacher> implements ITeac
 	}
 
 	@Override
-	public boolean saveTbTeacher(TbTeacher tbTeacher) {
+	public boolean saveTbCourseCategory(TbCourseCategory TbCourseCategory) {
 		boolean result = false;
 		try {
-			getCurrentSession().saveOrUpdate(tbTeacher);
+			getCurrentSession().saveOrUpdate(TbCourseCategory);
 			result = true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -66,14 +67,14 @@ public class TeacherDAO extends AbstractHibernateDAO<TbTeacher> implements ITeac
 	}
 
 	@Override
-	public TbTeacher findAllTbTeacherByUsername(String username) {
+	public TbCourseCategory findAllTbCourseCategoryByCode(String code) {
 		try {
-			final String hql = "from TbTeacher u where u.username  = :username  order by id desc";
+			final String hql = "from TbCourseCategory u where u.coursecode  = :coursecode  order by id desc";
 			
-			Query query = getCurrentSession().createQuery(hql).setParameter("username", username);
+			Query query = getCurrentSession().createQuery(hql).setParameter("coursecode", code);
 			List list = query.list();
 			if(list.size()>0) {
-				return (TbTeacher)list.get(0);
+				return (TbCourseCategory)list.get(0);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

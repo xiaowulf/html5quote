@@ -25,18 +25,21 @@
 	<div class="container-fluid" style="margin-top:20px;">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<form action="m-student.html" method="get">
 				<table class="tableClass">
 				   	 	<thead>
 				   	 		<tr>
 				   	 			<th width="50%" style="text-align:left;">
 				   	 				<spring:message code="student.management"/>
-				   	 				<a href="m-teacher-a.html" target="_blank" style="padding-left:50px;"><spring:message code="system.add"/></a>
+				   	 				<spring:message code="student.truename"/>:
+				   	 				<input type="text" name="name" value='<c:out value="${name}"></c:out>'>
+				   	 				<input type="submit" value="<spring:message code="system.query"/>">
+				   	 				<a href="m-student-a.html" target="_blank" style="margin-left:50px;"><spring:message code="system.add"/></a>
 				   	 			</th>
-				   	 			
-				   	 			
 				   	 		</tr>
 				   	 	</thead>
 				</table>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -49,25 +52,22 @@
 				   	 	<thead>
 				   	 		<tr>
 				   	 			<th width="10%">
-				   	 				<spring:message code="teacher.username"/>
+				   	 				<spring:message code="student.truename"/>
 				   	 			</th>
 				   	 			<th width="10%">
-				   	 				<spring:message code="teacher.truename"/>
-				   	 			</th>
-				   	 			<th width="15%">
-				   	 				<spring:message code="teacher.email"/>
-				   	 			</th>
-				   	 			<th width="15%">
-				   	 				<spring:message code="teacher.mobile"/>
+				   	 				<spring:message code="student.username"/>
 				   	 			</th>
 				   	 			<th width="10%">
-				   	 				<spring:message code="teacher.sex"/>
+				   	 				<spring:message code="student.email"/>
 				   	 			</th>
 				   	 			<th width="10%">
-				   	 				<spring:message code="teacher.age"/>
+				   	 				<spring:message code="system.createdate"/>
 				   	 			</th>
 				   	 			<th width="10%">
-				   	 				<spring:message code="teacher.score"/>
+				   	 				<spring:message code="student.mobile"/>
+				   	 			</th>
+				   	 			<th width="10%">
+				   	 				<spring:message code="student.sex"/>
 				   	 			</th>
 				   	 			<th width="10%">
 				   	 				<spring:message code="teacher.status"/>
@@ -87,42 +87,46 @@
 				   	 			<tr style="background-color:#e0ecff;" onmouseover="style.backgroundColor='#f2f288'" onmouseout="style.backgroundColor='#e0ecff'" id='tableContent${dataList.id}'>
 				   	 		</c:if>
 				   	 			<td>
-				   	 				<c:out value="${dataList.username}"></c:out>
+				   	 				<c:out value="${dataList.truename}"></c:out>
 					   	 		</td>
 				   	 			<td>
-				   	 				<c:out value="${dataList.truename}"></c:out>
+				   	 				<c:out value="${dataList.username}"></c:out>
 					   	 		</td>
 					   	 		<td>
 				   	 				<c:out value="${dataList.email}"></c:out>
+					   	 		</td>
+					   	 		<td>
+				   	 				<c:out value="${dataList.create_date}"></c:out>
 					   	 		</td>
 					   	 		<td>
 				   	 				<c:out value="${dataList.mobile}"></c:out>
 					   	 		</td>
 					   	 		<td>
 				   	 				<c:if test="${dataList.sex==0}">
-					   	 				<spring:message code="teacher.sex.male"/>
+					   	 				<spring:message code="student.sex.male"/>
 					   	 			</c:if>
 						   	 		<c:if test="${dataList.sex==1}">
-					   	 				<spring:message code="teacher.sex.female"/>
+					   	 				<spring:message code="student.sex.female"/>
 					   	 			</c:if>
+					   	 			<!-- 
 					   	 			<c:if test="${dataList.sex==2}">
 					   	 				<spring:message code="teacher.sex.other"/>
 					   	 			</c:if>
+					   	 			 -->
+					   	 		</td>
+					   	 		
+					   	 		
+					   	 		<td>
+				   	 				<c:if test="${dataList.status==0}">
+					   	 				<spring:message code="student.status.off"/>
+					   	 			</c:if>
+						   	 		<c:if test="${dataList.status==1}">
+					   	 				<spring:message code="student.status.on"/>
+					   	 			</c:if>
 					   	 		</td>
 					   	 		<td>
-				   	 				<c:out value="${dataList.age}"></c:out>
-					   	 		</td>
-					   	 		<td>
-				   	 				
-					   	 		</td>
-					   	 		<td>
-				   	 				
-					   	 		</td>
-					   	 		<td>
-						   	 		<a href='m-teacher-e.html?id=<c:out value="${dataList.id}"></c:out>' target="_blank"><img alt="" src="./images/11.png" style="margin-top:5px;cursor:pointer;"></a>
-						   	 		<!--  
-						   	 		<img alt="" src="./images/12.png" style="margin-top:5px;cursor:pointer;" onclick="delStrategy('<c:out value="${dataList.id}"></c:out>')">
-					   	 			-->
+						   	 		<a href='m-student-e.html?id=<c:out value="${dataList.id}"></c:out>' target="_blank"><img alt="" src="./images/11.png" style="margin-top:5px;cursor:pointer;"></a>
+						   	 		<a href='./<c:out value="${dataList.pic1}"></c:out>' target="_blank"><img alt="" src="./images/13.png" style="margin-top:5px;cursor:pointer;"></a>
 					   	 		</td>
 				   	 		</tr>
 				   	 		</c:forEach>
