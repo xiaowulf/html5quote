@@ -9,17 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_student", catalog = "xedu")
-public class TbStudent implements java.io.Serializable{
+@Table(name = "tb_course", catalog = "xedu")
+public class TbCourse implements java.io.Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3183412272839740119L;
-
+	private static final long serialVersionUID = 7821410536667520876L;
 	private Long id;
-	private String username;
 	private String truename;
-	private String password;
 	private String sex;
 	private Integer age;
 	private String pic1;
@@ -27,13 +24,49 @@ public class TbStudent implements java.io.Serializable{
 	private String pic3;
 	private String tel;
 	private String mobile;
+	private String password;
+	private String username;
 	private String idcard;
 	private String education;
+	private String certificate;
+	private String resume;
 	private String email;
+	private String video1;
+	private String video2;
+	private String video3;
+	private Double score;
+	private Integer status;
 	private Long create_date;
 	private Long birthday;
-	private Integer status;
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TbCourse other = (TbCourse) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -127,12 +160,61 @@ public class TbStudent implements java.io.Serializable{
 	public void setEducation(String education) {
 		this.education = education;
 	}
+	@Column(name = "certificate")
+	public String getCertificate() {
+		return certificate;
+	}
+	public void setCertificate(String certificate) {
+		this.certificate = certificate;
+	}
+	@Column(name = "resume")
+	public String getResume() {
+		return resume;
+	}
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
 	@Column(name = "email")
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	@Column(name = "video1")
+	public String getVideo1() {
+		return video1;
+	}
+	public void setVideo1(String video1) {
+		this.video1 = video1;
+	}
+	@Column(name = "video2")
+	public String getVideo2() {
+		return video2;
+	}
+	public void setVideo2(String video2) {
+		this.video2 = video2;
+	}
+	@Column(name = "video3")
+	public String getVideo3() {
+		return video3;
+	}
+	public void setVideo3(String video3) {
+		this.video3 = video3;
+	}
+	@Column(name = "score")
+	public Double getScore() {
+		return score;
+	}
+	public void setScore(Double score) {
+		this.score = score;
+	}
+	@Column(name = "status")
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 	@Column(name = "create_date")
 	public Long getCreate_date() {
@@ -147,13 +229,6 @@ public class TbStudent implements java.io.Serializable{
 	}
 	public void setBirthday(Long birthday) {
 		this.birthday = birthday;
-	}
-	@Column(name = "status")
-	public Integer getStatus() {
-		return status;
-	}
-	public void setStatus(Integer status) {
-		this.status = status;
 	}
 	
 }

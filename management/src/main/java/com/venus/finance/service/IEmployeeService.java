@@ -8,4 +8,5 @@ public interface IEmployeeService extends IOperations<TbEmployee> {
 	TbEmployee findEmployeeByNameAndPwd(String username, String pwd);
 	public Long findAllTbEmployeeCount(String name);
 	public List findAllTbEmployee(int start,int pageSize,String name);
+	public void saveTbEmployee(TbEmployee tbEmployee);
 }

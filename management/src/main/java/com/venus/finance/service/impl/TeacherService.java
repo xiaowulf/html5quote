@@ -46,4 +46,8 @@ public class TeacherService extends AbstractService<TbTeacher> implements ITeach
 	public boolean saveTbTeacher(TbTeacher tbTeacher) {
 		return this.dao.saveTbTeacher(tbTeacher);
 	}
+	@Override
+	public TbTeacher findAllTbTeacherByUsername(String username) {
+		return this.dao.findAllTbTeacherByUsername(username);
+	}
 }
