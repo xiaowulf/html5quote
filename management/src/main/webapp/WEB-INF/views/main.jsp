@@ -29,7 +29,7 @@
 		     </div>
 		     <div style="float:right;text-align:right;margin-right:50px;margin-top:10px;">
 		       	<input type="button" id="changePwd" value="修改密码" class="cupid-blue" onclick="addTab('<spring:message code="system.changepwd"/>','m-password.html')">
-		       	<input type="button" id="logoutImg" value="退出系统" class="cupid-blue">
+		       	<input type="button" id="logoutImg" value="退出系统" class="cupid-blue" onclick="logout()">
 		     </div>
         
         </div>
@@ -51,10 +51,11 @@
             <li>
                 <span>教学管理</span>
                 <ul>
-                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-teacher.html"}'>教师管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-teacher.html"}'><spring:message code="system.teacher.management.menu"/></li>
                     <li  data-options='state:closed,id:1,attributes:{urlaction:"m-student.html"}'>学生管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course-category.html"}'>课程类别</li>
                     <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>课程管理</li>
-                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>成绩管理</li>
+                    <li  data-options='state:closed,id:1,attributes:{urlaction:"m-course.html"}'>安排课程</li>
                 </ul>
             </li>
             <li>

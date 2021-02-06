@@ -66,4 +66,8 @@ public class EmployeeDAO extends AbstractHibernateDAO<TbEmployee> implements IEm
 		}
 		return null;
 	}
+	@Override
+	public void saveTbEmployee(TbEmployee tbEmployee) {
+		getCurrentSession().saveOrUpdate(tbEmployee);
+	}
 }
