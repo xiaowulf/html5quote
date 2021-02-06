@@ -35,12 +35,7 @@
 							    </div>
 							    <div class="panel-body">
 						        <div style="text-align:center;padding:5px">
-						        	<c:if test="${result==1}">
-					   	 				<spring:message code="system.success"/>
-					   	 			</c:if>
-					   	 			<c:if test="${result==0}">
-					   	 				<spring:message code="system.failure"/>
-					   	 			</c:if>
+						        	<spring:message code="${result}"/>
 						        	<button class="btn btn-success" type="button">关闭</button>
 						        </div>
 							    </div>

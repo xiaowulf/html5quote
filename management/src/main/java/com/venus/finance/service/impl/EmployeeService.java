@@ -45,4 +45,9 @@ public class EmployeeService extends AbstractService<TbEmployee> implements IEmp
 	public List findAllTbEmployee(int start, int pageSize, String name) {
 		return this.dao.findAllTbEmployee(start, pageSize, name);
 	}
+
+	@Override
+	public void saveTbEmployee(TbEmployee tbEmployee) {
+		this.dao.saveTbEmployee(tbEmployee);
+	}
 }

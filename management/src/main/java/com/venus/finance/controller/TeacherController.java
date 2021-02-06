@@ -88,6 +88,8 @@ public class TeacherController {
 		return "m-teacher";
 	}
 
+	
+
 	// 编辑老师的资料
 	@RequestMapping(value = "/m-teacher-e.html", method = RequestMethod.GET)
 	public String m_teacher_e(HttpServletRequest request, ModelMap model) {
@@ -117,32 +119,37 @@ public class TeacherController {
 
 	// 新增老师的资料
 	@RequestMapping(value = "/saveTeacher.html", method = RequestMethod.POST)
-	public String saveTeacher(MultipartFile image,HttpServletRequest request, ModelMap model,TbTeacher tbTeacherTemp) {
+	public String saveTeacher(MultipartFile image, HttpServletRequest request, ModelMap model,
+			TbTeacher tbTeacherTemp) {
 		try {
-			String realpath = request.getServletContext()
-					.getRealPath("/file/");
-			System.out.println("------------" + realpath);
+			String realpath = request.getServletContext().getRealPath("/file/");
 			TbTeacher tbTeacher;
-			if(tbTeacherTemp.getId()!=null&&tbTeacherTemp.getId().longValue()!=0L){
+			if (tbTeacherTemp.getId() != null && tbTeacherTemp.getId().longValue() != 0L) {
 				Long id = Long.parseLong(request.getParameter("id"));
 				tbTeacher = teacherService.findOne(id);
-			}else{
+				TbTeacher tbTeacherTemp2 = teacherService.findAllTbTeacherByUsername(tbTeacherTemp.getUsername());
+				if (tbTeacherTemp2 != null && tbTeacherTemp2.getId().longValue() != id.longValue()) {
+					request.setAttribute("result", "teacher.exist");
+					return "result";
+				}
+			} else {
 				tbTeacher = new TbTeacher();
 			}
 			if (image != null) {
-				String fileName=image.getOriginalFilename();
-				if(fileName!=null&&!fileName.equals("")){
+				String fileName = image.getOriginalFilename();
+				if (fileName != null && !fileName.equals("")) {
 					File savedir = new File(realpath);
-					if (!savedir.getParentFile().exists()){
+					if (!savedir.getParentFile().exists()) {
 						savedir.getParentFile().mkdirs();
 					}
 					Long millSeconds = Calendar.getInstance().getTimeInMillis();
-					tbTeacher.setPic1("file/" + millSeconds+fileName);
+					tbTeacher.setPic1("file/" + millSeconds + fileName);
 					PropertiesUtil propertiesUtil = new PropertiesUtil();
 					String fileupload = propertiesUtil.getfileConfigValueByKey("fileupload");
-					image.transferTo(new File(fileupload + millSeconds+fileName));	
+					image.transferTo(new File(fileupload + millSeconds + fileName));
 				}
 			}
+
 			tbTeacher.setUsername(tbTeacherTemp.getUsername());
 			tbTeacher.setTruename(tbTeacherTemp.getTruename());
 			tbTeacher.setCertificate(tbTeacherTemp.getCertificate());
@@ -152,11 +159,14 @@ public class TeacherController {
 			tbTeacher.setMobile(tbTeacherTemp.getMobile());
 			tbTeacher.setResume(tbTeacherTemp.getResume());
 			tbTeacher.setPassword(MD5.getMD5Str(MD5.getRandomString(6)));
+			tbTeacher.setSex(tbTeacherTemp.getSex());
+			tbTeacher.setBirthday(tbTeacherTemp.getBirthday());
+			tbTeacher.setStatus(tbTeacherTemp.getStatus());
 			boolean result = teacherService.saveTbTeacher(tbTeacher);
 			if (result) {
-				request.setAttribute("result", 1);
+				request.setAttribute("result", "system.success");
 			} else {
-				request.setAttribute("result", 0);
+				request.setAttribute("result", "system.failure");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

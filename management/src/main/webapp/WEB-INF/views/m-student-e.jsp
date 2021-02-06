@@ -21,119 +21,111 @@
 </head>
 
 <body style="background-color: #ffffff;">
+<form action="saveStudent.html" method="post"  enctype="multipart/form-data">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mainrightOrdersNav1">
-				<spring:message code="teacher.management.detail"/>
+				<spring:message code="student.management.detail"/>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<span class="requireText">*</span><label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.truename"/></label>
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="student.truename"/></label>
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.truename}"/>'>
+				<input type="text" name="truename" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbStudent.truename}"/>'><span class="requireText">*</span>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<span class="requireText">*</span><label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.idcard"/></label>
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="student.username"/></label>
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.idcard}"/>'>
+				<input type="text" name="username" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbStudent.username}"/>'><span class="requireText">*</span>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:300px;">
-				<span class="requireText">*</span><label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.pic"/></label>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:100px;">
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="student.pic"/></label>
 			</div>
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:300px;padding-top:10px;">
-				<img src="./images/system/test.jpg">
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:100px;padding-top:10px;">
+				<input type="file" name="image">
+				<a href="./<c:out value="${tbStudent.pic1}"/>" target="_blank"><spring:message code="system.view"/></a>
+				<span class="requireText">*</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="student.email"/></label>
+			</div>
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
+				<input type="text" name="email"  style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbStudent.email}"/>'>
+				<span class="requireText">*</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="student.mobile"/></label>
+			</div>
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
+				<input type="text" name="mobile" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbStudent.mobile}"/>'>
+				<span class="requireText">*</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="student.birthday"/></label>
+			</div>
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
+				<input type="text" name="birthday" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbStudent.birthday}"/>'>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="student.sex"/></label>
+			</div>
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
+				<select name="sex" id="sex_id">
+					<c:if test="${tbStudent.sex eq '0'}">
+						<option value="0" selected="selected"><spring:message code="student.sex.male"/></option>
+						<option value="1"><spring:message code="student.sex.female"/></option>
+					</c:if>
+					<c:if test="${tbStudent.sex eq '1'}">
+						<option value="0"><spring:message code="student.sex.male"/></option>
+						<option value="1" selected="selected"><spring:message code="student.sex.female"/></option>
+					</c:if>
+		   	 	</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
+				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="student.status"/></label>
+			</div>
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
+				<select name="status" id="status_id">
+					<c:if test="${tbStudent.status eq '0'}">
+						<option value="0" selected="selected"><spring:message code="student.status.off"/></option>
+						<option value="1"><spring:message code="student.status.on"/></option>
+					</c:if>
+					<c:if test="${tbStudent.status eq '1'}">
+						<option value="0"><spring:message code="student.status.off"/></option>
+						<option value="1" selected="selected"><spring:message code="student.status.on"/></option>
+					</c:if>
+		   	 	</select>
 			</div>
 		</div>
 		
 		<div class="row">
-			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.certificate"/></label>
-			</div>
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.certificate}"/>'>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.username"/></label>
-			</div>
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.username}"/>'>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.email"/></label>
-			</div>
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.email}"/>'>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.mobile"/></label>
-			</div>
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.mobile}"/>'>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.birthday"/></label>
-			</div>
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<input type="text" style="height:25px;width:500px;margin-top:2px;" value='<c:out value="${tbTeacher.birthday}"/>'>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.sex"/></label>
-			</div>
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<select name="sex" id="sex_id">
-		   	 		<option value="0"><spring:message code="teacher.sex.male"/></option>
-		   	 		<option value="1"><spring:message code="teacher.sex.female"/></option>
-		   	 		<!-- 
-		   	 		<option value="1"><spring:message code="teacher.sex.off"/></option>
-		   	 		 -->
-		   	 	</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:30px;">
-				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.status"/></label>
-			</div>
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:30px;">
-				<select name="status" id="status_id">
-		   	 		<option value="1"><spring:message code="teacher.status.on"/></option>
-		   	 		<option value="0"><spring:message code="teacher.status.off"/></option>
-		   	 	</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="border:1px solid #4B306C;height:260px;">
-				<label style="height:25px;margin-top:2px;text-align:right;"><spring:message code="teacher.resume"/></label>
-			</div>
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="border:1px solid #4B306C;height:260px;">
-				<textarea rows="10" cols="68">发动机萨菲科技的萨克复健科</textarea>
-			</div>
-		</div>
-		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="border:1px solid #4B306C;height:50px;padding-top:5px;text-align:center;">
-				<button class="btn btn-success" type="button" onclick="submitForm()"><spring:message code="system.save"/></button>
+				<input type="hidden" name="id" value="${tbStudent.id}">
+				<button class="btn btn-success" type="submit" ><spring:message code="system.save"/></button>
 				<button class="btn btn-success" type="button" onclick="submitForm()"><spring:message code="system.close"/></button>
 				<button class="btn btn-warning" type="button" onclick="submitForm()"><spring:message code="system.reset.password"/></button>
 			</div>
 		</div>
 		<!-- end row -->
 	</div>
+</form>
 <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
