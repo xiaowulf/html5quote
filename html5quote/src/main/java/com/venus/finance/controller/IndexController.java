@@ -59,10 +59,7 @@ public class IndexController {
 	public String contact(HttpServletRequest request,ModelMap model) {
 		return "contact";
 	}
-	@RequestMapping(value = "/strategy.html", method = RequestMethod.GET)
-	public String strategy(HttpServletRequest request,ModelMap model) {
-		return "strategy";
-	}
+	
 	@RequestMapping(value = "/backtest.html", method = RequestMethod.GET)
 	public String backtest(HttpServletRequest request,ModelMap model) {
 		return "backtest";

@@ -44,63 +44,137 @@
     </nav>
 
 	<div class="container-fluid">
-		<div class="row" style="margin-top:50px;">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">1</span><spring:message code="strategy_one_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_one_content"/>
-						  </div>
-						</div>
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">2</span><spring:message code="strategy_two_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_two_content"/>
-						  </div>
-						</div>
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">3</span><spring:message code="strategy_three_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_three_content"/>
-						  </div>
-						</div>
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">4</span><spring:message code="strategy_four_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_four_content"/>
-						  </div>
-						</div>
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">5</span><spring:message code="strategy_five_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_five_content"/>
-						  </div>
-						</div>
-						<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title"><span class="badge">6</span><spring:message code="strategy_six_title"/></h3>
-						  </div>
-						  <div class="panel-body">
-						    <spring:message code="strategy_six_content"/>
-						  </div>
-						</div>
-					</div>
+		<div class="row" style="margin-top:60px;">
+			<div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				策略ID
 			</div>
+			<div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				策略名称	
+			</div>
+			<div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				开始日期	
+			</div>
+			<div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				初始资金
+			</div>
+			<div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				是否有效
+			</div>
+			<div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				编辑
+			</div>
+		</div>
+		
+		<c:forEach  items="${list}" var="dataList"  varStatus="userStatus">
+			<div class="row">
+			<c:if test="${userStatus.index%2==0}">
+				 <div style="padding-top:3px;" class="mainrightZhiBiao2 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					<c:out value="${dataList.id}"></c:out>
+				 </div>
+				 <div style="padding-top:3px;" class="mainrightZhiBiao2 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					<c:out value="${dataList.name}"></c:out>
+				 </div>
+				 <div style="padding-top:3px;" class="mainrightZhiBiao2 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					<c:out value="${dataList.initdate}"></c:out>
+				 </div>
+				 <div style="padding-top:3px;" class="mainrightZhiBiao2 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					<c:out value="${dataList.qcqy}"></c:out>
+				 </div>
+				 <div style="padding-top:3px;" class="mainrightZhiBiao2 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					<c:if test="${dataList.is_use eq 0}">
+				 		无效
+				 	</c:if>
+				 	<c:if test="${dataList.is_use eq 1}">
+				 		有效
+				 	</c:if>
+				 </div>
+				 <div style="padding-top:3px;" class="mainrightZhiBiao2 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					<span style="cursor:pointer;" onclick="editStrategy(${dataList.id})">编辑</span> <span style="cursor:pointer;">删除</span> <span style="cursor:pointer;">成绩</span>
+				 </div>
+			</c:if>
+				   	 			
+			<c:if test="${userStatus.index%2==1}">
+				 <div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				 	<c:out value="${dataList.id}"></c:out>
+				 </div>
+				 <div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				 	<c:out value="${dataList.name}"></c:out>
+				 </div>
+				 <div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				 	<c:out value="${dataList.initdate}"></c:out>
+				 </div>
+				 <div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				 	<c:out value="${dataList.qcqy}"></c:out>
+				 </div>
+				 <div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				 	<c:if test="${dataList.is_use eq 0}">
+				 		无效
+				 	</c:if>
+				 	<c:if test="${dataList.is_use eq 1}">
+				 		有效
+				 	</c:if>
+				 </div>
+				 <div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				 	<span style="cursor:pointer;" onclick="editStrategy(${dataList.id})">编辑</span> <span style="cursor:pointer;">删除</span> <span style="cursor:pointer;">成绩</span>
+				 </div>
+			</c:if>
+		</div> 
+		</c:forEach>
 	</div>
-
-    
+	
+	<div class="container-fluid" id="strategyEdit">
+		<div class="row" style="margin-top:10px;height:35px;background-color:#EEEEEE;text-align:left;">
+			<div style="padding-top:8px;text-align:right;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				策略ID
+			</div>
+			<div style="padding-top:5px;text-align:left;" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<input type="text" readonly value="" id="strategyID" size="50"/>
+			</div>
+		</div>
+		<div class="row" style="margin-top:0px;height:35px;background-color:#ffffff;text-align:left;">
+			<div style="padding-top:8px;text-align:right;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				策略名称
+			</div>
+			<div style="padding-top:5px;text-align:left;" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<input type="text" value="" id="strategyName" size="50"/>
+			</div>
+		</div>
+		<div class="row" style="margin-top:0px;height:35px;background-color:#EEEEEE;text-align:left;">
+			<div style="padding-top:8px;text-align:right;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				开始日期
+			</div>
+			<div style="padding-top:5px;text-align:left;" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<input type="text" value="" id="strategyInitDate" size="50"/>
+			</div>
+		</div>
+		<div class="row" style="margin-top:0px;height:35px;background-color:#ffffff;text-align:left;">
+			<div style="padding-top:8px;text-align:right;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				初始资金
+			</div>
+			<div style="padding-top:5px;text-align:left;" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<input type="text" value="" id="strategyQcqy" size="50"/>
+			</div>
+		</div>
+		<div class="row" style="margin-top:0px;height:35px;background-color:#EEEEEE;text-align:left;">
+			<div style="padding-top:8px;text-align:right;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				是否有效
+			</div>
+			<div style="padding-top:0px;text-align:left;" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<select style="max-width:100px;" class="form-control" id="strategyISUSE">
+					 <option value="0">无效</option>
+					 <option value="1">有效</option>
+				</select>
+			</div>
+		</div>
+		<div class="row"  style="margin-top:0px;height:35px;background-color:#ffffff;text-align:center;">
+			<div style="padding-top:5px;" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<input type="button" value="保存"  onclick="saveStrategy()"/>
+				<input type="button" value="取消"  onclick="hideDIV()"/>
+			</div>
+		</div>
+	</div>
     <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
-    <script src="js/suggest.js" type="text/javascript"></script>
+    <script src="js/strategy.js" type="text/javascript"></script>
     <!--include plugin js-->
     <script type="text/javascript" src="./js/jquery-rvnm.js"></script>
     <script
