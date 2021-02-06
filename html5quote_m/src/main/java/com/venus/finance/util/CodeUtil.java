@@ -212,7 +212,9 @@ public class CodeUtil {
 					if (futuresQuoteVO.getInstrumentID().toUpperCase().equals(code.toUpperCase())) {
 						futuresQuoteVO.setDate(Long.parseLong(date));
 						
-						
+						if(date.equals("20210104")&&code.toUpperCase().equals("AG2103")) {
+							System.out.println();
+						}
 						File day5DataFile = new File(dataFolder + "/macd5-" + date + ".txt");
 						List<Macd> futures5DaysQuoteList = fileUtil.readFileMacdVOList(day5DataFile);
 						

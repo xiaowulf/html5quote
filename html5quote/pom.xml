@@ -84,6 +84,13 @@
 	    <artifactId>quickfixj-messages-fix44</artifactId>
 	    <version>2.0.0</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.quickfixj/quickfixj-messages-fix50sp2 -->
+	<dependency>
+	    <groupId>org.quickfixj</groupId>
+	    <artifactId>quickfixj-messages-fix50sp2</artifactId>
+	    <version>2.0.0</version>
+	</dependency>
+		
 	<dependency>
 	    <groupId>org.slf4j</groupId>
 	    <artifactId>slf4j-log4j12</artifactId>
