@@ -1,7 +1,4 @@
-
-
 var ws = new WebSocket("ws://localhost:7080/html5quote/indexquoteserver");
-
 ws.onopen = function(evt) { 
   console.log("Connection open ..."); 
   //ws.send("getQuote");
@@ -33,10 +30,8 @@ ws.onmessage = function(evt) {
 	  $("#"+ obj.instrumentID+"askVolume1").html("<font color=\"red\">"+obj.askVolume1+"</font>");
 	  $("#"+ obj.instrumentID+"volume").html("<font color=\"red\">"+obj.volume+"</font>");
 	  $("#"+ obj.instrumentID+"ccvolume").html("<font color=\"red\">"+obj.ccvolume+"</font>");
-  }
-	  
-	  
-	  //console.log("---------------------"+obj.instrumentID+obj.bidPrice1);
+  }  
+   //console.log("---------------------"+obj.instrumentID+obj.bidPrice1);
   //ws.close();
 };
   

@@ -6,6 +6,7 @@ import com.venus.finance.model.FuturesClose;
 import com.venus.finance.model.FuturesOrders;
 
 public class FuturesOrdersVO{
+	private String date;
 	private List<FuturesOrders> ordersList;
 	private List<FuturesClose> closeList;
 	public List<FuturesOrders> getOrdersList() {
@@ -22,6 +23,14 @@ public class FuturesOrdersVO{
 
 	public void setCloseList(List<FuturesClose> closeList) {
 		this.closeList = closeList;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	

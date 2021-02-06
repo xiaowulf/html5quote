@@ -14,10 +14,11 @@ body{color: blue;height:100%;color:#ffffff;overflow-x: hidden;}
 .mainrightZhiBiaoNameW{float:left;height:25px;width:100px;text-align:center;margin-top: 0px;color:#ffffff;}
 .mainrightZhiBiaoNameY{float:left;height:25px;width:100px;text-align:center;margin-top: 0px;border-right:1px solid #ffffff;color:#000000;}
 .mainrightZhiBiao1{background-color:#EEEEEE;float:left;height:25px;text-align:center;margin-top: 0px;color:#000000;border-right:1px solid #E8F0C3;border-bottom:1px solid #E8F0C3;}
-.mainrightZhiBiao2{background-color:#FFFFFF;cursor:pointer;float:left;height:25px;text-align:center;margin-top: 0px;color:#000000;border-right:1px solid #E8F0C3;border-bottom:1px solid #E8F0C3;}
-.mainrightZhiBiao3{background-color:#EEEEEE;cursor:pointer;float:left;height:25px;text-align:center;margin-top: 0px;color:#000000;border-right:1px solid #E8F0C3;border-bottom:1px solid #E8F0C3;}
+.mainrightZhiBiao2{background-color:#FFFFFF;float:left;height:25px;text-align:center;margin-top: 0px;color:#000000;border-left:1px solid #E8F0C3;border-right:1px solid #E8F0C3;border-bottom:1px solid #E8F0C3;}
+.mainrightClose{background-color:#FFFFFF;float:left;height:35px;text-align:left;margin-top: 0px;color:#000000;border-left:1px solid #E8F0C3;border-right:1px solid #E8F0C3;border-bottom:1px solid #E8F0C3;}
+.mainrightZhiBiao3{background-color:#EEEEEE;float:left;height:25px;text-align:center;margin-top: 0px;color:#000000;border-right:1px solid #E8F0C3;border-bottom:1px solid #E8F0C3;}
 .mainrightMain{float:left;height:500px;overflow-y:auto;overflow-x: hidden;width:100%;border:1px solid #E8F0C3;border-bottom:1px solid #ffffff;color:#000000;}
-.orderrightMain{float:left;height:450px;overflow-y:auto;overflow-x: hidden;width:100%;border:1px solid #E8F0C3;}
+.orderrightMain{float:left;overflow-y:auto;overflow-x: hidden;width:100%;}
 .mainrightMainNoBorder{float:left;height:500px;overflow-y:auto;overflow-x: hidden;width:100%;color:#000000;}
 .mainrightMainLeft{float:left;height:500px;width:50%;background-color:#000000;}
 .mainrightMainRight{float:left;height:500px;width:50%;background-color:#000000;}

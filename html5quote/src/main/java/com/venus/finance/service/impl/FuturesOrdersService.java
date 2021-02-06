@@ -1,6 +1,8 @@
 package com.venus.finance.service.impl;
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -33,5 +35,10 @@ public class FuturesOrdersService extends AbstractService<FuturesOrders> impleme
     @Override
     protected IOperations<FuturesOrders> getDao() {
         return this.dao;
+    }
+    @Override
+    public List<FuturesOrders> findFuturesOrdersByStrategyID(Long strategyID)
+    {
+    	return dao.findFuturesOrdersByStrategyID(strategyID);
     }
 }

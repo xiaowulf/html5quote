@@ -1,71 +1,8 @@
 $(function() {
-	getChart("index");
-	getStrategy();
+	//getChart("index");
+	//getStrategy();
 	getPosition();
 });
-var option_candle = {
-		title : {
-			text : '期货价格K线',
-			textStyle : {
-				fontSize : 13
-			}
-		},
-		tooltip : {
-			trigger : 'axis'
-		},
-		legend : {
-			data : [ '期货价格K线']
-		},
-		xAxis : [ {
-			type : 'category',
-			boundaryGap : false,
-			data : []
-		} ],
-		yAxis : [ {
-			type : 'value',
-			axisLabel : {
-				formatter : '{value}'
-			},
-			scale : true
-		} ],
-		series : [ {
-			name : 'k线',
-			type : 'k',
-			data : []
-		} ]
-	};
-
-
-
-function getChart(code) {
-	var chart2 = echarts.init(document.getElementById('chart2'));
-	$.ajax({
-		type : 'POST',
-		url : 'findFuturesCodeIndex.html',
-		data : {
-			code : code
-		},
-		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-		dataType : 'json',
-		success : function(data) {
-			//alert(data.code+decodeURI("价格"));
-			//k线
-			option_candle.xAxis[0].data = data.dateRtnList;
-		    var values = [];
-		    for (var i = 0; i < data.candlePriceList.length; i++) {
-		    	var categoryData = [];
-		        categoryData.push(data.candlePriceList[i].openPrice);
-		        categoryData.push(data.candlePriceList[i].closePrice);
-		        categoryData.push(data.candlePriceList[i].lowPrice);
-		        categoryData.push(data.candlePriceList[i].highPrice);
-		        values.push(categoryData);
-		    }
-			option_candle.series[0].data=values;
-			option_candle.title.text = data.code+"K线";
-			chart2.setOption(option_candle);
-		}
-	});
-}
 
 function getStrategy(){
 	$("#strategyID").empty();
@@ -94,7 +31,7 @@ function getPosition(){
 		type : 'POST',
 		url : 'findPosition.html',
 		data : {
-			
+			strategyID:$("#strategyID").val()
 		},
 		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 		dataType : 'json',
@@ -133,43 +70,52 @@ function getPosition(){
 				if(row%2==0){
 					strDiv += "<div  class=\"container-fluid\">";
 					strDiv += "<div  class=\"row\">";
-					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].code;
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
-					strDiv += data.ordersList[i].fangxiang;
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
+					if(data.ordersList[i].direction=="B"){
+						strDiv += "多";
+					}else{
+						strDiv += "空";
+					}
+					
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].hand;
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].remain_hand;
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].open_price;
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].remain_profit;
 					strDiv += "</div>";
 				}else{
 					strDiv += "<div  class=\"container-fluid\">";
 					strDiv += "<div  class=\"row\">";
-					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].code;
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
-					strDiv += data.ordersList[i].fangxiang;
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
+					if(data.ordersList[i].direction=="B"){
+						strDiv += "多";
+					}else{
+						strDiv += "空";
+					}
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].hand;
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].remain_hand;
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].open_price;
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.ordersList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].remain_profit;
 					strDiv += "</div>";
 				}
@@ -191,7 +137,7 @@ function getSusPosition(){
 		type : 'POST',
 		url : 'findSusPosition.html',
 		data : {
-			
+			strategyID:$("#strategyID").val()
 		},
 		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 		dataType : 'json',
@@ -233,7 +179,11 @@ function getSusPosition(){
 					strDiv += data.susOrdersList[i].code;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
-					strDiv += data.susOrdersList[i].fangxiang;
+					if(data.susOrdersList[i].direction=="B"){
+						strDiv += "多";
+					}else{
+						strDiv += "空";
+					}
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
 					strDiv += data.susOrdersList[i].hand;
@@ -254,7 +204,11 @@ function getSusPosition(){
 					strDiv += data.susOrdersList[i].code;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
-					strDiv += data.susOrdersList[i].fangxiang;
+					if(data.susOrdersList[i].direction=="B"){
+						strDiv += "多";
+					}else{
+						strDiv += "空";
+					}
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
 					strDiv += data.susOrdersList[i].hand;
@@ -281,11 +235,16 @@ function getClosePosition(){
 	$("#mainrightOrdersNav2").css("background-color", "#000000");
 	$("#mainrightOrdersNav3").css("background-color", "#4B306C");
 	$("#mainrightOrdersNav4").css("background-color", "#000000");
+	var date ="";
+	if($("#dateID").val()!=undefined)
+	{
+		date = $("#dateID").val();
+	}
 	$.ajax({
 		type : 'POST',
 		url : 'findClosePosition.html',
 		data : {
-			
+			date:date,strategyID:$("#strategyID").val()
 		},
 		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 		dataType : 'json',
@@ -293,6 +252,13 @@ function getClosePosition(){
 			$("#style-4").empty();
 			var strDiv = "";
 			var row = 0;
+			strDiv += "<div  class=\"container-fluid\">";
+			strDiv += "<div  class=\"row\">";
+			strDiv += "<div class=\"mainrightClose  col-xs-12 col-sm-12 col-md-12 col-lg-12\">";
+			strDiv += "选择日期:<input type=\"text\" value=\""+data.date+"\" id=\"dateID\" size=\"20\"><input type=\"button\" value=\"查询\" onclick=\"getClosePosition()\">";
+			strDiv += "</div>";
+			strDiv += "</div>";
+			strDiv += "</div>";
 			for (var i = 0; i < data.closeList.length; i++) {
 				if(row==0){
 					row ++;
@@ -327,7 +293,11 @@ function getClosePosition(){
 					strDiv += data.closeList[i].code;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
-					strDiv += data.closeList[i].fangxiang;
+					if(data.closeList[i].direction=='B'){
+						strDiv += "多";
+					}else{
+						strDiv += "空";
+					}
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
 					strDiv += data.closeList[i].hand;
@@ -348,7 +318,12 @@ function getClosePosition(){
 					strDiv += data.closeList[i].code;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
-					strDiv += data.closeList[i].fangxiang;
+					//console.log(data.closeList[i].direction);
+					if(data.closeList[i].direction=='B'){
+						strDiv += "多";
+					}else{
+						strDiv += "空";
+					}
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
 					strDiv += data.closeList[i].hand;

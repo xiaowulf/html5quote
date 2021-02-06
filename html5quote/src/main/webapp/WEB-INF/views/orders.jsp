@@ -3,6 +3,7 @@
 <%@ page  isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html lang="zh">
@@ -43,42 +44,54 @@
             </div>
         </div>
     </nav>
-
+	<!--  -->
 	<div class="container-fluid">
 		<div class="row" style="margin-top:50px;">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 alert alert-danger" role="alert">
-				  <label>权益：</label><label>可用：</label><label>使用率：</label>
+				  <label>当日权益：${drqy}</label><label>可用资金：${kyzj}</label><label>资金使用率：<fmt:formatNumber type="percent" maxIntegerDigits="5" value="${zjsyl}" /></label>
+				  <select class="form-control" id="strategyID">
+					    <option value="0">所有策略</option>
+					    <c:forEach  items="${list}" var="list"  varStatus="listStatus">
+						   <option value="<c:out value="${list.id}"/>"><c:out value="${list.name}"/></option>
+						</c:forEach>
+					  </select>
 			</div>
+			<!-- 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<form class="form-inline">
 				  <div class="form-group">
 				    <div class="input-group">
 				      <div class="input-group-addon">品种</div>
-				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="品种">
+				      <input type="text" size="10" class="form-control" id="exampleInputAmount" placeholder="品种">
 				    </div>
 				    <div class="input-group">
 				      <div class="input-group-addon">手数</div>
-				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="手数">
+				      <input type="text" size="10" class="form-control" id="exampleInputAmount" placeholder="手数">
 				    </div>
 				    <div class="input-group">
 				      <div class="input-group-addon">价格</div>
-				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="价格">
+				      <input type="text" size="10" class="form-control" id="exampleInputAmount" placeholder="价格">
 				    </div>
 				    <div class="input-group">
 					  <div class="input-group-addon">策略</div>
 					  <select class="form-control" id="strategyID">
-					    
+					    <option value="0">所有策略</option>
+					    <c:forEach  items="${list}" var="list"  varStatus="listStatus">
+						   <option value="<c:out value="${list.id}"/>"><c:out value="${list.name}"/></option>
+						</c:forEach>
 					  </select>
 					</div>
+					<button type="submit" class="btn btn-primary">买入</button>
+				  	<button type="submit" class="btn btn-primary">卖出</button>
+				  	<button type="submit" class="btn btn-primary">平仓</button>
 				  </div>
-				  <button type="submit" class="btn btn-primary">买入F1(22222/35)</button>
-				  <button type="submit" class="btn btn-primary">卖出F2(33333/34)</button>
-				  <button type="submit" class="btn btn-primary">平仓F3</button>
+				  
 				</form>
 			</div>
+			 -->
 		</div>
 		<div class="row" style="margin-top:20px;">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:500px;float:left;border-left:1px solid #EEEEEE;border-top:1px solid #EEEEEE;border-bottom:1px solid #EEEEEE;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="float:left;">
 				<div class="mainrightOrdersNav1 col-xs-12 col-sm-12 col-md-4 col-lg-4" onclick="getPosition()" id="mainrightOrdersNav1">
 					持仓
 				</div>
@@ -97,123 +110,14 @@
 						
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:500px;float:left;border-left:1px solid #EEEEEE;border-top:1px solid #EEEEEE;border-bottom:1px solid #EEEEEE;">
-				<div class="mainrightOrdersNav1 col-xs-12 col-sm-12 col-md-4 col-lg-4" onclick="getPosdddition('shfe')" id="mainrightBottomNav1">
-					分时
-				</div>
-				<div class="mainrightOrdersNav2  col-xs-12 col-sm-12 col-md-4 col-lg-4" onclick="getJys('czce')" id="mainrightBottomNav2">
-					K线
-				</div>
-				<div class="mainrightOrdersNav3  col-xs-12 col-sm-12 col-md-4 col-lg-4" onclick="getJys('czce')" id="mainrightBottomNav2">
-					盘口
-				</div>
-				
-				<div class="orderrightMain" id="style-4">
-						<div id="chart2" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:400px;float:left;"></div>
-				</div>
-			</div>
+			
 		</div>
 		<!-- end row -->
-	</div>
-	<div class="container-fluid">
-	<div class="row" style="margin-top:20px;height:300px;">
-			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="height:300px;">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div style="background-color:#EEEEEE;padding-top:5px;height:30px;"><div class="fa fa-bar-chart"></div>相关资讯</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="height:300px;">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div style="background-color:#EEEEEE;padding-top:5px;height:30px;"><div class="fa fa-bar-chart"></div>相关资讯</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="height:300px;">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div style="background-color:#EEEEEE;padding-top:5px;height:30px;"><div class="fa fa-bar-chart"></div>相关资讯</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="height:300px;">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div style="background-color:#EEEEEE;padding-top:5px;height:30px;"><div class="fa fa-bar-chart"></div>相关资讯</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-						<div style="padding-top:5px;height:30px;">去产能反复扰动 焦炭不宜过度乐观？</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<div style="padding-top:5px;height:30px;">2019-12-02</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/orders.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="js/order_websocket.js" type="text/javascript" charset="UTF-8"></script>
     <!--include plugin js-->
     <script type="text/javascript" src="./js/jquery-rvnm.js"></script>
     <script

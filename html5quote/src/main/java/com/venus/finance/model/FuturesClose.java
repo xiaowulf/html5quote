@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name = "futures_close", catalog = "xquote")
+@Table(name = "futures_close", catalog = "xtrader")
 public class FuturesClose implements java.io.Serializable{
 
 	/**
@@ -25,7 +25,7 @@ public class FuturesClose implements java.io.Serializable{
 	private Long strategy_id;
 	private Double close_profit;
 	private String fund_account;
-	private String fangxiang;
+	private String direction;
 	private Double sxf;
 	public FuturesClose() {
 		this.id=0L;
@@ -97,17 +97,19 @@ public class FuturesClose implements java.io.Serializable{
 	public void setHand(Double hand) {
 		this.hand = hand;
 	}
-	@Column(name = "fangxiang")
-	public String getFangxiang() {
-		return fangxiang;
+	
+	@Column(name = "direction")
+	public String getDirection() {
+		return direction;
 	}
-	public void setFangxiang(String fangxiang) {
-		this.fangxiang = fangxiang;
+	public void setDirection(String direction) {
+		this.direction = direction;
 	}
 	@Column(name = "sxf")
 	public Double getSxf() {
 		return sxf;
 	}
+	
 	public void setSxf(Double sxf) {
 		this.sxf = sxf;
 	}

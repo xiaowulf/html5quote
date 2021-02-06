@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name = "futures_orders", catalog = "xquote")
+@Table(name = "futures_orders", catalog = "xtrader")
 public class FuturesOrders implements java.io.Serializable{
 
 	private Long id;
@@ -18,7 +18,6 @@ public class FuturesOrders implements java.io.Serializable{
 	private String fund_account;
 	private String code;
 	private Long strategy_id;
-	private String fangxiang;
 	private String record_time;
 	private Double remain_hand;
 	private Double remain_profit;
@@ -28,7 +27,7 @@ public class FuturesOrders implements java.io.Serializable{
 	private Long frontid;
 	private Double ccjsyk;
 	private Double sxf;
-	
+	private String direction;
 	
 	public FuturesOrders() {
 		this.id=0L;
@@ -107,13 +106,7 @@ public class FuturesOrders implements java.io.Serializable{
 	public void setHand(Double hand) {
 		this.hand = hand;
 	}
-	@Column(name = "fangxiang")
-	public String getFangxiang() {
-		return fangxiang;
-	}
-	public void setFangxiang(String fangxiang) {
-		this.fangxiang = fangxiang;
-	}
+	
 	@Column(name = "ccjsyk")
 	public Double getCcjsyk() {
 		return ccjsyk;
@@ -155,6 +148,13 @@ public class FuturesOrders implements java.io.Serializable{
 	}
 	public void setFrontid(Long frontid) {
 		this.frontid = frontid;
+	}
+	@Column(name = "direction")
+	public String getDirection() {
+		return direction;
+	}
+	public void setDirection(String direction) {
+		this.direction = direction;
 	}
 	
 }

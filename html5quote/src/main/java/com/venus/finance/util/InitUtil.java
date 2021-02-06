@@ -71,6 +71,13 @@ public class InitUtil {
         String indexcode = ini.get("code", "indexcode");
         return indexcode;
     }
+	public String getTickQuoteDir() throws IOException
+    {
+		InputStream in = this.getClass().getResourceAsStream(codeconfig_file);
+        Wini ini = new Wini(in);
+        String tick_quote_dir = ini.get("code", "tick_quote_dir");
+        return tick_quote_dir;
+    }
 	public static File getFutures_latest_file() throws IOException
     {
 		InputStream in = InitUtil.class.getResourceAsStream(codeconfig_file);

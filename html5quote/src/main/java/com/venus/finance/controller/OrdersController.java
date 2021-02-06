@@ -25,11 +25,13 @@ import com.google.gson.Gson;
 import com.venus.finance.fix.FixApplication;
 import com.venus.finance.model.FuturesClose;
 import com.venus.finance.model.FuturesOrders;
+import com.venus.finance.model.FuturesResult;
 import com.venus.finance.model.FuturesStrategy;
 import com.venus.finance.model.FuturesSusOrders;
 import com.venus.finance.service.IFuturesCloseService;
 import com.venus.finance.service.IFuturesMessageService;
 import com.venus.finance.service.IFuturesOrdersService;
+import com.venus.finance.service.IFuturesResultService;
 import com.venus.finance.service.IFuturesStrategyService;
 import com.venus.finance.service.IFuturesSusOrdersService;
 import com.venus.finance.util.CodeUtil;
@@ -48,6 +50,29 @@ import com.venus.finance.vo.MaxMinPriceVO;
 @Controller
 public class OrdersController {
 	
+	@RequestMapping(value = "/orders.html", method = RequestMethod.GET)
+	public String orders(HttpServletRequest request,ModelMap model) {
+		List<FuturesStrategy>strtegyList = futuresStrategyService.findAll();
+		String maxDate = futuresResultService.findMaxDate();
+		Double drqy=0.0D,kyzj=0.0D,zjsyl=0.0D,bzj=0.0D;
+		if(null!=maxDate)
+		{
+			List<FuturesResult> resultList = futuresResultService.findFuturesResultByDate(Long.parseLong(maxDate));
+			for(FuturesResult result:resultList)
+			{
+				drqy+=result.getDrqy();
+				bzj+=result.getBzj();
+			}
+		}
+		kyzj = drqy-bzj;
+		zjsyl=bzj/drqy;
+		model.put("list", strtegyList);
+		model.put("drqy", drqy);
+		model.put("kyzj", kyzj);
+		model.put("zjsyl", zjsyl);
+		return "orders";
+	}
+	
 	@RequestMapping(value = "/findStrategy.html", produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String findStrategy(HttpServletRequest request, ModelMap model) {
@@ -62,7 +87,9 @@ public class OrdersController {
 	@RequestMapping(value = "/findPosition.html", produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String findPosition(HttpServletRequest request, ModelMap model) {
-		List<FuturesOrders> ordersList = futuresOrdersService.findAll();
+		String strategyID = request.getParameter("strategyID");
+		Long strategy_id = Long.parseLong(strategyID);
+		List<FuturesOrders> ordersList = futuresOrdersService.findFuturesOrdersByStrategyID(strategy_id);
 		FuturesOrdersVO futuresOrdersVO = new FuturesOrdersVO();
 		futuresOrdersVO.setOrdersList(ordersList);
 		Gson gson = new Gson();
@@ -72,8 +99,34 @@ public class OrdersController {
 	@RequestMapping(value = "/findClosePosition.html", produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String findClosePosition(HttpServletRequest request, ModelMap model) {
-		List<FuturesClose> closeList = futuresCloseService.findAll();
+		String date = "";
+		if(request.getParameter("date")!=null) {
+			date = request.getParameter("date");
+		}
+		if(date.equals(""))
+		{
+			date = futuresResultService.findMaxDate();
+		}
+		String strategyID = request.getParameter("strategyID");
+		Long strategy_id = Long.parseLong(strategyID);
+		
+		List<FuturesClose> closeListDB = futuresCloseService.findFuturesCloseByDate(Long.parseLong(date));
+		List<FuturesClose> closeList = new ArrayList<FuturesClose>();
+		if(strategy_id==0)
+		{
+			closeList = closeListDB;
+		}
+		else
+		{
+			for(FuturesClose close:closeListDB) {
+				if(close.getStrategy_id()==strategy_id)
+				{
+					closeList.add(close);
+				}
+			}
+		}
 		FuturesOrdersVO futuresOrdersVO = new FuturesOrdersVO();
+		futuresOrdersVO.setDate(date);
 		futuresOrdersVO.setCloseList(closeList);
 		Gson gson = new Gson();
 		String json = gson.toJson(futuresOrdersVO);
@@ -82,7 +135,23 @@ public class OrdersController {
 	@RequestMapping(value = "/findSusPosition.html", produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String findSusPosition(HttpServletRequest request, ModelMap model) {
-		List<FuturesSusOrders> susOrdersList = futuresSusOrdersService.findAll();
+		String strategyID = request.getParameter("strategyID");
+		Long strategy_id = Long.parseLong(strategyID);
+		List<FuturesSusOrders> susOrdersListDB = futuresSusOrdersService.findAll();
+		List<FuturesSusOrders> susOrdersList = new ArrayList<FuturesSusOrders>();
+		if(strategy_id==0)
+		{
+			susOrdersList = susOrdersListDB;
+		}
+		else
+		{
+			for(FuturesSusOrders order:susOrdersListDB) {
+				if(order.getStrategy_id()==strategy_id)
+				{
+					susOrdersList.add(order);
+				}
+			}
+		}
 		FuturesSusOrdersVO futuresSusOrdersVO = new FuturesSusOrdersVO();
 		futuresSusOrdersVO.setSusOrdersList(susOrdersList);
 		Gson gson = new Gson();
@@ -99,5 +168,7 @@ public class OrdersController {
     private IFuturesCloseService futuresCloseService;
 	@Resource(name="futuresSusOrdersService")
     private IFuturesSusOrdersService futuresSusOrdersService;
+	@Resource(name = "futuresResultService")
+	private IFuturesResultService futuresResultService;
 	
 }

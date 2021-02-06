@@ -1,6 +1,8 @@
 package com.venus.finance.service.impl;
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -37,4 +39,10 @@ public class FuturesCloseService extends AbstractService<FuturesClose> implement
     protected IOperations<FuturesClose> getDao() {
         return this.dao;
     }
+
+
+	@Override
+	public List<FuturesClose> findFuturesCloseByDate(Long date) {
+		return dao.findFuturesCloseByDate(date);
+	}
 }
