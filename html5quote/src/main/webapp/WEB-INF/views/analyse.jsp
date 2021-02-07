@@ -134,18 +134,18 @@
 					<!-- end row -->
 					<div class="row">
 					<div class="analyseCharts">
-				    		<div id="chart1" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
-				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
-				    		<div id="chart9" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart3" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart9" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="height:300px;float:left"></div>
 				    		
-				    		<div id="chart4" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
-				    		<div id="chart7" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
-				    		<div id="chart2" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart4" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart7" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="height:300px;float:left"></div>
 				    		
 				    		
-				    		<div id="chart6" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
-				    		<div id="chart5" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
-				    		<div id="chart8" class="col-xs-12 col-sm-12 col-md-1 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart6" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart5" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="height:300px;float:left"></div>
+				    		<div id="chart8" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="height:300px;float:left"></div>
 				    		
 			    	</div>
 					</div>

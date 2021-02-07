@@ -91,9 +91,10 @@ public class StrategyController {
 		String json = gson.toJson(futuresStrategyOneVO);
 		return json;
 	}
-	@RequestMapping(value = "/saveStrategy.html", produces = "text/html;charset=UTF-8")
+	
+	@RequestMapping(value = "/deleteStrategy.html", produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String saveStrategy(HttpServletRequest request, ModelMap model) {
+	public String deleteStrategy(HttpServletRequest request, ModelMap model) {
 		String id = request.getParameter("id");
 		FuturesStrategyOneVO futuresStrategyOneVO = new FuturesStrategyOneVO();
 		if(null==id||id.contentEquals("0"))
@@ -104,11 +105,45 @@ public class StrategyController {
 			return json;
 		}
 		FuturesStrategy futuresStrategy = futuresStrategyService.findOne(Long.parseLong(id));
-		futuresStrategy.setInitdate(Long.parseLong(request.getParameter("initdate")));
-		futuresStrategy.setName(request.getParameter("name"));
-		futuresStrategy.setIs_use(request.getParameter("is_use"));
-		futuresStrategy.setQcqy(Double.parseDouble(request.getParameter("qcqy")));
-		futuresStrategyService.update(futuresStrategy);
+		futuresStrategyService.deleteById(futuresStrategy.getId());
+		futuresStrategyOneVO.setStatus("1");
+		//futuresStrategyOneVO.setFuturesStrategy(futuresStrategy);
+		Gson gson = new Gson();
+		String json = gson.toJson(futuresStrategyOneVO);
+		return json;
+	}
+	
+	@RequestMapping(value = "/saveStrategy.html", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String saveStrategy(HttpServletRequest request, ModelMap model) {
+		String id = request.getParameter("id");
+		FuturesStrategyOneVO futuresStrategyOneVO = new FuturesStrategyOneVO();
+		FuturesStrategy futuresStrategy;
+		if(null==id)
+		{
+			futuresStrategyOneVO.setStatus("0");
+			Gson gson = new Gson();
+			String json = gson.toJson(futuresStrategyOneVO);
+			return json;
+		}
+		else if(id.equals("0"))
+		{
+			futuresStrategy = new FuturesStrategy();
+			futuresStrategy.setInitdate(Long.parseLong(request.getParameter("initdate")));
+			futuresStrategy.setName(request.getParameter("name"));
+			futuresStrategy.setIs_use(request.getParameter("is_use"));
+			futuresStrategy.setQcqy(Double.parseDouble(request.getParameter("qcqy")));
+			futuresStrategyService.create(futuresStrategy);
+		}
+		else
+		{
+			futuresStrategy = futuresStrategyService.findOne(Long.parseLong(id));
+			futuresStrategy.setInitdate(Long.parseLong(request.getParameter("initdate")));
+			futuresStrategy.setName(request.getParameter("name"));
+			futuresStrategy.setIs_use(request.getParameter("is_use"));
+			futuresStrategy.setQcqy(Double.parseDouble(request.getParameter("qcqy")));
+			futuresStrategyService.update(futuresStrategy);
+		}
 		futuresStrategyOneVO.setStatus("1");
 		futuresStrategyOneVO.setFuturesStrategy(futuresStrategy);
 		Gson gson = new Gson();

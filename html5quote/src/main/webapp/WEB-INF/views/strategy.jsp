@@ -89,7 +89,7 @@
 				 	</c:if>
 				 </div>
 				 <div style="padding-top:3px;" class="mainrightZhiBiao2 col-xs-2 col-sm-2 col-md-2 col-lg-2">
-					<span style="cursor:pointer;" onclick="editStrategy(${dataList.id})">编辑</span> <span style="cursor:pointer;">删除</span> <span style="cursor:pointer;">成绩</span>
+					<span style="cursor:pointer;" onclick="editStrategy(${dataList.id})">编辑</span> <span style="cursor:pointer;" onclick="deleteStrategy(${dataList.id})">删除</span> <span style="cursor:pointer;" onclick="addStrategy(${dataList.id})">新增</span>
 				 </div>
 			</c:if>
 				   	 			
@@ -115,7 +115,7 @@
 				 	</c:if>
 				 </div>
 				 <div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
-				 	<span style="cursor:pointer;" onclick="editStrategy(${dataList.id})">编辑</span> <span style="cursor:pointer;">删除</span> <span style="cursor:pointer;">成绩</span>
+				 	<span style="cursor:pointer;" onclick="editStrategy(${dataList.id})">编辑</span> <span style="cursor:pointer;" onclick="deleteStrategy(${dataList.id})">删除</span> <span style="cursor:pointer;" onclick="addStrategy(${dataList.id})">新增</span>
 				 </div>
 			</c:if>
 		</div> 
@@ -123,7 +123,7 @@
 	</div>
 	
 	<div class="container-fluid" id="strategyEdit">
-		<div class="row" style="margin-top:10px;height:35px;background-color:#EEEEEE;text-align:left;">
+		<div class="row" style="margin-top:10px;height:35px;background-color:#EEEEEE;text-align:left;" id="strategyIDTR">
 			<div style="padding-top:8px;text-align:right;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				策略ID
 			</div>
@@ -173,6 +173,10 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	
     <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
     <script src="js/strategy.js" type="text/javascript"></script>
     <!--include plugin js-->

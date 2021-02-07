@@ -67,6 +67,14 @@
 				</div>
 			</div>
 		</div>
+		<div class="row" style="margin-top:20px;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="float:left;">
+				<div class="resultMain" id="resultChartMain">
+						<div id="chart_ljyle_detail" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:300px;float:left"></div>
+						<div id="chart_dwjz_detail" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:300px;float:left"></div>
+				</div>
+			</div>
+		</div>
 		<!-- end row -->
 	</div>
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>

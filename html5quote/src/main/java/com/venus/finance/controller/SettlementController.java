@@ -339,6 +339,7 @@ public class SettlementController {
 			String json = gson.toJson(futuresResultVO);
 			return json;
 		}
+		
 		// Txt行情目录
 		String todayQuoteFileDir = tick_quote_dir + "/ticktxt/" + todayStr;
 		File todayQuoteFileDirFile = new File(todayQuoteFileDir);
@@ -361,15 +362,125 @@ public class SettlementController {
 		Collections.sort(quoteList);
 		File todayQuoteFile = new File(tick_quote_dir + "/day/" + todayStr + ".txt");
 		fileUtil.saveQuoteFile(todayQuoteFile, quoteList);
+		//以下计算ATR
+		//昨日行情
+		String yesterDay = dateList.get(index - 1);
+		String yesterDayQuoteFileDir = tick_quote_dir + "/day/" + yesterDay+".txt";
+		File yesterDayQuoteFile = new File(yesterDayQuoteFileDir);
+		List<String> yesterDayQuoteList = new ArrayList<String>();
+		if(yesterDayQuoteFile.exists())
+		{
+			yesterDayQuoteList = fileUtil.readFileToList(yesterDayQuoteFile);
+		}
+		//昨日ATR
+		String yesterDayATRFileDir = tick_quote_dir + "/atr/atr" + yesterDay+".txt";
+		File yesterDayATRFile = new File(yesterDayATRFileDir);
+		List<String> yesterDayATRList = new ArrayList<String>();
+		if(yesterDayATRFile.exists())
+		{
+			yesterDayATRList = fileUtil.readFileToList(new File(yesterDayATRFileDir));
+		}
+		//把今日行情转换Map
+		Map<String, FuturesQuoteReadVO>todayQuoteMap = new HashMap<String, FuturesQuoteReadVO>();
+		for(String todayQuote:quoteList)
+		{
+			String [] quoteStrArray = todayQuote.split(",");
+			FuturesQuoteReadVO futuresQuoteReadVO = new FuturesQuoteReadVO();
+			futuresQuoteReadVO.setInstrumentID(quoteStrArray[0]);
+			futuresQuoteReadVO.setOpenPrice(Double.parseDouble(quoteStrArray[1]));
+			futuresQuoteReadVO.setHighestPrice(Double.parseDouble(quoteStrArray[2]));
+			futuresQuoteReadVO.setLowestPrice(Double.parseDouble(quoteStrArray[3]));
+			futuresQuoteReadVO.setClosePrice(Double.parseDouble(quoteStrArray[4]));
+			futuresQuoteReadVO.setAveragePrice(Double.parseDouble(quoteStrArray[5]));
+			futuresQuoteReadVO.setVolume(Double.parseDouble(quoteStrArray[6]));
+			futuresQuoteReadVO.setOpenInterest(Double.parseDouble(quoteStrArray[7]));
+			futuresQuoteReadVO.setTurnover(Double.parseDouble(quoteStrArray[8]));
+			futuresQuoteReadVO.setPreSettlementPrice(Double.parseDouble(quoteStrArray[9]));
+			futuresQuoteReadVO.setPreClosePrice(Double.parseDouble(quoteStrArray[10]));
+			futuresQuoteReadVO.setPreOpenInterest(Double.parseDouble(quoteStrArray[11]));
+			futuresQuoteReadVO.setUpdateTime(quoteStrArray[12]);
+			todayQuoteMap.put(quoteStrArray[0],futuresQuoteReadVO);
+		}
+		//就是今天是第一天计算ATR值
+		String todayDayATRFileDir = tick_quote_dir + "/atr/atr" + todayStr+".txt";
+		Map<String,Double>atrMap = new HashMap<String,Double>();
+		if(yesterDayQuoteList.size()<=0||yesterDayATRList.size()<=0)
+		{
+			Set codeSet = todayQuoteMap.keySet();
+			Iterator<String> itCodeSet = codeSet.iterator();
+			while(itCodeSet.hasNext()) {
+				String key = itCodeSet.next();
+				atrMap.put(key, Math.abs(todayQuoteMap.get(key).getHighestPrice()-todayQuoteMap.get(key).getLowestPrice()));
+			}
+			Set atrSet = atrMap.keySet();
+			Iterator<String> atrKeyIT=atrSet.iterator();
+			List<String>atrList = new ArrayList<String>();
+			while(atrKeyIT.hasNext())
+			{
+				String key = atrKeyIT.next();
+				String value = key+","+atrMap.get(key)+"\n";
+				atrList.add(value);
+			}
+			Collections.sort(atrList);
+			fileUtil.saveQuoteFile(new File(todayDayATRFileDir), atrList);
+		}
+		//已经不是第一天，昨天有ATR数据
+		else
+		{
+			//把昨日的行情转化成Map
+			Map<String, FuturesQuoteReadVO>yesterdayQuoteMap = new HashMap<String, FuturesQuoteReadVO>();
+			for(String yesterdayQuote:yesterDayQuoteList)
+			{
+				String [] quoteStrArray = yesterdayQuote.split(",");
+				FuturesQuoteReadVO futuresQuoteReadVO = new FuturesQuoteReadVO();
+				futuresQuoteReadVO.setInstrumentID(quoteStrArray[0]);
+				futuresQuoteReadVO.setOpenPrice(Double.parseDouble(quoteStrArray[1]));
+				futuresQuoteReadVO.setHighestPrice(Double.parseDouble(quoteStrArray[2]));
+				futuresQuoteReadVO.setLowestPrice(Double.parseDouble(quoteStrArray[3]));
+				futuresQuoteReadVO.setClosePrice(Double.parseDouble(quoteStrArray[4]));
+				futuresQuoteReadVO.setAveragePrice(Double.parseDouble(quoteStrArray[5]));
+				futuresQuoteReadVO.setVolume(Double.parseDouble(quoteStrArray[6]));
+				futuresQuoteReadVO.setOpenInterest(Double.parseDouble(quoteStrArray[7]));
+				futuresQuoteReadVO.setTurnover(Double.parseDouble(quoteStrArray[8]));
+				futuresQuoteReadVO.setPreSettlementPrice(Double.parseDouble(quoteStrArray[9]));
+				futuresQuoteReadVO.setPreClosePrice(Double.parseDouble(quoteStrArray[10]));
+				futuresQuoteReadVO.setPreOpenInterest(Double.parseDouble(quoteStrArray[11]));
+				futuresQuoteReadVO.setUpdateTime(quoteStrArray[12]);
+				yesterdayQuoteMap.put(quoteStrArray[0],futuresQuoteReadVO);
+			}
+			//把昨日的ATR转化成Map
+			Map<String,Double>yesterdayAtrMap = new HashMap<String,Double>();
+			for(String yesterdayAtr:yesterDayATRList) {
+				String[]yesterdayAtrArray = yesterdayAtr.split(",");
+				yesterdayAtrMap.put(yesterdayAtrArray[0], Double.parseDouble(yesterdayAtrArray[1]));
+			}
+			List<String>atrList = new ArrayList<String>();
+			//计算今日ATR数据
+			Set codeSet = todayQuoteMap.keySet();
+			Iterator<String> itCodeSet = codeSet.iterator();
+			while(itCodeSet.hasNext()) {
+				String key = itCodeSet.next();
+				if(yesterdayQuoteMap.containsKey(key)&&yesterdayAtrMap.containsKey(key))
+				{
+					Double TR = Math.max(Math.max(Math.abs(todayQuoteMap.get(key).getHighestPrice()-yesterdayQuoteMap.get(key).getClosePrice()), Math.abs(todayQuoteMap.get(key).getLowestPrice()-yesterdayQuoteMap.get(key).getClosePrice())),Math.abs(todayQuoteMap.get(key).getHighestPrice()-todayQuoteMap.get(key).getLowestPrice()));
+					Double atr = (19*yesterdayAtrMap.get(key)+TR)/20;
+					String value = key+","+atr+"\n";
+					atrList.add(value);
+				}
+			}
+			//保存数据
+			Collections.sort(atrList);
+			fileUtil.saveQuoteFile(new File(todayDayATRFileDir), atrList);
+		}
 		futuresResultVO.setStatus(1L);
 		Gson gson = new Gson();
 		String json = gson.toJson(futuresResultVO);
 		return json;
 	}
 	
-	@RequestMapping(value = "/findAllResule.html", produces = "text/html;charset=UTF-8")
+	@RequestMapping(value = "/findAllResult.html", produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String findAllResule(HttpServletRequest request, ModelMap model) {
+	public String findAllResult(HttpServletRequest request, ModelMap model) {
 		String todayStr = request.getParameter("todayStr");
 		FuturesResultVO futuresResultVO = new FuturesResultVO();
 		List<FuturesResult> resultList = futuresResultService.findStrategyFuturesResultByDate(Long.parseLong(todayStr));
@@ -380,6 +491,32 @@ public class SettlementController {
 		return json;
 	}
 	
+	
+	@RequestMapping(value = "/findResultDetail.html", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String findResultDetail(HttpServletRequest request, ModelMap model) {
+		String strategy_id = request.getParameter("strategy_id");
+		List<Object[]>strategyList = futuresResultService.findFuturesResultByStrategyID(Long.parseLong(strategy_id));
+		FuturesResultVO futuresResultVO = new FuturesResultVO();
+		List<Long>dateRtnList = new ArrayList<Long>();
+		List<Double>ljyleList = new ArrayList<Double>();
+		List<Double>dwjzList = new ArrayList<Double>();
+		for(Object[] result:strategyList)
+		{
+			FuturesResult futuresResult = (FuturesResult)result[0];
+			FuturesStrategy futuresStrategy = (FuturesStrategy)result[1];
+			dateRtnList.add(futuresResult.getRecord_date());
+			ljyleList.add(futuresResult.getLjyle());
+			dwjzList.add(futuresResult.getDwjz());
+		}
+		futuresResultVO.setDateRtnList(dateRtnList);
+		futuresResultVO.setLjyleList(ljyleList);
+		futuresResultVO.setDwjzList(dwjzList);
+		futuresResultVO.setStatus(1L);
+		Gson gson = new Gson();
+		String json = gson.toJson(futuresResultVO);
+		return json;
+	}
 	
 	
 	

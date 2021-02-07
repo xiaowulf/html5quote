@@ -9,6 +9,9 @@ public class FuturesResultVO{
 	private Long status;
 	private String message;
 	private List<FuturesResult> resultList;
+	private List<Long> dateRtnList;
+	private List<Double> ljyleList;
+	private List<Double> dwjzList;
 	public String getMessage() {
 		return message;
 	}
@@ -31,6 +34,30 @@ public class FuturesResultVO{
 
 	public void setResultList(List<FuturesResult> resultList) {
 		this.resultList = resultList;
+	}
+
+	public List<Long> getDateRtnList() {
+		return dateRtnList;
+	}
+
+	public void setDateRtnList(List<Long> dateRtnList) {
+		this.dateRtnList = dateRtnList;
+	}
+
+	public List<Double> getLjyleList() {
+		return ljyleList;
+	}
+
+	public void setLjyleList(List<Double> ljyleList) {
+		this.ljyleList = ljyleList;
+	}
+
+	public List<Double> getDwjzList() {
+		return dwjzList;
+	}
+
+	public void setDwjzList(List<Double> dwjzList) {
+		this.dwjzList = dwjzList;
 	}
 	
 	

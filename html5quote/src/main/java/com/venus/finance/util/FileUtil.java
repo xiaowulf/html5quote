@@ -44,12 +44,12 @@ public class FileUtil {
  
         FileLock lock = null;
 		try {
-			lock = fileChannel.lock(0, Long.MAX_VALUE, true);
+			lock = fileChannel.tryLock(0, Long.MAX_VALUE, true);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-         
+		
         ByteBuffer buffer = ByteBuffer.allocate(2048);
         int noOfBytesRead = -1;
 		try {

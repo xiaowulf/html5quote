@@ -52,4 +52,10 @@ public class FuturesResultService extends AbstractService<FuturesResult> impleme
 	public List<FuturesResult> findStrategyFuturesResultByDate(Long date) {
 		return dao.findStrategyFuturesResultByDate(date);
 	}
+
+
+	@Override
+	public List<Object[]> findFuturesResultByStrategyID(Long strategy_id) {
+		return dao.findFuturesResultByStrategyID(strategy_id);
+	}
 }

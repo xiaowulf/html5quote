@@ -8,4 +8,5 @@ public interface IFuturesResultDAO extends IOperations<FuturesResult> {
 	public List<FuturesResult> findFuturesResultByDate(Long date);
 	public String findMaxDate();
 	public List<FuturesResult> findStrategyFuturesResultByDate(Long date);
+	public List<Object[]> findFuturesResultByStrategyID(Long strategy_id);
 }

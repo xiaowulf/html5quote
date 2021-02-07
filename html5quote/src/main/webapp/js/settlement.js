@@ -1,3 +1,143 @@
+var option_ljyle_detail = {
+		title : {
+			text : '累计盈利额',
+			textStyle : {
+				fontSize : 13
+			}
+		},
+		tooltip : {
+			trigger : 'axis'
+		},
+		legend : {
+			data : [ '累计盈利额' ]
+		},
+		toolbox : {
+			show : true,
+			feature : {
+				mark : {
+					show : true
+				},
+				dataView : {
+					show : false,
+					readOnly : false
+				},
+				magicType : {
+					show : false,
+					type : [ 'line', 'bar' ]
+				},
+				restore : {
+					show : false
+				},
+				saveAsImage : {
+					show : false
+				}
+			}
+		},
+		calculable : true,
+		xAxis : [ {
+			type : 'category',
+			boundaryGap : false,
+			data : []
+		} ],
+		yAxis : [ {
+			type : 'value',
+			axisLabel : {
+				formatter : '{value}'
+			},
+			scale : true
+		} ],
+		series : [ {
+			name : '累计盈利额',
+			type : 'line',
+			data : [],
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		}]
+	};
+
+var option_dwjz_detail = {
+		title : {
+			text : '单位净值',
+			textStyle : {
+				fontSize : 13
+			}
+		},
+		tooltip : {
+			trigger : 'axis'
+		},
+		legend : {
+			data : [ '单位净值' ]
+		},
+		toolbox : {
+			show : true,
+			feature : {
+				mark : {
+					show : true
+				},
+				dataView : {
+					show : false,
+					readOnly : false
+				},
+				magicType : {
+					show : false,
+					type : [ 'line', 'bar' ]
+				},
+				restore : {
+					show : false
+				},
+				saveAsImage : {
+					show : false
+				}
+			}
+		},
+		calculable : true,
+		xAxis : [ {
+			type : 'category',
+			boundaryGap : false,
+			data : []
+		} ],
+		yAxis : [ {
+			type : 'value',
+			axisLabel : {
+				formatter : '{value}'
+			},
+			scale : true
+		} ],
+		series : [ {
+			name : '单位净值',
+			type : 'line',
+			data : [],
+			markPoint : {
+				data : [ {
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
+				} ]
+			},
+			markLine : {
+				data : [ {
+					type : 'average',
+					name : '平均值'
+				} ]
+			}
+		}]
+	};
+
 $(function() {
 	//getPosition();
 });
@@ -44,7 +184,7 @@ function queryResult()
 {
 	$.ajax({
 		type : 'POST',
-		url : 'findAllResule.html',
+		url : 'findAllResult.html',
 		data : {
 			todayStr:$("#computeDateText").val()
 		},
@@ -81,7 +221,7 @@ function queryResult()
 					strDiv += "单位净值";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-4 col-md-1 col-lg-1\">";
-					strDiv += "累计盈亏额";
+					strDiv += "累计盈利额";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-4 col-md-1 col-lg-1\">";
 					strDiv += "保证金";
@@ -105,7 +245,7 @@ function queryResult()
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-4 col-md-1 col-lg-1\" >";
 					strDiv += data.resultList[i][0].strategy_id;
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-4 col-md-1 col-lg-1\" >";
+					strDiv += "<div style=\"cursor:pointer;\" class=\"mainrightZhiBiao2 col-xs-4 col-sm-4 col-md-1 col-lg-1\" onclick=\"queryResultDetail("+data.resultList[i][0].strategy_id+")\">";
 					strDiv += data.resultList[i][1].name;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-4 col-md-1 col-lg-1\" >";
@@ -144,7 +284,7 @@ function queryResult()
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-4 col-md-1 col-lg-1\" >";
 					strDiv += data.resultList[i][0].strategy_id;
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-4 col-md-1 col-lg-1\" >";
+					strDiv += "<div style=\"cursor:pointer;\" class=\"mainrightZhiBiao3 col-xs-4 col-sm-4 col-md-1 col-lg-1\" onclick=\"queryResultDetail("+data.resultList[i][0].strategy_id+")\">";
 					strDiv += data.resultList[i][1].name;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-4 col-md-1 col-lg-1\" >";
@@ -183,6 +323,34 @@ function queryResult()
 			strDiv += "</div>";
 			strDiv += "</div>";
 			$("#resultMain").html(strDiv);
+		}
+	});
+}
+function queryResultDetail(strategy_id)
+{
+	var chart1 = echarts.init(document.getElementById('chart_ljyle_detail'));
+	var chart2 = echarts.init(document.getElementById('chart_dwjz_detail'));
+	$.ajax({
+		type : 'GET',
+		url : 'findResultDetail.html',
+		data : {
+			strategy_id : strategy_id
+		},
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		dataType : 'json',
+		success : function(data) {
+			//alert(data.code+decodeURI("价格"));
+			option_ljyle_detail.title.text = "累计盈利额";
+			option_ljyle_detail.xAxis[0].data = data.dateRtnList;
+			option_ljyle_detail.series[0].data=data.ljyleList;
+			
+			option_dwjz_detail.title.text = "单位净值";
+			option_dwjz_detail.xAxis[0].data = data.dateRtnList;
+			option_dwjz_detail.series[0].data=data.dwjzList;
+			
+			//策略成绩
+			chart1.setOption(option_ljyle_detail);
+			chart2.setOption(option_dwjz_detail);
 		}
 	});
 }

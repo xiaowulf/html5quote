@@ -61,4 +61,18 @@ public class FuturesResultDAO extends AbstractHibernateDAO<FuturesResult> implem
 			return null;
 		}
 	}
+
+	@Override
+	public List<Object[]> findFuturesResultByStrategyID(Long strategy_id) {
+		Session session = getCurrentSession();
+		try {
+			List<Object[]> list = session
+					.createQuery("from FuturesResult u1,FuturesStrategy u2 where u1.strategy_id=u2.id and u1.strategy_id=:strategy_id order by u1.record_date asc")
+					.setParameter("strategy_id", strategy_id).list();
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
