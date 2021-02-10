@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://localhost:7080/html5quote/indexquoteserver");
+var ws = new WebSocket("ws://localhost:8080/html5quote/indexquoteserver");
 ws.onopen = function(evt) { 
   console.log("Connection open ..."); 
   //ws.send("getQuote");
@@ -6,6 +6,7 @@ ws.onopen = function(evt) {
 
 ws.onmessage = function(evt) {
   const obj = JSON.parse(evt.data);
+/*
   if(obj.closePrice>obj.openPrice){
 	  $("#"+ obj.instrumentID+"openPrice").html("<font color=\"green\">"+obj.openPrice+"</font>");
 	  $("#"+ obj.instrumentID+"highestPrice").html("<font color=\"green\">"+obj.highestPrice+"</font>");
@@ -31,7 +32,8 @@ ws.onmessage = function(evt) {
 	  $("#"+ obj.instrumentID+"volume").html("<font color=\"red\">"+obj.volume+"</font>");
 	  $("#"+ obj.instrumentID+"ccvolume").html("<font color=\"red\">"+obj.ccvolume+"</font>");
   }  
-   //console.log("---------------------"+obj.instrumentID+obj.bidPrice1);
+*/
+   console.log("---------------------"+obj.instrumentID+obj.bidPrice1);
   //ws.close();
 };
   

@@ -110,8 +110,8 @@ public class SettlementController {
 		//把ATR放入到map中
 		Map<String,Double>atrMap = new HashMap<String,Double>();
 		try {
-			String atrfiledir = initUtil.getDayDataFolder();
-			String atrfileStr = atrfiledir+"/atr"+todayStr+".txt";
+			String atrfiledir = initUtil.getTickQuoteDir();
+			String atrfileStr = atrfiledir+"/atr/atr"+todayStr+".txt";
 			File atrFile = new File(atrfileStr);
 			if(atrFile.exists())
 			{
@@ -310,20 +310,26 @@ public class SettlementController {
 	public String mergeData(HttpServletRequest request, ModelMap model) {
 		String todayStr = request.getParameter("todayStr");
 		FuturesResultVO futuresResultVO = new FuturesResultVO();
+		System.out.println("---生成今日行情开始--------");
+		System.out.println("----0-----");
 		// 首先得到日行情的文件夹
 		InitUtil initUtil = new InitUtil();
 		FileUtil fileUtil = new FileUtil();
+		System.out.println("----0.1-----");
 		String tick_quote_dir = "";
 		try {
 			tick_quote_dir = initUtil.getTickQuoteDir();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("----0.2-----");
+		System.out.println("----tick_quote_dir-----");
 		String tradeDateFile = tick_quote_dir + "/tradedate.txt";
 		File file = new File(tradeDateFile);
 		List<String> dateList = fileUtil.readFileToList(file);
 		int index = 0;
 		boolean find = false;
+		System.out.println("----1-----");
 		if (null != dateList && dateList.size() > 0) {
 			for (String v : dateList) {
 				if (v.equals(todayStr)) {
@@ -339,7 +345,7 @@ public class SettlementController {
 			String json = gson.toJson(futuresResultVO);
 			return json;
 		}
-		
+		System.out.println("----1.1-----");
 		// Txt行情目录
 		String todayQuoteFileDir = tick_quote_dir + "/ticktxt/" + todayStr;
 		File todayQuoteFileDirFile = new File(todayQuoteFileDir);
@@ -350,6 +356,7 @@ public class SettlementController {
 			fileNameList.add(fileTemp.getName());
 			fileMap.put(fileTemp.getName(), fileTemp);
 		}
+		System.out.println("----1.2-----");
 		Set<String> fileNameSet = fileMap.keySet();
 		Iterator<String> it = fileNameSet.iterator();
 		List<String> quoteList = new ArrayList();
@@ -359,11 +366,14 @@ public class SettlementController {
 			List<String> dataList = fileUtil.readFileToList(codeFile);
 			quoteList.add(dataList.get(dataList.size() - 1) + "\n");
 		}
+		System.out.println("----1.3-----");
 		Collections.sort(quoteList);
 		File todayQuoteFile = new File(tick_quote_dir + "/day/" + todayStr + ".txt");
 		fileUtil.saveQuoteFile(todayQuoteFile, quoteList);
+		System.out.println("----2-----");
 		//以下计算ATR
 		//昨日行情
+		System.out.println("---以下计算ATR--------");
 		String yesterDay = dateList.get(index - 1);
 		String yesterDayQuoteFileDir = tick_quote_dir + "/day/" + yesterDay+".txt";
 		File yesterDayQuoteFile = new File(yesterDayQuoteFileDir);
@@ -400,7 +410,10 @@ public class SettlementController {
 			futuresQuoteReadVO.setPreOpenInterest(Double.parseDouble(quoteStrArray[11]));
 			futuresQuoteReadVO.setUpdateTime(quoteStrArray[12]);
 			todayQuoteMap.put(quoteStrArray[0],futuresQuoteReadVO);
+			
+			
 		}
+		System.out.println("----3-----");
 		//就是今天是第一天计算ATR值
 		String todayDayATRFileDir = tick_quote_dir + "/atr/atr" + todayStr+".txt";
 		Map<String,Double>atrMap = new HashMap<String,Double>();
@@ -472,6 +485,126 @@ public class SettlementController {
 			Collections.sort(atrList);
 			fileUtil.saveQuoteFile(new File(todayDayATRFileDir), atrList);
 		}
+		System.out.println("----4-----");
+		System.out.println("---计算ATR完毕--------");
+		//以下计算20天MAXMIN
+		System.out.println("---开始计算20Day MaxMin-----");
+		String todayMaxMinFileDir = tick_quote_dir + "/maxmin/" + todayStr+"day20maxmin.txt";
+		String yester20DayMaxMinFileDir = tick_quote_dir + "/maxmin/" + yesterDay+"day20maxmin.txt";
+		File yester20DayMaxMinFile = new File(yester20DayMaxMinFileDir);
+		Map<String,MaxMinPriceVO>todayMaxMin = new HashMap<String,MaxMinPriceVO>();
+		if(yester20DayMaxMinFile.exists())
+		{
+			Set codeSet = todayQuoteMap.keySet();
+			Iterator<String> itTodaySet = codeSet.iterator();
+			while(itTodaySet.hasNext()) {
+				String key = itTodaySet.next();
+				MaxMinPriceVO maxMinPriceVO = new MaxMinPriceVO();
+				maxMinPriceVO.setInstrumentID(key);
+				maxMinPriceVO.setMaxValue(todayQuoteMap.get(key).getHighestPrice());
+				maxMinPriceVO.setMinValue(todayQuoteMap.get(key).getLowestPrice());
+				todayMaxMin.put(key, maxMinPriceVO);
+			}
+			for(int k=1;k<20;k++)
+			{
+				String day = dateList.get(index-k);
+				if(day!=null&&!day.equals(""))
+				{
+					String dayMaxMinFileDir = tick_quote_dir + "/day/" + dateList.get(index-k)+".txt";
+					File dayMaxMinFile = new File(dayMaxMinFileDir);
+					if(dayMaxMinFile.exists())
+					{
+						List<String> dayMaxMinList = fileUtil.readFileToList(dayMaxMinFile);
+						for(String dayMaxMinStr:dayMaxMinList)
+						{
+							String[]dayMaxMinStrArray = dayMaxMinStr.split(",");
+							if(todayMaxMin.containsKey(dayMaxMinStrArray[0]))
+							{
+								
+								if(todayMaxMin.get(dayMaxMinStrArray[0]).getMaxValue()<Double.parseDouble(dayMaxMinStrArray[2]))
+								{
+									if(dayMaxMinStrArray[0].equals("AP110"))
+									{
+										System.out.println("--------"+index);
+										System.out.println("--------"+dayMaxMinFileDir);
+										System.out.println("--------"+dayMaxMinStrArray[1]);
+										System.out.println("--------"+todayMaxMin.get(dayMaxMinStrArray[0]).getMaxValue());
+									}
+									todayMaxMin.get(dayMaxMinStrArray[0]).setMaxValue(Double.parseDouble(dayMaxMinStrArray[2]));
+								}
+								//System.out.println("--------"+dayMaxMinStrArray[0]);
+								if(todayMaxMin.get(dayMaxMinStrArray[0]).getMinValue()>Double.parseDouble(dayMaxMinStrArray[3]))
+								{
+									todayMaxMin.get(dayMaxMinStrArray[0]).setMinValue(Double.parseDouble(dayMaxMinStrArray[3]));
+								}
+							}
+						}
+					}
+				}
+			}
+			System.out.println("----5-----");
+			List<String>maxMinList = new ArrayList<String>();
+			Iterator<String> itCodeSet = codeSet.iterator();
+			while(itCodeSet.hasNext()) {
+				String key = itCodeSet.next();
+				String value = key+","+todayMaxMin.get(key).getMaxValue()+","+todayMaxMin.get(key).getMinValue()+"\n";
+				maxMinList.add(value);
+			}
+			Collections.sort(maxMinList);
+			fileUtil.saveQuoteFile(new File(todayMaxMinFileDir), maxMinList);
+		}
+		//昨日没有最大值和最小值，则把几天的值放入到文件中
+		else
+		{
+			Set codeSet = todayQuoteMap.keySet();
+			List<String>maxMinList = new ArrayList<String>();
+			Iterator<String> itCodeSet = codeSet.iterator();
+			while(itCodeSet.hasNext()) {
+				String key = itCodeSet.next();
+				String value = key+","+todayQuoteMap.get(key).getHighestPrice()+","+todayQuoteMap.get(key).getLowestPrice()+"\n";
+				maxMinList.add(value);
+			}
+			Collections.sort(maxMinList);
+			fileUtil.saveQuoteFile(new File(todayMaxMinFileDir), maxMinList);
+		}
+		System.out.println("----6-----");
+		System.out.println("---计算20Day MaxMin完成-----");
+		System.out.println("---计算5分钟数据开始-----");
+		
+		{
+			Set codeSet = todayQuoteMap.keySet();
+			List<String>maxMinList = new ArrayList<String>();
+			Iterator<String> itCodeSet = codeSet.iterator();
+			
+			while(itCodeSet.hasNext()) {
+				String key = itCodeSet.next();
+				
+				String minute5FileDir = tick_quote_dir + "/minute5/" + todayStr+"/"+key+".txt";
+				File minute5File = new File(minute5FileDir);
+				if (!minute5File.exists()) {	
+					//文件不存在则创建文件，先创建目录
+					File dir = new File(minute5File.getParent());
+					dir.mkdirs();
+					try {
+						minute5File.createNewFile();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				//有了文件就开始读取文件
+				File codeTickFile = new File(tick_quote_dir+"/ticktxt/"+key);
+				if(codeTickFile.exists()) {
+					List<String> todayQuoteList = fileUtil.readFileToList(codeTickFile);
+					for(String quoteStr:todayQuoteList) {
+						String[] quoteStrArry=quoteStr.split(",");
+						
+					}
+				}
+			
+				
+			}
+		}
+		System.out.println("---计算5分钟数据结束-----");
 		futuresResultVO.setStatus(1L);
 		Gson gson = new Gson();
 		String json = gson.toJson(futuresResultVO);

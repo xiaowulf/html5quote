@@ -53,7 +53,7 @@
 				      <div class="input-group-addon">结算日期</div>
 				      <input type="text" value="${todayStr}" size="50" class="form-control" id="computeDateText" placeholder="输入日期，日期格式为yyyymmdd">
 				    </div>
-				    <button type="button" class="btn btn-primary" onclick="mergeData()">生成今日行情数据</button>
+				    <button type="button" class="btn btn-primary" onclick="mergeData()">生成今日数据</button>
 					<button type="button" class="btn btn-primary" onclick="computeDayResult()">今日结算</button>
 					<button type="button" class="btn btn-primary" onclick="queryResult()">查看结果</button>
 				  </div>

@@ -6,12 +6,7 @@ ws.onopen = function(evt) {
 
 ws.onmessage = function(evt) {
   const obj = JSON.parse(evt.data);
-  if(obj.closePrice>obj.openPrice){
-	  
-  }else{
-	  
-  }  
-  //console.log("---------------------"+obj.instrumentID+obj.bidPrice1);
+  console.log("---------------------"+obj.instrumentID+obj.bidPrice1);
   //ws.close();
 };
   

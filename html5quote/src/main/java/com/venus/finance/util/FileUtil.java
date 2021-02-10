@@ -41,21 +41,19 @@ public class FileUtil {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
- 
+		/*
         FileLock lock = null;
 		try {
-			lock = fileChannel.tryLock(0, Long.MAX_VALUE, true);
+			lock = fileChannel.tryLock(0, Long.MAX_VALUE, false);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+		*/
         ByteBuffer buffer = ByteBuffer.allocate(2048);
         int noOfBytesRead = -1;
 		try {
 			noOfBytesRead = fileChannel.read(buffer);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         StringBuffer strBuffer = new StringBuffer();
@@ -63,13 +61,11 @@ public class FileUtil {
             buffer.flip();
             while (buffer.hasRemaining()) {
             	strBuffer.append((char) buffer.get());
-                //System.out.print((char) buffer.get());                
             }
             buffer.clear();
             try {
 				noOfBytesRead = fileChannel.read(buffer);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
         }
@@ -77,22 +73,10 @@ public class FileUtil {
         try {
 			fileChannel.close();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} // also releases the lock
-		
-		
+		}
 		String[] strArray = strBuffer.toString().replace("\r", "").split("\n");
-		
 		List<String> list2 = Arrays.asList(strArray);
-		
-		
-		
-//		try {
-//			list = FileUtils.readLines(file, "UTF-8");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 		return list2;
 	}
 

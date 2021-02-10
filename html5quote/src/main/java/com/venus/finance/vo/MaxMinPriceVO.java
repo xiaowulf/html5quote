@@ -4,7 +4,7 @@ import java.util.List;
 
 public class MaxMinPriceVO {
 	private Double maxValue=0.0D;
-	private Double minValue=0.0D;
+	private Double minValue=Double.MAX_VALUE;
 	private String instrumentID;
 	public Double getMaxValue() {
 		return maxValue;

@@ -65,7 +65,15 @@ public class OrdersController {
 			}
 		}
 		kyzj = drqy-bzj;
-		zjsyl=bzj/drqy;
+		if(drqy<0.00000001)
+		{
+			zjsyl = 0.0;
+		}
+		else
+		{
+			zjsyl=bzj/drqy;
+		}
+		
 		model.put("list", strtegyList);
 		model.put("drqy", drqy);
 		model.put("kyzj", kyzj);

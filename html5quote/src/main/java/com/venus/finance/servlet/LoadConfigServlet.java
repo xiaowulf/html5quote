@@ -59,6 +59,7 @@ public class LoadConfigServlet extends HttpServlet {
 		String fixFileName = path + "quotefix.cfg";
 		// ServletContext application = this.getServletContext();
 		// if (null == application.getAttribute("fixApplication")) {
+		/*
 		fixApplication = new FixApplication();
 		try {
 			settings = new SessionSettings(new FileInputStream(fixFileName));
@@ -72,6 +73,7 @@ public class LoadConfigServlet extends HttpServlet {
 		} catch (ConfigError e) {
 			e.printStackTrace();
 		}
+		*/
 		// application.setAttribute("fixApplication", fixApplication);
 		// }
 		// 启动最新行情线程
@@ -80,10 +82,12 @@ public class LoadConfigServlet extends HttpServlet {
 		//latestQuoteThread = new Thread(computeLatestQuote);
 		//latestQuoteThread.start();
 		//保存数据线程
+		/*
 		saveLatestQuote = new SaveLatestQuote();
 		saveLatestQuote.setReady(true);
 		saveLatestQuoteThread = new Thread(saveLatestQuote);
 		saveLatestQuoteThread.start();
+		*/
 	}
 
 	public void destroy() {
@@ -91,9 +95,11 @@ public class LoadConfigServlet extends HttpServlet {
 			System.out.println("---destroy-----");
 			//computeLatestQuote.setReady(false);
 			//latestQuoteThread.interrupt();
+			/*
 			saveLatestQuote.setReady(false);
 			saveLatestQuoteThread.interrupt();
 			initiator.stop();
+			*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
