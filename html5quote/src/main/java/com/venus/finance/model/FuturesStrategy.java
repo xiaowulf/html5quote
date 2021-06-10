@@ -25,6 +25,7 @@ public class FuturesStrategy implements java.io.Serializable {
 	private Long initdate;
 	private Long record_date;
 	private Double kyzj;
+	private Double dwjz;
 	public FuturesStrategy() {
 	}
 	@Id
@@ -92,4 +93,12 @@ public class FuturesStrategy implements java.io.Serializable {
 	public void setKyzj(Double kyzj) {
 		this.kyzj = kyzj;
 	}
+	@Column(name = "dwjz")
+	public Double getDwjz() {
+		return dwjz;
+	}
+	public void setDwjz(Double dwjz) {
+		this.dwjz = dwjz;
+	}
+	
 }

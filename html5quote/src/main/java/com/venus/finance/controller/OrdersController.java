@@ -35,6 +35,7 @@ import com.venus.finance.service.IFuturesResultService;
 import com.venus.finance.service.IFuturesStrategyService;
 import com.venus.finance.service.IFuturesSusOrdersService;
 import com.venus.finance.util.CodeUtil;
+import com.venus.finance.util.DateUtil;
 import com.venus.finance.util.MathUtil;
 import com.venus.finance.vo.AtrVO;
 import com.venus.finance.vo.CandleVO;
@@ -115,6 +116,11 @@ public class OrdersController {
 		{
 			date = futuresResultService.findMaxDate();
 		}
+		
+		if(date==null||date.equals("")) {
+			date = DateUtil.getDateFormat("yyyyMMdd");
+		}
+		
 		String strategyID = request.getParameter("strategyID");
 		Long strategy_id = Long.parseLong(strategyID);
 		

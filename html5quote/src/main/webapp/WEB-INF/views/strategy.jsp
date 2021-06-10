@@ -61,7 +61,7 @@
 				是否有效
 			</div>
 			<div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
-				编辑
+				编辑 <span style="cursor:pointer;" onclick="addStrategy(${dataList.id})">新增</span>
 			</div>
 		</div>
 		
@@ -89,7 +89,7 @@
 				 	</c:if>
 				 </div>
 				 <div style="padding-top:3px;" class="mainrightZhiBiao2 col-xs-2 col-sm-2 col-md-2 col-lg-2">
-					<span style="cursor:pointer;" onclick="editStrategy(${dataList.id})">编辑</span> <span style="cursor:pointer;" onclick="deleteStrategy(${dataList.id})">删除</span> <span style="cursor:pointer;" onclick="addStrategy(${dataList.id})">新增</span>
+					<span style="cursor:pointer;" onclick="editStrategy(${dataList.id})">编辑</span> <span style="cursor:pointer;" onclick="deleteStrategy(${dataList.id})">删除</span>
 				 </div>
 			</c:if>
 				   	 			
@@ -115,11 +115,12 @@
 				 	</c:if>
 				 </div>
 				 <div style="padding-top:3px;" class="mainrightZhiBiao1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
-				 	<span style="cursor:pointer;" onclick="editStrategy(${dataList.id})">编辑</span> <span style="cursor:pointer;" onclick="deleteStrategy(${dataList.id})">删除</span> <span style="cursor:pointer;" onclick="addStrategy(${dataList.id})">新增</span>
+				 	<span style="cursor:pointer;" onclick="editStrategy(${dataList.id})">编辑</span> <span style="cursor:pointer;" onclick="deleteStrategy(${dataList.id})">删除</span> 
 				 </div>
 			</c:if>
 		</div> 
 		</c:forEach>
+		
 	</div>
 	
 	<div class="container-fluid" id="strategyEdit">

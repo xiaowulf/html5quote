@@ -169,13 +169,13 @@ function getSusPosition(){
 					strDiv += "总仓";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
-					strDiv += "可用";
+					strDiv += "日期";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
 					strDiv += "均价";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
-					strDiv += "浮盈";
+					strDiv += "撤单";
 					strDiv += "</div>";
 					strDiv += "</div>";
 					strDiv += "</div>";
@@ -201,10 +201,10 @@ function getSusPosition(){
 					strDiv += data.susOrdersList[i].record_date;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
-					strDiv += data.susOrdersList[i].close_price;
+					strDiv += data.susOrdersList[i].open_price;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
-					strDiv += data.susOrdersList[i].close_profit;
+					strDiv += "撤单";
 					strDiv += "</div>";
 				}else{
 					strDiv += "<div  class=\"container-fluid\">";
@@ -226,10 +226,10 @@ function getSusPosition(){
 					strDiv += data.susOrdersList[i].record_date;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
-					strDiv += data.susOrdersList[i].close_price;
+					strDiv += data.susOrdersList[i].open_price;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.susOrdersList[i].code+"')\">";
-					strDiv += data.susOrdersList[i].close_profit;
+					strDiv += "撤单";
 					strDiv += "</div>";
 				}
 		    }
@@ -283,7 +283,7 @@ function getClosePosition(){
 					strDiv += "总仓";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
-					strDiv += "可用";
+					strDiv += "日期";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
 					strDiv += "均价";

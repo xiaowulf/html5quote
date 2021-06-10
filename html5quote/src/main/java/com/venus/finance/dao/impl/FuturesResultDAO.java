@@ -43,7 +43,7 @@ public class FuturesResultDAO extends AbstractHibernateDAO<FuturesResult> implem
 					.createQuery("select max(record_date) from FuturesResult").uniqueResult().toString();
 			return maxDate;
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return null;
 		}
 	}
