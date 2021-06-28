@@ -18,6 +18,7 @@ public class FuturesClose implements java.io.Serializable{
 	private Long id;
 	private String code;
 	private Long order_id;
+	private Double open_price;
 	private Double close_price;
 	private Double hand;
 	private Long record_date;
@@ -119,6 +120,13 @@ public class FuturesClose implements java.io.Serializable{
 	}
 	public void setRecord_time(String record_time) {
 		this.record_time = record_time;
+	}
+	@Column(name = "open_price")
+	public Double getOpen_price() {
+		return open_price;
+	}
+	public void setOpen_price(Double open_price) {
+		this.open_price = open_price;
 	}
 	
 }

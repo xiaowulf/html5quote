@@ -211,8 +211,9 @@ public class SettlementController {
 				}
 			}else {
 				if (order.getDirection().equals("B")) {
-					if(order.getCode().contentEquals("SF105"))
+					if(order.getCode().contentEquals("a2109"))
 					{
+						System.out.println(todayStr);
 						System.out.println(todayQuoteMap.get(order.getCode()).getClosePrice());
 						System.out.println(todayQuoteMap.get(order.getCode()).getPreClosePrice());
 						System.out.println(todayQuoteMap.get(order.getCode()).getClosePrice());
@@ -227,6 +228,14 @@ public class SettlementController {
 					System.out.println(order.getRemain_profit());
 					//order.setCcjsyk((todayQuoteMap.get(order.getCode()).getAveragePrice()-todayQuoteMap.get(order.getCode()).getPreSettlementPrice()) *order.getHand());
 				}else {
+					if(order.getCode().contentEquals("a2109"))
+					{
+						System.out.println(todayStr);
+						System.out.println(todayQuoteMap.get(order.getCode()).getClosePrice());
+						System.out.println(todayQuoteMap.get(order.getCode()).getPreClosePrice());
+						System.out.println(todayQuoteMap.get(order.getCode()).getClosePrice());
+						System.out.println(futuresQuoteAttrMap.get(order.getCode()).getMultiply());
+					}
 					order.setRemain_profit((todayQuoteMap.get(order.getCode()).getPreClosePrice() - todayQuoteMap.get(order.getCode()).getClosePrice()) *order.getHand()*futuresQuoteAttrMap.get(order.getCode()).getMultiply());
 					//order.setCcjsyk((todayQuoteMap.get(order.getCode()).getPreSettlementPrice() - todayQuoteMap.get(order.getCode()).getAveragePrice()) *order.getHand());
 				}
@@ -325,6 +334,7 @@ public class SettlementController {
 			strategy.setDwjz(futuresResult.getDwjz());
 			futuresStrategyService.create(strategy);
 		}
+		futuresSusOrdersService.deleteAllSusOrders();
 		futuresResultVO.setStatus(3L);
 		Gson gson = new Gson();
 		String json = gson.toJson(futuresResultVO);

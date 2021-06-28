@@ -43,6 +43,7 @@ import com.venus.finance.vo.FuturesOrdersVO;
 import com.venus.finance.vo.FuturesPriceVO;
 import com.venus.finance.vo.FuturesQuoteVO;
 import com.venus.finance.vo.FuturesStatistics;
+import com.venus.finance.vo.FuturesStrategyOneVO;
 import com.venus.finance.vo.FuturesStrategyVO;
 import com.venus.finance.vo.FuturesSusOrdersVO;
 import com.venus.finance.vo.MacdVO;
@@ -99,6 +100,8 @@ public class OrdersController {
 		String strategyID = request.getParameter("strategyID");
 		Long strategy_id = Long.parseLong(strategyID);
 		List<FuturesOrders> ordersList = futuresOrdersService.findFuturesOrdersByStrategyID(strategy_id);
+		
+		
 		FuturesOrdersVO futuresOrdersVO = new FuturesOrdersVO();
 		futuresOrdersVO.setOrdersList(ordersList);
 		Gson gson = new Gson();
@@ -172,6 +175,42 @@ public class OrdersController {
 		String json = gson.toJson(futuresSusOrdersVO);
 		return json;
 	}
+	
+	
+	@RequestMapping(value = "/saveOrderStrategy.html", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String saveOrderStrategy(HttpServletRequest request, ModelMap model) {
+		String id = request.getParameter("id");
+		String strategyid = request.getParameter("strategyid");
+		String type = request.getParameter("type");
+		if(type!=null&&type.contentEquals("pos")) {
+			FuturesOrders futuresOrders = futuresOrdersService.findOne(Long.parseLong(id));
+			futuresOrders.setStrategy_id(Long.parseLong(strategyid));	
+			futuresOrdersService.create(futuresOrders);
+			FuturesStrategyOneVO futuresStrategyOneVO = new FuturesStrategyOneVO();
+			futuresStrategyOneVO.setStatus("1");
+			Gson gson = new Gson();
+			String json = gson.toJson(futuresStrategyOneVO);
+			return json;
+		}else if(type!=null&&type.contentEquals("close")) {
+			FuturesClose futuresClose = futuresCloseService.findOne(Long.parseLong(id));
+			futuresClose.setStrategy_id(Long.parseLong(strategyid));	
+			futuresCloseService.create(futuresClose);
+			FuturesStrategyOneVO futuresStrategyOneVO = new FuturesStrategyOneVO();
+			futuresStrategyOneVO.setStatus("1");
+			Gson gson = new Gson();
+			String json = gson.toJson(futuresStrategyOneVO);
+			return json;
+		}else {
+			FuturesStrategyOneVO futuresStrategyOneVO = new FuturesStrategyOneVO();
+			futuresStrategyOneVO.setStatus("0");
+			Gson gson = new Gson();
+			String json = gson.toJson(futuresStrategyOneVO);
+			return json;
+		}
+		
+	}
+	
 	
 	
 	@Resource(name="futuresStrategyService")

@@ -54,7 +54,7 @@
 					    <c:forEach  items="${list}" var="list"  varStatus="listStatus">
 						   <option value="<c:out value="${list.id}"/>"><c:out value="${list.name}"/></option>
 						</c:forEach>
-					  </select>
+				  </select>
 			</div>
 			<!-- 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -114,6 +114,47 @@
 		</div>
 		<!-- end row -->
 	</div>
+	
+	
+	<div class="container-fluid" id="strategyEdit">
+		<div class="row" style="margin-top:10px;height:35px;background-color:#EEEEEE;text-align:left;" id="strategyIDTR">
+			<div style="padding-top:8px;text-align:right;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				OrderID
+			</div>
+			<div style="padding-top:5px;text-align:left;" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<input type="text" readonly value="" id="orderID" size="50"/>
+			</div>
+		</div>
+		<div class="row" style="margin-top:0px;height:35px;background-color:#ffffff;text-align:left;">
+			<div style="padding-top:8px;text-align:right;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				合约
+			</div>
+			<div style="padding-top:5px;text-align:left;" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<input type="text" value="" id="orderCode" size="50"/>
+			</div>
+		</div>
+		<div class="row" style="margin-top:0px;height:35px;background-color:#EEEEEE;text-align:left;">
+			<div style="padding-top:8px;text-align:right;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				策略名称
+			</div>
+			<div style="padding-top:0px;text-align:left;" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<select class="form-control" id="strategyChangeID">
+					    <c:forEach  items="${list}" var="list"  varStatus="listStatus">
+						   <option value="<c:out value="${list.id}"/>"><c:out value="${list.name}"/></option>
+						</c:forEach>
+				  </select>
+			</div>
+		</div>
+		<div class="row"  style="margin-top:0px;height:35px;background-color:#ffffff;text-align:center;">
+			<div style="padding-top:5px;" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<input type="hidden" id="strategyChangeType" value=""/>
+				<input type="button" value="保存"  onclick="saveOrderStrategy()"/>
+				<input type="button" value="取消"  onclick="hideOrderStrategyDIV()"/>
+			</div>
+		</div>
+	</div>
+	
+	
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/orders.js" type="text/javascript" charset="UTF-8"></script>

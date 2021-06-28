@@ -37,4 +37,11 @@ public class FuturesSusOrdersService extends AbstractService<FuturesSusOrders> i
     protected IOperations<FuturesSusOrders> getDao() {
         return this.dao;
     }
+
+
+	@Override
+	public void deleteAllSusOrders() {
+		dao.deleteAllSusOrders();
+		
+	}
 }

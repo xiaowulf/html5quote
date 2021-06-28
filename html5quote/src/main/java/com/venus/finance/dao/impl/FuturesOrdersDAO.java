@@ -34,4 +34,14 @@ public class FuturesOrdersDAO extends AbstractHibernateDAO<FuturesOrders> implem
 		}
 		
 	}
+	@Override
+	public void deleteAllFuturesOrdersJSByDate(Long date) {
+		Session session = getCurrentSession();
+		try {
+			session.createQuery("delete from FuturesOrdersJS u where u.record_date=:date").setParameter("date", date).executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

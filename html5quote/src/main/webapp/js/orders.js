@@ -1,8 +1,41 @@
 $(function() {
 	//getChart("index");
 	//getStrategy();
+	$("#strategyEdit").hide();
 	getPosition();
 });
+
+
+function changeStrategy(orderid,orderCode,strategy_id,type){
+	$("#orderID").val(orderid);
+	$("#orderCode").val(orderCode);
+	$("#strategyChangeID").val(strategy_id);
+	$("#strategyChangeType").val(type);
+	$("#strategyEdit").show();
+}
+function saveOrderStrategy(){
+	$.ajax({
+		type : 'POST',
+		url : 'saveOrderStrategy.html',
+		data : {
+			id:$("#orderID").val(),strategyid:$("#strategyChangeID").val(),type:$("#strategyChangeType").val()
+		},
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		dataType : 'json',
+		success : function(data) {
+			if(data.status=="0"){
+				alert("转移策略失败");
+			}else if(data.status=="1"){
+				alert("保存成功");
+				$("#strategyEdit").hide();
+			}
+		}
+	});
+}
+
+function hideOrderStrategyDIV(){
+	$("#strategyEdit").hide();
+}
 
 function getStrategy(){
 	$("#strategyID").empty();
@@ -17,7 +50,8 @@ function getStrategy(){
 		success : function(data) {
 			for (var i = 0; i < data.strategyList.length; i++) {
 				$("#strategyID").append("<option value="+data.strategyList[i].id+">"+data.strategyList[i].name+"</option>");
-		    }
+		    	$("#strategyChangeID").append("<option value="+data.strategyList[i].id+">"+data.strategyList[i].name+"</option>");
+			}
 		}
 	});
 }
@@ -51,7 +85,7 @@ function getPosition(){
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-1 col-lg-1\">";
 					strDiv += "多空";
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-1 col-lg-1\">";
 					strDiv += "总仓";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
@@ -65,6 +99,9 @@ function getPosition(){
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
 					strDiv += "风险";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-1 col-lg-1\">";
+					strDiv += "操作";
 					strDiv += "</div>";
 					strDiv += "</div>";
 					strDiv += "</div>";
@@ -84,7 +121,7 @@ function getPosition(){
 					}
 					
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-1 col-lg-1\" >";
 					strDiv += data.ordersList[i].hand;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
@@ -95,9 +132,12 @@ function getPosition(){
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].remain_profit;
-					strDiv += "</div>"
+					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].risk.toFixed(2);
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-1 col-lg-1\" >";
+					strDiv += "<span style=\"cursor:pointer;\" onclick=\"changeStrategy('"+data.ordersList[i].id+"','"+data.ordersList[i].code+"','"+data.ordersList[i].strategy_id+"','pos')\">转策略</span>";
 					strDiv += "</div>";
 				}else{
 					strDiv += "<div  class=\"container-fluid\">";
@@ -112,7 +152,7 @@ function getPosition(){
 						strDiv += "空";
 					}
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-1 col-lg-1\" >";
 					strDiv += data.ordersList[i].hand;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
@@ -123,9 +163,12 @@ function getPosition(){
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].remain_profit;
-					strDiv += "</div>"
+					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" >";
 					strDiv += data.ordersList[i].risk.toFixed(2);
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-1 col-lg-1\" >";
+					strDiv += "<span style=\"cursor:pointer;\" onclick=\"changeStrategy('"+data.ordersList[i].id+"','"+data.ordersList[i].code+"','"+data.ordersList[i].strategy_id+"','pos')\">转策略</span>";
 					strDiv += "</div>";
 				}
 				
@@ -279,17 +322,21 @@ function getClosePosition(){
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
 					strDiv += "多空";
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-1 col-lg-1\">";
 					strDiv += "总仓";
 					strDiv += "</div>";
+					
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
-					strDiv += "日期";
+					strDiv += "开仓价";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
-					strDiv += "均价";
+					strDiv += "平仓价";
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-2 col-lg-2\">";
 					strDiv += "浮盈";
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao1 position-fixed fixed-top col-xs-4 col-sm-3 col-md-1 col-lg-1\">";
+					strDiv += "操作";
 					strDiv += "</div>";
 					strDiv += "</div>";
 					strDiv += "</div>";
@@ -308,17 +355,21 @@ function getClosePosition(){
 						strDiv += "空";
 					}
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-1 col-lg-1\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
 					strDiv += data.closeList[i].hand;
 					strDiv += "</div>";
+					
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
-					strDiv += data.closeList[i].record_date;
+					strDiv += data.closeList[i].open_price;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
 					strDiv += data.closeList[i].close_price;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
 					strDiv += data.closeList[i].close_profit;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao2 col-xs-4 col-sm-3 col-md-1 col-lg-1\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += "<span style=\"cursor:pointer;\" onclick=\"changeStrategy('"+data.closeList[i].id+"','"+data.closeList[i].code+"','"+data.closeList[i].strategy_id+"','close')\">转策略</span>";
 					strDiv += "</div>";
 				}else{
 					strDiv += "<div  class=\"container-fluid\">";
@@ -334,17 +385,20 @@ function getClosePosition(){
 						strDiv += "空";
 					}
 					strDiv += "</div>";
-					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-1 col-lg-1\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
 					strDiv += data.closeList[i].hand;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
-					strDiv += data.closeList[i].record_date;
+					strDiv += data.closeList[i].open_price;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
 					strDiv += data.closeList[i].close_price;
 					strDiv += "</div>";
 					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-2 col-lg-2\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
 					strDiv += data.closeList[i].close_profit;
+					strDiv += "</div>";
+					strDiv += "<div class=\"mainrightZhiBiao3 col-xs-4 col-sm-3 col-md-1 col-lg-1\" onclick=\"getChart('"+data.closeList[i].code+"')\">";
+					strDiv += "<span style=\"cursor:pointer;\" onclick=\"changeStrategy('"+data.closeList[i].id+"','"+data.closeList[i].code+"','"+data.closeList[i].strategy_id+"','close')\">转策略</span>";
 					strDiv += "</div>";
 				}
 		    }
