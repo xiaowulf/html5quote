@@ -29,7 +29,7 @@ public class FuturesClose implements java.io.Serializable{
 	private String direction;
 	private Double sxf;
 	private Double jsyk;
-	private Long uuid;
+	private String uuid;
 	public FuturesClose() {
 		this.id=0L;
 	}
@@ -138,11 +138,10 @@ public class FuturesClose implements java.io.Serializable{
 		this.jsyk = jsyk;
 	}
 	@Column(name = "uuid")
-	public Long getUuid() {
+	public String getUuid() {
 		return uuid;
 	}
-	public void setUuid(Long uuid) {
+	public void setUuid(String uuid) {
 		this.uuid = uuid;
 	}
-	
 }
