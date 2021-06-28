@@ -28,7 +28,7 @@ public class FuturesOrdersJS implements java.io.Serializable{
 	private Double ccjsyk;
 	private Double sxf;
 	private String direction;
-	
+	private String uuid;
 	public FuturesOrdersJS() {
 		this.id=0L;
 	}
@@ -155,6 +155,13 @@ public class FuturesOrdersJS implements java.io.Serializable{
 	}
 	public void setDirection(String direction) {
 		this.direction = direction;
+	}
+	@Column(name = "uuid")
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 	
 }

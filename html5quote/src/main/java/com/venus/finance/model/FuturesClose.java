@@ -28,6 +28,8 @@ public class FuturesClose implements java.io.Serializable{
 	private String fund_account;
 	private String direction;
 	private Double sxf;
+	private Double jsyk;
+	private Long uuid;
 	public FuturesClose() {
 		this.id=0L;
 	}
@@ -127,6 +129,20 @@ public class FuturesClose implements java.io.Serializable{
 	}
 	public void setOpen_price(Double open_price) {
 		this.open_price = open_price;
+	}
+	@Column(name = "jsyk")
+	public Double getJsyk() {
+		return jsyk;
+	}
+	public void setJsyk(Double jsyk) {
+		this.jsyk = jsyk;
+	}
+	@Column(name = "uuid")
+	public Long getUuid() {
+		return uuid;
+	}
+	public void setUuid(Long uuid) {
+		this.uuid = uuid;
 	}
 	
 }

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.venus.finance.dao.IOperations;
 import com.venus.finance.model.FuturesMessage;
 import com.venus.finance.model.FuturesOrders;
+import com.venus.finance.model.FuturesOrdersJS;
 import com.venus.finance.model.FuturesStrategy;
 import com.venus.finance.service.IFuturesMessageService;
 import com.venus.finance.service.IFuturesOrdersService;
@@ -41,4 +42,22 @@ public class FuturesOrdersService extends AbstractService<FuturesOrders> impleme
     {
     	return dao.findFuturesOrdersByStrategyID(strategyID);
     }
+
+
+	@Override
+	public List<FuturesOrdersJS> findFuturesOrdersJSByDate(Long date) {
+		return dao.findFuturesOrdersJSByDate(date);
+	}
+
+
+	@Override
+	public void deleteAllFuturesOrdersJSByDate(Long date) {
+		dao.deleteAllFuturesOrdersJSByDate(date);
+	}
+
+
+	@Override
+	public void saveFuturesOrdersJS(FuturesOrdersJS futuresOrdersJS) {
+		dao.saveFuturesOrdersJS(futuresOrdersJS);
+	}
 }

@@ -31,6 +31,7 @@ import com.google.gson.Gson;
 import com.venus.finance.fix.FixApplication;
 import com.venus.finance.model.FuturesClose;
 import com.venus.finance.model.FuturesOrders;
+import com.venus.finance.model.FuturesOrdersJS;
 import com.venus.finance.model.FuturesResult;
 import com.venus.finance.model.FuturesStrategy;
 import com.venus.finance.model.FuturesSusOrders;
@@ -194,11 +195,20 @@ public class SettlementController {
 			futuresResult.setRecord_date(Long.parseLong(todayStr));
 			strategyResultMap.put(strategy.getId(), futuresResult);
 		}
-		// 所有的持仓数据
+		//删除今日的结算表数据
+		futuresOrdersService.deleteAllFuturesOrdersJSByDate(Long.parseLong(todayStr));
+		//查询出来昨日的持仓结算表
+		List<FuturesOrdersJS> ordersJSList = futuresOrdersService.findFuturesOrdersJSByDate(Long.parseLong(yesterDay));
+		Map<String,FuturesOrdersJS> yesterdayOrdersJSMap = new HashMap<String,FuturesOrdersJS>();
+		for(int i=0;i<ordersJSList.size();i++) {
+			yesterdayOrdersJSMap.put(ordersJSList.get(i).getUuid(), ordersJSList.get(i));
+		}
+		//所有的持仓数据
 		List<FuturesOrders> ordersList = futuresOrdersService.findAll();
 		// 根据行情算出持仓数据的盈亏，根据开仓和方向进行计算
 		for (int i=0;i<ordersList.size();i++) {
 			FuturesOrders order = ordersList.get(i);
+			FuturesOrdersJS futuresOrdersJS = new FuturesOrdersJS();
 			FuturesResult futuresResult = strategyResultMap.get(order.getStrategy_id());
 			if(order.getRecord_date().longValue()==Long.parseLong(todayStr))
 			{
@@ -219,7 +229,6 @@ public class SettlementController {
 						System.out.println(todayQuoteMap.get(order.getCode()).getClosePrice());
 						System.out.println(futuresQuoteAttrMap.get(order.getCode()).getMultiply());
 					}
-					
 					System.out.println(todayQuoteMap.get(order.getCode()).getClosePrice());
 					System.out.println(todayQuoteMap.get(order.getCode()).getPreClosePrice());
 					System.out.println(futuresQuoteAttrMap.get(order.getCode()).getMultiply());
@@ -258,7 +267,7 @@ public class SettlementController {
 				futuresResult.setBzj(futuresResult.getBzj()+
 						order.getHand()*order.getOpen_price()*futuresQuoteAttrMap.get(order.getCode()).getMultiply()*1);
 			}
-			futuresResult.setCcyk(futuresResult.getCcyk() + order.getRemain_profit());
+			
 			if(atrMap.containsKey(order.getCode()))
 			{
 				double atr = atrMap.get(order.getCode());
@@ -269,6 +278,33 @@ public class SettlementController {
 				double atr = todayQuoteMap.get(order.getCode()).getHighestPrice()-todayQuoteMap.get(order.getCode()).getLowestPrice();
 				order.setRisk(order.getRemain_profit()/(atr*futuresQuoteAttrMap.get(order.getCode()).getMultiply()));
 			}
+			
+			futuresOrdersJS.setCcjsyk(order.getCcjsyk());
+			futuresOrdersJS.setCode(order.getCode());
+			futuresOrdersJS.setDirection(order.getDirection());
+			futuresOrdersJS.setFrontid(order.getFrontid());
+			futuresOrdersJS.setFund_account(order.getFund_account());
+			futuresOrdersJS.setHand(order.getHand());
+			futuresOrdersJS.setOpen_price(order.getOpen_price());
+			futuresOrdersJS.setRecord_date(Long.parseLong(todayStr));
+			futuresOrdersJS.setRecord_time(order.getRecord_time());
+			futuresOrdersJS.setRef_value(order.getRef_value());
+			futuresOrdersJS.setRemain_hand(order.getRemain_hand());
+			futuresOrdersJS.setRemain_profit(order.getRemain_profit());
+			futuresOrdersJS.setRisk(order.getRisk());
+			futuresOrdersJS.setSessionid(order.getStrategy_id());
+			futuresOrdersJS.setStrategy_id(order.getStrategy_id());
+			futuresOrdersJS.setSxf(order.getSxf());
+			futuresOrdersJS.setUuid(order.getUuid());
+			if(yesterdayOrdersJSMap.containsKey(order.getUuid())) {
+				order.setCcjsyk(order.getRemain_profit()-yesterdayOrdersJSMap.get(order.getUuid()).getRemain_profit());
+			}else {
+				order.setCcjsyk(order.getRemain_profit());
+			}
+			futuresOrdersJS.setCcjsyk(order.getCcjsyk());
+			futuresOrdersService.saveFuturesOrdersJS(futuresOrdersJS);
+			//持仓盈亏
+			futuresResult.setCcyk(futuresResult.getCcyk() + order.getCcjsyk());
 			futuresOrdersService.update(order);
 		}
 		// 今日平仓数据
@@ -277,7 +313,14 @@ public class SettlementController {
 		for (int i = 0; i < closeList.size(); i++) {
 			FuturesClose closeOrder = closeList.get(i);
 			FuturesResult futuresResult = strategyResultMap.get(closeOrder.getStrategy_id());
-			futuresResult.setPcyk(futuresResult.getPcyk()+closeOrder.getClose_profit());
+			if(yesterdayOrdersJSMap.containsKey(closeOrder.getUuid())) {
+				closeOrder.setJsyk(closeOrder.getClose_profit()-yesterdayOrdersJSMap.get(closeOrder.getUuid()).getRemain_profit());
+			}else {
+				closeOrder.setJsyk(closeOrder.getClose_profit());
+			}
+			//平仓盈亏
+			futuresResult.setPcyk(futuresResult.getPcyk()+closeOrder.getJsyk());
+			futuresCloseService.update(closeOrder);
 		}
 		// 昨天的计算结果
 		List<FuturesResult> resultYesterDayList = futuresResultService
@@ -291,7 +334,6 @@ public class SettlementController {
 			FuturesResult yesterDayResult = yesterDayResultMap.get(strategy.getId());
 			//今日结果
 			FuturesResult futuresResult = strategyResultMap.get(strategy.getId());
-			
 			Double sxf = 0.0;
 			for (FuturesOrders o : ordersList) {
 				if (o.getRecord_date().longValue() == Long.parseLong(todayStr)

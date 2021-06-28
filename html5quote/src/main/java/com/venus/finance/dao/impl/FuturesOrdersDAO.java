@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.venus.finance.dao.IFuturesStrategyDAO;
 import com.venus.finance.model.FuturesOrders;
+import com.venus.finance.model.FuturesOrdersJS;
 import com.venus.finance.model.FuturesStrategy;
 import com.venus.finance.dao.AbstractHibernateDAO;
 import com.venus.finance.dao.IFuturesOrdersDAO;
@@ -42,6 +43,25 @@ public class FuturesOrdersDAO extends AbstractHibernateDAO<FuturesOrders> implem
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+	}
+	@Override
+	public List<FuturesOrdersJS> findFuturesOrdersJSByDate(Long date) {
+		Session session =  getCurrentSession();
+		try{
+			List<FuturesOrdersJS> list = session.createQuery("from FuturesOrdersJS u where u.record_date=:date order by id asc").setParameter("date", date).list();
+			return list;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	@Override
+	public void saveFuturesOrdersJS(FuturesOrdersJS futuresOrdersJS) {
+		Session session =  getCurrentSession();
+		try{
+			session.saveOrUpdate(futuresOrdersJS);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }
